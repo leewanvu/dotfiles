@@ -1,0 +1,10 @@
+let g:indentLine_enabled = 0
+let g:indentLine_char = '.'
+" let g:indentLine_char = '│'
+" let g:indentLine_color_gui = '#2C323C'
+" let g:indentLine_setColors = 0
+" let g:indentLine_char_list = ['|', '?', '?', '?']
+let g:indentLine_concealcursor = 'inc'
+let g:indentLine_conceallevel = 2
+let g:indentLine_leadingSpaceEnabled = 0
+let g:indentLine_leadingSpaceChar = '.'
