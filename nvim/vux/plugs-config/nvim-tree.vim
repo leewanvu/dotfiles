@@ -68,4 +68,4 @@ let g:nvim_tree_bindings = {
 "     \ }
 
 " a list of groups can be found at `:help nvim_tree_highlight`
-" highlight NvimTreeFolderIcon guibg=blue
+highlight NvimTreeIndentMarker guifg=#4C566A

@@ -27,3 +27,10 @@ for file in "${folders[@]}"; do
 done
 
 print_bold "Linked.";
+
+print_bold "Install packer"
+
+packer="$HOME/.local/share/nvim/site/pack/packer/opt/packer.nvim"
+[ ! -d "$packer" ] && git clone https://github.com/wbthomason/packer.nvim "$packer"
+
+print_bold "Done!"
