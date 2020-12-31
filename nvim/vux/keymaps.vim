@@ -6,8 +6,12 @@ nnoremap <silent> <leader>q :bd<CR>
 nnoremap <leader>n :nohlsearch<CR>
 
 " NERDTreeToggle
-map <C-n> :NERDTreeToggle<CR>
-map <C-m> :NERDTreeFind<CR>
+" map <C-n> :NERDTreeToggle<CR>
+" map <C-m> :NERDTreeFind<CR>
+
+" NvimTreeToggle
+nnoremap <C-n> :NvimTreeToggle<CR>
+nnoremap <C-m> :NvimTreeFindFile<CR>
 
 " TAB in general mode will move to text buffer
 nnoremap <silent> <TAB> :bnext<CR>
