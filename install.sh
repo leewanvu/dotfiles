@@ -13,11 +13,9 @@ print_bold() {
 
 print_bold "Linking...";
 
-for file in *; do
-    if [ "$file" == "install.sh" ]; then
-        continue;
-    fi
+folders=(alacritty nvim ranger kitty)
 
+for file in "${folders[@]}"; do
     linkfrom="$PWD/$file"
     linkto="$HOME/.config/$file"
 
