@@ -1,5 +1,7 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =4
+let g:netrw_dirhistcnt =6
+let g:netrw_dirhist_6='/Users/vule/Projects/dotfiles/nvim'
+let g:netrw_dirhist_5='/Users/vule/Projects/dotfiles'
 let g:netrw_dirhist_4='/Users/vule/FireApps/sms-be'
 let g:netrw_dirhist_3='/Users/vule/FireApps/sms-be/app/Console'
 let g:netrw_dirhist_2='/Users/vule/FireApps/sms-be/app'
@@ -8,5 +10,3 @@ let g:netrw_dirhist_0='/Users/vule/FireApps/sms-be/app'
 let g:netrw_dirhist_9='/Users/vule/FireApps/sms-be'
 let g:netrw_dirhist_8='/Users/vule/FireApps/sms-be/app'
 let g:netrw_dirhist_7='/Users/vule/FireApps/sms-be'
-let g:netrw_dirhist_6='/Users/vule/FireApps'
-let g:netrw_dirhist_5='/Users/vule/FireApps/sms-be'

@@ -13,7 +13,7 @@ local plugins = {
     loaded = false,
     only_sequence = false,
     only_setup = false,
-    path = "/home/vux/.local/share/nvim/site/pack/packer/opt/packer.nvim"
+    path = "/Users/vule/.local/share/nvim/site/pack/packer/opt/packer.nvim"
   }
 }
 
@@ -110,7 +110,7 @@ _packer_load = function(names, cause)
     end
 
     if cause.prefix then
-      local prefix = vim.v.count and vim.v.count or ''
+      local prefix = vim.v.count ~= 0 and vim.v.count or ''
       prefix = prefix .. '"' .. vim.v.register .. cause.prefix
       if vim.fn.mode('full') == 'no' then
         if vim.v.operator == 'c' then
@@ -138,12 +138,26 @@ end
 
 -- Pre-load configuration
 -- Post-load configuration
--- Config for: vim-airline
-loadstring("\27LJ\2\n<\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\19airline-config\frequire\0")()
 -- Config for: nvim-tree.lua
 loadstring("\27LJ\2\n9\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\16tree-config\frequire\0")()
+-- Config for: vim-easymotion
+loadstring("\27LJ\2\n\\\0\0\2\0\4\0\t6\0\0\0009\0\1\0)\1\0\0=\1\2\0006\0\0\0009\0\1\0)\1\1\0=\1\3\0K\0\1\0\25EasyMotion_smartcase\26EasyMotion_do_mapping\6g\bvim\0")()
+-- Config for: vim-startify
+loadstring("\27LJ\2\n>\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\21starrtify-config\frequire\0")()
+-- Config for: blamer.nvim
+loadstring("\27LJ\2\n;\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\18blamer-config\frequire\0")()
+-- Config for: ranger.vim
+loadstring("\27LJ\2\n1\0\0\2\0\3\0\0056\0\0\0009\0\1\0)\1\0\0=\1\2\0K\0\1\0\20ranger_map_keys\6g\bvim\0")()
+-- Config for: fzf.vim
+loadstring("\27LJ\2\n8\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\15fzf-config\frequire\0")()
 -- Config for: nord-vim
-loadstring("\27LJ\2\n4\0\0\3\0\3\0\0056\0\0\0009\0\1\0'\2\2\0B\0\2\1K\0\1\0\21colorscheme nord\bcmd\bvim\0")()
+loadstring("\27LJ\2\n9\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\16nord-config\frequire\0")()
+-- Config for: nerdcommenter
+loadstring("\27LJ\2\nB\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\25nerdcommenter-config\frequire\0")()
+-- Config for: vim-floaterm
+loadstring("\27LJ\2\n>\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\21floatterm-config\frequire\0")()
+-- Config for: vim-airline
+loadstring("\27LJ\2\n<\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\19airline-config\frequire\0")()
 -- Conditional loads
 -- Load plugins in order defined by `after`
 END

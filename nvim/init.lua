@@ -79,7 +79,9 @@ api.nvim_exec([[
 -------------------- MAPPINGS ------------------------------
 g.mapleader = ' '
 
+-- NvimTree
 map('n', '<C-n>', ':NvimTreeToggle<CR>', { noremap = true, silent = true })
+map('n', '<C-m>', ':NvimTreeFindFile<CR>', { noremap = true, silent = true })
 
 map('n', '<leader>w', ':w<CR>', { noremap = true, silent = true })
 map('n', '<leader>q', ':bd<CR>', { noremap = true, silent = true })
@@ -98,13 +100,24 @@ map('i', '<C-k>', '<C-w>k')
 map('i', '<C-l>', '<C-w>l')
 map('i', '<C-h>', '<C-w>h')
 
-map('i', '<C-j>', '<C-n>', { noremap = true })
-map('i', '<C-k>', '<C-p>', { noremap = true })
+map('i', '<C-j>', '<C-n>', { noremap = true, expr = true })
+map('i', '<C-k>', '<C-p>', { noremap = true, expr = true })
 
-g.nord_italic_comments = 1
-g.nord_cursor_line_number_background = 1
-g.nord_bold = 1
-g.nord_italic = 1
-g.nord_italic_comments = 1
-g.nord_underline = 1
-g.airline_theme='nord'
+map('v', '<', '<gv', { noremap = true })
+map('v', '>', '>gv', { noremap = true })
+
+map('x', 'K', ':move \'<-2<CR>gv-gv', { noremap = true })
+map('x', 'J', ':move \'>+1<CR>gv-gv', { noremap = true })
+
+-- Fzf
+map('n', '<leader>p', ':Files<CR>', { noremap = true, silent = true })
+map('n', '<leader>b', ':Buffers<CR>', { noremap = true, silent = true })
+map('n', '<leader>g', ':GFiles?<CR>', { noremap = true, silent = true })
+
+-- Easy motion
+map('n', '<leader>f', '<Plug>(easymotion-bd-f)')
+map('n', '<leader>f', '<Plug>(easymotion-overwin-f)', { noremap = true })
+map('n', 's', '<Plug>(easymotion-overwin-f2)', { noremap = true })
+
+-- Ranger
+map('n', '<leader>r', ':Ranger<CR>')

@@ -7,13 +7,19 @@ if [ "$is_install" == "n" ]; then
     exit 1;
 fi
 
+read -p "For mac? y/n: " is_mac
+
 print_bold() {
     printf "\x1b[1m$1\x1b[0m\n"
 }
 
 print_bold "Linking...";
 
-folders=(alacritty nvim ranger kitty)
+if [ "$is_mac" == "y" ]; then
+    folders=(alacritty nvim ranger)
+else
+    folders=(alacritty nvim ranger kitty)
+fi
 
 for file in "${folders[@]}"; do
     linkfrom="$PWD/$file"
