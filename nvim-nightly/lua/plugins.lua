@@ -9,12 +9,12 @@ return require('packer').startup(function()
 
   use {
     'arcticicestudio/nord-vim',
-    config = function() require'nord-config'.setup() end
+    config = function() require'plug-configs/nord'.setup() end
   }
 
   use {
     'kyazdani42/nvim-tree.lua',
-    config = function() require'tree-config'.setup() end
+    config = function() require'plug-configs/tree'.setup() end
   }
 
   use {
@@ -27,19 +27,19 @@ return require('packer').startup(function()
 
   use {
     'vim-airline/vim-airline',
-    config = function() require'airline-config'.setup() end
+    config = function() require'plug-configs/airline'.setup() end
   }
   use 'vim-airline/vim-airline-themes'
 
   use {
     'mhinz/vim-startify',
-    config = function() require'starrtify-config'.setup() end
+    config = function() require'plug-configs/starrtify'.setup() end
   }
 
   use 'junegunn/fzf'
   use {
     'junegunn/fzf.vim',
-    config = function() require'fzf-config'.setup() end
+    config = function() require'plug-configs/fzf'.setup() end
   }
 
   use 'airblade/vim-rooter'
@@ -57,7 +57,7 @@ return require('packer').startup(function()
 
   use {
     'preservim/nerdcommenter',
-    config = function() require'nerdcommenter-config'.setup() end
+    config = function() require'plug-configs/nerdcommenter'.setup() end
   }
 
   -- Git
@@ -65,13 +65,14 @@ return require('packer').startup(function()
   use 'airblade/vim-gitgutter'
   use {
     'APZelos/blamer.nvim',
-    config = function() require'blamer-config'.setup() end
+    config = function() require'plug-configs/blamer'.setup() end
   }
 
   -- Terminal
   use {
     'voldikss/vim-floaterm',
-    config = function() require'floatterm-config'.setup() end
+    config = function() require'plug-configs/floatterm'.setup() end
   }
 end)
+
 

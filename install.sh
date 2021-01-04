@@ -9,6 +9,8 @@ fi
 
 read -p "For mac? y/n: " is_mac
 
+read -p "Use neovim nightly? y/n: " is_neovim_nightly
+
 print_bold() {
     printf "\x1b[1m$1\x1b[0m\n"
 }
@@ -24,6 +26,10 @@ fi
 for file in "${folders[@]}"; do
     linkfrom="$PWD/$file"
     linkto="$HOME/.config/$file"
+
+    if [ "$file" == "nvim" ] && [ "$is_neovim_nightly"  == "y" ]; then
+      linkfrom="$PWD/nvim-nightly"
+    fi
 
     echo "Remove $linkto";
     rm -rf $linkto

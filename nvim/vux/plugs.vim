@@ -5,8 +5,8 @@ Plug 'mhinz/vim-startify'
 
 " Explore
 " Plug 'kyazdani42/nvim-web-devicons'
-Plug 'kyazdani42/nvim-tree.lua'
-" Plug 'preservim/nerdtree'
+" Plug 'kyazdani42/nvim-tree.lua'
+Plug 'preservim/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 " Plug 'majutsushi/tagbar'
 Plug 'francoiscabrol/ranger.vim'
