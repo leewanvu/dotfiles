@@ -46,7 +46,16 @@ return require('packer').startup(function()
     'junegunn/fzf.vim',
     config = function() require'v-plugs/fzf'.setup() end
   }
-  use 'airblade/vim-rooter'
+  use {
+    'airblade/vim-rooter',
+    config = function()
+      vim.g.rooter_pattern = {
+        '.git',
+        '.env',
+        'Makefile',
+      }
+    end
+  }
   use 'dyng/ctrlsf.vim'
 
   -- Utils
@@ -89,5 +98,12 @@ return require('packer').startup(function()
     'neoclide/coc.nvim',
     branch = 'release',
     config = function() require'v-plugs/coc'.setup() end,
+  }
+
+  -- Treesitter
+  use {
+    'nvim-treesitter/nvim-treesitter',
+    run = ':TSUpdate',
+    config = function() require'v-plugs/ts'.setup() end,
   }
 end)

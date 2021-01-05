@@ -17,16 +17,16 @@ function M.setup()
   }
   vim.g.startify_enable_special = 0
   vim.g.startify_bookmarks = {
-    { i= '~/.config/nvim/init.vim' },
+    { i= '~/.config/nvim/init.lua' },
     { a= '~/.config/alacritty/alacritty.yml' },
     { z= '~/.zshrc' },
     { t= '~/.tmux.conf' },
     { s= '~/FireApps/sms-be/.env' },
-    { u= '~/FireApps/unlimited-be' },
-    { d= '~/FireApps/s5y-docker' },
-    { al= '~/FireApps/ar/alireviews' },
-    { ar= '~/FireApps/ar/alireviews-report' },
-    { ab= '~/FireApps/ar/alireviews-box' },
+    { u= '~/FireApps/unlimited-be/.env' },
+    { d= '~/FireApps/s5y-docker/.env' },
+    { al= '~/FireApps/ar/alireviews/.env' },
+    { ar= '~/FireApps/ar/alireviews-report/.env' },
+    { ab= '~/FireApps/ar/alireviews-box/.env' },
   }
 end
 
