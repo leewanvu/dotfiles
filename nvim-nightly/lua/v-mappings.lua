@@ -39,6 +39,13 @@ map('v', '>', '>gv', { noremap = true })
 map('x', 'K', ':move \'<-2<CR>gv-gv', { noremap = true })
 map('x', 'J', ':move \'>+1<CR>gv-gv', { noremap = true })
 
+-- Terminal
+-- map('t', '<Esc>', '<C-\\><C-n>')
+-- map('t', '<A-j>', '<C-\\><C-n><C-w>j')
+-- map('t', '<A-k>', '<C-\\><C-n><C-w>k')
+-- map('t', '<A-h>', '<C-\\><C-n><C-w>h')
+-- map('t', '<A-l>', '<C-\\><C-n><C-w>l')
+
 -- Fzf
 map('n', '<leader>p', ':Files<CR>', { noremap = true, silent = true })
 map('n', '<leader>b', ':Buffers<CR>', { noremap = true, silent = true })

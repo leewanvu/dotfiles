@@ -72,7 +72,7 @@ return require('packer').startup(function()
     'preservim/nerdcommenter',
     config = function() require'v-plugs/nerdcommenter'.setup() end
   }
-  
+
   -- Documention generator
   use {
     'kkoomen/vim-doge',
@@ -92,6 +92,10 @@ return require('packer').startup(function()
     'voldikss/vim-floaterm',
     config = function() require'v-plugs/floatterm'.setup() end
   }
+  -- use {
+  --   'akinsho/nvim-toggleterm.lua',
+  --   config = function() require'v-plugs/toggleterm'.setup() end
+  -- }
 
   -- LSP
   use {
