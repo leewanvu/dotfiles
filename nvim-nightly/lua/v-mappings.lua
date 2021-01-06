@@ -52,9 +52,26 @@ map('n', '<leader>b', ':Buffers<CR>', { noremap = true, silent = true })
 map('n', '<leader>g', ':GFiles?<CR>', { noremap = true, silent = true })
 
 -- Easy motion
-map('n', '<leader>f', '<Plug>(easymotion-bd-f)')
-map('n', '<leader>f', '<Plug>(easymotion-overwin-f)', { noremap = true })
-map('n', 's', '<Plug>(easymotion-overwin-f2)', { noremap = true })
+-- map('n', '<leader>f', '<Plug>(easymotion-bd-f)')
+-- map('n', '<leader>f', '<Plug>(easymotion-overwin-f)', { noremap = true })
+-- map('n', 's', '<Plug>(easymotion-overwin-f2)', { noremap = true })
+vim.api.nvim_exec([[
+  map <Leader>f <Plug>(easymotion-bd-f)
+  nmap <Leader>f <Plug>(easymotion-overwin-f)
+  nmap s <Plug>(easymotion-overwin-f2)
+]], '')
 
 -- Ranger
 map('n', '<leader>r', ':Ranger<CR>')
+
+-- LSP
+-- map('n', '<c-]>', '<cmd>lua vim.lsp.buf.definition()<CR>', { noremap = true, silent = true })
+map('n', 'gd>', '<cmd>lua vim.lsp.buf.definition()<CR>', { noremap = true, silent = true })
+map('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', { noremap = true, silent = true })
+-- map('n', 'gD', '<cmd>lua vim.lsp.buf.implementation()<CR>', { noremap = true, silent = true })
+map('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', { noremap = true, silent = true })
+-- map('n', '1gD', '<cmd>lua vim.lsp.buf.type_definition()<CR>', { noremap = true, silent = true })
+map('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', { noremap = true, silent = true })
+map('n', 'g0', '<cmd>lua vim.lsp.buf.document_symbol()<CR>', { noremap = true, silent = true })
+map('n', 'gW', '<cmd>lua vim.lsp.buf.workspace_symbol()<CR>', { noremap = true, silent = true })
+-- map('n', 'gd', '<cmd>lua vim.lsp.buf.declaration()<CR>', { noremap = true, silent = true })

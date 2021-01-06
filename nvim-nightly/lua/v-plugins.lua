@@ -98,10 +98,14 @@ return require('packer').startup(function()
   -- }
 
   -- LSP
+  -- use {
+  --   'neoclide/coc.nvim',
+  --   branch = 'release',
+  --   config = function() require'v-plugs/coc'.setup() end
+  -- }
   use {
-    'neoclide/coc.nvim',
-    branch = 'release',
-    config = function() require'v-plugs/coc'.setup() end,
+    'neovim/nvim-lspconfig',
+    config = function() require'v-plugs/lsp'.setup() end
   }
 
   -- Treesitter
