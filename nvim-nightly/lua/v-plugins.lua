@@ -117,4 +117,7 @@ return require('packer').startup(function()
     'nvim-lua/completion-nvim',
     config = function() require'v-plugs/completion'.setup() end
   }
+  use {
+   'steelsojka/completion-buffers',
+  }
 end)
