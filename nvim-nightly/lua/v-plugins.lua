@@ -61,10 +61,7 @@ return require('packer').startup(function()
   -- Utils
   use {
     'easymotion/vim-easymotion',
-    config = function()
-      vim.g.EasyMotion_do_mapping = 0
-      vim.g.EasyMotion_smartcase = 1
-    end
+    config = function() require'v-plugs/easymotion'.setup() end
   }
   use 'tpope/vim-surround'
   use 'jiangmiao/auto-pairs'
@@ -97,6 +94,13 @@ return require('packer').startup(function()
   --   config = function() require'v-plugs/toggleterm'.setup() end
   -- }
 
+  -- Treesitter
+  use {
+    'nvim-treesitter/nvim-treesitter',
+    run = ':TSUpdate',
+    config = function() require'v-plugs/ts'.setup() end,
+  }
+
   -- LSP
   -- use {
   --   'neoclide/coc.nvim',
@@ -108,10 +112,9 @@ return require('packer').startup(function()
     config = function() require'v-plugs/lsp'.setup() end
   }
 
-  -- Treesitter
+  -- Completion
   use {
-    'nvim-treesitter/nvim-treesitter',
-    run = ':TSUpdate',
-    config = function() require'v-plugs/ts'.setup() end,
+    'nvim-lua/completion-nvim',
+    config = function() require'v-plugs/completion'.setup() end
   }
 end)

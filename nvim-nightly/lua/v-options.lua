@@ -59,4 +59,5 @@ api.nvim_exec([[
   set iskeyword+=-
   set noerrorbells
   set nowrap
+  set completeopt=menuone,noinsert,noselect
   ]], '')

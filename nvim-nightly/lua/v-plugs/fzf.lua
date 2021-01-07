@@ -21,6 +21,19 @@ function M.setup()
   vim.api.nvim_exec([[
     let $FZF_DEFAULT_COMMAND = 'rg --files --hidden --no-ignore-vcs -g "!{node_modules,.git,vendor}"'
   ]], '')
+
+  vim.api.nvim_set_keymap('n', '<leader>p', ':Files<CR>', {
+    noremap = true,
+    silent = true
+  })
+  vim.api.nvim_set_keymap('n', '<leader>b', ':Buffers<CR>', {
+    noremap = true,
+    silent = true
+  })
+  vim.api.nvim_set_keymap('n', '<leader>g', ':GFiles?<CR>', {
+    noremap = true,
+    silent = true
+  })
 end
 
 return M

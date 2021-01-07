@@ -32,6 +32,15 @@ function M.setup()
   vim.g.nvim_tree_bindings = {
     preview = { '<Tab>' }
   }
+
+  vim.api.nvim_set_keymap('n', '<C-n>', ':NvimTreeToggle<CR>', {
+    noremap = true,
+    silent = true
+  })
+  vim.api.nvim_set_keymap('n', '<C-m>', ':NvimTreeFindFile<CR>', {
+    noremap = true,
+    silent = true
+  })
 end
 
 return M
