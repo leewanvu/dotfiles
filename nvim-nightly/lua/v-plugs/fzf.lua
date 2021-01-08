@@ -34,6 +34,14 @@ function M.setup()
     noremap = true,
     silent = true
   })
+  vim.api.nvim_set_keymap('n', '<leader>/', ':Rg<CR>', {
+    noremap = true,
+    silent = true
+  })
+  vim.api.nvim_set_keymap('n', '<leader>l', ':Lines<CR>', {
+    noremap = true,
+    silent = true
+  })
 end
 
 return M
