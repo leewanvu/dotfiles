@@ -2,8 +2,11 @@ local M = {}
 
 function M.setup()
   require'lspconfig'.intelephense.setup{
-    on_attach = require'completion'.on_attach
+    -- on_attach = require'completion'.on_attach
   }
+
+  -- Use completion-nvim in every buffer
+  vim.cmd "autocmd BufEnter * lua require'completion'.on_attach()"
   
   vim.api.nvim_set_keymap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', {
     noremap = true,
