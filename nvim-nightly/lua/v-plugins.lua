@@ -79,10 +79,27 @@ return require('packer').startup(function()
   -- Git
   use 'tpope/vim-fugitive'
   use 'airblade/vim-gitgutter'
+  -- use {
+  --   'APZelos/blamer.nvim',
+  --   config = function() require'v-plugs/blamer'.setup() end
+  -- }
   use {
-    'APZelos/blamer.nvim',
-    config = function() require'v-plugs/blamer'.setup() end
+    'f-person/git-blame.nvim',
+    config = function()
+      vim.g.gitblame_enabled = 0
+      vim.g.gitblame_message_template = ' <author> • <date> • <summary>'
+      vim.g.gitblame_date_format = '%c' 
+    end
   }
+  -- use {
+  --   'lewis6991/gitsigns.nvim',
+  --   requires = {
+  --     'nvim-lua/plenary.nvim'
+  --   },
+  --   config = function()
+  --     require('gitsigns').setup()
+  --   end
+  -- }
 
   -- Terminal
   use {
@@ -119,4 +136,9 @@ return require('packer').startup(function()
   }
   use 'steelsojka/completion-buffers'
   use 'nvim-treesitter/completion-treesitter'
+
+  -- use {
+  --   'nvim-telescope/telescope.nvim',
+  --   requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}}
+  -- }
 end)

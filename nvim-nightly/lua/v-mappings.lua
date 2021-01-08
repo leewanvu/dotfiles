@@ -40,3 +40,16 @@ map('x', 'J', ':move \'>+1<CR>gv-gv', { noremap = true })
 
 -- Ranger
 map('n', '<leader>r', ':Ranger<CR>')
+
+-- Ctrlsf
+vim.api.nvim_exec([[
+  nmap     <C-F>f <Plug>CtrlSFPrompt
+  nmap     <C-F>f <Plug>CtrlSFPrompt
+  vmap     <C-F>f <Plug>CtrlSFVwordPath
+  vmap     <C-F>F <Plug>CtrlSFVwordExec
+  nmap     <C-F>n <Plug>CtrlSFCwordPath
+  nmap     <C-F>p <Plug>CtrlSFPwordPath
+  nnoremap <C-F>o :CtrlSFOpen<CR>
+  nnoremap <C-F>t :CtrlSFToggle<CR>
+  inoremap <C-F>t <Esc>:CtrlSFToggle<CR>
+]], '')

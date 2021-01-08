@@ -1,7 +1,7 @@
 local M = {}
 
 function M.setup()
-  vim.g.startify_custom_header = 'startify#pad(startify#fortune#boxed())'
+  vim.g.startify_custom_header = 'startify#pad(startify#fortune#cowsay())'
   vim.g.startify_session_dir = '~/.config/nvim/session'
   vim.g.startify_session_autoload = 1
   vim.g.startify_session_delete_buffers = 1
