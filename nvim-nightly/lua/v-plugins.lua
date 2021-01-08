@@ -56,7 +56,10 @@ return require('packer').startup(function()
       }
     end
   }
-  use 'dyng/ctrlsf.vim'
+  use {
+    'dyng/ctrlsf.vim',
+    config = function() require'v-plugs/ctrlsf'.setup() end
+  }
 
   -- Utils
   use {
