@@ -91,7 +91,7 @@ return require('packer').startup(function()
     config = function()
       vim.g.gitblame_enabled = 0
       vim.g.gitblame_message_template = ' <author> • <date> • <summary>'
-      vim.g.gitblame_date_format = '%c' 
+      vim.g.gitblame_date_format = '%c'
     end
   }
   -- use {
