@@ -2,8 +2,8 @@ local M = {}
 
 function M.setup()
   vim.g.completion_chain_complete_list = {
-    { complete_items = {'lsp', 'snippet', 'ts'} },
-    { complete_items = { 'buffers' } },
+    { complete_items = {'lsp', 'snippet', 'ts', 'buffers'} },
+    -- { complete_items = { 'buffers' } },
     { mode = '<c-p>' },
     { mode = '<c-n>' }
   }
@@ -14,6 +14,9 @@ function M.setup()
     inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
     imap <silent> <c-p> <Plug>(completion_trigger)
   ]], '')
+
+  -- Use completion-nvim in every buffer
+  vim.cmd "autocmd BufEnter * lua require'completion'.on_attach()"
 end
 
 return M
