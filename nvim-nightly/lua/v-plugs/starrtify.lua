@@ -16,17 +16,23 @@ function M.setup()
     { type = 'bookmarks', header = {'   Bookmarks'} },
   }
   vim.g.startify_enable_special = 0
+
+  local faRepos = '~/FireApps/'
+  -- Ubuntu worspace
+  if (os.getenv('HOME') == '/home/vux') then
+    faRepos = '~/Workspace/Repos/'
+  end
   vim.g.startify_bookmarks = {
     { i= '~/.config/nvim/init.lua' },
-    { a= '~/.config/alacritty/alacritty.yml' },
+    { aa= '~/.config/alacritty/alacritty.yml' },
     { z= '~/.zshrc' },
     { t= '~/.tmux.conf' },
-    { s= '~/FireApps/sms-be/.env' },
-    { u= '~/FireApps/unlimited-be/.env' },
-    { d= '~/FireApps/s5y-docker/.env' },
-    { al= '~/FireApps/ar/alireviews/.env' },
-    { ar= '~/FireApps/ar/alireviews-report/.env' },
-    { ab= '~/FireApps/ar/alireviews-box/.env' },
+    { s= faRepos .. 'sms-be/.env' },
+    { u= faRepos .. 'unlimited-be/.env' },
+    { d= faRepos .. 's5y-docker/.env' },
+    { al= faRepos .. 'ar/alireviews/.env' },
+    { ar= faRepos .. 'ar/alireviews-report/.env' },
+    { ab= faRepos .. 'ar/alireviews-box/.env' },
   }
 end
 
