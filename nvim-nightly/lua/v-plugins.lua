@@ -131,6 +131,8 @@ return require('packer').startup(function()
     'neovim/nvim-lspconfig',
     config = function() require'v-plugs/lsp'.setup() end
   }
+  use 'RishabhRD/popfix'
+  use 'RishabhRD/nvim-lsputils'
 
   -- Completion
   use {
