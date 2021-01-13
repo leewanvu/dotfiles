@@ -1,16 +1,3 @@
-" let g:startify_custom_header = [
-"             \ '  VVVVVVVV     VVVVVVVV',
-"             \ '    VVVVV       VVVVV   ~~~  ~~',
-"             \ '     VVVVV     VVVVV   ~~  ~~~',
-"             \ '      VVVVV   VVVVV',
-"             \ '       VVVVV VVVVV  UUUUU   UUUU',
-"             \ '        VVVVVVVVV    UUUU    UUU',
-"             \ '         VVVVVVV     UUUU    UUU',
-"             \ '          VVVVV      UUUU    UUU',
-"             \ '           VVV       UUUUUUUUUUU',
-"             \ '            V         UUUUUUUUU',
-"             \]
-" let g:startify_custom_header = ["   Hi Vux! Let\'s code ..."]
 let g:startify_custom_header = 'startify#pad(startify#fortune#boxed())'
 
 let g:startify_session_dir = '~/.config/nvim/session'
@@ -39,12 +26,12 @@ let g:startify_bookmarks = [
             \ { 'a': '~/.config/alacritty/alacritty.yml' },
             \ { 'z': '~/.zshrc' },
             \ { 't': '~/.tmux.conf' },
-            \ { 's': '~/Workspace/Repos/sms-be' },
-            \ { 'u': '~/Workspace/Repos/unlimited-be' },
-            \ { 'd': '~/Workspace/Repos/s5y-docker' },
-            \ { 'al': '~/Workspace/Repos/ar/alireviews' },
-            \ { 'ar': '~/Workspace/Repos/ar/alireviews-report' },
-            \ { 'ab': '~/Workspace/Repos/ar/alireviews-box' },
+            \ { 's': '~/FireApps/sms-be' },
+            \ { 'u': '~/FireApps/unlimited-be' },
+            \ { 'd': '~/FireApps/s5y-docker' },
+            \ { 'al': '~/FireApps/ar/alireviews' },
+            \ { 'ar': '~/FireApps/ar/alireviews-report' },
+            \ { 'ab': '~/FireApps/ar/alireviews-box' },
             \ ]
 
 let g:startify_enable_special = 0

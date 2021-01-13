@@ -23,12 +23,16 @@ else
     folders=(alacritty nvim ranger kitty)
 fi
 
-for file in "${folders[@]}"; do
-    linkfrom="$PWD/$file"
-    linkto="$HOME/.config/$file"
+for folder in "${folders[@]}"; do
+    linkfrom="$PWD/$folder"
+    linkto="$HOME/.config/$folder"
 
-    if [ "$file" == "nvim" ] && [ "$is_neovim_nightly"  == "y" ]; then
+    if [ "$folder" == "nvim" ] && [ "$is_neovim_nightly"  == "y" ]; then
       linkfrom="$PWD/nvim-nightly"
+    fi
+
+    if [ "$folder" == "alacritty" ] && [ "$is_mac" == "y" ]; then
+      linkfrom="$PWD/alacritty-mac"
     fi
 
     echo "Remove $linkto";
