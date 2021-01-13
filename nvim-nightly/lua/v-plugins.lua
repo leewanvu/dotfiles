@@ -122,25 +122,25 @@ return require('packer').startup(function()
   }
 
   -- LSP
-  -- use {
-  --   'neoclide/coc.nvim',
-  --   branch = 'release',
-  --   config = function() require'v-plugs/coc'.setup() end
-  -- }
   use {
-    'neovim/nvim-lspconfig',
-    config = function() require'v-plugs/lsp'.setup() end
+    'neoclide/coc.nvim',
+    branch = 'release',
+    config = function() require'v-plugs/coc'.setup() end
   }
-  use 'RishabhRD/popfix'
-  use 'RishabhRD/nvim-lsputils'
+  -- use {
+  --   'neovim/nvim-lspconfig',
+  --   config = function() require'v-plugs/lsp'.setup() end
+  -- }
+  -- use 'RishabhRD/popfix'
+  -- use 'RishabhRD/nvim-lsputils'
 
   -- Completion
-  use {
-    'nvim-lua/completion-nvim',
-    config = function() require'v-plugs/completion'.setup() end
-  }
-  use 'steelsojka/completion-buffers'
-  use 'nvim-treesitter/completion-treesitter'
+  -- use {
+  --   'nvim-lua/completion-nvim',
+  --   config = function() require'v-plugs/completion'.setup() end
+  -- }
+  -- use 'steelsojka/completion-buffers'
+  -- use 'nvim-treesitter/completion-treesitter'
 
   -- use {
   --   'nvim-telescope/telescope.nvim',
