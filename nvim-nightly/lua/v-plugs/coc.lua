@@ -38,7 +38,7 @@ function M.setup()
     nmap gf <Plug>(coc-format-selected)
 
     nmap <leader>ac <Plug>(coc-codeaction)
-    nmap <leader>qf <Plug>(coc-fix-current)
+    " nmap <leader>qf <Plug>(coc-fix-current)
 
     command! -nargs=0 Format :call CocAction('format')
     command! -nargs=? Fold :call CocAction('fold', <f-args>)
