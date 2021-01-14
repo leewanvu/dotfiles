@@ -7,4 +7,4 @@ require('v-mappings')
 
 -- Auto commands
 -- Remove trailing whitespace on save
-vim.cmd "autocmd BufWritePre * %s/\\s\\+$//e"
+-- vim.cmd "autocmd BufWritePre * %s/\\s\\+$//e"
