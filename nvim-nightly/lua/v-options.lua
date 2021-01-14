@@ -52,6 +52,7 @@ opt('o', 'termguicolors', true)
 opt('b', 'syntax', 'on')
 
 api.nvim_exec([[
+  set noswapfile
   set nowritebackup
   set nobackup
   set clipboard+=unnamedplus
@@ -60,4 +61,9 @@ api.nvim_exec([[
   set noerrorbells
   set nowrap
   set completeopt=menuone,noinsert,noselect
+  set wildmenu
+  set noshowmode
+  set encoding=utf-8
+  set history=1000
+  set undolevels=1000
   ]], '')
