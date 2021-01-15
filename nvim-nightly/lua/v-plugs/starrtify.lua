@@ -17,11 +17,11 @@ function M.setup()
   }
   vim.g.startify_enable_special = 0
 
-  local faRepos = '~/FireApps/'
+  local faRepos = '~/Work/'
   -- Ubuntu worspace
-  if (os.getenv('HOME') == '/home/vux') then
-    faRepos = '~/Workspace/Repos/'
-  end
+  -- if (os.getenv('HOME') == '/home/vux') then
+  --   faRepos = '~/Work/'
+  -- end
   vim.g.startify_bookmarks = {
     { i= '~/.config/nvim/init.lua' },
     { aa= '~/.config/alacritty/alacritty.yml' },

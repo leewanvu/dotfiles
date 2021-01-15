@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/vux/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -98,22 +98,26 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+# nvim
 alias v="nvim"
 alias vi="nvim"
 alias vim="nvim"
 
+# list
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
 
+# docker
 alias dkpsa='docker ps -a'
 alias dcp='docker-compose'
 
-alias s5y='/home/vux/Workspace/Repos/s5y'
-alias gsms='/home/vux/Workspace/Repos/s5y gsms'
-alias gun='/home/vux/Workspace/Repos/s5y gun'
-alias gngrok='/home/vux/Workspace/Repos/s5y ngrok'
+alias s5y='~/Work/s5y'
+alias gsms='~/Work/s5y gsms'
+alias gun='~/Work/s5y gun'
+alias gngrok='~/Work/s5y ngrok'
 
+# git
 alias g='git'
 alias gs='git status'
 alias ga='git add'
@@ -126,6 +130,7 @@ alias gd='git diff'
 alias gpl='git pull origin "$(git_current_branch)"'
 alias gp='git push origin "$(git_current_branch)"'
 
+# k8s
 alias k='kubectl'
 alias kgp='kubectl get po'
 alias kl='kubectl logs -f'
@@ -134,7 +139,7 @@ alias kgps='kubectl get po -n sms'
 alias kes='kubectl exec -n sms -it'
 
 # Alireviews
-alias arm="make -f /home/vux/Workspace/Repos/ar/bin/Makefile"
+alias arm="make -f ~/Work/ar/bin/Makefile"
 alias ard="arm docker"
 alias arup="arm up"
 alias ardown="arm down"
@@ -143,22 +148,23 @@ alias arredis="arm redis"
 alias arreset="arm reset"
 
 alias arreport="arm report"
-alias arreportroot="arm report u=root"
-alias arreportlog="arm report-log"
+alias arreportr="arm report u=root"
+alias arreportl="arm report-log"
 
 alias arweb="arm web"
-alias arwebroot="arm web u=root"
-alias arweblog="arm web-log"
-alias arwebreset="arm web-reset"
+alias arwebr="arm web u=root"
+alias arwebl="arm web-log"
+alias arwebrs="arm web-reset"
 
 alias arbox="arm box"
-alias arboxroot="arm box u=root"
-alias arboxlog="arm box-log"
-alias arboxreset="arm box-reset"
+alias arboxr="arm box u=root"
+alias arboxl="arm box-log"
+alias arboxrs="arm box-reset"
 
 alias aremail="arm email"
 
-alias vd="cd ~/Workspace/Repos/dotfiles && v install.sh"
+alias vdot="cd ~/Work/dotfiles && v install.sh"
+alias r="ranger"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
