@@ -166,6 +166,17 @@ alias aremail="arm email"
 alias vdot="cd ~/Work/dotfiles && v install.sh"
 alias r="ranger"
 
+# Android
+export ANDROID_HOME=$HOME/Library/Android/sdk
+export PATH=$PATH:$ANDROID_HOME/emulator
+export PATH=$PATH:$ANDROID_HOME/tools
+export PATH=$PATH:$ANDROID_HOME/tools/bin
+export PATH=$PATH:$ANDROID_HOME/platform-tools
+
+# Flutter
+export FLUTTER_HOME=$HOME/Projects/flutter
+export PATH=$PATH:$FLUTTER_HOME/flutter/bin
+
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
