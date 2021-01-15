@@ -2,7 +2,7 @@ local M = {}
 
 function M.setup()
   vim.g.fzf_layout = { window = { width = 0.8, height = 0.6 } }
-  vim.g.fzf_history_dir = '~/.local/share/fzf-history' 
+  vim.g.fzf_history_dir = '~/.local/share/fzf-history'
   vim.g.fzf_colors = {
     fg = { 'fg', 'Normal' },
     bg = { 'bg', 'Normal' },
@@ -26,7 +26,7 @@ function M.setup()
     noremap = true,
     silent = true
   })
-  vim.api.nvim_set_keymap('n', '<leader>b', ':Buffers<CR>', {
+  vim.api.nvim_set_keymap('n', '<leader>/', ':Buffers<CR>', {
     noremap = true,
     silent = true
   })
@@ -34,10 +34,10 @@ function M.setup()
     noremap = true,
     silent = true
   })
-  vim.api.nvim_set_keymap('n', '<leader>/', ':Rg<CR>', {
-    noremap = true,
-    silent = true
-  })
+  -- vim.api.nvim_set_keymap('n', '<leader>/', ':Rg<CR>', {
+  --   noremap = true,
+  --   silent = true
+  -- })
   vim.api.nvim_set_keymap('n', '<leader>l', ':Lines<CR>', {
     noremap = true,
     silent = true
