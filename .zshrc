@@ -139,6 +139,7 @@ alias kgps='kubectl get po -n sms'
 alias kes='kubectl exec -n sms -it'
 
 # Alireviews
+alias ar="cd ~/Work/ar/"
 alias arm="make -f ~/Work/ar/bin/Makefile"
 alias ard="arm docker"
 alias arup="arm up"
