@@ -20,9 +20,9 @@ print_bold() {
 print_bold "Linking...";
 
 if [ "$is_mac" == "y" ]; then
-    folders=(alacritty nvim ranger zsh)
+    folders=(alacritty nvim ranger zsh tmux)
 else
-    folders=(alacritty nvim ranger kitty zsh)
+    folders=(alacritty nvim ranger kitty zsh tmux)
 fi
 
 for folder in "${folders[@]}"; do
@@ -40,6 +40,11 @@ for folder in "${folders[@]}"; do
     if [ "$folder" == "zsh" ] && [ "$is_link_zsh" == "y" ]; then
       linkfrom="$PWD/.zshrc"
       linkto="$HOME/.zshrc"
+    fi
+
+    if [ "$folder" == "zsh" ]; then
+      linkfrom="$PWD/.tmux.conf"
+      linkto="$HOME/.tmux.conf"
     fi
 
     echo "Remove $linkto";
