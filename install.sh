@@ -11,6 +11,8 @@ read -p "For mac? y/n: " is_mac
 
 read -p "Use neovim nightly? y/n: " is_neovim_nightly
 
+read -p "Link zsh? y/n: " is_link_zsh
+
 print_bold() {
     printf "\x1b[1m$1\x1b[0m\n"
 }
@@ -18,9 +20,9 @@ print_bold() {
 print_bold "Linking...";
 
 if [ "$is_mac" == "y" ]; then
-    folders=(alacritty nvim ranger)
+    folders=(alacritty nvim ranger zsh)
 else
-    folders=(alacritty nvim ranger kitty)
+    folders=(alacritty nvim ranger kitty zsh)
 fi
 
 for folder in "${folders[@]}"; do
@@ -33,6 +35,11 @@ for folder in "${folders[@]}"; do
 
     if [ "$folder" == "alacritty" ] && [ "$is_mac" == "y" ]; then
       linkfrom="$PWD/alacritty-mac"
+    fi
+
+    if [ "$folder" == "zsh" ] && [ "$is_link_zsh" == "y" ]; then
+      linkfrom="$PWD/.zshrc"
+      linkto="$HOME/.zshrc"
     fi
 
     echo "Remove $linkto";
