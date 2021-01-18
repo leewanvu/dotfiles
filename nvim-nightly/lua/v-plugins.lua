@@ -77,6 +77,10 @@ return require('packer').startup(function()
     'yggdroot/indentline',
     config = function() require'v-plugs/indentline'.setup() end
   }
+  use {
+    'ntpeters/vim-better-whitespace',
+    config = function() require'v-plugs/whitespace'.setup() end
+  }
 
   -- Documention generator
   use {
