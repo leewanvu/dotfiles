@@ -6,7 +6,7 @@ local function opt(scope, key, value)
   if scope ~= 'o' then scopes['o'][key] = value end
 end
 
-local indent = 4
+local indent = 2
 
 opt('b', 'tabstop', indent)
 opt('b', 'softtabstop', indent)

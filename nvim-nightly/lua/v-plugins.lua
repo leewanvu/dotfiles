@@ -81,6 +81,7 @@ return require('packer').startup(function()
     'ntpeters/vim-better-whitespace',
     config = function() require'v-plugs/whitespace'.setup() end
   }
+  -- use 'tpope/vim-sleuth'
 
   -- Documention generator
   use {
