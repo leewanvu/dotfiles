@@ -152,11 +152,13 @@ alias arreport="arm report"
 alias arreportr="arm report u=root"
 alias arreportl="arm report-log"
 
+alias arwebc="cd ~/Work/ar/alireviews"
 alias arweb="arm web"
 alias arwebr="arm web u=root"
 alias arwebl="arm web-log"
 alias arwebrs="arm web-reset"
 
+alias arboxc="cd ~/Work/ar/alireviews-box"
 alias arbox="arm box"
 alias arboxr="arm box u=root"
 alias arboxl="arm box-log"
