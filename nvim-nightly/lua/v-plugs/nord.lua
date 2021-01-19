@@ -7,7 +7,7 @@ function M.setup()
   vim.g.nord_italic = 1
   vim.g.nord_italic_comments = 1
   vim.g.nord_underline = 1
-  vim.g.airline_theme='nord'
+  vim.g.airline_theme = 'nord'
   vim.cmd "colorscheme nord"
   vim.cmd "highlight Normal ctermbg=NONE guibg=NONE"
   vim.cmd "highlight VertSplit ctermbg=NONE guibg=NONE"

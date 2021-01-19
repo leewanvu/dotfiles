@@ -19,6 +19,7 @@ return require('packer').startup(function()
     config = function() require'v-plugs/airline'.setup() end
   }
   use 'vim-airline/vim-airline-themes'
+  -- use 'itchyny/lightline.vim'
 
   -- Project manager
   use {
