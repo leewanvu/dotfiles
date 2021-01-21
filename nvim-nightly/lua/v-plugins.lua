@@ -69,10 +69,11 @@ return require('packer').startup(function()
   }
   use 'tpope/vim-surround'
   use 'jiangmiao/auto-pairs'
-  use {
-    'preservim/nerdcommenter',
-    config = function() require'v-plugs/nerdcommenter'.setup() end
-  }
+  -- use {
+  --   'preservim/nerdcommenter',
+  --   config = function() require'v-plugs/nerdcommenter'.setup() end
+  -- }
+  use 'tpope/vim-commentary'
   -- use 'nathanaelkane/vim-indent-guides'
   use {
     'yggdroot/indentline',
