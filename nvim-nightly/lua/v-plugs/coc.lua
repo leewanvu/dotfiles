@@ -14,7 +14,7 @@ function M.setup()
     inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
     nmap <silent> gd <Plug>(coc-definition)
-    nmap <silent> gt <Plug>(coc-type-definition)
+    nmap <silent> gD <Plug>(coc-type-definition)
     nmap <silent> gm <Plug>(coc-implementation)
     nmap <silent> gr <Plug>(coc-references)
 
