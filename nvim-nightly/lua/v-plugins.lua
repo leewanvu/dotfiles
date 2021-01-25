@@ -122,8 +122,8 @@ return require('packer').startup(function()
     config = function() require'v-plugs/floatterm'.setup() end
   }
   -- use {
-  --   'akinsho/nvim-toggleterm.lua',
-  --   config = function() require'v-plugs/toggleterm'.setup() end
+  --   'kassio/neoterm',
+  --   config = function() require'v-plugs/neoterm'.setup() end
   -- }
 
   -- Treesitter

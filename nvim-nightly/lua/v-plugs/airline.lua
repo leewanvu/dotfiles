@@ -10,6 +10,7 @@ function M.setup()
     n = 'N',
     v = 'V',
     V = 'V',
+    t = 'T',
   }
 end
 
