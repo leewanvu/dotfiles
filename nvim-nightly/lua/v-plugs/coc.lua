@@ -34,8 +34,8 @@ function M.setup()
     endfunction
 
     nmap gn <Plug>(coc-rename)
-    xmap gf <Plug>(coc-format-selected)
-    nmap gf <Plug>(coc-format-selected)
+    xmap gF <Plug>(coc-format-selected)
+    nmap gF <Plug>(coc-format-selected)
 
     nmap <leader>ac <Plug>(coc-codeaction)
 

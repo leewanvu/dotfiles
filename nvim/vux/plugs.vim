@@ -58,10 +58,4 @@ Plug 'vim-airline/vim-airline-themes'
 " Plug 'SirVer/ultisnips'
 " Plug 'honza/vim-snippets'
 
-" Nightly Version
-" Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-" Plug 'neovim/nvim-lspconfig'
-" Plug 'nvim-lua/completion-nvim'
-" Plug 'christianchiarulli/nvcode-color-schemes.vim'
-
 call plug#end()
