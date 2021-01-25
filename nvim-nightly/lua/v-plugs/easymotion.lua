@@ -5,8 +5,8 @@ function M.setup()
   vim.g.EasyMotion_smartcase = 1
 
   vim.api.nvim_exec([[
-    map <Leader>f <Plug>(easymotion-bd-f)
-    nmap <Leader>f <Plug>(easymotion-overwin-f)
+    map <Leader>s <Plug>(easymotion-bd-f)
+    nmap <Leader>s <Plug>(easymotion-overwin-f)
     nmap s <Plug>(easymotion-overwin-f2)
   ]], '')
 end
