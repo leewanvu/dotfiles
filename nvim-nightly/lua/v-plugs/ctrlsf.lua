@@ -12,7 +12,6 @@ function M.setup()
     nmap     <Leader>fp <Plug>CtrlSFPwordPath
     nnoremap <Leader>fo :CtrlSFOpen<CR>
     nnoremap <Leader>ft :CtrlSFToggle<CR>
-    inoremap <Leader>ft <Esc>:CtrlSFToggle<CR>
   ]], '')
 end
 
