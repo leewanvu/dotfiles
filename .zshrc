@@ -166,6 +166,8 @@ alias arboxrs="arm box-reset"
 
 alias aremail="arm email"
 
+alias arreportrs="arm report-reset"
+
 alias vdot="cd ~/Work/dotfiles && v install.sh"
 alias r="ranger"
 
