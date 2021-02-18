@@ -20,9 +20,9 @@ print_bold() {
 print_bold "Linking...";
 
 if [ "$is_mac" == "y" ]; then
-    folders=(alacritty nvim ranger zsh tmux)
+    folders=(alacritty nvim ranger zsh tmux bat)
 else
-    folders=(alacritty nvim ranger kitty zsh tmux)
+    folders=(alacritty nvim ranger kitty zsh tmux bat)
 fi
 
 for folder in "${folders[@]}"; do
