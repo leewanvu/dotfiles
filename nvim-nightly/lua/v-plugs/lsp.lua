@@ -42,12 +42,12 @@ function M.setup()
 
     -- Lspsaga mappings
     -- buf_set_keymap('n', 'gr', "<cmd>lua require'lspsaga.provider'.lsp_finder()<CR>", opts)
-    -- buf_set_keymap("n", "<leader>af", "<cmd>lua require('lspsaga.codeaction').code_action()<CR>", opts)
-    -- buf_set_keymap("v", "<leader>af", "<cmd>'<,'>lua require('lspsaga.codeaction').range_code_action()", opts)
+    -- buf_set_keymap('n', '<leader>af', "<cmd>lua require'lspsaga.codeaction'.code_action()<CR>", opts)
+    -- buf_set_keymap('v', '<leader>af', "<cmd>'<,'>lua require'lspsaga.codeaction'.range_code_action()", opts)
     -- buf_set_keymap('n', 'K', "<cmd>lua require('lspsaga.hover').render_hover_doc()<CR>", opts)
-    -- buf_set_keymap('n', '<leader>ar', "<cmd>lua require('lspsaga.rename').rename()<CR>", opts)
+    -- buf_set_keymap('n', '<leader>ar', "<cmd>lua require'lspsaga.rename'.rename()<CR>", opts)
     -- buf_set_keymap('n', '<leader>ap', "<cmd>lua require'lspsaga.provider'.preview_definition()<CR>", opts)
-    -- buf_set_keymap('n', '<leader>ah', "<cmd>lua require('lspsaga.signaturehelp').signature_help()<CR>", opts)
+    -- buf_set_keymap('n', '<leader>ah', "<cmd>lua require'lspsaga.signaturehelp'.signature_help()<CR>", opts)
     -- buf_set_keymap('n', '<leader>ep', "<cmd>lua require'lspsaga.diagnostic'.lsp_jump_diagnostic_prev()<CR>", opts)
     -- buf_set_keymap('n', '<leader>en', "<cmd>lua require'lspsaga.diagnostic'.lsp_jump_diagnostic_next()", opts)
   end
@@ -62,14 +62,14 @@ function M.setup()
   -- Make sure uncomment
     -- use 'RishabhRD/popfix'
     -- use 'RishabhRD/nvim-lsputils'
-  -- vim.lsp.handlers['textDocument/codeAction'] = require'lsputil.codeAction'.code_action_handler
-  -- vim.lsp.handlers['textDocument/references'] = require'lsputil.locations'.references_handler
-  -- vim.lsp.handlers['textDocument/definition'] = require'lsputil.locations'.definition_handler
-  -- vim.lsp.handlers['textDocument/declaration'] = require'lsputil.locations'.declaration_handler
-  -- vim.lsp.handlers['textDocument/typeDefinition'] = require'lsputil.locations'.typeDefinition_handler
-  -- vim.lsp.handlers['textDocument/implementation'] = require'lsputil.locations'.implementation_handler
-  -- vim.lsp.handlers['textDocument/documentSymbol'] = require'lsputil.symbols'.document_handler
-  -- vim.lsp.handlers['workspace/symbol'] = require'lsputil.symbols'.workspace_handler
+  vim.lsp.handlers['textDocument/codeAction'] = require'lsputil.codeAction'.code_action_handler
+  vim.lsp.handlers['textDocument/references'] = require'lsputil.locations'.references_handler
+  vim.lsp.handlers['textDocument/definition'] = require'lsputil.locations'.definition_handler
+  vim.lsp.handlers['textDocument/declaration'] = require'lsputil.locations'.declaration_handler
+  vim.lsp.handlers['textDocument/typeDefinition'] = require'lsputil.locations'.typeDefinition_handler
+  vim.lsp.handlers['textDocument/implementation'] = require'lsputil.locations'.implementation_handler
+  vim.lsp.handlers['textDocument/documentSymbol'] = require'lsputil.symbols'.document_handler
+  vim.lsp.handlers['workspace/symbol'] = require'lsputil.symbols'.workspace_handler
 end
 
 return M

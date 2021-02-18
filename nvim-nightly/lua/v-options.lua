@@ -50,6 +50,8 @@ opt('w', 'signcolumn', 'yes')
 
 opt('o', 'termguicolors', true)
 opt('b', 'syntax', 'on')
+-- opt('o', 'listchars', "eol:↲,tab:»\\ ")
+-- opt('o', 'list', true)
 
 api.nvim_exec([[
   set noswapfile
