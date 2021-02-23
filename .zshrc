@@ -168,7 +168,7 @@ alias aremail="arm email"
 
 alias arreportrs="arm report-reset"
 
-alias vdot="cd ~/Work/dotfiles && v install.sh"
+alias vdot="cd ~/Work/dotfiles && v nvim-nightly/init.lua"
 alias r="ranger"
 
 # Android

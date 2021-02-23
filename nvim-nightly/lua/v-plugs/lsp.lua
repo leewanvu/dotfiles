@@ -54,7 +54,7 @@ function M.setup()
 
   -- Use a loop to conveniently both setup defined servers
   -- and map buffer local keybindings when the language server attaches
-  local servers = { "intelephense", "tsserver" }
+  local servers = { "intelephense", "tsserver", "vuels", "cssls", "html" }
   for _, lsp in ipairs(servers) do
     lsp_config[lsp].setup { on_attach = on_attach }
   end
