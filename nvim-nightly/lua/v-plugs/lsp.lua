@@ -52,11 +52,18 @@ function M.setup()
     -- buf_set_keymap('n', '<leader>en', "<cmd>lua require'lspsaga.diagnostic'.lsp_jump_diagnostic_next()", opts)
   end
 
+  -- Snippet Support
+  local capabilities = vim.lsp.protocol.make_client_capabilities()
+  capabilities.textDocument.completion.completionItem.snippetSupport = true
+
   -- Use a loop to conveniently both setup defined servers
   -- and map buffer local keybindings when the language server attaches
   local servers = { "intelephense", "tsserver", "vuels", "cssls", "html" }
   for _, lsp in ipairs(servers) do
-    lsp_config[lsp].setup { on_attach = on_attach }
+    lsp_config[lsp].setup {
+      on_attach = on_attach,
+      capabilities = capabilities
+    }
   end
 
   -- Make sure uncomment

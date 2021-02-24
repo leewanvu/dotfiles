@@ -2,9 +2,11 @@ local M = {}
 
 function M.setup()
   vim.g.completion_chain_complete_list = {
-    { complete_items = {'lsp', 'snippet', 'buffers'} },
+    -- { complete_items = {'lsp', 'snippet', 'buffers'} },
+    { complete_items = {'lsp', 'snippet'} },
     -- ts
     -- { complete_items = { 'buffers' } },
+    { complete_items = { 'ts', 'buffers' } },
     { mode = '<c-p>' },
     { mode = '<c-n>' }
   }

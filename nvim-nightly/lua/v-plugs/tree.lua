@@ -8,7 +8,7 @@ function M.setup()
   vim.g.nvim_tree_indent_markers = 1
   vim.g.nvim_tree_follow = 1
   vim.g.nvim_tree_width_allow_resize = 1
-  vim.g.nvim_tree_auto_open = 1
+  vim.g.nvim_tree_auto_open = 0
   vim.g.nvim_tree_auto_ignore_ft = {'startify'}
   vim.g.nvim_tree_show_icons = {
     git = 1,
