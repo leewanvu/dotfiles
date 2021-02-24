@@ -150,21 +150,24 @@ return require('packer').startup(function()
   -- }
 
   -- Completion
-  -- use {
-  --   'nvim-lua/completion-nvim',
-  --   config = function() require'v-plugs/completion'.setup() end
-  -- }
-  -- use 'steelsojka/completion-buffers'
-  -- use 'nvim-treesitter/completion-treesitter'
   use {
-    'hrsh7th/nvim-compe',
-    config = function() require'v-plugs/compe'.setup() end
+    'nvim-lua/completion-nvim',
+    config = function() require'v-plugs/completion'.setup() end
   }
+  use 'steelsojka/completion-buffers'
+  use 'nvim-treesitter/completion-treesitter'
+  -- use {
+  --   'hrsh7th/nvim-compe',
+  --   config = function() require'v-plugs/compe'.setup() end
+  -- }
 
   -- Snippets
   use {
     'hrsh7th/vim-vsnip',
     requires = {{'hrsh7th/vim-vsnip-integ'}}
+  }
+  use {
+    'norcalli/snippets.nvim'
   }
 
   -- use {

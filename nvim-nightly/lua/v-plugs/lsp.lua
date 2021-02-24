@@ -1,6 +1,8 @@
 local M = {}
 
 function M.setup()
+  require'snippets'.use_suggested_mappings()
+
   local lsp_config = require'lspconfig'
   local on_attach =  function(client, bufnr)
     local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
