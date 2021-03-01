@@ -8,167 +8,73 @@ return require('packer').startup(function()
   use {'wbthomason/packer.nvim', opt = true}
 
   -- Themes
-  use {
-    'arcticicestudio/nord-vim',
-    config = function() require'v-plugs/nord'.setup() end
-  }
+  use 'arcticicestudio/nord-vim'
 
   -- Status line
-  use {
-    'vim-airline/vim-airline',
-    config = function() require'v-plugs/airline'.setup() end
-  }
+  use 'vim-airline/vim-airline'
   use 'vim-airline/vim-airline-themes'
-  -- use 'itchyny/lightline.vim'
 
   -- Project manager
-  use {
-    'mhinz/vim-startify',
-    config = function() require'v-plugs/starrtify'.setup() end
-  }
+  use 'mhinz/vim-startify'
 
   -- Explore
-  use {
-    'kyazdani42/nvim-tree.lua',
-    config = function() require'v-plugs/tree'.setup() end
-  }
+  use 'kyazdani42/nvim-tree.lua'
 
-  use {
-    'francoiscabrol/ranger.vim',
-    config = function()
-      vim.g.ranger_map_keys = 0
-    end
-  }
+  use 'francoiscabrol/ranger.vim'
   use 'rbgrouleff/bclose.vim'
 
   -- Fuzzy finder
   use 'junegunn/fzf'
-  use {
-    'junegunn/fzf.vim',
-    config = function() require'v-plugs/fzf'.setup() end
-  }
-  use {
-    'airblade/vim-rooter',
-    config = function()
-      vim.g.rooter_pattern = {
-        '.git',
-        '.env',
-        'Makefile',
-      }
-    end
-  }
-  use {
-    'dyng/ctrlsf.vim',
-    config = function() require'v-plugs/ctrlsf'.setup() end
-  }
+  use 'junegunn/fzf.vim'
+  use 'airblade/vim-rooter'
+  use 'dyng/ctrlsf.vim'
 
   -- Utils
-  use {
-    'easymotion/vim-easymotion',
-    config = function() require'v-plugs/easymotion'.setup() end
-  }
+  use 'easymotion/vim-easymotion'
   use 'tpope/vim-surround'
   use 'jiangmiao/auto-pairs'
-  -- use {
-  --   'preservim/nerdcommenter',
-  --   config = function() require'v-plugs/nerdcommenter'.setup() end
-  -- }
   use 'tpope/vim-commentary'
   -- use 'nathanaelkane/vim-indent-guides'
-  use {
-    'yggdroot/indentline',
-    config = function() require'v-plugs/indentline'.setup() end
-  }
-  use {
-    'ntpeters/vim-better-whitespace',
-    config = function() require'v-plugs/whitespace'.setup() end
-  }
+  use 'yggdroot/indentline'
+  use 'ntpeters/vim-better-whitespace'
   -- use 'tpope/vim-sleuth'
 
   -- Documention generator
-  use {
-    'kkoomen/vim-doge',
-    run = ':call doge#install()'
-  }
+  use { 'kkoomen/vim-doge', run = ':call doge#install()' }
 
   -- Git
   use 'tpope/vim-fugitive'
   use 'airblade/vim-gitgutter'
-  -- use {
-  --   'APZelos/blamer.nvim',
-  --   config = function() require'v-plugs/blamer'.setup() end
-  -- }
-  use {
-    'f-person/git-blame.nvim',
-    config = function()
-      vim.g.gitblame_enabled = 0
-      vim.g.gitblame_message_template = ' <author> • <date> • <summary>'
-      vim.g.gitblame_date_format = '%c'
-    end
-  }
-  -- use {
-  --   'lewis6991/gitsigns.nvim',
-  --   requires = {
-  --     'nvim-lua/plenary.nvim'
-  --   },
-  --   config = function()
-  --     require('gitsigns').setup()
-  --   end
-  -- }
+  use 'f-person/git-blame.nvim'
 
   -- Terminal
-  use {
-    'voldikss/vim-floaterm',
-    config = function() require'v-plugs/floatterm'.setup() end
-  }
-  -- use {
-  --   'kassio/neoterm',
-  --   config = function() require'v-plugs/neoterm'.setup() end
-  -- }
+  use 'voldikss/vim-floaterm'
 
   -- Treesitter
-  use {
-    'nvim-treesitter/nvim-treesitter',
-    run = ':TSUpdate',
-    config = function() require'v-plugs/ts'.setup() end,
-  }
+  use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
 
   -- LSP
-  -- use {
-  --   'neoclide/coc.nvim',
-  --   branch = 'release',
-  --   config = function() require'v-plugs/coc'.setup() end
-  -- }
-  use {
-    'neovim/nvim-lspconfig',
-    config = function() require'v-plugs/lsp'.setup() end
-  }
-  use 'RishabhRD/popfix'
-  use 'RishabhRD/nvim-lsputils'
-  -- use {
-  --   'glepnir/lspsaga.nvim'
-  -- }
+  -- use { 'neoclide/coc.nvim', branch = 'release' }
+
+  use 'neovim/nvim-lspconfig'
+  -- use 'RishabhRD/popfix'
+  -- use 'RishabhRD/nvim-lsputils'
+  -- use 'glepnir/lspsaga.nvim'
 
   -- Completion
-  use {
-    'nvim-lua/completion-nvim',
-    config = function() require'v-plugs/completion'.setup() end
-  }
-  use 'steelsojka/completion-buffers'
-  use 'nvim-treesitter/completion-treesitter'
-  -- use {
-  --   'hrsh7th/nvim-compe',
-  --   config = function() require'v-plugs/compe'.setup() end
-  -- }
+  -- use 'nvim-lua/completion-nvim'
+  -- use 'steelsojka/completion-buffers'
+  -- use 'nvim-treesitter/completion-treesitter'
+  -- use 'hrsh7th/nvim-compe'
 
   -- Snippets
-  use {
-    'hrsh7th/vim-vsnip',
-    requires = {{'hrsh7th/vim-vsnip-integ'}}
-  }
-  use {
-    'norcalli/snippets.nvim'
-  }
+  -- use {
+  --   'hrsh7th/vim-vsnip',
+  --   requires = {{'hrsh7th/vim-vsnip-integ'}}
+  -- }
+  -- use {
+  --   'norcalli/snippets.nvim'
+  -- }
 
   -- use {
   --   'nvim-telescope/telescope.nvim',
