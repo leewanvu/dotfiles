@@ -56,7 +56,7 @@ return require('packer').startup(function()
   -- LSP
   -- use { 'neoclide/coc.nvim', branch = 'release' }
 
-  use 'neovim/nvim-lspconfig'
+  -- use 'neovim/nvim-lspconfig'
   -- use 'RishabhRD/popfix'
   -- use 'RishabhRD/nvim-lsputils'
   -- use 'glepnir/lspsaga.nvim'
@@ -68,13 +68,9 @@ return require('packer').startup(function()
   -- use 'hrsh7th/nvim-compe'
 
   -- Snippets
-  -- use {
-  --   'hrsh7th/vim-vsnip',
-  --   requires = {{'hrsh7th/vim-vsnip-integ'}}
-  -- }
-  -- use {
-  --   'norcalli/snippets.nvim'
-  -- }
+  -- use 'hrsh7th/vim-vsnip'
+  -- use 'hrsh7th/vim-vsnip-integ'
+  -- use 'norcalli/snippets.nvim'
 
   -- use {
   --   'nvim-telescope/telescope.nvim',

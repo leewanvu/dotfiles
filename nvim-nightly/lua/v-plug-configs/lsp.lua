@@ -1,5 +1,3 @@
--- require'snippets'.use_suggested_mappings()
-
 local lsp_config = require'lspconfig'
 local on_attach =  function(client, bufnr)
   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
@@ -52,6 +50,7 @@ local on_attach =  function(client, bufnr)
 end
 
 -- Snippet Support
+-- require'snippets'.use_suggested_mappings()
 -- local capabilities = vim.lsp.protocol.make_client_capabilities()
 -- capabilities.textDocument.completion.completionItem.snippetSupport = true
 

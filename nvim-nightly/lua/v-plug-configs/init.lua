@@ -19,8 +19,8 @@ require'v-plug-configs.floatterm'
 
 require'v-plug-configs.ts'
 
-require'v-plug-configs.lsp'
-require'v-plug-configs.completion'
+-- require'v-plug-configs.lsp'
+-- require'v-plug-configs.completion'
 -- require'v-plug-configs.compe'
 
 -- require'v-plug-configs.coc'
