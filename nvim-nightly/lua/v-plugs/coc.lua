@@ -18,8 +18,8 @@ function M.setup()
     nmap <silent> gm <Plug>(coc-implementation)
     nmap <silent> gr <Plug>(coc-references)
 
-    nmap <silent> [d <Plug>(coc-diagnostic-prev)
-    nmap <silent> ]d <Plug>(coc-diagnostic-next)
+    nmap <silent> <leader>ep <Plug>(coc-diagnostic-prev)
+    nmap <silent> <leader>en <Plug>(coc-diagnostic-next)
 
     nnoremap <silent> K :call <SID>show_documentation()<CR>
 
@@ -33,11 +33,10 @@ function M.setup()
       endif
     endfunction
 
-    nmap gn <Plug>(coc-rename)
-    xmap gF <Plug>(coc-format-selected)
-    nmap gF <Plug>(coc-format-selected)
-
-    nmap <leader>ac <Plug>(coc-codeaction)
+    nmap <leader>af <Plug>(coc-codeaction)
+    nmap <leader>ar <Plug>(coc-rename)
+    xmap <leader>= <Plug>(coc-format-selected)
+    nmap <leader>= <Plug>(coc-format-selected)
 
     command! -nargs=0 Format :call CocAction('format')
     command! -nargs=? Fold :call CocAction('fold', <f-args>)
