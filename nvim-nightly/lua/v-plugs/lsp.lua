@@ -1,10 +1,8 @@
 local M = {}
 
 function M.setup()
-  -- require'snippets'.use_suggested_mappings()
-
   local lsp_config = require'lspconfig'
-  local on_attach =  function(client, bufnr)
+  local on_attach = function(client, bufnr)
     local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
     local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
 
@@ -55,30 +53,35 @@ function M.setup()
   end
 
   -- Snippet Support
-  -- local capabilities = vim.lsp.protocol.make_client_capabilities()
-  -- capabilities.textDocument.completion.completionItem.snippetSupport = true
+  require'snippets'.use_suggested_mappings()
+  local capabilities = vim.lsp.protocol.make_client_capabilities()
+  capabilities.textDocument.completion.completionItem.snippetSupport = true
 
   -- Use a loop to conveniently both setup defined servers
   -- and map buffer local keybindings when the language server attaches
-  local servers = { "intelephense", "tsserver", "vuels", "cssls", "html" }
+  local servers = { "tsserver", "vuels", "cssls", "html" }
   for _, lsp in ipairs(servers) do
     lsp_config[lsp].setup {
       on_attach = on_attach,
-      -- capabilities = capabilities
+      capabilities = capabilities
     }
   end
+
+  lsp_config["intelephense"].setup {
+    on_attach = on_attach
+  }
 
   -- Make sure uncomment
     -- use 'RishabhRD/popfix'
     -- use 'RishabhRD/nvim-lsputils'
-  vim.lsp.handlers['textDocument/codeAction'] = require'lsputil.codeAction'.code_action_handler
-  vim.lsp.handlers['textDocument/references'] = require'lsputil.locations'.references_handler
-  vim.lsp.handlers['textDocument/definition'] = require'lsputil.locations'.definition_handler
-  vim.lsp.handlers['textDocument/declaration'] = require'lsputil.locations'.declaration_handler
-  vim.lsp.handlers['textDocument/typeDefinition'] = require'lsputil.locations'.typeDefinition_handler
-  vim.lsp.handlers['textDocument/implementation'] = require'lsputil.locations'.implementation_handler
-  vim.lsp.handlers['textDocument/documentSymbol'] = require'lsputil.symbols'.document_handler
-  vim.lsp.handlers['workspace/symbol'] = require'lsputil.symbols'.workspace_handler
+  -- vim.lsp.handlers['textDocument/codeAction'] = require'lsputil.codeAction'.code_action_handler
+  -- vim.lsp.handlers['textDocument/references'] = require'lsputil.locations'.references_handler
+  -- vim.lsp.handlers['textDocument/definition'] = require'lsputil.locations'.definition_handler
+  -- vim.lsp.handlers['textDocument/declaration'] = require'lsputil.locations'.declaration_handler
+  -- vim.lsp.handlers['textDocument/typeDefinition'] = require'lsputil.locations'.typeDefinition_handler
+  -- vim.lsp.handlers['textDocument/implementation'] = require'lsputil.locations'.implementation_handler
+  -- vim.lsp.handlers['textDocument/documentSymbol'] = require'lsputil.symbols'.document_handler
+  -- vim.lsp.handlers['workspace/symbol'] = require'lsputil.symbols'.workspace_handler
 end
 
 return M

@@ -138,6 +138,10 @@ alias kls='kubectl logs -f -n sms'
 alias kgps='kubectl get po -n sms'
 alias kes='kubectl exec -n sms -it'
 
+alias klar6='kubectl logs -f -n ar6'
+alias kgpar6='kubectl get po -n ar6'
+alias kear6='kubectl exec -n ar6 -it'
+
 # Alireviews
 alias ar="cd ~/Work/ar/"
 alias arm="make -f ~/Work/ar/bin/Makefile"

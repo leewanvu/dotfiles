@@ -134,15 +134,15 @@ return require('packer').startup(function()
   }
 
   -- LSP
-  use {
-    'neoclide/coc.nvim',
-    branch = 'release',
-    config = function() require'v-plugs/coc'.setup() end
-  }
   -- use {
-  --   'neovim/nvim-lspconfig',
-  --   config = function() require'v-plugs/lsp'.setup() end
+  --   'neoclide/coc.nvim',
+  --   branch = 'release',
+  --   config = function() require'v-plugs/coc'.setup() end
   -- }
+  use {
+    'neovim/nvim-lspconfig',
+    config = function() require'v-plugs/lsp'.setup() end
+  }
   -- use 'RishabhRD/popfix'
   -- use 'RishabhRD/nvim-lsputils'
   -- use {
@@ -150,11 +150,11 @@ return require('packer').startup(function()
   -- }
 
   -- Completion
-  -- use {
-  --   'nvim-lua/completion-nvim',
-  --   config = function() require'v-plugs/completion'.setup() end
-  -- }
-  -- use 'steelsojka/completion-buffers'
+  use {
+    'nvim-lua/completion-nvim',
+    config = function() require'v-plugs/completion'.setup() end
+  }
+  use 'steelsojka/completion-buffers'
   -- use 'nvim-treesitter/completion-treesitter'
   -- use {
   --   'hrsh7th/nvim-compe',
@@ -166,9 +166,9 @@ return require('packer').startup(function()
   --   'hrsh7th/vim-vsnip',
   --   requires = {{'hrsh7th/vim-vsnip-integ'}}
   -- }
-  -- use {
-  --   'norcalli/snippets.nvim'
-  -- }
+  use {
+    'norcalli/snippets.nvim'
+  }
 
   -- use {
   --   'nvim-telescope/telescope.nvim',
