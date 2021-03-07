@@ -175,6 +175,8 @@ alias arreportrs="arm report-reset"
 alias vdot="cd ~/Work/dotfiles && v nvim-nightly/init.lua"
 alias r="ranger"
 
+alias chrome="open -a Google\ Chrome"
+
 # Android
 export ANDROID_HOME=$HOME/Library/Android/sdk
 export PATH=$PATH:$ANDROID_HOME/emulator
