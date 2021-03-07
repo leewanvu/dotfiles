@@ -13,6 +13,11 @@ return require('packer').startup(function()
     config = function() require'v-plugs/nord'.setup() end
   }
 
+  -- Tabline
+  -- use {
+  --   'romgrk/barbar.nvim'
+  -- }
+
   -- Status line
   use {
     'vim-airline/vim-airline',
