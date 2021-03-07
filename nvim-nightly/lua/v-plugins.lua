@@ -145,9 +145,9 @@ return require('packer').startup(function()
   }
   -- use 'RishabhRD/popfix'
   -- use 'RishabhRD/nvim-lsputils'
-  -- use {
-  --   'glepnir/lspsaga.nvim'
-  -- }
+  use {
+    'glepnir/lspsaga.nvim'
+  }
 
   -- Completion
   use {
