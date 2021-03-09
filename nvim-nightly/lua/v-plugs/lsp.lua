@@ -10,7 +10,7 @@ function M.setup()
 
     -- Mappings.
     local opts = { noremap = true, silent = true }
-    -- buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
+    buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
     -- buf_set_keymap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
     -- buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
     -- buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
@@ -41,7 +41,7 @@ function M.setup()
     buf_set_keymap('n', 'ga', "<cmd>lua require'lspsaga.codeaction'.code_action()<CR>", opts)
     buf_set_keymap('v', 'ga', "<cmd>'<,'>lua require'lspsaga.codeaction'.range_code_action()", opts)
     buf_set_keymap('n', 'gn', "<cmd>lua require'lspsaga.rename'.rename()<CR>", opts)
-    buf_set_keymap('n', 'gd', "<cmd>lua require'lspsaga.provider'.preview_definition()<CR>", opts)
+    buf_set_keymap('n', 'gp', "<cmd>lua require'lspsaga.provider'.preview_definition()<CR>", opts)
     buf_set_keymap('n', '<leader>ee', "<cmd>lua require'lspsaga.diagnostic'.show_line_diagnostics()<CR>", opts)
     buf_set_keymap('n', '<leader>ep', "<cmd>lua require'lspsaga.diagnostic'.lsp_jump_diagnostic_prev()<CR>", opts)
     buf_set_keymap('n', '<leader>en', "<cmd>lua require'lspsaga.diagnostic'.lsp_jump_diagnostic_next()<CR>", opts)
