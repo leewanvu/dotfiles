@@ -150,9 +150,9 @@ return require('packer').startup(function()
   }
   -- use 'RishabhRD/popfix'
   -- use 'RishabhRD/nvim-lsputils'
-  use {
-    'glepnir/lspsaga.nvim'
-  }
+  -- use {
+  --   'glepnir/lspsaga.nvim'
+  -- }
 
   -- Completion
   use {
@@ -175,8 +175,12 @@ return require('packer').startup(function()
     'norcalli/snippets.nvim'
   }
 
-  -- use {
-  --   'nvim-telescope/telescope.nvim',
-  --   requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}}
-  -- }
+  use {
+    'kevinhwang91/nvim-bqf'
+  }
+
+  use {
+    'nvim-telescope/telescope.nvim',
+    requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}}
+  }
 end)

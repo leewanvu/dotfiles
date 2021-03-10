@@ -1,7 +1,7 @@
 local M = {}
 
 function M.setup()
-  vim.g.fzf_preview_window = {}
+  vim.g.fzf_preview_window = {'right:50%', 'ctrl-/'}
   vim.g.fzf_layout = { window = { width = 0.8, height = 0.6 } }
   -- vim.g.fzf_layout = { up = '25%' }
   vim.g.fzf_history_dir = '~/.local/share/fzf-history'

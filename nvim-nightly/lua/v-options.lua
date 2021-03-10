@@ -69,3 +69,6 @@ api.nvim_exec([[
   set history=1000
   set undolevels=1000
   ]], '')
+
+-- set foldmethod=expr
+-- set foldexpr=nvim_treesitter#foldexpr()
