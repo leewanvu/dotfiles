@@ -59,7 +59,7 @@ api.nvim_exec([[
   set nobackup
   set clipboard+=unnamedplus
   set shortmess+=c
-  set iskeyword+=-,$
+  set iskeyword+=$
   set noerrorbells
   set nowrap
   set completeopt=menuone,noinsert,noselect

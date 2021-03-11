@@ -194,7 +194,7 @@ export NVM_DIR="$HOME/.nvm"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-export FZF_DEFAULT_COMMAND='rg --files --no-ignore-vcs --hidden -g "!.git"'
+export FZF_DEFAULT_COMMAND='rg --files --hidden --no-ignore-vcs -g "!{node_modules,.git,vendor}"'
 
 export VISUAL=nvim
 export PATH=$PATH:$HOME/bin
