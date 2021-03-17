@@ -175,9 +175,9 @@ return require('packer').startup(function()
     'norcalli/snippets.nvim'
   }
 
-  use {
-    'kevinhwang91/nvim-bqf'
-  }
+--   use {
+--     'kevinhwang91/nvim-bqf'
+--   }
 
   use {
     'nvim-telescope/telescope.nvim',
