@@ -2,5 +2,5 @@
 ```
 cd /path/to/dotfiles
 
-./install.sh
+.bin/install
 ```
