@@ -41,4 +41,7 @@ map('x', 'J', ':move \'>+1<CR>gv-gv', opts)
 -- map('t', '<A-l>', '<C-\\><C-n><C-w>l')
 
 -- Ranger
-map('n', '<leader>r', ':Ranger<CR>', opts)
+-- map('n', '<leader>r', ':Ranger<CR>', opts)
+
+-- GitBlame
+vim.api.nvim_set_keymap('n', '<leader>b', ':GitBlameToggle<CR>', { noremap = true, silent = true })
