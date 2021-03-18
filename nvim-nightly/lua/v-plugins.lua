@@ -132,11 +132,11 @@ return require('packer').startup(function()
   -- }
 
   -- Treesitter
-  -- use {
-  --   'nvim-treesitter/nvim-treesitter',
-  --   run = ':TSUpdate',
-  --   config = function() require'v-plugs/ts'.setup() end,
-  -- }
+  use {
+    'nvim-treesitter/nvim-treesitter',
+    run = ':TSUpdate',
+    config = function() require'v-plugs/ts'.setup() end,
+  }
 
   -- LSP
   -- use {
