@@ -6,8 +6,6 @@ require('vplugins')
 -- TODO update options
 require('voptions')
 
--- TODO fix transparent
-require('vplugins.nord')
 require('vplugins.airline')
 require('vplugins.tree')
 require('vplugins.starrtify')

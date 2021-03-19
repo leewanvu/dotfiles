@@ -8,7 +8,10 @@ return require('packer').startup(function()
   use { 'wbthomason/packer.nvim', opt = true }
 
   -- Themes
-  use 'arcticicestudio/nord-vim'
+  use {
+    'arcticicestudio/nord-vim',
+    config = function() require('vplugins.nord').setup() end
+  }
 
   -- Status line & tab
   use 'vim-airline/vim-airline'
@@ -64,10 +67,7 @@ return require('packer').startup(function()
   }
 
   -- Motion
-  use {
-    'easymotion/vim-easymotion',
-    config = function() require'v-plugs/easymotion'.setup() end
-  }
+  use 'easymotion/vim-easymotion'
 
   -- Surroundings: parentheses, brackets, quotes, XML tags, and more
   use 'tpope/vim-surround'
