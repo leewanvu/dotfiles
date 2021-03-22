@@ -1,23 +1,21 @@
--- Set leader is <Space>
 vim.g.mapleader = ' '
 
-require('vplugins')
+require('vux.plugins')
 
 -- TODO update options
-require('voptions')
+require('vux.options')
 
-require('vplugins.airline')
-require('vplugins.tree')
-require('vplugins.starrtify')
-require('vplugins.ctrlsf')
-require('vplugins.indentline')
-require('vplugins.easymotion')
-require('vplugins.whitespace')
-require('vplugins.floatterm')
+require('vux.airline')
+require('vux.nvimtree')
+require('vux.starrtify')
+require('vux.ctrlsf')
+require('vux.indentline')
+require('vux.easymotion')
+require('vux.whitespace')
+require('vux.floatterm')
+require('vux.treesitter')
+require('vux.telescope')
+require('vux.lsp')
+require('vux.completion')
 
-require('vplugins.ts')
-require('vplugins.telescope')
-require('vplugins.lsp')
-require('vplugins.completion')
-
-require('vmappings')
+require('vux.keymappings')

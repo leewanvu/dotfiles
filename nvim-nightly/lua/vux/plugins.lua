@@ -10,7 +10,7 @@ return require('packer').startup(function()
   -- Themes
   use {
     'arcticicestudio/nord-vim',
-    config = function() require('vplugins.nord').setup() end
+    config = function() require('vux.nord').setup() end
   }
 
   -- Status line & tab

@@ -177,6 +177,8 @@ alias r="ranger"
 
 alias chrome="open -a Google\ Chrome"
 
+alias ovpn="sudo openvpn --config ~/.ssh/vulq.ovpn"
+
 # Android
 export ANDROID_HOME=$HOME/Library/Android/sdk
 export PATH=$PATH:$ANDROID_HOME/emulator
