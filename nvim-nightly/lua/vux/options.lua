@@ -1,65 +1,58 @@
-local scopes = {o = vim.o, b = vim.bo, w = vim.wo}
-local api = vim.api
+local opt = vim.opt
 
-local function opt(scope, key, value)
-  scopes[scope][key] = value
-  if scope ~= 'o' then scopes['o'][key] = value end
-end
+-- Tabs
+opt.autoindent     = true
+opt.cindent        = true
+opt.wrap           = true
 
-local indent = 2
+opt.tabstop        = 2
+opt.shiftwidth     = 2
+opt.softtabstop    = 2
+opt.expandtab      = true
+opt.smartindent    = true
+opt.copyindent     = true
+opt.showtabline    = 2
 
-opt('b', 'tabstop', indent)
-opt('b', 'softtabstop', indent)
-opt('b', 'shiftwidth', indent)
-opt('b', 'expandtab', true)
-opt('b', 'smartindent', true)
-opt('b', 'autoindent', true)
-opt('b', 'copyindent', true)
-opt('o', 'showtabline', 2)
+opt.hidden = true
+opt.number = true
+opt.relativenumber = true
+opt.mouse = 'n' -- 'a'
+opt.scroll = 10
+opt.lazyredraw = true
+opt.visualbell = true
+opt.fileencoding = 'utf-8'
+opt.showmode = false
+opt.showcmd = true
+opt.cmdheight = 1
+-- opt.pumheight = 10
+opt.splitbelow = true
+opt.splitright = true
+opt.timeoutlen = 500
+-- opt.colorcolumn = 80
+-- opt.cursorcolumn = true
+opt.ignorecase = true
+opt.smartcase = true
+opt.updatetime = 100
+opt.iskeyword = opt.iskeyword + '$'
+-- opt.backup = 'on'
+opt.signcolumn = 'yes'
+opt.termguicolors = true
+opt.syntax = 'on'
+-- opt.shortmess = opt.shortmess + 'c'
+-- opt.clipboard = opt.clipboard + 'unnamedplus'
 
-opt('o', 'hidden', true)
-opt('w', 'number', true)
-opt('w', 'relativenumber', true)
-opt('o', 'showcmd', true)
-opt('o', 'mouse', 'a')
-opt('w', 'scroll', 10)
-opt('o', 'lazyredraw', true)
-opt('o', 'visualbell', true)
--- opt('o', 'pumheight', 10)
-opt('b', 'fileencoding', 'utf-8')
-opt('o', 'cmdheight', 1)
-opt('o', 'splitbelow', true)
-opt('o', 'splitright', true)
-opt('o', 'laststatus', 2)
-opt('o', 'timeoutlen', 500)
--- opt('w', 'cursorcolumn', true)
--- opt('w', 'colorcolumn', '80')
-
-opt('o', 'ignorecase', true)
-opt('o', 'smartcase', true)
-opt('o', 'updatetime', 100)
-
--- opt('b', 'iskeyword', '-')
--- opt('o', 'nowritebackup', true)
--- opt('o', 'nobackup', true)
--- vim.o.shortmess = vim.o.shortmess .. 'c'
--- vim.o.clipboard = vim.o.clipboard .. 'unnamedplus'
--- opt('o', 'clipboard', 'unnamedplus')
-
-opt('w', 'signcolumn', 'yes')
-
-opt('o', 'termguicolors', true)
-opt('b', 'syntax', 'on')
+-- opt('o', 'termguicolors', true)
+-- opt('b', 'syntax', 'on')
 -- opt('o', 'listchars', "eol:↲,tab:»\\ ")
 -- opt('o', 'list', true)
 
-api.nvim_exec([[
+-- set clipboard+=unnamedplus
+-- set shortmess+=c
+-- set iskeyword+=$
+vim.api.nvim_exec([[
   set noswapfile
   set nowritebackup
   set nobackup
-  set clipboard+=unnamedplus
-  set shortmess+=c
-  set iskeyword+=$
   set noerrorbells
   set nowrap
   set completeopt=menuone,noinsert,noselect

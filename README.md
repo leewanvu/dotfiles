@@ -7,6 +7,7 @@ cd /path/to/dotfiles
 
 ### TODO
 - Update nvim settings
+- Setting telescope
 - Support front italic in tmux
 - Support icons
 - Update lsp config

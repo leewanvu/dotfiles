@@ -1,18 +1,16 @@
 local function map(mode, lhs, rhs, opts)
-  local options = {noremap = true}
+  local options = {noremap = true, silent = true}
   if opts then options = vim.tbl_extend('force', options, opts) end
   vim.api.nvim_set_keymap(mode, lhs, rhs, options)
 end
 
-local opts = { noremap = true, silent = true }
-
 -- Editor
-map('n', '<leader>w', ':w<CR>', opts)
-map('n', '<leader>q', ':bd<CR>', opts)
-map('n', '<TAB>', ':bnext<CR>', opts)
-map('n', '<S-TAB>', ':bprevious<CR>', opts)
-map('n', '<leader>n', ':nohlsearch<CR>', opts)
-map('n', '<C-c>', '<Esc>', opts)
+map('n', '<leader>w', ':w<CR>')
+map('n', '<leader>q', ':bd<CR>')
+map('n', '<TAB>', ':bnext<CR>')
+map('n', '<S-TAB>', ':bprevious<CR>')
+map('n', '<leader>n', ':nohlsearch<CR>')
+map('n', '<C-c>', '<Esc>')
 
 map('n', '<C-j>', '<C-w>j')
 map('n', '<C-k>', '<C-w>k')
@@ -24,24 +22,31 @@ map('i', '<C-k>', '<C-w>k')
 map('i', '<C-l>', '<C-w>l')
 map('i', '<C-h>', '<C-w>h')
 
-map('i', '<C-j>', '<C-n>', { expr = true })
-map('i', '<C-k>', '<C-p>', { expr = true })
+-- Better nav for omnicomplete
+map('i', '<c-j>', '("\\<C-n>")', {expr = true})
+map('i', '<c-k>', '("\\<C-p>")', {expr = true})
 
-map('v', '<', '<gv', opts)
-map('v', '>', '>gv', opts)
+map('v', '<', '<gv')
+map('v', '>', '>gv')
 
-map('x', 'K', ':move \'<-2<CR>gv-gv', opts)
-map('x', 'J', ':move \'>+1<CR>gv-gv', opts)
+map('x', 'K', ':move \'<-2<CR>gv-gv')
+map('x', 'J', ':move \'>+1<CR>gv-gv')
 
--- Terminal
--- map('t', '<Esc>', '<C-\\><C-n>')
--- map('t', '<A-j>', '<C-\\><C-n><C-w>j')
--- map('t', '<A-k>', '<C-\\><C-n><C-w>k')
--- map('t', '<A-h>', '<C-\\><C-n><C-w>h')
--- map('t', '<A-l>', '<C-\\><C-n><C-w>l')
+-- Terminal window navigation
+map('t', '<C-h>', '<C-\\><C-N><C-w>h')
+map('t', '<C-j>', '<C-\\><C-N><C-w>j')
+map('t', '<C-k>', '<C-\\><C-N><C-w>k')
+map('t', '<C-l>', '<C-\\><C-N><C-w>l')
+map('t', '<Esc>', '<C-\\><C-n>')
+
+-- Window Resizing
+map('n', '<C-Up>', ':resize -2<CR>')
+map('n', '<C-Down>', ':resize +2<CR>')
+map('n', '<C-Left>', ':vertical resize -2<CR>')
+map('n', '<C-Right>', ':vertical resize +2<CR>')
 
 -- Ranger
--- map('n', '<leader>r', ':Ranger<CR>', opts)
+-- map('n', '<leader>r', ':Ranger<CR>')
 
 -- GitBlame
-vim.api.nvim_set_keymap('n', '<leader>b', ':GitBlameToggle<CR>', { noremap = true, silent = true })
+map('n', '<leader>b', ':GitBlameToggle<CR>')

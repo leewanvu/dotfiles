@@ -1,5 +1,6 @@
 vim.g.mapleader = ' '
 
+require('vux.globals')
 require('vux.plugins')
 
 -- TODO update options
