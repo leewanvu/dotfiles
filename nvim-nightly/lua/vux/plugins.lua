@@ -14,8 +14,8 @@ return require('packer').startup(function()
   }
 
   -- Status line & tab
-  use 'vim-airline/vim-airline'
-  use 'vim-airline/vim-airline-themes'
+  -- use 'vim-airline/vim-airline'
+  -- use 'vim-airline/vim-airline-themes'
 
   -- Explore
   use 'kyazdani42/nvim-tree.lua'
@@ -89,4 +89,10 @@ return require('packer').startup(function()
 
   -- Float termial
   use 'voldikss/vim-floaterm'
+
+  -- Icons
+  use 'kyazdani42/nvim-web-devicons'
+
+  -- Tabline
+  use 'romgrk/barbar.nvim'
 end)

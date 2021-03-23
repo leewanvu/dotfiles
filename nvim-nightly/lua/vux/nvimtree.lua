@@ -10,27 +10,12 @@ vim.g.nvim_tree_auto_ignore_ft = {'startify'}
 vim.g.nvim_tree_git_hl = 1
 vim.g.nvim_tree_show_icons = {
   git = 1,
-  folders = 0,
-  files = 0
+  folders = 1,
+  files = 1
 }
 
--- vim.g.nvim_tree_icons = {
---   default = '',
---   git= {
---     unstaged = "✗",
---     staged = "✓",
---     unmerged = "",
---     renamed = "➜",
---     untracked = "★"
---   },
---   folder = {
---     default = "",
---     open = ""
---   }
--- }
-
 vim.g.nvim_tree_icons = {
-  default = '',
+  default = "",
   symlink = '',
   git = {
     unstaged = "",
@@ -40,11 +25,12 @@ vim.g.nvim_tree_icons = {
     untracked = "✗"
   },
   folder = {
-    default = "",
-    open = "",
+    default = "",
+    open = "",
     empty = "",
     empty_open = "",
-    symlink = ""
+    symlink = "",
+    symlink_open = ""
   }
 }
 
