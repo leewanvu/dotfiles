@@ -38,15 +38,18 @@ return require('packer').startup(function()
     requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}},
   }
 
-  -- LSP
+  -- LSP config
   use 'neovim/nvim-lspconfig'
 
   -- Snippets
-  use 'norcalli/snippets.nvim'
+  -- use 'norcalli/snippets.nvim'
 
   -- Autocompletion
-  use 'nvim-lua/completion-nvim'
-  use 'steelsojka/completion-buffers'
+  -- use 'nvim-lua/completion-nvim'
+  -- use 'steelsojka/completion-buffers'
+  use 'hrsh7th/nvim-compe'
+  use 'hrsh7th/vim-vsnip'
+  use 'hrsh7th/vim-vsnip-integ'
 
   -- Git
   use 'tpope/vim-fugitive'
@@ -73,7 +76,7 @@ return require('packer').startup(function()
   use 'tpope/vim-surround'
 
   -- Auto close brackets
-  use 'jiangmiao/auto-pairs'
+  -- use 'jiangmiao/auto-pairs'
 
   -- Indent line
   use 'yggdroot/indentline'

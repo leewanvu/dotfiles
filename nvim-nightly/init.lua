@@ -17,6 +17,7 @@ require('vux.floatterm')
 require('vux.treesitter')
 require('vux.telescope')
 require('vux.lsp')
-require('vux.completion')
+-- require('vux.completion')
+require('vux.compe')
 
 require('vux.keymappings')

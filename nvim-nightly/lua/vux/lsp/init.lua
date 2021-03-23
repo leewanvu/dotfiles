@@ -3,7 +3,7 @@ local on_attach = function(client, bufnr)
   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
   local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
 
-  buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
+  -- buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
 
   -- Mappings.
   local opts = { noremap = true, silent = true }
@@ -53,12 +53,10 @@ end
 -- saga.init_lsp_saga()
 
 -- Snippet Support
-require'snippets'.use_suggested_mappings()
+-- require'snippets'.use_suggested_mappings()
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
--- Use a loop to conveniently both setup defined servers
--- and map buffer local keybindings when the language server attaches
 local servers = { "tsserver", "vuels", "cssls", "html" }
 for _, lsp in ipairs(servers) do
   lsp_config[lsp].setup {
@@ -67,18 +65,7 @@ for _, lsp in ipairs(servers) do
   }
 end
 
-lsp_config["intelephense"].setup {
+-- PHP intelephense
+lsp_config.intelephense.setup {
   on_attach = on_attach
 }
-
--- Make sure uncomment
-  -- use 'RishabhRD/popfix'
-  -- use 'RishabhRD/nvim-lsputils'
--- vim.lsp.handlers['textDocument/codeAction'] = require'lsputil.codeAction'.code_action_handler
--- vim.lsp.handlers['textDocument/references'] = require'lsputil.locations'.references_handler
--- vim.lsp.handlers['textDocument/definition'] = require'lsputil.locations'.definition_handler
--- vim.lsp.handlers['textDocument/declaration'] = require'lsputil.locations'.declaration_handler
--- vim.lsp.handlers['textDocument/typeDefinition'] = require'lsputil.locations'.typeDefinition_handler
--- vim.lsp.handlers['textDocument/implementation'] = require'lsputil.locations'.implementation_handler
--- vim.lsp.handlers['textDocument/documentSymbol'] = require'lsputil.symbols'.document_handler
--- vim.lsp.handlers['workspace/symbol'] = require'lsputil.symbols'.workspace_handler
