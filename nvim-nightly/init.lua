@@ -3,7 +3,6 @@ vim.g.mapleader = ' '
 require('vux.globals')
 require('vux.plugins')
 
--- TODO update options
 require('vux.options')
 
 require('vux.airline')

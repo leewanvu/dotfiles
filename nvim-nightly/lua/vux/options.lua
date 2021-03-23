@@ -1,10 +1,5 @@
 local opt = vim.opt
 
--- Tabs
-opt.autoindent     = true
-opt.cindent        = true
-opt.wrap           = true
-
 opt.tabstop        = 2
 opt.shiftwidth     = 2
 opt.softtabstop    = 2
@@ -12,7 +7,9 @@ opt.expandtab      = true
 opt.smartindent    = true
 opt.copyindent     = true
 opt.showtabline    = 2
-
+opt.autoindent     = true
+opt.cindent        = true
+opt.wrap           = true
 opt.hidden = true
 opt.number = true
 opt.relativenumber = true
