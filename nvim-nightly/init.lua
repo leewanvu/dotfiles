@@ -20,6 +20,7 @@ require('vux.compe')
 require('vux.devicons')
 require('vux.barbar')
 -- require('vux.statusline')
-require('vux.airline')
+-- require('vux.airline')
+require('vux.lualine')
 
 require('vux.keymappings')
