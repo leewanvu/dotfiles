@@ -5,8 +5,6 @@ require('vux.plugins')
 
 require('vux.options')
 
--- require('vux.airline')
-require('vux.barbar')
 require('vux.nvimtree')
 require('vux.starrtify')
 require('vux.ctrlsf')
@@ -20,5 +18,8 @@ require('vux.lsp')
 -- require('vux.completion')
 require('vux.compe')
 require('vux.devicons')
+require('vux.barbar')
+-- require('vux.statusline')
+require('vux.airline')
 
 require('vux.keymappings')
