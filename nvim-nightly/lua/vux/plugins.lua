@@ -102,4 +102,7 @@ return require('packer').startup(function()
   --   branch = 'main'
   -- }
   use 'hoob3rt/lualine.nvim'
+
+  -- Autopairs
+  use 'windwp/nvim-autopairs'
 end)

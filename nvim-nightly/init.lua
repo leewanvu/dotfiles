@@ -22,5 +22,6 @@ require('vux.barbar')
 -- require('vux.statusline')
 -- require('vux.airline')
 require('vux.lualine')
+require('vux.nvim-autopairs')
 
 require('vux.keymappings')
