@@ -18,4 +18,4 @@ local opts = { noremap = true, silent = true }
 
 map('n', '<Tab>', ':BufferNext<CR>', opts)
 map('n', '<S-Tab>', ':BufferPrevious<CR>', opts)
-map('n', '<Leader>q', ':BufferClose<CR>', opts)
+-- map('n', '<Leader>q', ':BufferClose<CR>', opts)
