@@ -13,6 +13,9 @@ vim.g.bufferline = {
   semantic_letters = true
 }
 
+local map = vim.api.nvim_set_keymap
 local opts = { noremap = true, silent = true }
-vim.api.nvim_set_keymap('n', '<Tab>', ':BufferNext<CR>', opts)
-vim.api.nvim_set_keymap('n', '<S-Tab>', ':BufferPrevious<CR>', opts)
+
+map('n', '<Tab>', ':BufferNext<CR>', opts)
+map('n', '<S-Tab>', ':BufferPrevious<CR>', opts)
+map('n', '<Leader>q', ':BufferClose<CR>', opts)
