@@ -50,6 +50,8 @@ return require('packer').startup(function()
   use 'hrsh7th/nvim-compe'
   use 'hrsh7th/vim-vsnip'
   use 'hrsh7th/vim-vsnip-integ'
+  -- vscode-like pictograms 
+  use 'onsails/lspkind-nvim'
 
   -- Git
   use 'tpope/vim-fugitive'
