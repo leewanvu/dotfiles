@@ -19,18 +19,18 @@ vim.g.nvim_tree_icons = {
   symlink = '',
   git = {
     unstaged = "",
-    staged = "✓",
+    staged = "",
     unmerged = "",
     renamed = "➜",
-    untracked = "✗"
+    untracked = ""
   },
   folder = {
-    default = "",
-    open = "",
+    default = "",
+    open = "",
     empty = "",
     empty_open = "",
     symlink = "",
-    symlink_open = ""
+    symlink_open = ""
   }
 }
 

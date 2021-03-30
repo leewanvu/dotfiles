@@ -12,8 +12,6 @@ fc-cache -fv
 ```
 
 ### TODO
-- Setting telescope
-- Support front italic in tmux
 - Update lsp config
 - Try mattn/emmet-vim
 - Try nvim-treesitter extensions
