@@ -14,8 +14,8 @@ return require('packer').startup(function()
   }
 
   -- Status line & tab
-  use 'vim-airline/vim-airline'
-  use 'vim-airline/vim-airline-themes'
+  -- use 'vim-airline/vim-airline'
+  -- use 'vim-airline/vim-airline-themes'
 
   -- Explore
   use 'kyazdani42/nvim-tree.lua'
@@ -99,10 +99,10 @@ return require('packer').startup(function()
   -- use 'romgrk/barbar.nvim'
 
   -- Status line
-  -- use {
-  --   'glepnir/galaxyline.nvim',
-  --   branch = 'main'
-  -- }
+  use {
+    'glepnir/galaxyline.nvim',
+    branch = 'main'
+  }
   -- use 'hoob3rt/lualine.nvim'
 
   -- Autopairs
