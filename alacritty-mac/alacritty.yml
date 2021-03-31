@@ -105,23 +105,22 @@ scrolling:
 #     style: Medium Italic
 font:
   normal:
-    family: JetBrains Mono
-    style: Light
+    family: JetBrainsMono Nerd Font
+    style: Regular
 
   bold:
-    family: JetBrains Mono
-    style: Medium
+    family: JetBrainsMono Nerd Font
+    style: Bold
 
   italic:
-    family: JetBrains Mono
+    family: JetBrainsMono Nerd Font
     style: Italic
 
   bold_italic:
-    family: JetBrains Mono
-    style: Medium Italic
+    family: JetBrainsMono Nerd Font
+    style: Bold Italic
 
-  # Point size
-  size: 16
+  size: 16.9
 
   # Offset is the extra space around each character. `offset.y` can be thought of
   # as modifying the line spacing, and `offset.x` as modifying the letter spacing.
