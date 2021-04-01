@@ -1,7 +1,7 @@
 local gl = require 'galaxyline'
 local gls = gl.section
 -- local devicons = require 'nvim-web-devicons'
--- local diagnostic = require('galaxyline.provider_diagnostic')
+local diagnostic = require('galaxyline.provider_diagnostic')
 local vcs = require('galaxyline.provider_vcs')
 local fileinfo = require('galaxyline.provider_fileinfo')
 -- local extension = require('galaxyline.provider_extensions')
@@ -35,14 +35,14 @@ local colors = {
 local mode_map = {
   ['n'] = {'NORMAL', colors.nord8, colors.nord3},
   ['i'] = {'INSERT', colors.nord14, colors.nord3},
-  ['R'] = {'REPLACE', colors.bright_red, colors.nord3},
-  ['v'] = {'VISUAL', colors.nord15, colors.nord3},
-  ['V'] = {'V-LINE', colors.nord15, colors.nord3},
-  ['c'] = {'COMMAND', colors.nord8, colors.nord3},
-  ['s'] = {'SELECT', colors.nord8, colors.nord3},
-  ['S'] = {'S-LINE', colors.nord8, colors.nord3},
-  ['t'] = {'TERMINAL', colors.nord8, colors.nord3},
-  [''] = {'V-BLOCK', colors.nord15, colors.nord3},
+  ['R'] = {'REPLACE', colors.nord7, colors.nord3},
+  ['v'] = {'VISUAL', colors.nord13, colors.nord3},
+  ['V'] = {'V-LINE', colors.nord13, colors.nord3},
+  ['c'] = {'COMMAND', colors.nord7, colors.nord3},
+  ['s'] = {'SELECT', colors.nord7, colors.nord3},
+  ['S'] = {'S-LINE', colors.nord7, colors.nord3},
+  ['t'] = {'TERMINAL', colors.nord12, colors.nord3},
+  [''] = {'V-BLOCK', colors.nord13, colors.nord3},
   [''] = {'S-BLOCK', colors.nord7, colors.nord3},
   ['Rv'] = {'VIRTUAL'},
   ['rm'] = {'--MORE'},
@@ -69,6 +69,7 @@ local icons = {
   info = '', -- f05a
 }
 
+-- {label, fg, nested_fg}
 local function mode_hl()
   local mode = mode_map[vim.fn.mode()]
   if mode == nil then
@@ -87,10 +88,6 @@ end
 local function buffer_not_empty()
   if vim.fn.empty(vim.fn.expand('%:t')) ~= 1 then return true end
   return false
-end
-
-local function diagnostic_exists()
-  return not vim.tbl_isempty(vim.lsp.buf_get_clients(0))
 end
 
 local function wide_enough(width)
@@ -174,7 +171,7 @@ gls.left = {
         return ''
       end,
       condition = vcs.check_git_workspace,
-      icon = '~',
+      icon = ' ~',
       highlight = {colors.nord13, colors.nord0},
     }
   },
@@ -187,7 +184,7 @@ gls.left = {
         return ''
       end,
       condition = vcs.check_git_workspace,
-      icon = '-',
+      icon = ' -',
       highlight = {colors.nord11, colors.nord0},
     }
   }
@@ -197,37 +194,53 @@ gls.right = {
   {
     LspClient = {
       provider = function()
-        return ' ' .. icons.connected .. ' ' .. lspclient.get_lsp_client() .. ' '
+        local lsp = lspclient.get_lsp_client('')
+        local lsp_icon = icons.connected
+        if lsp == '' then
+          lsp_icon = icons.disconnected
+          lsp = 'no lsp'
+        end
+        return string.format(' %s %s ', lsp_icon, lsp)
       end,
-      highlight = {colors.nord0, colors.nord9},
+      highlight = {colors.nord8, colors.nord3},
       separator = sep.right_filled,
-      separator_highlight = {colors.nord9,colors.nord0},
+      separator_highlight = {colors.nord3,colors.nord0},
     }
   },
   {
     LspRightSepInv = {
       provider = function() return sep.right_filled end,
-      highlight = {colors.nord0,colors.nord9},
-    }
-  },
-  {
-    DiagnosticWarn = {
-      provider = function()
-        local n = vim.lsp.diagnostic.get_count(0, 'Warning')
-        if n == 0 then return '' end
-        return string.format('  %s %d ', icons.warning, n)
-      end,
-      highlight = {colors.nord13, colors.nord0},
+      highlight = {colors.nord0,colors.nord3},
     }
   },
   {
     DiagnosticError = {
       provider = function()
-        local n = vim.lsp.diagnostic.get_count(0, 'Error')
-        if n == 0 then return '' end
-        return string.format('  %s %d ', icons.error, n)
+        local n = diagnostic.get_diagnostic_error()
+        if n == '' or n == nil then return '' end
+        return string.format('  %s %s', icons.error, n)
       end,
       highlight = {colors.nord11, colors.nord0},
+    }
+  },
+  {
+    DiagnosticWarn = {
+      provider = function()
+        local n = diagnostic.get_diagnostic_warn()
+        if n == '' or n == nil then return '' end
+        return string.format('  %s %s', icons.warning, n)
+      end,
+      highlight = {colors.nord13, colors.nord0},
+    }
+  },
+  {
+    DiagnosticHint = {
+      provider = function()
+        local n = diagnostic.get_diagnostic_hint()
+        if n == '' or n == nil then return '' end
+        return string.format('  %s %s', icons.info, n)
+      end,
+      highlight = {colors.nord9, colors.nord0},
     }
   },
   {
@@ -279,7 +292,7 @@ gls.right = {
     PositionInfo = {
       provider = function()
         if not buffer_not_empty() or not wide_enough(60) then return '' end
-        return string.format(' %s  %s:%s ', icons.line_number, vim.fn.line('.'), vim.fn.col('.'))
+        return string.format(' %s %s:%s ', icons.line_number, vim.fn.line('.'), vim.fn.col('.'))
       end,
       highlight = 'GalaxyViMode',
       separator = sep.right_filled,
