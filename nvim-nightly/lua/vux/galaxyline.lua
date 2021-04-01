@@ -104,16 +104,16 @@ gls.left = {
     ViMode = {
       provider = function()
         local label, fg, nested_fg = unpack(mode_hl())
-        highlight('GalaxyViMode', colors.nord1, fg, "bold")
-        highlight('GalaxyViModeInv', fg, colors.nord1)
+        highlight('GalaxyViMode', colors.nord0, fg, "bold")
+        highlight('GalaxyViModeInv', fg, colors.nord0)
         highlight('GalaxyViModeNested', colors.nord6, nested_fg)
         highlight('GalaxyGitNested', colors.nord15, nested_fg)
-        highlight('GalaxyViModeInvNested', nested_fg, colors.nord1)
-        highlight('GalaxyBreakLeft', colors.nord1, nested_fg)
-        highlight('GalaxyBreakRight', colors.nord1, nested_fg)
-        highlight('DiffAdd', colors.nord14, colors.nord1)
-        highlight('DiffChange', colors.nord13, colors.nord1)
-        highlight('DiffDelete', colors.nord11, colors.nord1)
+        highlight('GalaxyViModeInvNested', nested_fg, colors.nord0)
+        highlight('GalaxyBreakLeft', colors.nord0, nested_fg)
+        highlight('GalaxyBreakRight', colors.nord0, nested_fg)
+        highlight('DiffAdd', colors.nord14, colors.nord0)
+        highlight('DiffChange', colors.nord13, colors.nord0)
+        highlight('DiffDelete', colors.nord11, colors.nord0)
         return string.format('  %s ', label)
       end,
       separator = sep.left_filled,
@@ -149,7 +149,7 @@ gls.left = {
       condition = vcs.check_git_workspace,
       highlight = 'GalaxyGitNested',
       separator = sep.left_filled,
-      separator_highlight = {colors.nord3,colors.nord1},
+      separator_highlight = {colors.nord3,colors.nord0},
     }
   },
   {
@@ -162,7 +162,7 @@ gls.left = {
       end,
       condition = vcs.check_git_workspace,
       icon = ' +',
-      highlight = {colors.nord14, colors.nord1},
+      highlight = {colors.nord14, colors.nord0},
     }
   },
   {
@@ -175,7 +175,7 @@ gls.left = {
       end,
       condition = vcs.check_git_workspace,
       icon = '~',
-      highlight = {colors.nord13, colors.nord1},
+      highlight = {colors.nord13, colors.nord0},
     }
   },
   {
@@ -188,7 +188,7 @@ gls.left = {
       end,
       condition = vcs.check_git_workspace,
       icon = '-',
-      highlight = {colors.nord11, colors.nord1},
+      highlight = {colors.nord11, colors.nord0},
     }
   }
 }
@@ -199,15 +199,15 @@ gls.right = {
       provider = function()
         return ' ' .. icons.connected .. ' ' .. lspclient.get_lsp_client() .. ' '
       end,
-      highlight = {colors.nord1, colors.nord9},
+      highlight = {colors.nord0, colors.nord9},
       separator = sep.right_filled,
-      separator_highlight = {colors.nord9,colors.nord1},
+      separator_highlight = {colors.nord9,colors.nord0},
     }
   },
   {
     LspRightSepInv = {
       provider = function() return sep.right_filled end,
-      highlight = {colors.nord1,colors.nord9},
+      highlight = {colors.nord0,colors.nord9},
     }
   },
   {
@@ -217,7 +217,7 @@ gls.right = {
         if n == 0 then return '' end
         return string.format('  %s %d ', icons.warning, n)
       end,
-      highlight = {colors.nord13, colors.nord1},
+      highlight = {colors.nord13, colors.nord0},
     }
   },
   {
@@ -227,13 +227,13 @@ gls.right = {
         if n == 0 then return '' end
         return string.format('  %s %d ', icons.error, n)
       end,
-      highlight = {colors.nord11, colors.nord1},
+      highlight = {colors.nord11, colors.nord0},
     }
   },
   {
     LspRightSep = {
       provider = function() return sep.right_filled end,
-      highlight = {colors.nord3,colors.nord1},
+      highlight = {colors.nord3,colors.nord0},
     }
   },
   {
@@ -320,9 +320,9 @@ gls.short_line_left[1] = {
   BufferType = {
     provider = function ()
       local label, fg, nested_fg = unpack(mode_hl())
-      highlight('GalaxyViMode', colors.nord1, fg)
+      highlight('GalaxyViMode', colors.nord0, fg)
       highlight('GalaxyViModeInv', fg, nested_fg)
-      highlight('GalaxyViModeInvNested', nested_fg, colors.nord1)
+      highlight('GalaxyViModeInvNested', nested_fg, colors.nord0)
       local name = short_map[vim.bo.filetype] or 'Editor'
       return string.format('  %s ', name)
     end,
