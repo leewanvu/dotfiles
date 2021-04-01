@@ -9,8 +9,8 @@ map('n', '<leader>w', ':w<CR>')
 map('n', '<leader>q', ':bd<CR>')
 
 -- Using barbar instead of
-map('n', '<TAB>', ':bnext<CR>')
-map('n', '<S-TAB>', ':bprevious<CR>')
+-- map('n', '<TAB>', ':bnext<CR>')
+-- map('n', '<S-TAB>', ':bprevious<CR>')
 
 map('n', '<leader>n', ':nohlsearch<CR>')
 map('n', '<C-c>', '<Esc>')

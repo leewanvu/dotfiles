@@ -96,7 +96,7 @@ return require('packer').startup(function()
   use 'kyazdani42/nvim-web-devicons'
 
   -- Tabline
-  -- use 'romgrk/barbar.nvim'
+  use 'romgrk/barbar.nvim'
 
   -- Status line
   use {

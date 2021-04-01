@@ -9,9 +9,6 @@ local fileinfo = require('galaxyline.provider_fileinfo')
 -- local buffer = require('galaxyline.provider_buffer')
 -- local whitespace = require('galaxyline.provider_whitespace')
 -- local lspclient = require('galaxyline.provider_lsp')
-
-gl.short_line_list = {'NvimTree', 'startify'}
-
 -- nord
 local colors = {
   nord0 = "#2E3440",
@@ -34,6 +31,7 @@ local colors = {
   none = "NONE",
 }
 
+-- {label, fg, nested_fg}
 local mode_map = {
   ['n'] = {'NORMAL', colors.nord8, colors.nord3},
   ['i'] = {'INSERT', colors.nord14, colors.nord3},
@@ -62,9 +60,6 @@ local icons = {
   not_modifiable = '', -- f05e
   unsaved = '', -- f0c7
   pencil = '', -- f040
-  dos = '', -- e70f
-  unix = '', -- f17c
-  mac = '', -- f179
   page = '☰', -- 2630
   line_number = '', -- e0a1
   connected = '', -- f817
@@ -111,6 +106,7 @@ gls.left[1] = {
       highlight('GalaxyViMode', colors.nord1, fg, "bold")
       highlight('GalaxyViModeInv', fg, nested_fg)
       highlight('GalaxyViModeNested', colors.nord6, nested_fg)
+      highlight('GalaxyGitNested', colors.nord15, nested_fg)
       highlight('GalaxyViModeInvNested', nested_fg, colors.nord1)
       highlight('DiffAdd', colors.nord14, colors.nord1)
       highlight('DiffChange', colors.nord13, colors.nord1)
@@ -130,7 +126,7 @@ gls.left[2] = {
       return ''
     end,
     condition = vcs.check_git_workspace,
-    highlight = {colors.nord15, mode_hl()[3]},
+    highlight = 'GalaxyGitNested',
   }
 }
 gls.left[3] = {
@@ -142,7 +138,7 @@ gls.left[3] = {
       return ''
     end,
     condition = vcs.check_git_workspace,
-    highlight = {colors.nord15, mode_hl()[3]},
+    highlight = 'GalaxyGitNested',
   }
 }
 gls.left[4] = {
@@ -211,16 +207,6 @@ gls.left[9] = {
   }
 }
 
--- gls.right[1] = {
---   CocStatus = {
---     provider = function ()
---       if not buffer_not_empty() or not wide_enough(110) then return '' end
---       return '  ' .. vim.fn['coc#status']()
---     end,
---     highlight = {colors.nord15, colors.nord1},
---   }
--- }
-
 gls.right[1] = {
   LspStatus = {
     provider = function()
@@ -228,7 +214,8 @@ gls.right[1] = {
       if connected then
         return '  ' .. icons.connected .. '  '
       else
-        return ''
+        -- return ''
+        return '  ' .. icons.disconnected .. '  '
       end
     end,
     highlight = {colors.nord8, colors.nord1},
@@ -270,8 +257,8 @@ gls.right[4] = {
       end
       if #fname == 0 then return '' end
       if vim.bo.readonly then fname = fname .. ' ' .. icons.locker end
-      if not vim.bo.modifiable then fname = fname .. ' ' .. icons.not_modifiable end
-      if vim.bo.modified then fname = fname .. ' ' .. icons.pencil end
+      -- if not vim.bo.modifiable then fname = fname .. ' ' .. icons.not_modifiable end
+      -- if vim.bo.modified then fname = fname .. ' ' .. icons.pencil end
       return ' ' .. fname .. ' '
     end,
     highlight = 'GalaxyViModeNested',
@@ -317,9 +304,12 @@ gls.right[8] = {
   }
 }
 
+gl.short_line_list = {'NvimTree', 'startify', 'packer'}
+
 local short_map = {
   ['startify'] = 'Starfity',
   ['NvimTree'] = 'NvimTree',
+  ['packer'] = 'Packer',
 }
 
 function has_file_type()
