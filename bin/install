@@ -9,7 +9,7 @@ fi
 
 read -p "For mac? y/n: " is_mac
 
-read -p "Use neovim nightly? y/n: " is_neovim_nightly
+# read -p "Use neovim nightly? y/n: " is_neovim_nightly
 
 read -p "Link zsh? y/n: " is_link_zsh
 
@@ -29,9 +29,9 @@ for folder in "${folders[@]}"; do
     linkfrom="$PWD/$folder"
     linkto="$HOME/.config/$folder"
 
-    if [ "$folder" == "nvim" ] && [ "$is_neovim_nightly"  == "y" ]; then
-      linkfrom="$PWD/nvim-nightly"
-    fi
+    # if [ "$folder" == "nvim" ] && [ "$is_neovim_nightly"  == "y" ]; then
+    #   linkfrom="$PWD/nvim-nightly"
+    # fi
 
     if [ "$folder" == "alacritty" ] && [ "$is_mac" == "y" ]; then
       linkfrom="$PWD/alacritty-mac"
