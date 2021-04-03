@@ -5,11 +5,12 @@ vim.g.bufferline = {
   clickable = true,
   icons = true, -- numbers, both
   icon_custom_colors = false,
-  icon_separator_active = '▎',
-  icon_separator_inactive = '▎',
+  -- icon_separator_active = '▎',
+  icon_separator_active = '',
+  icon_separator_inactive = '',
   icon_close_tab = '',
   icon_close_tab_modified = '●',
-  maximum_padding = 4,
+  maximum_padding = 1,
   semantic_letters = true
 }
 
