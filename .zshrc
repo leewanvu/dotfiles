@@ -172,7 +172,7 @@ alias aremail="arm email"
 
 alias arreportrs="arm report-reset"
 
-alias vdot="cd ~/Work/dotfiles && v nvim-nightly/init.lua"
+alias vdot="cd ~/Work/dotfiles && v nvim/init.lua"
 alias r="ranger"
 
 alias chrome="open -a Google\ Chrome"

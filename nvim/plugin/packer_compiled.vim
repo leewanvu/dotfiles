@@ -153,10 +153,10 @@ _G.packer_plugins = {
   }
 }
 
--- Config for: git-blame.nvim
-try_loadstring("\27LJ\2\n�\1\0\0\2\0\a\0\r6\0\0\0009\0\1\0)\1\0\0=\1\2\0006\0\0\0009\0\1\0'\1\4\0=\1\3\0006\0\0\0009\0\1\0'\1\6\0=\1\5\0K\0\1\0\a%c\25gitblame_date_format' <author> • <date> • <summary>\30gitblame_message_template\21gitblame_enabled\6g\bvim\0", "config", "git-blame.nvim")
 -- Config for: nord-vim
 try_loadstring("\27LJ\2\n6\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\rvux.nord\frequire\0", "config", "nord-vim")
+-- Config for: git-blame.nvim
+try_loadstring("\27LJ\2\n�\1\0\0\2\0\a\0\r6\0\0\0009\0\1\0)\1\0\0=\1\2\0006\0\0\0009\0\1\0'\1\4\0=\1\3\0006\0\0\0009\0\1\0'\1\6\0=\1\5\0K\0\1\0\a%c\25gitblame_date_format' <author> • <date> • <summary>\30gitblame_message_template\21gitblame_enabled\6g\bvim\0", "config", "git-blame.nvim")
 END
 
 catch
