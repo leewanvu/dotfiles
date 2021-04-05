@@ -90,7 +90,8 @@ return require('packer').startup(function()
   use 'dyng/ctrlsf.vim'
 
   -- Float termial
-  use 'voldikss/vim-floaterm'
+  -- use 'voldikss/vim-floaterm'
+  use 'numtostr/FTerm.nvim'
 
   -- Icons
   use 'kyazdani42/nvim-web-devicons'
