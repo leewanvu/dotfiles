@@ -60,13 +60,14 @@ local icons = {
   not_modifiable = '', -- f05e
   unsaved = '', -- f0c7
   pencil = '', -- f040
-  page = '☰', -- 2630
+  page = '', -- 2630
   line_number = '', -- e0a1
-  connected = '', -- f817
-  disconnected = '', -- f818
-  error = '', -- f658
-  warning = '', -- f06a
-  info = '', -- f05a
+  connected = '',
+  disconnected = '',
+  error = '',
+  warning = '𥉉',
+  info = '',
+  git_branch = '',
 }
 
 -- {label, fg, nested_fg}
@@ -127,7 +128,7 @@ gls.left = {
     GitIcon = {
       provider = function ()
         if wide_enough(85) then
-          return '  '
+          return icons.git_branch .. ' '
         end
         return ''
       end,
@@ -139,7 +140,7 @@ gls.left = {
     GitBranch = {
       provider = function ()
         if wide_enough(85) then
-          return vcs.get_git_branch()
+          return vcs.get_git_branch() .. ' '
         end
         return ''
       end,
@@ -200,7 +201,7 @@ gls.right = {
           lsp_icon = icons.disconnected
           lsp = 'no lsp'
         end
-        return string.format(' %s %s ', lsp_icon, lsp)
+        return string.format(' %s  %s ', lsp_icon, lsp)
       end,
       highlight = {colors.nord8, colors.nord3},
       separator = sep.right_filled,
@@ -240,7 +241,7 @@ gls.right = {
         if n == '' or n == nil then return '' end
         return string.format('  %s %s', icons.info, n)
       end,
-      highlight = {colors.nord9, colors.nord0},
+      highlight = {colors.nord8, colors.nord0},
     }
   },
   {
