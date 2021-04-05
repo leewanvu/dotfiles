@@ -201,7 +201,10 @@ gls.right = {
           lsp_icon = icons.disconnected
           lsp = 'no lsp'
         end
-        return string.format(' %s  %s ', lsp_icon, lsp)
+        if wide_enough(90) then
+          return string.format(' %s  %s ', lsp_icon, lsp)
+        end
+        return string.format(' %s  ', lsp_icon)
       end,
       highlight = {colors.nord8, colors.nord3},
       separator = sep.right_filled,
