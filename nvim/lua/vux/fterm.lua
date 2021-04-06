@@ -21,8 +21,8 @@ require'FTerm'.setup({
 -- Keybinding
 
 -- Closer to the metal
-vim.api.nvim_set_keymap('n', '<Leader>t', '<CMD>lua require"FTerm".toggle()<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('t', '<Leader>t', '<C-\\><C-n><CMD>lua require"FTerm".toggle()<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<C-t>', '<CMD>lua require"FTerm".toggle()<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('t', '<C-t>', '<C-\\><C-n><CMD>lua require"FTerm".toggle()<CR>', { noremap = true, silent = true })
 
 -- or
 
