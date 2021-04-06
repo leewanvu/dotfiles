@@ -10,7 +10,7 @@ require'FTerm'.setup({
     -- Default border characters, you can customize them individually
     border = {
         horizontal = '─',
-        vertical = '|',
+        vertical = '│',
         topLeft = '┌',
         topRight = '┐',
         bottomRight = '┘',
