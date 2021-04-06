@@ -1,9 +1,9 @@
 local gl = require 'galaxyline'
 local gls = gl.section
--- local devicons = require 'nvim-web-devicons'
 local diagnostic = require('galaxyline.provider_diagnostic')
 local vcs = require('galaxyline.provider_vcs')
 local fileinfo = require('galaxyline.provider_fileinfo')
+local condition = require('galaxyline.condition')
 -- local extension = require('galaxyline.provider_extensions')
 -- local colors = require('galaxyline.colors')
 -- local buffer = require('galaxyline.provider_buffer')
@@ -122,6 +122,7 @@ gls.left = {
     LeftSep1 = {
       provider = function() return sep.left_filled .. ' ' end,
       highlight = 'GalaxyBreakLeft',
+      condition = condition.check_git_workspace,
     }
   },
   {
@@ -132,7 +133,7 @@ gls.left = {
         end
         return ''
       end,
-      condition = vcs.check_git_workspace,
+      condition = condition.check_git_workspace,
       highlight = 'GalaxyGitNested',
     }
   },
@@ -144,7 +145,7 @@ gls.left = {
         end
         return ''
       end,
-      condition = vcs.check_git_workspace,
+      condition = condition.check_git_workspace,
       highlight = 'GalaxyGitNested',
       separator = sep.left_filled,
       separator_highlight = {colors.nord3,colors.nord0},
@@ -158,7 +159,7 @@ gls.left = {
         end
         return ''
       end,
-      condition = vcs.check_git_workspace,
+      condition = condition.check_git_workspace,
       icon = ' +',
       highlight = {colors.nord14, colors.nord0},
     }
@@ -171,7 +172,7 @@ gls.left = {
         end
         return ''
       end,
-      condition = vcs.check_git_workspace,
+      condition = condition.check_git_workspace,
       icon = ' ~',
       highlight = {colors.nord13, colors.nord0},
     }
@@ -184,7 +185,7 @@ gls.left = {
         end
         return ''
       end,
-      condition = vcs.check_git_workspace,
+      condition = condition.check_git_workspace,
       icon = ' -',
       highlight = {colors.nord11, colors.nord0},
     }
@@ -317,12 +318,13 @@ gls.right = {
   }
 }
 
-gl.short_line_list = {'NvimTree', 'startify', 'packer'}
+gl.short_line_list = {'NvimTree', 'startify', 'packer', 'help'}
 
 local short_map = {
   ['startify'] = 'Starfity',
   ['NvimTree'] = 'NvimTree',
   ['packer'] = 'Packer',
+  ['help'] = 'Help',
 }
 
 function has_file_type()
