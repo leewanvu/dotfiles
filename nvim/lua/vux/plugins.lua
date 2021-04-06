@@ -81,7 +81,8 @@ return require('packer').startup(function()
   -- use 'jiangmiao/auto-pairs'
 
   -- Indent line
-  use 'yggdroot/indentline'
+  -- use 'yggdroot/indentline'
+  use { 'lukas-reineke/indent-blankline.nvim', branch = 'lua' }
 
   -- Strip whitespace
   use 'ntpeters/vim-better-whitespace'
