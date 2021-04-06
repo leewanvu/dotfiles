@@ -11,10 +11,10 @@ require'FTerm'.setup({
     border = {
         horizontal = '─',
         vertical = '│',
-        topLeft = '┌',
-        topRight = '┐',
-        bottomRight = '┘',
-        bottomLeft = '└'
+        topLeft = '╭',
+        topRight = '╮',
+        bottomRight = '╯',
+        bottomLeft = '╰'
     }
 })
 
