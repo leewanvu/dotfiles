@@ -24,7 +24,8 @@ return require('packer').startup(function()
   use 'mhinz/vim-startify'
 
   -- Comment
-  use 'tpope/vim-commentary'
+  -- use 'tpope/vim-commentary'
+  use 'b3nj5m1n/kommentary'
 
   -- Treesitter
   use {
