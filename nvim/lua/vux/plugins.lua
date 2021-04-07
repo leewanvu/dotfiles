@@ -73,7 +73,8 @@ return require('packer').startup(function()
   }
 
   -- Motion
-  use 'easymotion/vim-easymotion'
+  -- use 'easymotion/vim-easymotion'
+  use { 'phaazon/hop.nvim', as = 'hop' }
 
   -- Surroundings: parentheses, brackets, quotes, XML tags, and more
   use 'tpope/vim-surround'
@@ -109,6 +110,9 @@ return require('packer').startup(function()
 
   -- Autopairs
   use 'windwp/nvim-autopairs'
+
+  -- Auto tags
+  -- use 'windwp/nvim-ts-autotag'
 
   -- Colors
   use 'norcalli/nvim-colorizer.lua'
