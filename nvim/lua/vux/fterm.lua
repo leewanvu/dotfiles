@@ -8,14 +8,15 @@ require'FTerm'.setup({
         col = 0.5
     },
     -- Default border characters, you can customize them individually
-    border = {
+    --[[ border = {
         horizontal = '─',
         vertical = '│',
         topLeft = '╭',
         topRight = '╮',
         bottomRight = '╯',
         bottomLeft = '╰'
-    }
+    } ]]
+    border = 'single' -- double
 })
 
 -- Keybinding
