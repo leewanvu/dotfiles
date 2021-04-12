@@ -318,13 +318,14 @@ gls.right = {
   }
 }
 
-gl.short_line_list = {'NvimTree', 'startify', 'packer', 'help'}
+gl.short_line_list = {'NvimTree', 'startify', 'packer', 'help', 'ctrlsf'}
 
 local short_map = {
   ['startify'] = 'Starfity',
   ['NvimTree'] = 'NvimTree',
   ['packer'] = 'Packer',
   ['help'] = 'Help',
+  ['ctrlsf'] = 'CtrlSF',
 }
 
 function has_file_type()
@@ -357,15 +358,52 @@ gls.short_line_left[2] = {
     highlight = 'GalaxyViModeInvNested',
   }
 }
-gls.short_line_right[1] = {
-  ShortRightSepNested = {
-    provider = function() return sep.right_filled end,
-    highlight = 'GalaxyViModeInvNested',
-  }
-}
-gls.short_line_right[2] = {
-  ShortRightSep = {
-    provider = function() return sep.right_filled end,
-    highlight = 'GalaxyViModeInv',
+gls.short_line_right = {
+  --[[ {
+    ShortRightLspRightSep = {
+      provider = function() return sep.right_filled end,
+      highlight = {colors.nord3,colors.nord0},
+    }
+  },
+  {
+    ShortRightFileIcon = {
+      provider = function()
+        local icon = fileinfo.get_file_icon()
+        local fg = fileinfo.get_file_icon_color()
+        highlight('GalaxyFileIcon', fg, colors.nord3)
+
+        return '  ' .. icon
+      end,
+      condition = buffer_not_empty,
+    }
+  },
+  {
+    ShortRightFileName = {
+      provider = function()
+        if not buffer_not_empty() then return '' end
+        local fname
+        if wide_enough(120) then
+          fname = vim.fn.fnamemodify(vim.fn.expand('%'), ':~:.')
+        else
+          fname = vim.fn.expand '%:t'
+        end
+        if #fname == 0 then return '' end
+        return ' ' .. fname .. ' '
+      end,
+      highlight = 'GalaxyViModeNested',
+      condition = buffer_not_empty,
+    }
+  }, ]]
+  {
+    ShortRightSepNested = {
+      provider = function() return sep.right_filled end,
+      highlight = 'GalaxyViModeInvNested',
+    }
+  },
+  {
+    ShortRightSep = {
+      provider = function() return sep.right_filled end,
+      highlight = 'GalaxyViModeInv',
+    }
   }
 }

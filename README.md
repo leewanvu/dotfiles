@@ -12,8 +12,9 @@ fc-cache -fv
 ```
 
 ### TODO
+- Highlight LSP
 - Change icon barbar
-- Check width galaxyline
+- Check width galaxyline & short right bar
 - Update lsp config
 - Try mattn/emmet-vim
 - Try nvim-treesitter extensions
