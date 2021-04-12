@@ -1,3 +1,12 @@
+vim.fn.sign_define("LspDiagnosticsSignError",
+                   {texthl = "LspDiagnosticsSignError", text = "", numhl = "LspDiagnosticsSignError"})
+vim.fn.sign_define("LspDiagnosticsSignWarning",
+                   {texthl = "LspDiagnosticsSignWarning", text = "", numhl = "LspDiagnosticsSignWarning"})
+vim.fn.sign_define("LspDiagnosticsSignHint",
+                   {texthl = "LspDiagnosticsSignHint", text = "", numhl = "LspDiagnosticsSignHint"})
+vim.fn.sign_define("LspDiagnosticsSignInformation",
+                   {texthl = "LspDiagnosticsSignInformation", text = "", numhl = "LspDiagnosticsSignInformation"})
+
 local lsp_config = require'lspconfig'
 local on_attach = function(client, bufnr)
   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
