@@ -120,7 +120,7 @@ font:
     family: JetBrainsMono Nerd Font
     style: Bold Italic
 
-  size: 16.9
+  size: 15.9
 
   # Offset is the extra space around each character. `offset.y` can be thought of
   # as modifying the line spacing, and `offset.x` as modifying the letter spacing.
