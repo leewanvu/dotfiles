@@ -104,7 +104,8 @@ return require('packer').startup(function()
   use 'kyazdani42/nvim-web-devicons'
 
   -- Tabline
-  use 'romgrk/barbar.nvim'
+  -- use 'romgrk/barbar.nvim'
+  use 'akinsho/nvim-bufferline.lua'
 
   -- Status line
   use {
@@ -120,4 +121,6 @@ return require('packer').startup(function()
 
   -- Colors
   use 'norcalli/nvim-colorizer.lua'
+  -- use 'tjdevries/colorbuddy.vim'
+  -- use 'maaslalani/nordbuddy'
 end)
