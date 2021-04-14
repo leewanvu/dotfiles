@@ -64,9 +64,13 @@ local icons = {
   line_number = '', -- e0a1
   connected = '',
   disconnected = '',
-  error = '',
-  warning = '𥉉',
-  info = '',
+  -- error = '',
+  -- warning = '𥉉',
+  -- info = '',
+  error = '',
+  warning = '',
+  info = '',
+  hint = '',
   git_branch = '',
 }
 
@@ -243,9 +247,9 @@ gls.right = {
       provider = function()
         local n = diagnostic.get_diagnostic_hint()
         if n == '' or n == nil then return '' end
-        return string.format('  %s %s', icons.info, n)
+        return string.format('  %s %s', icons.hint, n)
       end,
-      highlight = {colors.nord8, colors.nord0},
+      highlight = {colors.nord10, colors.nord0},
     }
   },
   {

@@ -9,7 +9,9 @@ return require('packer').startup(function()
 
   -- Themes
   use {
-    'arcticicestudio/nord-vim',
+    -- 'arcticicestudio/nord-vim',
+    'leewanvu/nord-vim',
+    branch = 'develop',
     config = function() require('vux.nord').setup() end
   }
 
