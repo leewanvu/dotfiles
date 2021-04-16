@@ -105,7 +105,7 @@ return require('packer').startup(function()
 
   -- Tabline
   -- use 'romgrk/barbar.nvim'
-  use 'akinsho/nvim-bufferline.lua'
+  -- use 'akinsho/nvim-bufferline.lua'
 
   -- Status line
   use {

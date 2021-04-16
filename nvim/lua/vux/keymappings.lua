@@ -9,8 +9,11 @@ map('n', '<leader>w', ':w<CR>')
 map('n', '<leader>q', ':bd!<CR>')
 
 -- Using barbar instead of
--- map('n', '<TAB>', ':bnext<CR>')
--- map('n', '<S-TAB>', ':bprevious<CR>')
+--[[ map('n', '<TAB>', ':bnext<CR>')
+map('n', '<S-TAB>', ':bprevious<CR>') ]]
+
+map('n', ']b', ':bnext<CR>')
+map('n', '[b', ':bprevious<CR>')
 
 map('n', '<leader>n', ':nohlsearch<CR>')
 map('n', '<C-c>', '<Esc>')
@@ -42,14 +45,14 @@ map('t', '<C-k>', '<C-\\><C-N><C-w>k')
 map('t', '<C-l>', '<C-\\><C-N><C-w>l')
 map('t', '<Esc>', '<C-\\><C-n>')
 
--- Window Resizing
-map('n', '<C-Up>', ':resize -2<CR>')
-map('n', '<C-Down>', ':resize +2<CR>')
-map('n', '<C-Left>', ':vertical resize -2<CR>')
-map('n', '<C-Right>', ':vertical resize +2<CR>')
+-- Window Resizing (M = Alt | Option)
+map('n', '<M-Up>', ':resize -2<CR>')
+map('n', '<M-Down>', ':resize +2<CR>')
+map('n', '<M-Left>', ':vertical resize -2<CR>')
+map('n', '<M-Right>', ':vertical resize +2<CR>')
 
 -- Ranger
 -- map('n', '<leader>r', ':Ranger<CR>')
 
 -- GitBlame
-map('n', '<leader>b', ':GitBlameToggle<CR>')
+map('n', 'gb', ':GitBlameToggle<CR>')
