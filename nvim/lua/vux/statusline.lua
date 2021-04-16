@@ -33,18 +33,18 @@ local colors = {
 
 -- {label, fg, nested_fg}
 local mode_map = {
-  ['n'] = {'NORMAL', colors.nord8, colors.nord3},
-  ['i'] = {'INSERT', colors.nord14, colors.nord3},
-  ['R'] = {'REPLACE', colors.nord7, colors.nord3},
-  ['v'] = {'VISUAL', colors.nord13, colors.nord3},
-  ['V'] = {'V-LINE', colors.nord13, colors.nord3},
-  ['c'] = {'COMMAND', colors.nord7, colors.nord3},
-  ['s'] = {'SELECT', colors.nord7, colors.nord3},
-  ['S'] = {'S-LINE', colors.nord7, colors.nord3},
-  ['t'] = {'TERMINAL', colors.nord12, colors.nord3},
-  [''] = {'V-BLOCK', colors.nord13, colors.nord3},
-  [''] = {'S-BLOCK', colors.nord7, colors.nord3},
-  ['Rv'] = {'VIRTUAL'},
+  ['n'] = {'N', colors.nord8, colors.nord0},
+  ['i'] = {'I', colors.nord14, colors.nord0},
+  ['R'] = {'R', colors.nord7, colors.nord0},
+  ['v'] = {'V', colors.nord12, colors.nord0},
+  ['V'] = {'V', colors.nord12, colors.nord0},
+  ['c'] = {'C', colors.nord11, colors.nord0},
+  ['s'] = {'S', colors.nord11, colors.nord0},
+  ['S'] = {'S', colors.nord11, colors.nord0},
+  ['t'] = {'T', colors.nord11, colors.nord0},
+  [''] = {'V', colors.nord12, colors.nord0},
+  [''] = {'S', colors.nord11, colors.nord0},
+  ['Rv'] = {'VIR'},
   ['rm'] = {'--MORE'},
 }
 
@@ -77,6 +77,7 @@ local icons = {
   info = '',
   hint = '',
   git_branch = '',
+  -- git_branch = '',
 }
 
 -- {label, fg, nested_fg}
@@ -111,53 +112,35 @@ gls.left = {
     ViMode = {
       provider = function()
         local label, fg, nested_fg = unpack(mode_hl())
-        highlight('GalaxyViMode', colors.nord0, fg, "bold")
-        highlight('GalaxyViModeInv', fg, colors.nord0)
-        highlight('GalaxyViModeNested', colors.nord6, nested_fg)
-        highlight('GalaxyGitNested', colors.nord15, nested_fg)
-        highlight('GalaxyViModeInvNested', nested_fg, colors.nord0)
-        highlight('GalaxyBreakLeft', colors.nord0, nested_fg)
-        highlight('GalaxyBreakRight', colors.nord0, nested_fg)
-        highlight('DiffAdd', colors.nord14, colors.nord0)
-        highlight('DiffChange', colors.nord13, colors.nord0)
-        highlight('DiffDelete', colors.nord11, colors.nord0)
-        return string.format('  %s ', label)
+        highlight('GalaxyViMode', fg, colors.nord1, "bold")
+        return string.format('   %s  ', '')
       end,
-      separator = sep.left_filled,
-      separator_highlight = 'GalaxyViModeInv',
-    }
-  },
-  {
-    LeftSep1 = {
-      provider = function() return sep.left_filled .. ' ' end,
-      highlight = 'GalaxyBreakLeft',
-      condition = condition.check_git_workspace,
+      -- highlight = {colors.nord13,colors.nord1},
     }
   },
   {
     GitIcon = {
       provider = function ()
         if wide_enough(85) then
-          return icons.git_branch .. ' '
+          return ' ' .. icons.git_branch .. ' '
         end
         return ''
       end,
       condition = condition.check_git_workspace,
-      highlight = 'GalaxyGitNested',
+      highlight = {colors.nord15, colors.nord1},
     }
   },
   {
     GitBranch = {
       provider = function ()
         if wide_enough(85) then
+          -- return ' ' .. icons.git_branch .. ' ' .. vcs.get_git_branch() .. ' '
           return vcs.get_git_branch() .. ' '
         end
         return ''
       end,
       condition = condition.check_git_workspace,
-      highlight = 'GalaxyGitNested',
-      separator = sep.left_filled,
-      separator_highlight = {colors.nord3,colors.nord0},
+      highlight = {colors.nord15, colors.nord1},
     }
   },
   {
@@ -170,7 +153,7 @@ gls.left = {
       end,
       condition = condition.check_git_workspace,
       icon = ' +',
-      highlight = {colors.nord14, colors.nord0},
+      highlight = {colors.nord14, colors.nord1},
     }
   },
   {
@@ -183,7 +166,7 @@ gls.left = {
       end,
       condition = condition.check_git_workspace,
       icon = ' ~',
-      highlight = {colors.nord13, colors.nord0},
+      highlight = {colors.nord13, colors.nord1},
     }
   },
   {
@@ -196,13 +179,10 @@ gls.left = {
       end,
       condition = condition.check_git_workspace,
       icon = ' -',
-      highlight = {colors.nord11, colors.nord0},
+      highlight = {colors.nord11, colors.nord1},
     }
-  }
-}
-
-gls.right = {
-  {
+  },
+  --[[ {
     LspClient = {
       provider = function()
         local lsp = lspclient.get_lsp_client('')
@@ -216,25 +196,20 @@ gls.right = {
         end
         return string.format(' %s  ', lsp_icon)
       end,
-      highlight = {colors.nord8, colors.nord3},
-      separator = sep.right_filled,
-      separator_highlight = {colors.nord3,colors.nord0},
+      highlight = {colors.nord8, colors.nord1,'italic'},
     }
-  },
-  {
-    LspRightSepInv = {
-      provider = function() return sep.right_filled end,
-      highlight = {colors.nord0,colors.nord3},
-    }
-  },
+  }, ]]
+}
+
+gls.right = {
   {
     DiagnosticError = {
       provider = function()
         local n = diagnostic.get_diagnostic_error()
         if n == '' or n == nil then return '' end
-        return string.format('  %s %s', icons.error, n)
+        return string.format(' %s %s', icons.error, n)
       end,
-      highlight = {colors.nord11, colors.nord0},
+      highlight = {colors.nord11, colors.nord1},
     }
   },
   {
@@ -242,9 +217,9 @@ gls.right = {
       provider = function()
         local n = diagnostic.get_diagnostic_warn()
         if n == '' or n == nil then return '' end
-        return string.format('  %s %s', icons.warning, n)
+        return string.format(' %s %s', icons.warning, n)
       end,
-      highlight = {colors.nord13, colors.nord0},
+      highlight = {colors.nord13, colors.nord1},
     }
   },
   {
@@ -252,15 +227,9 @@ gls.right = {
       provider = function()
         local n = diagnostic.get_diagnostic_hint()
         if n == '' or n == nil then return '' end
-        return string.format('  %s %s', icons.hint, n)
+        return string.format(' %s %s', icons.hint, n)
       end,
-      highlight = {colors.nord10, colors.nord0},
-    }
-  },
-  {
-    LspRightSep = {
-      provider = function() return sep.right_filled end,
-      highlight = {colors.nord3,colors.nord0},
+      highlight = {colors.nord10, colors.nord1},
     }
   },
   {
@@ -268,12 +237,12 @@ gls.right = {
       provider = function()
         local icon = fileinfo.get_file_icon()
         local fg = fileinfo.get_file_icon_color()
-        local _, _, bg = unpack(mode_hl())
-        highlight('GalaxyFileIcon', fg, bg)
+        highlight('GalaxyFileIcon', fg, colors.nord1)
 
         return '  ' .. icon
       end,
       condition = buffer_not_empty,
+      -- highlight = {colors.nord15, colors.nord1},
     }
   },
   {
@@ -287,30 +256,26 @@ gls.right = {
           fname = vim.fn.expand '%:t'
         end
         if #fname == 0 then return '' end
-        if vim.bo.readonly then fname = fname .. ' ' .. icons.locker end
-        -- if not vim.bo.modifiable then fname = fname .. ' ' .. icons.not_modifiable end
-        -- if vim.bo.modified then fname = fname .. ' ' .. icons.pencil end
         return ' ' .. fname .. ' '
       end,
-      highlight = 'GalaxyViModeNested',
       condition = buffer_not_empty,
+      highlight = {colors.nord5, colors.nord1},
     }
   },
   {
-    RightBreak1 = {
-      provider = function() return sep.right_filled end,
-      highlight = 'GalaxyBreakRight',
+    FileSize = {
+      provider = 'FileSize',
+      condition = buffer_not_empty,
+      highlight = {colors.nord6, colors.nord1},
     }
   },
   {
     PositionInfo = {
       provider = function()
         if not buffer_not_empty() or not wide_enough(60) then return '' end
-        return string.format(' %s %s:%s ', icons.line_number, vim.fn.line('.'), vim.fn.col('.'))
+        return string.format(' %s,%s ', vim.fn.line('.'), vim.fn.col('.'))
       end,
-      highlight = 'GalaxyViMode',
-      separator = sep.right_filled,
-      separator_highlight = 'GalaxyViModeInv'
+      highlight = {colors.nord8, colors.nord1}
     }
   },
   {
@@ -318,11 +283,9 @@ gls.right = {
       provider = function ()
         if not buffer_not_empty() or not wide_enough(65) then return '' end
         local percent = math.floor(100 * vim.fn.line('.') / vim.fn.line('$'))
-        return string.format(' %s %s%s', icons.page, percent, '% ')
+        return string.format(' %s%s', percent, '% ')
       end,
-      highlight = 'GalaxyViMode',
-      separator = sep.right,
-      separator_highlight = 'GalaxyViMode',
+      highlight = {colors.nord13, colors.nord1}
     }
   }
 }
@@ -345,51 +308,24 @@ function has_file_type()
     return true
 end
 
-gls.short_line_left[1] = {
-  BufferType = {
-    provider = function ()
-      local label, fg, nested_fg = unpack(mode_hl())
-      highlight('GalaxyViMode', colors.nord0, fg)
-      highlight('GalaxyViModeInv', fg, nested_fg)
-      highlight('GalaxyViModeInvNested', nested_fg, colors.nord0)
-      local name = short_map[vim.bo.filetype] or 'Editor'
-      return string.format('  %s ', name)
-    end,
-    highlight = 'GalaxyViMode',
-    condition = has_file_type,
-    separator = sep.left_filled,
-    separator_highlight = 'GalaxyViModeInv',
-  }
-}
-gls.short_line_left[2] = {
-  ShortLeftSepNested = {
-    provider = function() return sep.left_filled end,
-    highlight = 'GalaxyViModeInvNested',
+gls.short_line_left = {
+  {
+    ShortLeftBufferType = {
+      provider = function ()
+        local name = short_map[vim.bo.filetype] or ''
+        return string.format('  %s ', name)
+      end,
+      highlight = {colors.nord8,colors.nord1,'bold'},
+      condition = has_file_type,
+    }
   }
 }
 gls.short_line_right = {
-  --[[ {
-    ShortRightLspRightSep = {
-      provider = function() return sep.right_filled end,
-      highlight = {colors.nord3,colors.nord0},
-    }
-  },
-  {
-    ShortRightFileIcon = {
-      provider = function()
-        local icon = fileinfo.get_file_icon()
-        local fg = fileinfo.get_file_icon_color()
-        highlight('GalaxyFileIcon', fg, colors.nord3)
-
-        return '  ' .. icon
-      end,
-      condition = buffer_not_empty,
-    }
-  },
   {
     ShortRightFileName = {
       provider = function()
         if not buffer_not_empty() then return '' end
+        if short_map[vim.bo.filetype] then return '' end
         local fname
         if wide_enough(120) then
           fname = vim.fn.fnamemodify(vim.fn.expand('%'), ':~:.')
@@ -399,20 +335,18 @@ gls.short_line_right = {
         if #fname == 0 then return '' end
         return ' ' .. fname .. ' '
       end,
-      highlight = 'GalaxyViModeNested',
       condition = buffer_not_empty,
-    }
-  }, ]]
-  {
-    ShortRightSepNested = {
-      provider = function() return sep.right_filled end,
-      highlight = 'GalaxyViModeInvNested',
+      highlight = {colors.nord5, colors.nord1},
     }
   },
   {
-    ShortRightSep = {
-      provider = function() return sep.right_filled end,
-      highlight = 'GalaxyViModeInv',
+    ShortRightPositionInfo = {
+      provider = function()
+        if not buffer_not_empty() or not wide_enough(60) then return '' end
+        if short_map[vim.bo.filetype] then return '' end
+        return string.format(' %s,%s ', vim.fn.line('.'), vim.fn.col('.'))
+      end,
+      highlight = {colors.nord8, colors.nord1}
     }
-  }
+  },
 }
