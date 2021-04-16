@@ -36,14 +36,14 @@ local mode_map = {
   ['n'] = {'N', colors.nord8, colors.nord0},
   ['i'] = {'I', colors.nord14, colors.nord0},
   ['R'] = {'R', colors.nord7, colors.nord0},
-  ['v'] = {'V', colors.nord13, colors.nord0},
-  ['V'] = {'V', colors.nord13, colors.nord0},
-  ['c'] = {'C', colors.nord7, colors.nord0},
-  ['s'] = {'S', colors.nord7, colors.nord0},
-  ['S'] = {'S', colors.nord7, colors.nord0},
-  ['t'] = {'T', colors.nord12, colors.nord0},
-  [''] = {'V', colors.nord13, colors.nord0},
-  [''] = {'S', colors.nord7, colors.nord0},
+  ['v'] = {'V', colors.nord12, colors.nord0},
+  ['V'] = {'V', colors.nord12, colors.nord0},
+  ['c'] = {'C', colors.nord11, colors.nord0},
+  ['s'] = {'S', colors.nord11, colors.nord0},
+  ['S'] = {'S', colors.nord11, colors.nord0},
+  ['t'] = {'T', colors.nord11, colors.nord0},
+  [''] = {'V', colors.nord12, colors.nord0},
+  [''] = {'S', colors.nord11, colors.nord0},
   ['Rv'] = {'VIR'},
   ['rm'] = {'--MORE'},
 }
@@ -140,7 +140,7 @@ gls.left = {
         return ''
       end,
       condition = condition.check_git_workspace,
-      highlight = {colors.nord5, colors.nord1},
+      highlight = {colors.nord15, colors.nord1},
     }
   },
   {
