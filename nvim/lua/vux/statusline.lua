@@ -113,9 +113,9 @@ gls.left = {
       provider = function()
         local label, fg, nested_fg = unpack(mode_hl())
         highlight('GalaxyViMode', fg, colors.nord1, "bold")
-        return string.format('   %s  ', label)
+        return string.format('   %s  ', '')
       end,
-      highlight = {colors.nord6,colors.nord1},
+      -- highlight = {colors.nord13,colors.nord1},
     }
   },
   {
@@ -298,4 +298,55 @@ local short_map = {
   ['packer'] = 'Packer',
   ['help'] = 'Help',
   ['ctrlsf'] = 'CtrlSF',
+}
+
+function has_file_type()
+    local f_type = vim.bo.filetype
+    if not f_type or f_type == '' then
+        return false
+    end
+    return true
+end
+
+gls.short_line_left = {
+  {
+    ShortLeftBufferType = {
+      provider = function ()
+        local name = short_map[vim.bo.filetype] or ''
+        return string.format('  %s ', name)
+      end,
+      highlight = {colors.nord8,colors.nord1,'bold'},
+      condition = has_file_type,
+    }
+  }
+}
+gls.short_line_right = {
+  {
+    ShortRightFileName = {
+      provider = function()
+        if not buffer_not_empty() then return '' end
+        if short_map[vim.bo.filetype] then return '' end
+        local fname
+        if wide_enough(120) then
+          fname = vim.fn.fnamemodify(vim.fn.expand('%'), ':~:.')
+        else
+          fname = vim.fn.expand '%:t'
+        end
+        if #fname == 0 then return '' end
+        return ' ' .. fname .. ' '
+      end,
+      condition = buffer_not_empty,
+      highlight = {colors.nord5, colors.nord1},
+    }
+  },
+  {
+    ShortRightPositionInfo = {
+      provider = function()
+        if not buffer_not_empty() or not wide_enough(60) then return '' end
+        if short_map[vim.bo.filetype] then return '' end
+        return string.format(' %s,%s ', vim.fn.line('.'), vim.fn.col('.'))
+      end,
+      highlight = {colors.nord8, colors.nord1}
+    }
+  },
 }
