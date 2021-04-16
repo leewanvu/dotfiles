@@ -111,6 +111,7 @@ return require('packer').startup(function()
     'glepnir/galaxyline.nvim',
     branch = 'main'
   }
+  -- use 'hoob3rt/lualine.nvim'
 
   -- Autopairs
   use 'windwp/nvim-autopairs'

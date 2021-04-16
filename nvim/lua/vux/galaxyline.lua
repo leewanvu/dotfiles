@@ -53,6 +53,11 @@ local sep = {
   left_filled = '', -- e0b0
   right = '', -- e0b3
   left = '', -- e0b1
+
+  --[[ left_filled = '',
+  left = '',
+  right_filled = '',
+  right = '', ]]
 }
 
 local icons = {
@@ -71,7 +76,7 @@ local icons = {
   warning = '',
   info = '',
   hint = '',
-  git_branch = '',
+  git_branch = '',
 }
 
 -- {label, fg, nested_fg}
