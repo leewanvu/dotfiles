@@ -290,7 +290,7 @@ gls.right = {
   }
 }
 
-gl.short_line_list = {'NvimTree', 'startify', 'packer', 'help', 'ctrlsf'}
+gl.short_line_list = {'NvimTree', 'startify', 'packer', 'help', 'ctrlsf', 'dashboard'}
 
 local short_map = {
   ['startify'] = 'Starfity',
@@ -298,6 +298,7 @@ local short_map = {
   ['packer'] = 'Packer',
   ['help'] = 'Help',
   ['ctrlsf'] = 'CtrlSF',
+  ['dashboard'] = 'Dashboard',
 }
 
 function has_file_type()
