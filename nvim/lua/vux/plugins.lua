@@ -23,7 +23,8 @@ return require('packer').startup(function()
   use 'kyazdani42/nvim-tree.lua'
 
   -- Project manager
-  use 'mhinz/vim-startify'
+  -- use 'mhinz/vim-startify'
+  use 'glepnir/dashboard-nvim'
 
   -- Comment
   -- use 'tpope/vim-commentary'
