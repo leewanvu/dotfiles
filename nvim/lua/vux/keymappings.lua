@@ -55,4 +55,4 @@ map('n', '<M-Right>', ':vertical resize +2<CR>')
 -- map('n', '<leader>r', ':Ranger<CR>')
 
 -- GitBlame
-map('n', 'gb', ':GitBlameToggle<CR>')
+-- map('n', 'gb', ':GitBlameToggle<CR>')

@@ -37,10 +37,9 @@ return require('packer').startup(function()
   }
 
   -- Find Picker
-  use {
-    'nvim-telescope/telescope.nvim',
-    requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}},
-  }
+  use 'nvim-lua/popup.nvim'
+  use 'nvim-lua/plenary.nvim'
+  use 'nvim-telescope/telescope.nvim'
 
   -- LSP config
   use 'neovim/nvim-lspconfig'
@@ -59,15 +58,16 @@ return require('packer').startup(function()
 
   -- Git
   use 'tpope/vim-fugitive'
-  use 'airblade/vim-gitgutter'
-  use {
-    'f-person/git-blame.nvim',
-    config = function()
-      vim.g.gitblame_enabled = 0
-      vim.g.gitblame_message_template = ' <author> • <date> • <summary>'
-      vim.g.gitblame_date_format = '%c'
-    end
-  }
+  -- use 'airblade/vim-gitgutter'
+  -- use {
+  --   'f-person/git-blame.nvim',
+  --   config = function()
+  --     vim.g.gitblame_enabled = 0
+  --     vim.g.gitblame_message_template = ' <author> • <date> • <summary>'
+  --     vim.g.gitblame_date_format = '%c'
+  --   end
+  -- }
+  use 'lewis6991/gitsigns.nvim'
 
   -- Documention generator
   use {
