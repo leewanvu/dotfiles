@@ -340,14 +340,4 @@ gls.short_line_right = {
       highlight = {colors.nord5, colors.nord1},
     }
   },
-  {
-    ShortRightPositionInfo = {
-      provider = function()
-        if not buffer_not_empty() or not wide_enough(60) then return '' end
-        if short_map[vim.bo.filetype] then return '' end
-        return string.format(' %s,%s ', vim.fn.line('.'), vim.fn.col('.'))
-      end,
-      highlight = {colors.nord8, colors.nord1}
-    }
-  },
 }
