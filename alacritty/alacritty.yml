@@ -49,7 +49,7 @@ window:
   # Values for `decorations` (macOS only):
   #     - transparent: Title bar, transparent background and title bar buttons
   #     - buttonless: Title bar, transparent background, but no title bar buttons
-  decorations: none
+  decorations: full
 
   # Startup Mode (changes require restart)
   #
@@ -60,7 +60,7 @@ window:
   #
   # Values for `startup_mode` (macOS only):
   #   - SimpleFullscreen
-  startup_mode: Fullscreen
+  startup_mode: Windowed
 
   # Window title
   title: Alacritty
@@ -107,6 +107,25 @@ font:
   # bold_italic:
   #   family: JetBrains Mono
   #   style: Bold Italic
+
+  # DejaVuSansMono Nerd Font
+  # normal:
+  #   family: DejaVuSansMono Nerd Font
+  #   style: Regular
+
+  # bold:
+  #   family: DejaVuSansMono Nerd Font
+  #   style: Bold
+
+  # italic:
+  #   family: DejaVuSansMono Nerd Font
+  #   style: Italic
+
+  # bold_italic:
+  #   family: DejaVuSansMono Nerd Font
+  #   style: Bold Italic
+
+  # JetBrainsMono Nerd Font
   normal:
     family: JetBrainsMono Nerd Font
     style: Regular
@@ -123,7 +142,7 @@ font:
     family: JetBrainsMono Nerd Font
     style: Bold Italic
 
-  size: 12.9
+  size: 11.0
 
   offset:
     x: 0
