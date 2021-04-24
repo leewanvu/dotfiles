@@ -15,3 +15,4 @@ fc-cache -fv
 - Try mattn/emmet-vim
 - Try nvim-treesitter extensions
 - Create own colorscheme
+- Fork tomasiser/vim-code-dark

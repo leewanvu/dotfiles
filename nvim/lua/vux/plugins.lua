@@ -14,6 +14,7 @@ return require('packer').startup(function()
     branch = 'develop',
     config = function() require('vux.nord').setup() end
   }
+  -- use 'tomasiser/vim-code-dark'
 
   -- Status line & tab
   -- use 'vim-airline/vim-airline'
@@ -123,6 +124,4 @@ return require('packer').startup(function()
 
   -- Colors
   use 'norcalli/nvim-colorizer.lua'
-  -- use 'tjdevries/colorbuddy.vim'
-  -- use 'maaslalani/nordbuddy'
 end)
