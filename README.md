@@ -16,3 +16,5 @@ fc-cache -fv
 - Try nvim-treesitter extensions
 - Create own colorscheme
 - Fork tomasiser/vim-code-dark
+- rafamadriz/friendly-snippets
+- https://github.com/phpactor/phpactor
