@@ -98,9 +98,9 @@ return require('packer').startup(function()
 
   -- Float termial
   -- use 'voldikss/vim-floaterm'
-  use 'numtostr/FTerm.nvim'
+  -- use 'numtostr/FTerm.nvim'
   -- use 'oberblastmeister/termwrapper.nvim'
-  -- use 'akinsho/nvim-toggleterm.lua'
+  use 'akinsho/nvim-toggleterm.lua'
 
   -- Icons
   use 'kyazdani42/nvim-web-devicons'

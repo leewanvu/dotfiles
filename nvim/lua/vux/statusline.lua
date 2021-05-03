@@ -78,6 +78,8 @@ local icons = {
   hint = '',
   git_branch = '',
   -- git_branch = '',
+  terminal = 'ﲵ',
+  mode = '', -- 
 }
 
 -- {label, fg, nested_fg}
@@ -107,13 +109,23 @@ local function wide_enough(width)
   return false
 end
 
+local function is_toggleterm()
+  if vim.bo.filetype == 'toggleterm' then return true end
+  return false
+end
+
+local function get_toggle_number()
+  if is_toggleterm() then return icons.terminal .. ' term:' .. vim.b.toggle_number .. ' ' end
+  return ''
+end
+
 gls.left = {
   {
     ViMode = {
       provider = function()
         local label, fg, nested_fg = unpack(mode_hl())
         highlight('GalaxyViMode', fg, colors.nord1, "bold")
-        return string.format('   %s  ', '')
+        return string.format('   %s  ', icons.mode)
       end,
       -- highlight = {colors.nord13,colors.nord1},
     }
@@ -235,6 +247,7 @@ gls.right = {
   {
     FileIcon = {
       provider = function()
+        if is_toggleterm() then return '' end
         local icon = fileinfo.get_file_icon()
         local fg = fileinfo.get_file_icon_color()
         highlight('GalaxyFileIcon', fg, colors.nord1)
@@ -249,6 +262,7 @@ gls.right = {
     FileName = {
       provider = function()
         if not buffer_not_empty() then return '' end
+        if is_toggleterm() then return get_toggle_number() end
         local fname
         if wide_enough(120) then
           fname = vim.fn.fnamemodify(vim.fn.expand('%'), ':~:.')
@@ -272,7 +286,7 @@ gls.right = {
   {
     PositionInfo = {
       provider = function()
-        if not buffer_not_empty() or not wide_enough(60) then return '' end
+        if not buffer_not_empty() or is_toggleterm() or not wide_enough(60) then return '' end
         return string.format(' %s,%s ', vim.fn.line('.'), vim.fn.col('.'))
       end,
       highlight = {colors.nord8, colors.nord1}
@@ -281,7 +295,7 @@ gls.right = {
   {
     PercentInfo = {
       provider = function ()
-        if not buffer_not_empty() or not wide_enough(65) then return '' end
+        if not buffer_not_empty() or is_toggleterm() or not wide_enough(65) then return '' end
         local percent = math.floor(100 * vim.fn.line('.') / vim.fn.line('$'))
         return string.format(' %s%s', percent, '% ')
       end,
@@ -290,7 +304,7 @@ gls.right = {
   }
 }
 
-gl.short_line_list = {'NvimTree', 'startify', 'packer', 'help', 'ctrlsf', 'dashboard'}
+gl.short_line_list = {'NvimTree', 'startify', 'packer', 'help', 'ctrlsf', 'dashboard', 'toggleterm'}
 
 local short_map = {
   ['startify'] = 'Starfity',
@@ -299,6 +313,7 @@ local short_map = {
   ['help'] = 'Help',
   ['ctrlsf'] = 'CtrlSF',
   ['dashboard'] = 'Dashboard',
+  -- ['toggleterm'] = 'ToggleTerm',
 }
 
 function has_file_type()
@@ -313,7 +328,7 @@ gls.short_line_left = {
   {
     ShortLeftBufferType = {
       provider = function ()
-        local name = short_map[vim.bo.filetype] or ''
+        local name = short_map[vim.bo.filetype] or icons.mode
         return string.format('  %s ', name)
       end,
       highlight = {colors.nord8,colors.nord1,'bold'},
@@ -326,6 +341,7 @@ gls.short_line_right = {
     ShortRightFileName = {
       provider = function()
         if not buffer_not_empty() then return '' end
+        if is_toggleterm() then return get_toggle_number() end
         if short_map[vim.bo.filetype] then return '' end
         local fname
         if wide_enough(120) then
