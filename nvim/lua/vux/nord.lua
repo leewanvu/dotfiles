@@ -59,26 +59,26 @@ vim.cmd('highlight FloatermBorder guifg=#D8DEE9')
 --
 -- BufferTabpages: tabpage indicator
 -- BufferTabpageFill: filler after the buffer section
-vim.cmd('hi BufferCurrent guifg=#ECEFF4 guibg=#4C566A')
-vim.cmd('hi BufferCurrentIndex guifg=#88C0D0 guibg=#4C566A')
-vim.cmd('hi BufferCurrentMod guifg=#EBCB8B guibg=#4C566A')
-vim.cmd('hi BufferCurrentSign guifg=#88C0D0 guibg=#4C566A')
-vim.cmd('hi BufferCurrentTarget guifg=#D08770 guibg=#4C566A gui=bold')
+-- vim.cmd('hi BufferCurrent guifg=#ECEFF4 guibg=#4C566A')
+-- vim.cmd('hi BufferCurrentIndex guifg=#88C0D0 guibg=#4C566A')
+-- vim.cmd('hi BufferCurrentMod guifg=#EBCB8B guibg=#4C566A')
+-- vim.cmd('hi BufferCurrentSign guifg=#88C0D0 guibg=#4C566A')
+-- vim.cmd('hi BufferCurrentTarget guifg=#D08770 guibg=#4C566A gui=bold')
 
-vim.cmd('hi BufferVisible guifg=#ECEFF4 guibg=#4C566A')
-vim.cmd('hi BufferVisibleIndex guifg=#88C0D0 guibg=#4C566A')
-vim.cmd('hi BufferVisibleMod guifg=#EBCB8B guibg=#4C566A')
-vim.cmd('hi BufferVisibleSign guifg=#88C0D0 guibg=#4C566A')
-vim.cmd('hi BufferVisibleTarget guifg=#D08770 guibg=#4C566A gui=bold')
+-- vim.cmd('hi BufferVisible guifg=#ECEFF4 guibg=#4C566A')
+-- vim.cmd('hi BufferVisibleIndex guifg=#88C0D0 guibg=#4C566A')
+-- vim.cmd('hi BufferVisibleMod guifg=#EBCB8B guibg=#4C566A')
+-- vim.cmd('hi BufferVisibleSign guifg=#88C0D0 guibg=#4C566A')
+-- vim.cmd('hi BufferVisibleTarget guifg=#D08770 guibg=#4C566A gui=bold')
 
-vim.cmd('hi BufferInactive guifg=#ECEFF4 guibg=#2E3440')
-vim.cmd('hi BufferInactiveIndex guifg=#ECEFF4 guibg=#2E3440')
-vim.cmd('hi BufferInactiveMod guifg=#EBCB8B guibg=#2E3440')
-vim.cmd('hi BufferInactiveSign guifg=#ECEFF4 guibg=#2E3440')
-vim.cmd('hi BufferInactiveTarget guifg=#D08770 guibg=#2E3440 gui=bold')
+-- vim.cmd('hi BufferInactive guifg=#ECEFF4 guibg=#2E3440')
+-- vim.cmd('hi BufferInactiveIndex guifg=#ECEFF4 guibg=#2E3440')
+-- vim.cmd('hi BufferInactiveMod guifg=#EBCB8B guibg=#2E3440')
+-- vim.cmd('hi BufferInactiveSign guifg=#ECEFF4 guibg=#2E3440')
+-- vim.cmd('hi BufferInactiveTarget guifg=#D08770 guibg=#2E3440 gui=bold')
 
-vim.cmd('hi BufferTabpages guifg=#2E3440 guibg=#88C0D0')
-vim.cmd('hi BufferTabpageFill guifg=#2E3440 guibg=#2E3440')
+-- vim.cmd('hi BufferTabpages guifg=#2E3440 guibg=#88C0D0')
+-- vim.cmd('hi BufferTabpageFill guifg=#2E3440 guibg=#2E3440')
 
 end
 
