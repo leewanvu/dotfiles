@@ -18,3 +18,6 @@ fc-cache -fv
 - Fork tomasiser/vim-code-dark
 - rafamadriz/friendly-snippets
 - https://github.com/phpactor/phpactor
+- https://github.com/kdav5758/TrueZen.nvim
+- https://github.com/karb94/neoscroll.nvim
+- https://github.com/folke/which-key.nvim
