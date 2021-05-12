@@ -270,7 +270,7 @@ gls.right = {
           fname = vim.fn.expand '%:t'
         end
         if #fname == 0 then return '' end
-        return ' ' .. fname .. ' '
+        return ' ' .. fname .. ''
       end,
       condition = buffer_not_empty,
       highlight = {colors.nord5, colors.nord1},
@@ -278,7 +278,13 @@ gls.right = {
   },
   {
     FileSize = {
-      provider = 'FileSize',
+      -- provider = 'FileSize',
+      provider = function()
+        if not buffer_not_empty() then return '' end
+        local filesize = fileinfo.get_file_size()
+
+        return ',' .. filesize
+      end,
       condition = buffer_not_empty,
       highlight = {colors.nord6, colors.nord1},
     }
