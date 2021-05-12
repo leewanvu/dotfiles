@@ -1,3 +1,5 @@
+local toggleterm_ui = require("toggleterm.ui")
+
 local function map(mode, lhs, rhs, opts)
   local options = {noremap = true, silent = true}
   if opts then options = vim.tbl_extend('force', options, opts) end
@@ -6,7 +8,22 @@ end
 
 -- Editor
 map('n', '<leader>w', ':w<CR>')
-map('n', '<leader>q', ':bd!<CR>')
+-- map('n', '<leader>q', ':bd!<CR>')
+
+-- Close buffer
+local t = function(str)
+  return vim.api.nvim_replace_termcodes(str, true, true, true)
+end
+
+_G.vux_close_buffer = function()
+  if toggleterm_ui.find_open_windows() then
+    return t ":ToggleTerm<CR>"
+  end
+
+  return t ":bd!<CR>"
+end
+
+map("n", "<leader>q", "v:lua.vux_close_buffer()", {expr = true})
 
 -- Using barbar instead of
 --[[ map('n', '<TAB>', ':bnext<CR>')
