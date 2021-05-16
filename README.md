@@ -19,7 +19,6 @@ fc-cache -fv
 - rafamadriz/friendly-snippets
 - https://github.com/phpactor/phpactor
 - https://github.com/kdav5758/TrueZen.nvim
-- https://github.com/karb94/neoscroll.nvim
 - https://github.com/folke/which-key.nvim
 - https://github.com/folke/trouble.nvim
 - https://github.com/folke/todo-comments.nvim

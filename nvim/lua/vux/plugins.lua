@@ -122,4 +122,10 @@ return require('packer').startup(function()
 
   -- Autopairs
   use 'windwp/nvim-autopairs'
+
+  -- Smooth scroll
+  use 'karb94/neoscroll.nvim'
+
+  -- Which keys
+  use 'folke/which-key.nvim'
 end)

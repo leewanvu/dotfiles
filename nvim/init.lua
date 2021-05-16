@@ -34,5 +34,6 @@ require('vux.statusline')
 require('vux.nvim-autopairs')
 -- require('vux.autotags')
 require('vux.colorize')
+require('vux.neoscroll')
 
 require('vux.keymappings')
