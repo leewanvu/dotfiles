@@ -63,7 +63,7 @@ vim.g.nvim_tree_icons = {
 --   ["q"]              = get_lua_cb("close"),
 -- }
 
-vim.api.nvim_set_keymap('n', '<C-n>', ':NvimTreeToggle<CR>', {
+vim.api.nvim_set_keymap('n', '<Leader>e', ':NvimTreeToggle<CR>', {
   noremap = true,
   silent = true
 })
