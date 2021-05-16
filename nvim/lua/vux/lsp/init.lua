@@ -9,6 +9,22 @@ vim.fn.sign_define("LspDiagnosticsSignInformation",
 
 local lsp_config = require'lspconfig'
 local on_attach = function(client, bufnr)
+  -- Show function signature when you types
+  require "lsp_signature".on_attach({
+    bind = true, -- This is mandatory, otherwise border config won't get registered.
+                 -- If you want to hook lspsaga or other signature handler, pls set to false
+    doc_lines = 10, -- only show one line of comment set to 0 if you do not want API comments be shown
+
+    hint_enable = true, -- virtual hint enable
+    hint_prefix = "🐼 ",  -- Panda for parameter
+    hint_scheme = "String",
+
+    handler_opts = {
+      border = "none"   -- double, single, shadow, none
+    },
+    decorator = {"`", "`"}  -- or decorator = {"***", "***"}  decorator = {"**", "**"} see markdown help
+  })
+
   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
   local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
 

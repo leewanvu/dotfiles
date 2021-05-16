@@ -7,30 +7,6 @@ return require('packer').startup(function()
   -- Packer can manage itself as an optional plugin
   use { 'wbthomason/packer.nvim', opt = true }
 
-  -- Themes
-  use {
-    -- 'arcticicestudio/nord-vim',
-    'leewanvu/nord-vim',
-    branch = 'develop',
-    config = function() require('vux.nord').setup() end
-  }
-  -- use 'tomasiser/vim-code-dark'
-
-  -- Status line & tab
-  -- use 'vim-airline/vim-airline'
-  -- use 'vim-airline/vim-airline-themes'
-
-  -- Explore
-  use 'kyazdani42/nvim-tree.lua'
-
-  -- Project manager
-  -- use 'mhinz/vim-startify'
-  use 'glepnir/dashboard-nvim'
-
-  -- Comment
-  -- use 'tpope/vim-commentary'
-  use 'b3nj5m1n/kommentary'
-
   -- Treesitter
   use {
     'nvim-treesitter/nvim-treesitter',
@@ -56,6 +32,44 @@ return require('packer').startup(function()
   use 'hrsh7th/vim-vsnip-integ'
   -- vscode-like pictograms
   use 'onsails/lspkind-nvim'
+  use 'ray-x/lsp_signature.nvim'
+
+  -- Themes
+  use {
+    -- 'arcticicestudio/nord-vim',
+    'leewanvu/nord-vim',
+    branch = 'develop',
+    config = function() require('vux.nord').setup() end
+  }
+  -- use 'tomasiser/vim-code-dark'
+
+  -- Status line & tab
+  -- use 'vim-airline/vim-airline'
+  -- use 'vim-airline/vim-airline-themes'
+
+  -- Icons
+  use 'kyazdani42/nvim-web-devicons'
+
+  -- Colors
+  use 'norcalli/nvim-colorizer.lua'
+
+  -- Explore
+  use 'kyazdani42/nvim-tree.lua'
+
+  -- Status line
+  use {
+    'glepnir/galaxyline.nvim',
+    branch = 'main'
+  }
+  -- use 'hoob3rt/lualine.nvim'
+
+  -- Tabline
+  -- use 'romgrk/barbar.nvim'
+  -- use 'akinsho/nvim-bufferline.lua'
+
+  -- Project manager
+  -- use 'mhinz/vim-startify'
+  use 'glepnir/dashboard-nvim'
 
   -- Git
   use 'tpope/vim-fugitive'
@@ -75,6 +89,10 @@ return require('packer').startup(function()
     'kkoomen/vim-doge',
     run = ':call doge#install()'
   }
+
+  -- Comment
+  -- use 'tpope/vim-commentary'
+  use 'b3nj5m1n/kommentary'
 
   -- Motion
   -- use 'easymotion/vim-easymotion'
@@ -96,32 +114,12 @@ return require('packer').startup(function()
   -- Search string
   use 'dyng/ctrlsf.vim'
 
-  -- Float termial
+  -- Terminal
   -- use 'voldikss/vim-floaterm'
   -- use 'numtostr/FTerm.nvim'
   -- use 'oberblastmeister/termwrapper.nvim'
   use 'akinsho/nvim-toggleterm.lua'
 
-  -- Icons
-  use 'kyazdani42/nvim-web-devicons'
-
-  -- Tabline
-  -- use 'romgrk/barbar.nvim'
-  -- use 'akinsho/nvim-bufferline.lua'
-
-  -- Status line
-  use {
-    'glepnir/galaxyline.nvim',
-    branch = 'main'
-  }
-  -- use 'hoob3rt/lualine.nvim'
-
   -- Autopairs
   use 'windwp/nvim-autopairs'
-
-  -- Auto tags
-  -- use 'windwp/nvim-ts-autotag'
-
-  -- Colors
-  use 'norcalli/nvim-colorizer.lua'
 end)
