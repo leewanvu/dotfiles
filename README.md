@@ -20,5 +20,4 @@ fc-cache -fv
 - https://github.com/phpactor/phpactor
 - https://github.com/kdav5758/TrueZen.nvim
 - https://github.com/folke/which-key.nvim
-- https://github.com/folke/trouble.nvim
 - https://github.com/folke/todo-comments.nvim
