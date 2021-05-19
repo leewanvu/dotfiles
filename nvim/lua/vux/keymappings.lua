@@ -76,3 +76,7 @@ map('n', '<M-Right>', ':vertical resize +2<CR>')
 
 -- Y yank until the end of line
 map('n', 'Y', 'y$')
+
+-- Remap for dealing with word wrap
+map('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true })
+map('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true })
