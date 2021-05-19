@@ -32,10 +32,8 @@ local colors = {
   none = "NONE",
 }
 
--- TODO check mac os
-local is_transparent = true
-
-if is_transparent then
+-- whether or not transparent
+if vim.g.vux.os == "linux" and vim.g.vux.is_bg_transparent then
   colors.bg = colors.nord2
 end
 

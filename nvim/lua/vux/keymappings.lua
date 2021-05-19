@@ -73,3 +73,6 @@ map('n', '<M-Right>', ':vertical resize +2<CR>')
 
 -- GitBlame
 -- map('n', 'gb', ':GitBlameToggle<CR>')
+
+-- Y yank until the end of line
+map('n', 'Y', 'y$')
