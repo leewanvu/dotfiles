@@ -172,6 +172,8 @@ alias aremail="arm email"
 
 alias arreportrs="arm report-reset"
 
+alias arrs="arwebrs && arboxrs && arreportrs"
+
 alias vdot="cd ~/Work/dotfiles && v nvim/init.lua"
 alias r="ranger"
 

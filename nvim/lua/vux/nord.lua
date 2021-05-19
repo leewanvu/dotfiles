@@ -34,9 +34,9 @@ vim.cmd('colorscheme nord')
 -- nord15 = "#B48EAD",
 
 -- Transparent background
---[[ vim.cmd('highlight Normal ctermbg=NONE guibg=NONE')
+vim.cmd('highlight Normal ctermbg=NONE guibg=NONE')
 vim.cmd('highlight VertSplit ctermbg=NONE guibg=NONE')
-vim.cmd('highlight SignColumn ctermbg=NONE guibg=NONE') ]]
+vim.cmd('highlight SignColumn ctermbg=NONE guibg=NONE')
 -- NvimTree
 vim.cmd('highlight NvimTreeIndentMarker guifg=#4C566A')
 -- Floaterm
