@@ -5,7 +5,7 @@ require('telescope').setup {
       vimgrep_arguments = {'rg', '--no-heading', '--with-filename', '--line-number', '--column', '--smart-case'},
       prompt_position = "bottom",
       prompt_prefix = "   ",
-      selection_caret = " ",
+      selection_caret = " ",
       entry_prefix = "  ",
       initial_mode = "insert",
       selection_strategy = "reset",
@@ -13,7 +13,12 @@ require('telescope').setup {
       layout_strategy = "horizontal",
       layout_defaults = {horizontal = {mirror = false, preview_width = 0.6}, vertical = {mirror = false}},
       file_sorter = require'telescope.sorters'.get_fuzzy_file,
-      file_ignore_patterns = {},
+      file_ignore_patterns = {
+        "node_modules/*",
+        "vendor/*",
+        ".idea/*",
+        ".git/*"
+      },
       generic_sorter = require'telescope.sorters'.get_generic_fuzzy_sorter,
       shorten_path = true,
       winblend = 0,

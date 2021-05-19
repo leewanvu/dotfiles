@@ -28,8 +28,16 @@ local colors = {
   nord13 = "#EBCB8B",
   nord14 = "#A3BE8C",
   nord15 = "#B48EAD",
+  bg = "#3B4252",
   none = "NONE",
 }
+
+-- TODO check mac os
+local is_transparent = true
+
+if is_transparent then
+  colors.bg = colors.nord2
+end
 
 -- {label, fg, nested_fg}
 local mode_map = {
@@ -124,10 +132,10 @@ gls.left = {
     ViMode = {
       provider = function()
         local label, fg, nested_fg = unpack(mode_hl())
-        highlight('GalaxyViMode', fg, colors.nord1, "bold")
+        highlight('GalaxyViMode', fg, colors.bg, "bold")
         return string.format('   %s  ', icons.mode)
       end,
-      -- highlight = {colors.nord13,colors.nord1},
+      -- highlight = {colors.nord13,colors.bg},
     }
   },
   {
@@ -139,7 +147,7 @@ gls.left = {
         return ''
       end,
       condition = condition.check_git_workspace,
-      highlight = {colors.nord15, colors.nord1},
+      highlight = {colors.nord15, colors.bg},
     }
   },
   {
@@ -152,7 +160,7 @@ gls.left = {
         return ''
       end,
       condition = condition.check_git_workspace,
-      highlight = {colors.nord15, colors.nord1},
+      highlight = {colors.nord15, colors.bg},
     }
   },
   {
@@ -165,7 +173,7 @@ gls.left = {
       end,
       condition = condition.check_git_workspace,
       icon = ' +',
-      highlight = {colors.nord14, colors.nord1},
+      highlight = {colors.nord14, colors.bg},
     }
   },
   {
@@ -178,7 +186,7 @@ gls.left = {
       end,
       condition = condition.check_git_workspace,
       icon = ' ~',
-      highlight = {colors.nord13, colors.nord1},
+      highlight = {colors.nord13, colors.bg},
     }
   },
   {
@@ -191,7 +199,7 @@ gls.left = {
       end,
       condition = condition.check_git_workspace,
       icon = ' -',
-      highlight = {colors.nord11, colors.nord1},
+      highlight = {colors.nord11, colors.bg},
     }
   },
   --[[ {
@@ -208,7 +216,7 @@ gls.left = {
         end
         return string.format(' %s  ', lsp_icon)
       end,
-      highlight = {colors.nord8, colors.nord1,'italic'},
+      highlight = {colors.nord8, colors.bg,'italic'},
     }
   }, ]]
 }
@@ -221,7 +229,7 @@ gls.right = {
         if n == '' or n == nil then return '' end
         return string.format(' %s %s', icons.error, n)
       end,
-      highlight = {colors.nord11, colors.nord1},
+      highlight = {colors.nord11, colors.bg},
     }
   },
   {
@@ -231,7 +239,7 @@ gls.right = {
         if n == '' or n == nil then return '' end
         return string.format(' %s %s', icons.warning, n)
       end,
-      highlight = {colors.nord13, colors.nord1},
+      highlight = {colors.nord13, colors.bg},
     }
   },
   {
@@ -241,7 +249,7 @@ gls.right = {
         if n == '' or n == nil then return '' end
         return string.format(' %s %s', icons.hint, n)
       end,
-      highlight = {colors.nord10, colors.nord1},
+      highlight = {colors.nord10, colors.bg},
     }
   },
   {
@@ -250,12 +258,12 @@ gls.right = {
         if is_toggleterm() then return '' end
         local icon = fileinfo.get_file_icon()
         local fg = fileinfo.get_file_icon_color()
-        highlight('GalaxyFileIcon', fg, colors.nord1)
+        highlight('GalaxyFileIcon', fg, colors.bg)
 
         return '  ' .. icon
       end,
       condition = buffer_not_empty,
-      -- highlight = {colors.nord15, colors.nord1},
+      -- highlight = {colors.nord15, colors.bg},
     }
   },
   {
@@ -273,7 +281,7 @@ gls.right = {
         return ' ' .. fname .. ''
       end,
       condition = buffer_not_empty,
-      highlight = {colors.nord5, colors.nord1},
+      highlight = {colors.nord5, colors.bg},
     }
   },
   {
@@ -286,7 +294,7 @@ gls.right = {
         return ',' .. filesize
       end,
       condition = buffer_not_empty,
-      highlight = {colors.nord6, colors.nord1},
+      highlight = {colors.nord6, colors.bg},
     }
   },
   {
@@ -295,7 +303,7 @@ gls.right = {
         if not buffer_not_empty() or is_toggleterm() or not wide_enough(60) then return '' end
         return string.format(' %s,%s ', vim.fn.line('.'), vim.fn.col('.'))
       end,
-      highlight = {colors.nord8, colors.nord1}
+      highlight = {colors.nord8, colors.bg}
     }
   },
   {
@@ -305,7 +313,7 @@ gls.right = {
         local percent = math.floor(100 * vim.fn.line('.') / vim.fn.line('$'))
         return string.format(' %s%s', percent, '% ')
       end,
-      highlight = {colors.nord13, colors.nord1}
+      highlight = {colors.nord13, colors.bg}
     }
   }
 }
@@ -337,7 +345,7 @@ gls.short_line_left = {
         local name = short_map[vim.bo.filetype] or icons.mode
         return string.format('  %s ', name)
       end,
-      highlight = {colors.nord8,colors.nord1,'bold'},
+      highlight = {colors.nord8,colors.bg,'bold'},
       condition = has_file_type,
     }
   }
@@ -359,7 +367,7 @@ gls.short_line_right = {
         return ' ' .. fname .. ' '
       end,
       condition = buffer_not_empty,
-      highlight = {colors.nord5, colors.nord1},
+      highlight = {colors.nord5, colors.bg},
     }
   },
 }
