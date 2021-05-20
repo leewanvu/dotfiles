@@ -1,6 +1,7 @@
 require('vux.globals')
 require('vux.plugins')
 require('vux.options')
+require('vux.nord')
 require('vux.nvimtree')
 -- require('vux.starrtify')
 require('vux.dashboard')

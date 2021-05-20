@@ -35,17 +35,8 @@ return require('packer').startup(function()
   use 'ray-x/lsp_signature.nvim'
 
   -- Themes
-  use {
-    -- 'arcticicestudio/nord-vim',
-    'leewanvu/nord-vim',
-    branch = 'develop',
-    config = function() require('vux.nord').setup() end
-  }
+  use { 'leewanvu/nord-vim', branch = 'develop' }
   -- use 'tomasiser/vim-code-dark'
-
-  -- Status line & tab
-  -- use 'vim-airline/vim-airline'
-  -- use 'vim-airline/vim-airline-themes'
 
   -- Icons
   use 'kyazdani42/nvim-web-devicons'
@@ -61,11 +52,6 @@ return require('packer').startup(function()
     'glepnir/galaxyline.nvim',
     branch = 'main'
   }
-  -- use 'hoob3rt/lualine.nvim'
-
-  -- Tabline
-  -- use 'romgrk/barbar.nvim'
-  -- use 'akinsho/nvim-bufferline.lua'
 
   -- Project manager
   -- use 'mhinz/vim-startify'
@@ -105,7 +91,6 @@ return require('packer').startup(function()
   -- use 'jiangmiao/auto-pairs'
 
   -- Indent line
-  -- use 'yggdroot/indentline'
   use { 'lukas-reineke/indent-blankline.nvim', branch = 'lua' }
 
   -- Strip whitespace
@@ -115,9 +100,6 @@ return require('packer').startup(function()
   use 'dyng/ctrlsf.vim'
 
   -- Terminal
-  -- use 'voldikss/vim-floaterm'
-  -- use 'numtostr/FTerm.nvim'
-  -- use 'oberblastmeister/termwrapper.nvim'
   use 'akinsho/nvim-toggleterm.lua'
 
   -- Autopairs
