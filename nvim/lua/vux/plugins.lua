@@ -21,6 +21,10 @@ return require('packer').startup(function()
   -- LSP config
   use 'neovim/nvim-lspconfig'
 
+  -- Minimaps
+  -- use 'simrat39/symbols-outline.nvim'
+  -- use 'liuchengxu/vista.vim'
+
   -- Snippets
   -- use 'norcalli/snippets.nvim'
 
