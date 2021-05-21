@@ -114,4 +114,10 @@ return require('packer').startup(function()
 
   -- Which keys
   -- use 'folke/which-key.nvim'
+  
+  -- Matrix =))
+  -- use 'uguu-org/vim-matrix-screensaver'
+
+  -- Zen mode
+  -- use 'kdav5758/TrueZen.nvim'
 end)
