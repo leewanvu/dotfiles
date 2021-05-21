@@ -1,5 +1,5 @@
 vim.g.nvim_tree_width = 40
-vim.g.nvim_tree_ignore = { '.git', 'node_modules', 'vendor' }
+vim.g.nvim_tree_ignore = { '.git', '.idea', 'node_modules', 'vendor' }
 -- vim.g.nvim_tree_auto_open = 1
 vim.g.nvim_tree_quit_on_open = 1
 vim.g.nvim_tree_indent_markers = 1
