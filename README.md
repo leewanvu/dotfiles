@@ -12,7 +12,6 @@ fc-cache -fv
 ```
 
 ### TODO
-- Transparent option for nord
 - Try mattn/emmet-vim
 - Try nvim-treesitter extensions
 - Create own colorscheme
