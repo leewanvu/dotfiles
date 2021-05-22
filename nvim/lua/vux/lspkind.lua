@@ -1,25 +1,64 @@
 require('lspkind').init({
-    with_text = false,
+    -- enables text annotations
+    --
+    -- default: true
+    with_text = true,
+
+    -- default symbol map
+    -- can be either 'default' or
+    -- 'codicons' for codicon preset (requires vscode-codicons font installed)
+    --
+    -- default: 'default'
+    preset = 'codicons',
+
+    -- override preset symbols
+    --
+    -- default: {}
     symbol_map = {
-      Text = '  ',
-      Method = '  ',
-      Function = '  ',
-      Constructor = '  ',
-      Variable = '[]',
-      Class = '  ',
-      Interface = ' 蘒',
-      Module = '  ',
-      Property = '  ',
-      Unit = ' 塞 ',
-      Value = '  ',
-      Enum = ' 練',
-      Keyword = '  ',
-      Snippet = '  ',
+      Text = '',
+      Method = 'ƒ',
+      Function = '',
+      Constructor = '',
+      Variable = '',
+      Class = '',
+      Interface = 'ﰮ',
+      Module = '',
+      Property = '',
+      Unit = '',
+      Value = '',
+      Enum = '了',
+      Keyword = '',
+      Snippet = '﬌',
       Color = '',
       File = '',
       Folder = '',
-      EnumMember = '  ',
-      Constant = '  ',
-      Struct = '  '
+      EnumMember = '',
+      Constant = '',
+      Struct = ''
     },
 })
+-- require('lspkind').init({
+--     with_text = false,
+--     symbol_map = {
+--       Text = '  ',
+--       Method = '  ',
+--       Function = '  ',
+--       Constructor = '  ',
+--       Variable = '[]',
+--       Class = '  ',
+--       Interface = ' 蘒',
+--       Module = '  ',
+--       Property = '  ',
+--       Unit = ' 塞 ',
+--       Value = '  ',
+--       Enum = ' 練',
+--       Keyword = '  ',
+--       Snippet = '  ',
+--       Color = '',
+--       File = '',
+--       Folder = '',
+--       EnumMember = '  ',
+--       Constant = '  ',
+--       Struct = '  '
+--     },
+-- })
