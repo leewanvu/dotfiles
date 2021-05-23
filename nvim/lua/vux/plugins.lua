@@ -113,7 +113,7 @@ return require('packer').startup(function()
   use 'karb94/neoscroll.nvim'
 
   -- Which keys
-  -- use 'folke/which-key.nvim'
+  use 'folke/which-key.nvim'
   
   -- Matrix =))
   -- use 'uguu-org/vim-matrix-screensaver'
