@@ -8,7 +8,6 @@ end
 
 -- Editor
 map('n', '<leader>w', ':w<CR>')
--- map('n', '<leader>q', ':bd!<CR>')
 
 -- Close buffer
 local t = function(str)
@@ -24,10 +23,6 @@ _G.vux_close_buffer = function()
 end
 
 map("n", "<leader>q", "v:lua.vux_close_buffer()", {expr = true})
-
--- Using barbar instead of
---[[ map('n', '<TAB>', ':bnext<CR>')
-map('n', '<S-TAB>', ':bprevious<CR>') ]]
 
 map('n', ']b', ':bnext<CR>')
 map('n', '[b', ':bprevious<CR>')
@@ -67,12 +62,6 @@ map('n', '<M-Up>', ':resize -2<CR>')
 map('n', '<M-Down>', ':resize +2<CR>')
 map('n', '<M-Left>', ':vertical resize -2<CR>')
 map('n', '<M-Right>', ':vertical resize +2<CR>')
-
--- Ranger
--- map('n', '<leader>r', ':Ranger<CR>')
-
--- GitBlame
--- map('n', 'gb', ':GitBlameToggle<CR>')
 
 -- Y yank until the end of line
 map('n', 'Y', 'y$')
