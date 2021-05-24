@@ -16,7 +16,7 @@ local on_attach = function(client, bufnr)
     doc_lines = 10, -- only show one line of comment set to 0 if you do not want API comments be shown
 
     hint_enable = true, -- virtual hint enable
-    hint_prefix = "🐼 ",  -- Panda for parameter
+    hint_prefix = " ",  -- Panda for parameter
     hint_scheme = "String",
 
     handler_opts = {
