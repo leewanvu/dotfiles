@@ -62,7 +62,7 @@ local wk = require("which-key")
 -- normal mode, has leader
 wk.register({
   ["w"] = "Save buffer",
-  ["q"] = "Close buffer",
+  ["q"] = "Delete buffer",
   ["e"] = "Explorer",
   ["p"] = "Find files",
   ["n"] = "No highlight",
@@ -79,19 +79,27 @@ wk.register({
     s = "Stage hunk",
     u = "Undo stage hunk",
   },
-  f = {
-    name = "+Search",
+  s = {
+    name = "+Search (CtrlSF)",
     o = "Open",
     t = "Toggle",
-    f = "Input...",
-    n = "Word in the cursor",
-    p = "Last pattern search"
-    -- TODO add more
+    u = "Update",
+    f = "Search [arguments] {pattern} [path]",
+    n = "Words under the cursor",
+    p = "Last search pattern"
   },
-}, { prefix = "<leader>"})
+  l = {
+    name = "+LSP"
+    -- TODO add more
+  }
+}, { prefix = "<leader>"} )
 
 -- normal mode, no <leader>
 wk.register({
+  ["gc"] = {
+    name = "+Komentary",
+    c = "Comments"
+  },
   ["["] = {
     b = "Prev buffer",
     c = "Prev hunk"
@@ -100,4 +108,23 @@ wk.register({
     b = "Next buffer",
     c = "Next hunk"
   }
+})
+
+-- visual mode, has <leader>
+wk.register({
+  s = {
+    name = "+Search (CtrlSF)",
+    f = "Words in the current visual selected",
+    F = "Like f, but excecute",
+  },
+}, {
+  mode = "v",
+  prefix = "<leader>"
+})
+
+-- visual mode, no <leader>
+wk.register({
+  ["gc"] = "Comments"
+}, {
+ mode = "v"
 })
