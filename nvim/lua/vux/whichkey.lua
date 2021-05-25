@@ -64,20 +64,21 @@ wk.register({
   ["w"] = "Save buffer",
   ["q"] = "Delete buffer",
   ["e"] = "Explorer",
-  ["p"] = "Find files",
+  -- ["p"] = "Find files",
   ["n"] = "No highlight",
-  ["b"] = "List buffers",
-  ["/"] = "Find current buffer",
-  ["g"] = "Show git files",
+  -- ["b"] = "List buffers",
+  -- ["/"] = "Find current buffer",
   ["d"] = "Documentation generator",
-  h = {
-    name = "+Gitsigns",
-    p = "Preview hunk",
-    b = "Blame line",
-    r = "Reset hunk",
-    R = "Reset buffer",
-    s = "Stage hunk",
-    u = "Undo stage hunk",
+  g = {
+    name = "+Git",
+    p = { '<cmd>lua require"gitsigns".preview_hunk()<CR>', "Preview hunk" },
+    j = { '<cmd>lua require"gitsigns".next_hunk()<CR>', "Next hunk" },
+    k = { '<cmd>lua require"gitsigns".prev_hunk()<CR>', "Prev hunk" },
+    b = { '<cmd>lua require"gitsigns".blame_line()<CR>', "Blame line" },
+    r = { '<cmd>lua require"gitsigns".reset_hunk()<CR>', "Reset hunk" },
+    R = { '<cmd>lua require"gitsigns".reset_buffer()<CR>', "Reset buffer" },
+    s = { '<cmd>lua require"gitsigns".stage_hunk()<CR>', "Stage hunk" },
+    u = { '<cmd>lua require"gitsigns".undo_stage_hunk()<CR>', "Undo stage hunk" },
   },
   s = {
     name = "+Search (CtrlSF)",
@@ -91,6 +92,21 @@ wk.register({
   l = {
     name = "+LSP"
     -- TODO add more
+  },
+  f = {
+    name = "+Telescope",
+    f = { "<cmd>lua require('telescope.builtin').find_files({ find_command = { 'rg', '--files', '--hidden', '--no-ignore-vcs', '-g', '!{node_modules,.git,vendor}' } })<cr>", "Find files" },
+    g = { "<cmd>lua require('telescope.builtin').git_status()<cr>", "Git status" },
+    b = { "<cmd>lua require('telescope.builtin').buffers()<cr>", "Buffers" },
+    z = { "<cmd>lua require('telescope.builtin').current_buffer_fuzzy_find()<cr>", "Find in open buffer" },
+    -- TODO
+  },
+  b = {
+    name = "+Buffers",
+    c = "Close buffer",
+    s = "Save buffer",
+    n = "Next buffer",
+    p = "Prev buffer",
   }
 }, { prefix = "<leader>"} )
 
