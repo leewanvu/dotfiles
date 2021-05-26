@@ -56,6 +56,18 @@ require("which-key").setup {
   -- }
 }
 
+-- CtrlSF keymaps
+vim.api.nvim_exec([[
+  nmap     <leader>sf <Plug>CtrlSFPrompt
+  vmap     <leader>sf <Plug>CtrlSFVwordPath
+  vmap     <leader>ss <Plug>CtrlSFVwordExec
+  nmap     <leader>ss <Plug>CtrlSFCwordPath
+  nmap     <leader>sp <Plug>CtrlSFPwordPath
+  nnoremap <leader>so :CtrlSFOpen<CR>
+  nnoremap <leader>st :CtrlSFToggle<CR>
+  nnoremap <leader>su :CtrlSFUpdate<CR>
+]], '')
+
 -- register keymaps
 local wk = require("which-key")
 
@@ -71,6 +83,7 @@ wk.register({
   ["d"] = "Documentation generator",
   g = {
     name = "+Git",
+    g = { "<cmd>lua require('telescope.builtin').git_status()<cr>", "Git status" },
     p = { '<cmd>lua require"gitsigns".preview_hunk()<CR>', "Preview hunk" },
     j = { '<cmd>lua require"gitsigns".next_hunk()<CR>', "Next hunk" },
     k = { '<cmd>lua require"gitsigns".prev_hunk()<CR>', "Prev hunk" },
@@ -86,7 +99,7 @@ wk.register({
     t = "Toggle",
     u = "Update",
     f = "Search [arguments] {pattern} [path]",
-    n = "Words under the cursor",
+    s = "Words under the cursor",
     p = "Last search pattern"
   },
   l = {
@@ -96,19 +109,18 @@ wk.register({
   f = {
     name = "+Telescope",
     f = { "<cmd>lua require('telescope.builtin').find_files({ find_command = { 'rg', '--files', '--hidden', '--no-ignore-vcs', '-g', '!{node_modules,.git,vendor}' } })<cr>", "Find files" },
-    g = { "<cmd>lua require('telescope.builtin').git_status()<cr>", "Git status" },
-    b = { "<cmd>lua require('telescope.builtin').buffers()<cr>", "Buffers" },
-    z = { "<cmd>lua require('telescope.builtin').current_buffer_fuzzy_find()<cr>", "Find in open buffer" },
+    z = { "<cmd>lua require('telescope.builtin').current_buffer_fuzzy_find()<cr>", "Find text in open buffer" },
     -- TODO
   },
   b = {
     name = "+Buffers",
-    c = "Close buffer",
-    s = "Save buffer",
-    n = "Next buffer",
-    p = "Prev buffer",
+    b = { "<cmd>lua require('telescope.builtin').buffers()<cr>", "Find buffers" },
+    -- c = "Close buffer",
+    -- s = "Save buffer",
+    -- n = "Next buffer",
+    -- p = "Prev buffer",
   }
-}, { prefix = "<leader>"} )
+}, { prefix = "<leader>" })
 
 -- normal mode, no <leader>
 wk.register({
@@ -131,7 +143,7 @@ wk.register({
   s = {
     name = "+Search (CtrlSF)",
     f = "Words in the current visual selected",
-    F = "Like f, but excecute",
+    s = "Like f, but excecute",
   },
 }, {
   mode = "v",
