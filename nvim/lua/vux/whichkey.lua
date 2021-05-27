@@ -41,6 +41,7 @@ require("which-key").setup {
     height = { min = 5, max = 25 }, -- min and max height of the columns
     width = { min = 20, max = 50 }, -- min and max width of the columns
     spacing = 3, -- spacing between columns
+    align = "center"
   },
   ignore_missing = false, -- enable this to hide mappings for which you didn't specify a label
   hidden = { "<silent>", "<cmd>", "<Cmd>", "<CR>", "call", "lua", "^:", "^ "}, -- hide mapping boilerplate
@@ -76,10 +77,8 @@ wk.register({
   ["w"] = "Save buffer",
   ["q"] = "Delete buffer",
   ["e"] = "Explorer",
-  -- ["p"] = "Find files",
+  ["p"] = { "<cmd>lua require('telescope.builtin').find_files({ find_command = { 'rg', '--files', '--hidden', '--no-ignore-vcs', '-g', '!{node_modules,.git,vendor}' } })<cr>", "Find files" },
   ["n"] = "No highlight",
-  -- ["b"] = "List buffers",
-  -- ["/"] = "Find current buffer",
   ["d"] = "Documentation generator",
   g = {
     name = "+Git",
@@ -110,6 +109,7 @@ wk.register({
     name = "+Telescope",
     f = { "<cmd>lua require('telescope.builtin').find_files({ find_command = { 'rg', '--files', '--hidden', '--no-ignore-vcs', '-g', '!{node_modules,.git,vendor}' } })<cr>", "Find files" },
     z = { "<cmd>lua require('telescope.builtin').current_buffer_fuzzy_find()<cr>", "Find text in open buffer" },
+    o = { "<cmd>Telescope oldfiles<cr>", "Find oldfiles" },
     -- TODO
   },
   b = {
