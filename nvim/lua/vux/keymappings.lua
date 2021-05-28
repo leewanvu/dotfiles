@@ -23,6 +23,7 @@ _G.vux_close_buffer = function()
 end
 
 map("n", "<leader>q", "v:lua.vux_close_buffer()", {expr = true})
+map("n", "<leader>bd", "v:lua.vux_close_buffer()", {expr = true})
 
 map('n', ']b', ':bnext<CR>')
 map('n', '[b', ':bprevious<CR>')

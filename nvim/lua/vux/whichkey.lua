@@ -74,12 +74,13 @@ local wk = require("which-key")
 
 -- normal mode, has leader
 wk.register({
-  ["w"] = "Save buffer",
+  ["w"] = "Write buffer",
   ["q"] = "Delete buffer",
-  ["e"] = "Explorer",
+  ["e"] = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
+  -- ["e"] = "Explorer",
   ["p"] = { "<cmd>lua require('telescope.builtin').find_files({ find_command = { 'rg', '--files', '--hidden', '--no-ignore-vcs', '-g', '!{node_modules,.git,vendor}' } })<cr>", "Find files" },
   ["n"] = "No highlight",
-  ["d"] = "Documentation generator",
+  ["d"] = "Doc generator",
   g = {
     name = "+Git",
     g = { "<cmd>lua require('telescope.builtin').git_status()<cr>", "Git status" },
@@ -93,7 +94,7 @@ wk.register({
     S = { '<cmd>lua require"gitsigns".stage_buffer()<CR>', "Stage buffer" },
     u = { '<cmd>lua require"gitsigns".undo_stage_hunk()<CR>', "Undo stage hunk" },
     d = { '<cmd>lua require"gitsigns".diffthis()<CR>', "Diff this" },
-    h = { '<cmd>lua require"gitsigns".toggle_linehl()<CR>', "Diff this" },
+    h = { '<cmd>lua require"gitsigns".toggle_linehl()<CR>', "Highlight" },
   },
   s = {
     name = "+Search (CtrlSF)",
@@ -118,10 +119,11 @@ wk.register({
   b = {
     name = "+Buffers",
     b = { "<cmd>lua require('telescope.builtin').buffers()<cr>", "Find buffers" },
-    -- c = "Close buffer",
-    -- s = "Save buffer",
-    -- n = "Next buffer",
-    -- p = "Prev buffer",
+    n = { "<cmd>bnext<cr>", "Next buffer" },
+    p = { "<cmd>bprevious<cr>", "Prev buffer" },
+    w = { "<cmd>w<cr>", "Write buffer" },
+    d = { "Delete buffer" }, -- set mapping in /vux/keymappings.lua
+    l = { "<cmd>luafile %<cr>", "luafile %" }
   }
 }, { prefix = "<leader>" })
 
@@ -133,11 +135,11 @@ wk.register({
   },
   ["["] = {
     b = "Prev buffer",
-    c = "Prev hunk"
+    -- c = "Prev hunk"
   },
   ["]"] = {
     b = "Next buffer",
-    c = "Next hunk"
+    -- c = "Next hunk"
   }
 })
 
@@ -157,5 +159,5 @@ wk.register({
 wk.register({
   ["gc"] = "Comments"
 }, {
- mode = "v"
+  mode = "v"
 })
