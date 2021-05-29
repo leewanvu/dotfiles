@@ -77,7 +77,6 @@ wk.register({
   ["w"] = "Write buffer",
   ["q"] = "Delete buffer",
   ["e"] = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
-  -- ["e"] = "Explorer",
   ["p"] = { "<cmd>lua require('telescope.builtin').find_files({ find_command = { 'rg', '--files', '--hidden', '--no-ignore-vcs', '-g', '!{node_modules,.git,vendor}' } })<cr>", "Find files" },
   ["n"] = "No highlight",
   ["d"] = "Doc generator",
@@ -106,15 +105,21 @@ wk.register({
     p = "Last search pattern"
   },
   l = {
-    name = "+LSP"
-    -- TODO add more
+    name = "+LSP",
+    s = { "<cmd>lua require('telescope.builtin').lsp_document_symbols()<cr>", "Document symbols" },
+    -- w = { "<cmd>lua require('telescope.builtin').lsp_workspace_symbols()<cr>", "Workspace symbols" },
+    S = { "<cmd>lua require('telescope.builtin').lsp_dynamic_workspace_symbols()<cr>", "Dynamic workspace symbols" },
+    d = { "<cmd>lua require('telescope.builtin').lsp_document_diagnostics()<cr>", "Document diagnostics" },
+    D = { "<cmd>lua require('telescope.builtin').lsp_workspace_diagnostics()<cr>", "Workspace diagnostics" },
   },
   f = {
     name = "+Telescope",
     f = { "<cmd>lua require('telescope.builtin').find_files({ find_command = { 'rg', '--files', '--hidden', '--no-ignore-vcs', '-g', '!{node_modules,.git,vendor}' } })<cr>", "Find files" },
     z = { "<cmd>lua require('telescope.builtin').current_buffer_fuzzy_find()<cr>", "Find text in open buffer" },
     o = { "<cmd>Telescope oldfiles<cr>", "Find oldfiles" },
-    -- TODO
+    t = { "<cmd>Telescope treesitter<cr>", "Treesitter" },
+    m = { "<cmd>Telescope man_pages<cr>", "Man pages" },
+    h = { "<cmd>Telescope help_tags<cr>", "Help tags" },
   },
   b = {
     name = "+Buffers",
@@ -123,7 +128,6 @@ wk.register({
     p = { "<cmd>bprevious<cr>", "Prev buffer" },
     w = { "<cmd>w<cr>", "Write buffer" },
     d = { "Delete buffer" }, -- set mapping in /vux/keymappings.lua
-    l = { "<cmd>luafile %<cr>", "luafile %" }
   }
 }, { prefix = "<leader>" })
 
