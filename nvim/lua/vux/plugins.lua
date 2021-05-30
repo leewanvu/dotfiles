@@ -27,6 +27,7 @@ return require('packer').startup(function()
 
   -- Snippets
   -- use 'norcalli/snippets.nvim'
+  use "rafamadriz/friendly-snippets"
 
   -- Autocompletion
   -- use 'nvim-lua/completion-nvim'
