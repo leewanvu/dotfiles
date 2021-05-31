@@ -80,6 +80,7 @@ wk.register({
   ["p"] = { "<cmd>lua require('telescope.builtin').find_files({ find_command = { 'rg', '--files', '--hidden', '--no-ignore-vcs', '-g', '!{node_modules,.git,vendor}' } })<cr>", "Find files" },
   ["n"] = "No highlight",
   ["d"] = "Doc generator",
+  -- ["x"] = { "<cmd>lua require('rest-nvim').run()<cr>", "Execute REST" },
   g = {
     name = "+Git",
     g = { "<cmd>lua require('telescope.builtin').git_status()<cr>", "Git status" },

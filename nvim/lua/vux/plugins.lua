@@ -121,4 +121,7 @@ return require('packer').startup(function()
 
   -- Zen mode
   -- use 'kdav5758/TrueZen.nvim'
+
+  -- REST
+  -- use 'NTBBloodbath/rest.nvim'
 end)
