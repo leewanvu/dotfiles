@@ -13,11 +13,11 @@ require'compe'.setup {
   documentation = true;
 
   source = {
-    path = {kind = "  "},
-    buffer = {kind = "  "},
-    calc = {kind = "  "},
-    vsnip = {kind = "  "},
-    nvim_lsp = {kind = "  "},
+    path = {kind = "  (Path)"},
+    buffer = {kind = "  (Buffer)"},
+    calc = {kind = "   (Calc)"},
+    vsnip = {kind = "   (Snippet)"},
+    nvim_lsp = {kind = "  (LSP)"},
     -- nvim_lua = {kind = "  "},
     nvim_lua = false,
     -- spell = {kind = "  "},
@@ -88,7 +88,6 @@ end
 map("i", "<Tab>", "v:lua.tab_complete()", {expr = true})
 map("s", "<Tab>", "v:lua.tab_complete()", {expr = true})
 map("i", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
-map("s", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
 map("s", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
 
 -- map("i", "<CR>", "compe#confirm('<CR>')", {expr = true, noremap = true})
