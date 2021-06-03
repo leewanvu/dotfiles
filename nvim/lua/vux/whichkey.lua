@@ -78,8 +78,8 @@ wk.register({
   ["q"] = "Delete buffer",
   ["e"] = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
   ["p"] = { "<cmd>lua require('telescope.builtin').find_files({ find_command = { 'rg', '--files', '--hidden', '--no-ignore-vcs', '-g', '!{node_modules,.git,vendor}' } })<cr>", "Find files" },
-  ["n"] = "No highlight",
   ["d"] = "Doc generator",
+  ["h"] = { "<cmd>set hlsearch!<cr>", "Toogle highlight" },
   -- ["x"] = { "<cmd>lua require('rest-nvim').run()<cr>", "Execute REST" },
   g = {
     name = "+Git",
@@ -129,6 +129,7 @@ wk.register({
     p = { "<cmd>bprevious<cr>", "Prev buffer" },
     w = { "<cmd>w<cr>", "Write buffer" },
     d = { "Delete buffer" }, -- set mapping in /vux/keymappings.lua
+    r = { "<cmd>set wrap!<cr>", "Toogle word wrap" },
   }
 }, { prefix = "<leader>" })
 

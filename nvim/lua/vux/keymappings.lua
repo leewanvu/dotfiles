@@ -28,7 +28,7 @@ map("n", "<leader>bd", "v:lua.vux_close_buffer()", {expr = true})
 map('n', ']b', ':bnext<CR>')
 map('n', '[b', ':bprevious<CR>')
 
-map('n', '<leader>n', ':nohlsearch<CR>')
+-- map('n', '<leader>n', ':nohlsearch<CR>')
 map('n', '<C-c>', '<Esc>')
 
 map('n', '<C-j>', '<C-w>j')
