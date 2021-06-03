@@ -15,7 +15,7 @@ require('telescope').setup {
     file_sorter = require'telescope.sorters'.get_fuzzy_file,
     file_ignore_patterns = {
       "node_modules/*",
-      "vendor/*",
+      -- "vendor/*",
       ".idea/*",
       ".git/*",
       "%.png",
