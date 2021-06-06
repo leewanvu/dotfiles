@@ -81,6 +81,7 @@ wk.register({
   ["d"] = "Doc generator",
   ["h"] = { "<cmd>set hlsearch!<cr>", "Toogle highlight" },
   -- ["x"] = { "<cmd>lua require('rest-nvim').run()<cr>", "Execute REST" },
+  ["="] = "LSP - Format",
   g = {
     name = "+Git",
     g = { "<cmd>lua require('telescope.builtin').git_status()<cr>", "Git status" },
@@ -139,12 +140,22 @@ wk.register({
     name = "+Komentary",
     c = "Comments"
   },
+  g = {
+    d = "LSP - Definition",
+    D = "LSP - Declaration",
+    r = "LSP - References",
+    n = "LSP - Rename",
+    s = "LSP - Signature help",
+    a = "LSP - Code action",
+  },
   ["["] = {
     b = "Prev buffer",
+    d = "LSP - Prev diagnostics"
     -- c = "Prev hunk"
   },
   ["]"] = {
     b = "Next buffer",
+    d = "LSP - Next diagnostics"
     -- c = "Next hunk"
   }
 })
@@ -163,7 +174,8 @@ wk.register({
 
 -- visual mode, no <leader>
 wk.register({
-  ["gc"] = "Comments"
+  ["gc"] = "Comments",
+  ["ga"] = "LSP - Range code action"
 }, {
   mode = "v"
 })
