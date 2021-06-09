@@ -19,3 +19,4 @@ fc-cache -fv
 - https://github.com/phpactor/phpactor
 - https://github.com/kdav5758/TrueZen.nvim
 - Reduces startuptime, readmore: https://github.com/wbthomason/packer.nvim
+- https://github.com/sindrets/diffview.nvim
