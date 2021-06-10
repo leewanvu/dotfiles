@@ -77,9 +77,10 @@ wk.register({
   ["w"] = "Write buffer",
   ["q"] = "Delete buffer",
   ["e"] = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
-  ["p"] = { "<cmd>lua require('telescope.builtin').find_files({ find_command = { 'rg', '--files', '--hidden', '--no-ignore-vcs', '-g', '!{node_modules,.git,vendor}' } })<cr>", "Find files" },
+  ["n"] = { "<cmd>nohlsearch<cr>", "No highlight" },
+  -- ["p"] = { "<cmd>lua require('telescope.builtin').find_files({ find_command = { 'rg', '--files', '--hidden', '--no-ignore-vcs', '-g', '!{node_modules,.git,vendor}' } })<cr>", "Find files" },
   ["d"] = "Doc generator",
-  ["h"] = { "<cmd>set hlsearch!<cr>", "Toogle highlight" },
+  -- ["h"] = { "<cmd>set hlsearch!<cr>", "Toogle highlight" },
   -- ["x"] = { "<cmd>lua require('rest-nvim').run()<cr>", "Execute REST" },
   ["="] = "LSP - Format",
   g = {

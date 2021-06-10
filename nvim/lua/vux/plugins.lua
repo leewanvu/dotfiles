@@ -39,6 +39,8 @@ return require('packer').startup(function()
   -- Themes
   use { 'leewanvu/nord-vim', branch = 'develop' }
   -- use 'tomasiser/vim-code-dark'
+  use 'sainnhe/everforest'
+  -- use { 'maaslalani/nordbuddy', requires = { 'tjdevries/colorbuddy.nvim' } }
 
   -- Icons
   use 'kyazdani42/nvim-web-devicons'
@@ -113,12 +115,6 @@ return require('packer').startup(function()
   -- Which keys
   use 'folke/which-key.nvim'
   
-  -- Matrix =))
-  -- use 'uguu-org/vim-matrix-screensaver'
-
   -- Zen mode
   -- use 'kdav5758/TrueZen.nvim'
-
-  -- REST
-  -- use 'NTBBloodbath/rest.nvim'
 end)

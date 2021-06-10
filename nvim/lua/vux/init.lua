@@ -1,7 +1,7 @@
 -- require('vux.globals')
 require('vux.plugins')
 require('vux.options')
-require('vux.nord')
+require('vux.colorscheme')
 require('vux.nvimtree')
 require('vux.dashboard')
 require('vux.ctrlsf')

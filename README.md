@@ -15,8 +15,6 @@ fc-cache -fv
 - Try mattn/emmet-vim
 - Try nvim-treesitter extensions
 - Create own colorscheme
-- Fork tomasiser/vim-code-dark
-- https://github.com/phpactor/phpactor
 - https://github.com/kdav5758/TrueZen.nvim
 - Reduces startuptime, readmore: https://github.com/wbthomason/packer.nvim
 - https://github.com/sindrets/diffview.nvim
