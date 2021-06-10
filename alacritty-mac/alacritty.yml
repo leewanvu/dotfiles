@@ -328,10 +328,10 @@ schemes:
       white: '#aeb3bb'
 
 # Apply
-colors: *everforest_dark_hard
+# colors: *everforest_dark_hard
 
 # Nord Colors
-# colors: *nord
+colors: *nord
 
 # Bell
 #
