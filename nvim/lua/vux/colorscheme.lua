@@ -11,16 +11,9 @@ if vim.g.vux.os == "linux" and vim.g.vux.is_bg_transparent then
   vim.g.nord_transparent = 1
 end
 
-vim.cmd('set background=dark')
-vim.cmd('colorscheme nord')
+vim.o.background = "dark"
+-- vim.cmd[[colorscheme nord]]
+require('colorbuddy').colorscheme('nordbuddy')
 
 -- NvimTree
 vim.cmd('highlight NvimTreeIndentMarker guifg=#4C566A')
-
--- vim.cmd('highlight SignColumn guibg=#2f383e')
-
--- everforest
--- vim.g.everforest_background = 'dark'
--- vim.cmd('colorscheme everforest')
-
--- require('colorbuddy').colorscheme('nordbuddy')

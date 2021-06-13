@@ -38,9 +38,11 @@ return require('packer').startup(function()
 
   -- Themes
   use { 'leewanvu/nord-vim', branch = 'develop' }
-  -- use 'tomasiser/vim-code-dark'
-  use 'sainnhe/everforest'
-  -- use { 'maaslalani/nordbuddy', requires = { 'tjdevries/colorbuddy.nvim' } }
+  use {
+    'leewanvu/nordbuddy',
+    branch = 'vux',
+    requires = {'tjdevries/colorbuddy.nvim'}
+  }
 
   -- Icons
   use 'kyazdani42/nvim-web-devicons'
