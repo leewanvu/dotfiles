@@ -42,6 +42,7 @@ return require('packer').startup(function()
 
   -- Syntax
   use 'jwalton512/vim-blade'
+  -- use 'posva/vim-vue'
 
   -- Icons
   use 'kyazdani42/nvim-web-devicons'
