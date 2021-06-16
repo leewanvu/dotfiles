@@ -12,6 +12,7 @@ return require('packer').startup(function()
     'nvim-treesitter/nvim-treesitter',
     run = ':TSUpdate'
   }
+  use 'nvim-treesitter/playground'
 
   -- Find Picker
   use 'nvim-lua/popup.nvim'
@@ -37,12 +38,10 @@ return require('packer').startup(function()
   use 'ray-x/lsp_signature.nvim'
 
   -- Themes
-  use { 'leewanvu/nord-vim', branch = 'develop' }
-  use {
-    'leewanvu/nordbuddy',
-    branch = 'vux',
-    requires = {'tjdevries/colorbuddy.nvim'}
-  }
+  use { 'leewanvu/nord-vim', branch = 'vux' }
+
+  -- Syntax
+  use 'jwalton512/vim-blade'
 
   -- Icons
   use 'kyazdani42/nvim-web-devicons'

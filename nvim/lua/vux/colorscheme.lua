@@ -12,8 +12,7 @@ if vim.g.vux.os == "linux" and vim.g.vux.is_bg_transparent then
 end
 
 vim.o.background = "dark"
--- vim.cmd[[colorscheme nord]]
-require('colorbuddy').colorscheme('nordbuddy')
+vim.cmd[[colorscheme nord]]
 
 -- NvimTree
 vim.cmd('highlight NvimTreeIndentMarker guifg=#4C566A')
