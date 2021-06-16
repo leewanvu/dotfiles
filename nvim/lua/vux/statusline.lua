@@ -132,6 +132,9 @@ gls.left = {
       provider = function()
         local label, fg, nested_fg = unpack(mode_hl())
         highlight('GalaxyViMode', fg, colors.bg, "bold")
+        if vim.bo.filetype == 'help' then
+          return '   Help'
+        end
         return string.format('   %s  ', icons.mode)
       end,
       -- highlight = {colors.nord13,colors.bg},
@@ -317,13 +320,13 @@ gls.right = {
   }
 }
 
-gl.short_line_list = {'NvimTree', 'startify', 'packer', 'help', 'ctrlsf', 'dashboard', 'toggleterm'}
+gl.short_line_list = {'NvimTree', 'startify', 'packer', 'ctrlsf', 'dashboard', 'toggleterm'}
 
 local short_map = {
   ['startify'] = 'Starfity',
   ['NvimTree'] = 'NvimTree',
   ['packer'] = 'Packer',
-  ['help'] = 'Help',
+  -- ['help'] = 'Help',
   ['ctrlsf'] = 'CtrlSF',
   ['dashboard'] = 'Dashboard',
   -- ['toggleterm'] = 'ToggleTerm',
@@ -342,7 +345,7 @@ gls.short_line_left = {
     ShortLeftBufferType = {
       provider = function ()
         local name = short_map[vim.bo.filetype] or icons.mode
-        return string.format('  %s ', name)
+        return string.format('   %s ', name)
       end,
       highlight = {colors.nord8,colors.bg,'bold'},
       condition = has_file_type,
