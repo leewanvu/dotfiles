@@ -1,4 +1,3 @@
--- require('vux.globals')
 require('vux.plugins')
 require('vux.options')
 require('vux.colorscheme')
