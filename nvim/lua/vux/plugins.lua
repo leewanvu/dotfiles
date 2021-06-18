@@ -39,6 +39,9 @@ return require('packer').startup(function()
 
   -- Themes
   use { 'leewanvu/nord-vim', branch = 'vux' }
+  -- use 'rktjmp/lush.nvim'
+  -- use 'kunzaatko/nord.nvim'
+  use 'arzg/vim-colors-xcode'
 
   -- Syntax
   use 'jwalton512/vim-blade'

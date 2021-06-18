@@ -13,6 +13,7 @@ end
 
 vim.o.background = "dark"
 vim.cmd[[colorscheme nord]]
+-- vim.cmd[[colorscheme xcodedark]]
 
 -- NvimTree
 vim.cmd('highlight NvimTreeIndentMarker guifg=#4C566A')

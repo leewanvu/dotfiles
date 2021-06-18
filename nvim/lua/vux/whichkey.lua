@@ -132,6 +132,7 @@ wk.register({
     w = { "<cmd>w<cr>", "Write buffer" },
     d = { "Delete buffer" }, -- set mapping in /vux/keymappings.lua
     r = { "<cmd>set wrap!<cr>", "Toogle word wrap" },
+    i = { "<cmd>IndentBlanklineToggle<cr>", "Toggle indent line" },
   }
 }, { prefix = "<leader>" })
 
