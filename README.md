@@ -12,7 +12,7 @@ fc-cache -fv
 ```
 
 ### TODO
-- Update status line for everforest colorscheme
+- Switch colorscheme -> refreshing statusline
 - Try mattn/emmet-vim
 - Try nvim-treesitter extensions
 - Create own colorscheme
