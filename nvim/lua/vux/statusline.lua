@@ -172,6 +172,7 @@ gls.left = {
         local branch = vcs.get_git_branch()
         if branch == nil then return '' end
         if wide_enough(85) then
+          highlight('GalaxyGitBranch', colors.branch_name, colors.bg)
           return string.format(' %s %s ', icons.git_branch, branch)
         end
         return ''
@@ -184,6 +185,7 @@ gls.left = {
     DiffAdd = {
       provider = function ()
         if wide_enough(95) then
+          highlight('GalaxyDiffAdd', colors.diff_add, colors.bg)
           return vcs.diff_add()
         end
         return ''
@@ -197,6 +199,7 @@ gls.left = {
     DiffModified = {
       provider = function ()
         if wide_enough(95) then
+          highlight('GalaxyDiffModified', colors.diff_modified, colors.bg)
           return vcs.diff_modified()
         end
         return ''
@@ -210,6 +213,7 @@ gls.left = {
     DiffRemove = {
       provider = function ()
         if wide_enough(95) then
+          highlight('GalaxyDiffRemove', colors.diff_remove, colors.bg)
           return vcs.diff_remove()
         end
         return ''
@@ -227,6 +231,7 @@ gls.right = {
       provider = function()
         local n = diagnostic.get_diagnostic_error()
         if n == '' or n == nil then return '' end
+        highlight('GalaxyDiagnosticError', colors.diagnostic_error, colors.bg)
         return string.format(' %s %s', icons.error, n)
       end,
       highlight = {colors.diagnostic_error, colors.bg},
@@ -237,6 +242,7 @@ gls.right = {
       provider = function()
         local n = diagnostic.get_diagnostic_warn()
         if n == '' or n == nil then return '' end
+        highlight('GalaxyDiagnosticWarn', colors.diagnostic_warn, colors.bg)
         return string.format(' %s %s', icons.warning, n)
       end,
       highlight = {colors.diagnostic_warn, colors.bg},
@@ -247,6 +253,7 @@ gls.right = {
       provider = function()
         local n = diagnostic.get_diagnostic_hint()
         if n == '' or n == nil then return '' end
+        highlight('GalaxyDiagnosticHint', colors.diagnostic_hint, colors.bg)
         return string.format(' %s %s', icons.hint, n)
       end,
       highlight = {colors.diagnostic_hint, colors.bg},
@@ -257,6 +264,7 @@ gls.right = {
       provider = function()
         local n = diagnostic.get_diagnostic_info()
         if n == '' or n == nil then return '' end
+        highlight('GalaxyDiagnosticInfo', colors.diagnostic_info, colors.bg)
         return string.format(' %s %s', icons.info, n)
       end,
       highlight = {colors.diagnostic_info, colors.bg},
@@ -282,6 +290,7 @@ gls.right = {
         if is_toggleterm() then return get_toggle_number() end
         local fname
         if wide_enough(120) then
+          highlight('GalaxyFileName', colors.file_name, colors.bg)
           fname = vim.fn.fnamemodify(vim.fn.expand('%'), ':~:.')
         else
           fname = vim.fn.expand '%:t'
@@ -298,7 +307,7 @@ gls.right = {
       provider = function()
         if not buffer_not_empty() then return '' end
         local filesize = fileinfo.get_file_size()
-
+        highlight('GalaxyFileSize', colors.file_size, colors.bg)
         return ',' .. filesize
       end,
       condition = buffer_not_empty,
@@ -309,6 +318,7 @@ gls.right = {
     PositionInfo = {
       provider = function()
         if not buffer_not_empty() or is_toggleterm() or not wide_enough(60) then return '' end
+        highlight('GalaxyPositionInfo', colors.position_info, colors.bg)
         return string.format(' %s,%s ', vim.fn.line('.'), vim.fn.col('.'))
       end,
       highlight = {colors.position_info, colors.bg}
@@ -319,6 +329,7 @@ gls.right = {
       provider = function ()
         if not buffer_not_empty() or is_toggleterm() or not wide_enough(65) then return '' end
         local percent = math.floor(100 * vim.fn.line('.') / vim.fn.line('$'))
+        highlight('GalaxyPercentInfo', colors.percent_info, colors.bg)
         return string.format(' %s%s', percent, '% ')
       end,
       highlight = {colors.percent_info, colors.bg}
@@ -351,6 +362,7 @@ gls.short_line_left = {
     ShortLeftBufferType = {
       provider = function ()
         local name = short_map[vim.bo.filetype] or icons.mode
+        highlight('GalaxyShortLeftBufferType', colors.short_line_left, colors.bg)
         return string.format('   %s ', name)
       end,
       highlight = {colors.short_line_left, colors.bg, 'bold'},
@@ -372,6 +384,7 @@ gls.short_line_right = {
           fname = vim.fn.expand '%:t'
         end
         if #fname == 0 then return '' end
+        highlight('GalaxyShortRightFileName', colors.file_name, colors.bg)
         return ' ' .. fname .. ' '
       end,
       condition = buffer_not_empty,
