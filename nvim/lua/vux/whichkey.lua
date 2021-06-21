@@ -78,10 +78,8 @@ wk.register({
   ["q"] = "Delete buffer",
   ["e"] = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
   ["n"] = { "<cmd>nohlsearch<cr>", "No highlight" },
-  -- ["p"] = { "<cmd>lua require('telescope.builtin').find_files({ find_command = { 'rg', '--files', '--hidden', '--no-ignore-vcs', '-g', '!{node_modules,.git,vendor}' } })<cr>", "Find files" },
   ["d"] = "Doc generator",
   ["h"] = { "<cmd>TSHighlightCapturesUnderCursor<cr>", "Show TS highlight" },
-  -- ["x"] = { "<cmd>lua require('rest-nvim').run()<cr>", "Execute REST" },
   ["="] = "LSP - Format",
   g = {
     name = "+Git",
@@ -123,6 +121,10 @@ wk.register({
     t = { "<cmd>Telescope treesitter<cr>", "Treesitter" },
     m = { "<cmd>Telescope man_pages<cr>", "Man pages" },
     h = { "<cmd>Telescope help_tags<cr>", "Help tags" },
+    c = { "<cmd>Telescope colorscheme<cr>", "Colorscheme" },
+    g = { "<cmd>Telescope git_files<cr>", "Git files" },
+    s = { "<cmd>Telescope grep_string<cr>", "Grep string" },
+    b = { "<cmd>Telescope file_browser<cr>", "File browser" },
   },
   b = {
     name = "+Buffers",

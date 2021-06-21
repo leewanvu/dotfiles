@@ -8,73 +8,101 @@ local condition = require('galaxyline.condition')
 -- local colors = require('galaxyline.colors')
 -- local buffer = require('galaxyline.provider_buffer')
 -- local whitespace = require('galaxyline.provider_whitespace')
-local lspclient = require('galaxyline.provider_lsp')
--- nord
-local colors = {
-  nord0 = "#2E3440",
-  nord1 = "#3B4252",
-  nord2 = "#434C5E",
-  nord3 = "#4C566A",
-  nord3_bright = "#616E88",
-  nord4 = "#D8DEE9",
-  nord5 = "#E5E9F0",
-  nord6 = "#ECEFF4",
-  nord7 = "#8FBCBB",
-  nord8 = "#88C0D0",
-  nord9 = "#81A1C1",
-  nord10 = "#5E81AC",
-  nord11 = "#BF616A",
-  nord12 = "#D08770",
-  nord13 = "#EBCB8B",
-  nord14 = "#A3BE8C",
-  nord15 = "#B48EAD",
-  bg = "#3B4252",
-  none = "NONE",
-}
+-- local lspclient = require('galaxyline.provider_lsp')
+
+local function get_colors()
+  local colorscheme = vim.g.colors_name
+
+  if colorscheme == 'everforest' then
+    -- everforest - dark & hard
+    return {
+      short_line_left = "#7fbbb3",
+      branch_name = "#d699b6",
+      diff_add = "#a7c080",
+      diff_modified = "#7fbbb3",
+      diff_remove = "#e67e80",
+      diagnostic_error = "#e67e80",
+      diagnostic_hint = "#83c092",
+      diagnostic_info = "#7fbbb3",
+      diagnostic_warn = "#dbbc7f",
+      file_name = "#d3c6aa",
+      file_size = "#d3c6aa",
+      position_info = "#7fbbb3",
+      percent_info = "#e69875",
+      bg = "#3a454a",
+      bg_transparent = "#3a454a",
+      none = "NONE",
+      normal_mode = "#7fbbb3",
+      insert_mode = "#a7c080",
+      visual_mode = "#d699b6",
+      termial_mode = "#e69875",
+      other_mode = "#7fbbb3",
+    }
+  end
+
+  -- nord
+  return {
+    short_line_left = "#88C0D0", -- nord8
+    branch_name = "#B48EAD", -- nord15
+    diff_add = "#A3BE8C", -- nord14
+    diff_modified = "#EBCB8B", -- nord13
+    diff_remove = "#BF616A", -- nord11
+    diagnostic_error = "#BF616A", -- nord11
+    diagnostic_hint = "#5E81AC", -- nord10
+    diagnostic_info = "#88C0D0", -- nord8
+    diagnostic_warn = "#EBCB8B", -- nord13
+    file_name = "#E5E9F0", -- nord5
+    file_size = "#ECEFF4", -- nord6
+    position_info = "#88C0D0", -- nord8
+    percent_info = "#EBCB8B", -- nord13
+    bg = "#3B4252", -- nord1
+    bg_transparent = "#434C5E", -- nord2
+    none = "NONE",
+    normal_mode = "#88C0D0", -- nord8
+    insert_mode = "#A3BE8C", -- nord14
+    visual_mode = "#D08770", -- nord12
+    termial_mode = "#BF616A", -- nord11
+    other_mode = "#88C0D0", -- nord8
+  }
+end
+
+local colors = get_colors()
 
 -- whether or not transparent
 if vim.g.vux.os == "linux" and vim.g.vux.is_bg_transparent then
-  colors.bg = colors.nord2
+  colors.bg = colors.bg_transparent
 end
 
--- {label, fg, nested_fg}
+-- {label, fg}
 local mode_map = {
-  ['n'] = {'N', colors.nord8, colors.nord0},
-  ['i'] = {'I', colors.nord14, colors.nord0},
-  ['R'] = {'R', colors.nord7, colors.nord0},
-  ['v'] = {'V', colors.nord12, colors.nord0},
-  ['V'] = {'V', colors.nord12, colors.nord0},
-  ['c'] = {'C', colors.nord11, colors.nord0},
-  ['s'] = {'S', colors.nord11, colors.nord0},
-  ['S'] = {'S', colors.nord11, colors.nord0},
-  ['t'] = {'T', colors.nord11, colors.nord0},
-  [''] = {'V', colors.nord12, colors.nord0},
-  [''] = {'S', colors.nord11, colors.nord0},
+  ['n'] = {'N', colors.normal_mode},
+  ['i'] = {'I', colors.insert_mode},
+  ['R'] = {'R', colors.other_mode},
+  ['v'] = {'V', colors.visual_mode},
+  ['V'] = {'V', colors.visual_mode},
+  ['c'] = {'C', colors.other_mode},
+  ['s'] = {'S', colors.other_mode},
+  ['S'] = {'S', colors.other_mode},
+  ['t'] = {'T', colors.termial_mode},
+  [''] = {'V', colors.visual_mode},
+  [''] = {'S', colors.other_mode},
   ['Rv'] = {'VIR'},
   ['rm'] = {'--MORE'},
 }
 
-local sep = {
-  right_filled = '', -- e0b2
-  left_filled = '', -- e0b0
-  right = '', -- e0b3
-  left = '', -- e0b1
+-- local sep = {
+--   right_filled = '', -- e0b2
+--   left_filled = '', -- e0b0
+--   right = '', -- e0b3
+--   left = '', -- e0b1
 
-  --[[ left_filled = '',
-  left = '',
-  right_filled = '',
-  right = '', ]]
-}
+--   --[[ left_filled = '',
+--   left = '',
+--   right_filled = '',
+--   right = '', ]]
+-- }
 
 local icons = {
-  locker = '', -- f023
-  not_modifiable = '', -- f05e
-  unsaved = '', -- f0c7
-  pencil = '', -- f040
-  page = '', -- 2630
-  line_number = '', -- e0a1
-  connected = '',
-  disconnected = '',
   -- error = '',
   error = "",
   -- warning = '',
@@ -84,7 +112,6 @@ local icons = {
   -- hint = '',
   hint = "",
   git_branch = '',
-  -- git_branch = '',
   terminal = 'ﲵ',
   mode = '', -- 
 }
@@ -130,39 +157,27 @@ gls.left = {
   {
     ViMode = {
       provider = function()
-        local label, fg, nested_fg = unpack(mode_hl())
+        local label, fg = unpack(mode_hl())
         highlight('GalaxyViMode', fg, colors.bg, "bold")
         if vim.bo.filetype == 'help' then
           return '   Help'
         end
         return string.format('   %s  ', icons.mode)
       end,
-      -- highlight = {colors.nord13,colors.bg},
-    }
-  },
-  {
-    GitIcon = {
-      provider = function ()
-        if wide_enough(85) then
-          return ' ' .. icons.git_branch .. ' '
-        end
-        return ''
-      end,
-      condition = condition.check_git_workspace,
-      highlight = {colors.nord15, colors.bg},
     }
   },
   {
     GitBranch = {
       provider = function ()
+        local branch = vcs.get_git_branch()
+        if branch == nil then return '' end
         if wide_enough(85) then
-          -- return ' ' .. icons.git_branch .. ' ' .. vcs.get_git_branch() .. ' '
-          return vcs.get_git_branch() .. ' '
+          return string.format(' %s %s ', icons.git_branch, branch)
         end
         return ''
       end,
       condition = condition.check_git_workspace,
-      highlight = {colors.nord15, colors.bg},
+      highlight = {colors.branch_name, colors.bg},
     }
   },
   {
@@ -175,7 +190,7 @@ gls.left = {
       end,
       condition = condition.check_git_workspace,
       icon = ' +',
-      highlight = {colors.nord14, colors.bg},
+      highlight = {colors.diff_add, colors.bg},
     }
   },
   {
@@ -188,7 +203,7 @@ gls.left = {
       end,
       condition = condition.check_git_workspace,
       icon = ' ~',
-      highlight = {colors.nord13, colors.bg},
+      highlight = {colors.diff_modified, colors.bg},
     }
   },
   {
@@ -201,26 +216,9 @@ gls.left = {
       end,
       condition = condition.check_git_workspace,
       icon = ' -',
-      highlight = {colors.nord11, colors.bg},
+      highlight = {colors.diff_remove, colors.bg},
     }
   },
-  --[[ {
-    LspClient = {
-      provider = function()
-        local lsp = lspclient.get_lsp_client('')
-        local lsp_icon = icons.connected
-        if lsp == '' then
-          lsp_icon = icons.disconnected
-          lsp = 'no lsp'
-        end
-        if wide_enough(90) then
-          return string.format(' %s  %s ', lsp_icon, lsp)
-        end
-        return string.format(' %s  ', lsp_icon)
-      end,
-      highlight = {colors.nord8, colors.bg,'italic'},
-    }
-  }, ]]
 }
 
 gls.right = {
@@ -231,7 +229,7 @@ gls.right = {
         if n == '' or n == nil then return '' end
         return string.format(' %s %s', icons.error, n)
       end,
-      highlight = {colors.nord11, colors.bg},
+      highlight = {colors.diagnostic_error, colors.bg},
     }
   },
   {
@@ -241,7 +239,7 @@ gls.right = {
         if n == '' or n == nil then return '' end
         return string.format(' %s %s', icons.warning, n)
       end,
-      highlight = {colors.nord13, colors.bg},
+      highlight = {colors.diagnostic_warn, colors.bg},
     }
   },
   {
@@ -251,7 +249,17 @@ gls.right = {
         if n == '' or n == nil then return '' end
         return string.format(' %s %s', icons.hint, n)
       end,
-      highlight = {colors.nord10, colors.bg},
+      highlight = {colors.diagnostic_hint, colors.bg},
+    }
+  },
+  {
+    DiagnosticInfo = {
+      provider = function()
+        local n = diagnostic.get_diagnostic_info()
+        if n == '' or n == nil then return '' end
+        return string.format(' %s %s', icons.info, n)
+      end,
+      highlight = {colors.diagnostic_info, colors.bg},
     }
   },
   {
@@ -265,7 +273,6 @@ gls.right = {
         return '  ' .. icon
       end,
       condition = buffer_not_empty,
-      -- highlight = {colors.nord15, colors.bg},
     }
   },
   {
@@ -283,12 +290,11 @@ gls.right = {
         return ' ' .. fname .. ''
       end,
       condition = buffer_not_empty,
-      highlight = {colors.nord5, colors.bg},
+      highlight = {colors.file_name, colors.bg},
     }
   },
   {
     FileSize = {
-      -- provider = 'FileSize',
       provider = function()
         if not buffer_not_empty() then return '' end
         local filesize = fileinfo.get_file_size()
@@ -296,7 +302,7 @@ gls.right = {
         return ',' .. filesize
       end,
       condition = buffer_not_empty,
-      highlight = {colors.nord6, colors.bg},
+      highlight = {colors.file_size, colors.bg},
     }
   },
   {
@@ -305,7 +311,7 @@ gls.right = {
         if not buffer_not_empty() or is_toggleterm() or not wide_enough(60) then return '' end
         return string.format(' %s,%s ', vim.fn.line('.'), vim.fn.col('.'))
       end,
-      highlight = {colors.nord8, colors.bg}
+      highlight = {colors.position_info, colors.bg}
     }
   },
   {
@@ -315,7 +321,7 @@ gls.right = {
         local percent = math.floor(100 * vim.fn.line('.') / vim.fn.line('$'))
         return string.format(' %s%s', percent, '% ')
       end,
-      highlight = {colors.nord13, colors.bg}
+      highlight = {colors.percent_info, colors.bg}
     }
   }
 }
@@ -347,7 +353,7 @@ gls.short_line_left = {
         local name = short_map[vim.bo.filetype] or icons.mode
         return string.format('   %s ', name)
       end,
-      highlight = {colors.nord8,colors.bg,'bold'},
+      highlight = {colors.short_line_left, colors.bg, 'bold'},
       condition = has_file_type,
     }
   }
@@ -369,7 +375,7 @@ gls.short_line_right = {
         return ' ' .. fname .. ' '
       end,
       condition = buffer_not_empty,
-      highlight = {colors.nord5, colors.bg},
+      highlight = {colors.file_name, colors.bg},
     }
   },
 }
