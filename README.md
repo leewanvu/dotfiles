@@ -12,7 +12,6 @@ fc-cache -fv
 ```
 
 ### TODO
-- Switch colorscheme -> refreshing statusline
 - Try mattn/emmet-vim
 - Try nvim-treesitter extensions
 - Create own colorscheme

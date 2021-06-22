@@ -124,5 +124,5 @@ return require('packer').startup(function()
   use 'folke/which-key.nvim'
   
   -- Zen mode
-  -- use 'kdav5758/TrueZen.nvim'
+  use "Pocco81/TrueZen.nvim"
 end)

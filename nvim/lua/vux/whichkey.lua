@@ -135,6 +135,12 @@ wk.register({
     d = { "Delete buffer" }, -- set mapping in /vux/keymappings.lua
     r = { "<cmd>set wrap!<cr>", "Toogle word wrap" },
     i = { "<cmd>IndentBlanklineToggle<cr>", "Toggle indent line" },
+  },
+  t = {
+    name = "+TrueZen",
+    t = { "<cmd>TZFocus<cr>", "Focus mode" },
+    a = { "<cmd>TZAtaraxis<cr>", "Ataraxis mode" },
+    m = { "<cmd>TZMinimalist<cr>", "Minimalist mode" },
   }
 }, { prefix = "<leader>" })
 
