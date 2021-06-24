@@ -137,12 +137,12 @@ wk.register({
     r = { "<cmd>set wrap!<cr>", "Toogle word wrap" },
     i = { "<cmd>IndentBlanklineToggle<cr>", "Toggle indent line" },
   },
-  t = {
-    name = "+TrueZen",
-    t = { "<cmd>TZFocus<cr>", "Focus mode" },
-    a = { "<cmd>TZAtaraxis<cr>", "Ataraxis mode" },
-    m = { "<cmd>TZMinimalist<cr>", "Minimalist mode" },
-  }
+  -- t = {
+  --   name = "+TrueZen",
+  --   t = { "<cmd>TZFocus<cr>", "Focus mode" },
+  --   a = { "<cmd>TZAtaraxis<cr>", "Ataraxis mode" },
+  --   m = { "<cmd>TZMinimalist<cr>", "Minimalist mode" },
+  -- }
 }, { prefix = "<leader>" })
 
 -- normal mode, no <leader>
