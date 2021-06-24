@@ -81,6 +81,7 @@ return require('packer').startup(function()
   --   end
   -- }
   use 'lewis6991/gitsigns.nvim'
+  use 'sindrets/diffview.nvim'
 
   -- Documention generator
   use {
@@ -124,5 +125,6 @@ return require('packer').startup(function()
   use 'folke/which-key.nvim'
   
   -- Zen mode
-  use "Pocco81/TrueZen.nvim"
+  -- use 'Pocco81/TrueZen.nvim'
+  use 'folke/zen-mode.nvim'
 end)
