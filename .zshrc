@@ -190,6 +190,9 @@ alias ovpn="sudo openvpn --config ~/.ssh/vulq.ovpn"
 # Check the weather
 alias weather="curl wttr.in"
 
+# lazygit
+alias lg="lazygit"
+
 # Android
 export ANDROID_HOME=$HOME/Library/Android/sdk
 export PATH=$PATH:$ANDROID_HOME/emulator
