@@ -39,10 +39,7 @@ return require('packer').startup(function()
 
   -- Themes
   use { 'leewanvu/nord-vim', branch = 'vux' }
-  use 'axvr/photon.vim'
   use 'sainnhe/everforest'
-  use 'kyazdani42/blue-moon'
-  -- use 'christianchiarulli/nvcode-color-schemes.vim'
   -- use 'rktjmp/lush.nvim'
   -- use 'kunzaatko/nord.nvim'
 
@@ -104,7 +101,7 @@ return require('packer').startup(function()
   -- use 'jiangmiao/auto-pairs'
 
   -- Indent line
-  use { 'lukas-reineke/indent-blankline.nvim', branch = 'lua' }
+  use { 'lukas-reineke/indent-blankline.nvim', branch = 'master' }
 
   -- Strip whitespace
   use 'ntpeters/vim-better-whitespace'

@@ -3,15 +3,28 @@ local actions = require('telescope.actions')
 require('telescope').setup {
   defaults = {
     vimgrep_arguments = {'rg', '--no-heading', '--with-filename', '--line-number', '--column', '--smart-case'},
-    prompt_position = "bottom",
     prompt_prefix = "   ",
     selection_caret = " ",
     entry_prefix = "  ",
     initial_mode = "insert",
     selection_strategy = "reset",
     sorting_strategy = "descending",
-    layout_strategy = "horizontal",
-    layout_defaults = {horizontal = {mirror = false, preview_width = 0.6}, vertical = {mirror = false}},
+    layout_strategy = "vertical",
+    layout_config = {
+      horizontal = {
+        mirror = false,
+        preview_width = 0.6,
+      },
+      vertical = {
+        mirror = false,
+        width = 0.85,
+        preview_height = 0.7,
+      },
+      center = {
+        mirror = true,
+        preview_height = 0.6,
+      }
+    },
     file_sorter = require'telescope.sorters'.get_fuzzy_file,
     file_ignore_patterns = {
       "node_modules/*",
@@ -26,10 +39,6 @@ require('telescope').setup {
     generic_sorter = require'telescope.sorters'.get_generic_fuzzy_sorter,
     shorten_path = true,
     winblend = 0,
-    width = 0.75,
-    preview_cutoff = 120,
-    results_height = 1,
-    results_width = 0.8,
     border = {},
     borderchars = {'─', '│', '─', '│', '╭', '╮', '╯', '╰'},
     color_devicons = true,
@@ -67,6 +76,15 @@ require('telescope').setup {
         -- ["<C-i>"] = my_cool_custom_action,
       }
     }
+  },
+  pickers = {
+    buffers = {
+      theme = "dropdown", -- ivy
+      previewer = false,
+    },
+  },
+  extensions = {
+    -- your extension config goes in here
   }
 }
 
