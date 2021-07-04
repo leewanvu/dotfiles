@@ -193,6 +193,14 @@ alias weather="curl wttr.in"
 # lazygit
 alias lg="lazygit"
 
+# tmux
+alias t="tmux"
+alias tn="tmux new -s vux"
+alias tl="tmux ls"
+alias ta="tmux attach"
+alias td="tmux detach"
+alias tk="tmux kill-session"
+
 # Android
 export ANDROID_HOME=$HOME/Library/Android/sdk
 export PATH=$PATH:$ANDROID_HOME/emulator
