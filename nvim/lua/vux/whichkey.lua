@@ -94,7 +94,15 @@ wk.register({
     s = { '<cmd>lua require"gitsigns".stage_hunk()<CR>', "Stage hunk" },
     S = { '<cmd>lua require"gitsigns".stage_buffer()<CR>', "Stage buffer" },
     u = { '<cmd>lua require"gitsigns".undo_stage_hunk()<CR>', "Undo stage hunk" },
-    d = { '<cmd>lua require"gitsigns".diffthis()<CR>', "Diff this" },
+    -- d = { '<cmd>lua require"gitsigns".diffthis()<CR>', "Diff this" },
+    ["d"] = {
+      name = "+Diff view",
+      o = { '<cmd>DiffviewOpen<cr>', 'Open' },
+      c = { '<cmd>DiffviewClose<cr>', 'Close' },
+      r = { '<cmd>DiffviewRefresh<cr>', 'Refresh' },
+      t = { '<cmd>DiffviewToggleFiles<cr>', 'Toggle files' },
+      f = { '<cmd>DiffviewFocusFiles<cr>', 'Focus files' },
+    },
     h = { '<cmd>lua require"gitsigns".toggle_linehl()<CR>', "Highlight" },
   },
   s = {
