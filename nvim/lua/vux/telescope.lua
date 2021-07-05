@@ -78,9 +78,24 @@ require('telescope').setup {
     }
   },
   pickers = {
+    oldfiles = {
+      theme = "dropdown", -- ivy
+      previewer = false,
+    },
     buffers = {
       theme = "dropdown", -- ivy
       previewer = false,
+    },
+    current_buffer_fuzzy_find = {
+      -- theme = "dropdown", -- ivy
+      previewer = false,
+    },
+    colorscheme = {
+      theme = "dropdown",
+      previewer = false,
+    },
+    file_browser = {
+      layout_strategy = "horizontal",
     },
   },
   extensions = {
