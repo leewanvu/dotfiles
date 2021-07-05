@@ -78,6 +78,10 @@ require('telescope').setup {
     }
   },
   pickers = {
+    find_files = {
+      theme = "dropdown", -- ivy
+      previewer = false,
+    },
     oldfiles = {
       theme = "dropdown", -- ivy
       previewer = false,
