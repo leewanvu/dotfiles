@@ -79,6 +79,7 @@ return require('packer').startup(function()
   -- }
   use 'lewis6991/gitsigns.nvim'
   use 'sindrets/diffview.nvim'
+  use 'kdheepak/lazygit.nvim'
 
   -- Documention generator
   use {

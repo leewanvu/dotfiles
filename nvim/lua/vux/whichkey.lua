@@ -104,6 +104,7 @@ wk.register({
       f = { '<cmd>DiffviewFocusFiles<cr>', 'Focus files' },
     },
     h = { '<cmd>lua require"gitsigns".toggle_linehl()<CR>', "Highlight" },
+    z = { '<cmd>LazyGit<cr>', "LazyGit" },
   },
   s = {
     name = "+Search (CtrlSF)",
