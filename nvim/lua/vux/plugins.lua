@@ -121,8 +121,15 @@ return require('packer').startup(function()
 
   -- Which keys
   use 'folke/which-key.nvim'
-  
+
   -- Zen mode
   -- use 'Pocco81/TrueZen.nvim'
   use 'folke/zen-mode.nvim'
+
+  use {
+    'nacro90/numb.nvim',
+    config = function()
+      require('numb').setup()
+    end
+  }
 end)
