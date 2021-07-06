@@ -82,6 +82,7 @@ wk.register({
   ["h"] = { "<cmd>TSHighlightCapturesUnderCursor<cr>", "Show TS highlight" },
   ["="] = "LSP - Format",
   ["z"] = { "<cmd>ZenMode<cr>", "Zen Mode" },
+  ["t"] = { "<cmd>TransparentToggle<cr>", "Transparent toggle" },
   g = {
     name = "+Git",
     g = { "<cmd>lua require('telescope.builtin').git_status()<cr>", "Git status" },

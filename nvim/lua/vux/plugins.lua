@@ -3,6 +3,8 @@ vim.cmd [[packadd packer.nvim]]
 -- Only if your version of Neovim doesn't have https://github.com/neovim/neovim/pull/12632 merged
 -- vim._update_package_paths()
 
+vim.cmd [[autocmd BufWritePost plugins.lua PackerCompile]]
+
 return require('packer').startup(function()
   -- Packer can manage itself as an optional plugin
   use { 'wbthomason/packer.nvim', opt = true }
@@ -42,6 +44,16 @@ return require('packer').startup(function()
   use 'sainnhe/everforest'
   -- use 'rktjmp/lush.nvim'
   -- use 'kunzaatko/nord.nvim'
+
+  -- Transparent
+  use {
+    'xiyaowong/nvim-transparent',
+    event = { 'VimEnter', 'ColorScheme' },
+    cmd = { 'TransparentEnable', 'TransparentDisable', 'TransparentToggle' },
+    config = function()
+      require('vux.transparent').config()
+    end
+  }
 
   -- Syntax
   use 'jwalton512/vim-blade'
@@ -128,8 +140,12 @@ return require('packer').startup(function()
 
   use {
     'nacro90/numb.nvim',
+    event = "BufRead",
     config = function()
-      require('numb').setup()
+      require('numb').setup{
+        show_numbers = true, -- Enable 'number' for the window while peeking
+        show_cursorline = true, -- Enable 'cursorline' for the window while peeking
+      }
     end
   }
 end)
