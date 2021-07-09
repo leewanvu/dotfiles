@@ -26,3 +26,7 @@ fc-cache -fv
 - rktjmp/lush.nvim -> color
 - turbio/bracey.vim -> live html,css
 - https://github.com/pwntester/octo.nvim -> git PRs
+- Spell autocomplete
+- https://github.com/sbdchd/neoformat
+- https://github.com/junegunn/vim-easy-align
+- https://github.com/ggandor/lightspeed.nvim

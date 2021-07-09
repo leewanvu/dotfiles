@@ -222,3 +222,4 @@ export FZF_DEFAULT_COMMAND='rg --files --hidden --no-ignore-vcs -g "!{node_modul
 
 export VISUAL=nvim
 export PATH=$PATH:$HOME/bin
+export PATH=$PATH:$HOME/bin/neovim/bin
