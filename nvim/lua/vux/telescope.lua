@@ -37,7 +37,7 @@ require('telescope').setup {
       "%.ico"
     },
     generic_sorter = require'telescope.sorters'.get_generic_fuzzy_sorter,
-    path_display = { 'absolute' },
+    path_display = { 'absolute' }, -- tail | shorten
     winblend = 0,
     border = {},
     borderchars = {'─', '│', '─', '│', '╭', '╮', '╯', '╰'},
@@ -107,7 +107,7 @@ require('telescope').setup {
   }
 }
 
-local opts = { noremap = true, silent = true }
+-- local opts = { noremap = true, silent = true }
 
 -- vim.api.nvim_set_keymap('n', '<leader>p', "<cmd>lua require('telescope.builtin').find_files({ find_command = { 'rg', '--files', '--hidden', '--no-ignore-vcs', '-g', '!{node_modules,.git,vendor}' } })<cr>", opts)
 -- vim.api.nvim_set_keymap('n', '<leader>g', "<cmd>lua require('telescope.builtin').git_status()<cr>", opts)
