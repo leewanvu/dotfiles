@@ -20,7 +20,7 @@ require'compe'.setup {
     nvim_lsp = {kind = "  (LSP)"},
     -- nvim_lua = {kind = "  "},
     nvim_lua = false,
-    -- spell = {kind = "  "},
+    spell = {kind = "   (Spell)"},
   }
 }
 

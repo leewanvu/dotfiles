@@ -48,6 +48,8 @@ opt.wrap = false
 opt.errorbells = false
 opt.writebackup = false
 opt.swapfile = false
+opt.spell = false
+opt.spelllang = 'en'
 -- opt.shortmess = opt.shortmess + 'c'
 vim.o.shortmess = vim.o.shortmess .. 'c'
 

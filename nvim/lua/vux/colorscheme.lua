@@ -12,6 +12,7 @@ if vim.g.vux.os == "linux" and vim.g.vux.is_bg_transparent then
 end
 
 vim.o.background = "dark"
+-- vim.o.background = "light"
 vim.cmd[[colorscheme nord]]
 
 -- everforest
