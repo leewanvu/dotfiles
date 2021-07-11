@@ -16,7 +16,7 @@ fc-cache -fv
 - Try mattn/emmet-vim
 - Try nvim-treesitter extensions
 - Create own colorscheme
-- Reduces startuptime, readmore: https://github.com/wbthomason/packer.nvim
+- Reduces startuptime, readmore: https://github.com/wbthomason/packer.nvim (nvim --startuptime out)
 - tjdevries/astronauta.nvim
 - terrortylor/nvim-comment -> check later
 - andymass/vim-matchup
@@ -26,7 +26,6 @@ fc-cache -fv
 - rktjmp/lush.nvim -> color
 - turbio/bracey.vim -> live html,css
 - https://github.com/pwntester/octo.nvim -> git PRs
-- Spell autocomplete
 - https://github.com/sbdchd/neoformat
 - https://github.com/junegunn/vim-easy-align
 - https://github.com/ggandor/lightspeed.nvim
