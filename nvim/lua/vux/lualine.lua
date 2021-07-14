@@ -1,7 +1,12 @@
+local nord_custom = require'lualine.themes.nord'
+nord_custom.normal.b = {fg = '#B48EAD', bg = 'NONE'}
+nord_custom.insert.b = {fg = '#88C0D0', bg = 'NONE'}
+nord_custom.visual.b = {fg = '#B48EAD', bg = 'NONE'}
+
 require'lualine'.setup {
   options = {
     icons_enabled = false,
-    theme = 'nord',
+    theme = nord_custom,
     section_separators = {'', ''},
     component_separators = {'', ''},
     disabled_filetypes = {'dashboard', 'packer', 'ctrlsf'},
@@ -13,7 +18,7 @@ require'lualine'.setup {
         'filename',
         file_status = true, -- displays file status (readonly status, modified status)
         path = 1, -- 0 = just filename, 1 = relative path, 2 = absolute path
-        color = 'Number',
+        -- color = 'Number',
       },
     },
     lualine_c = {
