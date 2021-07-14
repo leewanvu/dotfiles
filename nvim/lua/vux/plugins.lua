@@ -48,6 +48,23 @@ return require('packer').startup(function()
   use 'sainnhe/everforest'
   -- use 'rktjmp/lush.nvim'
   -- use 'kunzaatko/nord.nvim'
+  -- use {
+  --   'projekt0n/github-nvim-theme',
+  --   config = function()
+  --     require('github-theme').setup({
+  --       themeStyle = 'dark',
+  --       commentStyle = 'italic',
+  --       keywordStyle = 'NONE',
+  --       functionStyle = 'NONE',
+  --       variableStyle = 'NONE',
+  --       hideInactiveStatusline = false,
+  --       sidebars = {},
+  --       darkSidebar = true,
+  --       darkFloat = true,
+  --       colors = {}
+  --     })
+  --   end
+  -- }
 
   -- Transparent
   use {
@@ -84,11 +101,16 @@ return require('packer').startup(function()
   }
 
   -- Status line
+  -- use {
+  --   'glepnir/galaxyline.nvim',
+  --   branch = 'main',
+  --   config = [[require('vux.statusline')]],
+  --   requires = {'kyazdani42/nvim-web-devicons'}
+  -- }
   use {
-    'glepnir/galaxyline.nvim',
-    branch = 'main',
-    config = [[require('vux.statusline')]],
-    requires = {'kyazdani42/nvim-web-devicons'}
+    'hoob3rt/lualine.nvim',
+    config = [[require('vux.lualine')]],
+    requires = {'kyazdani42/nvim-web-devicons', opt = true}
   }
 
   -- Project manager
@@ -131,10 +153,15 @@ return require('packer').startup(function()
   }
 
   -- Motion
+  -- use {
+  --   'phaazon/hop.nvim',
+  --   as = 'hop',
+  --   config = [[require('vux.hop')]]
+  -- }
   use {
-    'phaazon/hop.nvim',
-    as = 'hop',
-    config = [[require('vux.hop')]]
+    'ggandor/lightspeed.nvim',
+    config = function()
+    end
   }
 
   -- Surroundings: parentheses, brackets, quotes, XML tags, and more

@@ -25,7 +25,7 @@ require('vux.lsp')
 require('vux.keymappings')
 
 -- Sourcing statusline.lua when switch colorscheme
-vim.api.nvim_command('augroup switchcolorscheme')
-vim.api.nvim_command('autocmd!')
-vim.api.nvim_command('autocmd ColorScheme * luafile ~/.config/nvim/lua/vux/statusline.lua')
-vim.api.nvim_command('augroup END')
+-- vim.api.nvim_command('augroup switchcolorscheme')
+-- vim.api.nvim_command('autocmd!')
+-- vim.api.nvim_command('autocmd ColorScheme * luafile ~/.config/nvim/lua/vux/statusline.lua')
+-- vim.api.nvim_command('augroup END')

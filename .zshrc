@@ -180,6 +180,11 @@ alias arreportrs="arm report-reset"
 
 alias arrs="arwebrs && arboxrs && arreportrs"
 
+# sms
+alias sms="arm sms"
+alias smsr="arm sms u=root"
+alias smsrs="arm sms-reset"
+
 alias vdot="cd ~/Work/dotfiles && v nvim/init.lua"
 alias r="ranger"
 

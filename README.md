@@ -18,8 +18,7 @@ fc-cache -fv
 - Create own colorscheme
 - Reduces startuptime, readmore: https://github.com/wbthomason/packer.nvim (nvim --startuptime out)
 - tjdevries/astronauta.nvim
-- terrortylor/nvim-comment -> check later
-- andymass/vim-matchup
+- andymass/vim-matchup - %
 - JoosepAlviste/nvim-ts-context-commentstring
 - https://github.com/windwp/nvim-spectre
 - https://github.com/ahmedkhalf/lsp-rooter.nvim
@@ -28,4 +27,5 @@ fc-cache -fv
 - https://github.com/pwntester/octo.nvim -> git PRs
 - https://github.com/sbdchd/neoformat
 - https://github.com/junegunn/vim-easy-align
-- https://github.com/ggandor/lightspeed.nvim
+- update statusline
+- https://github.com/vhyrro/neorg
