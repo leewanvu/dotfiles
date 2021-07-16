@@ -16,8 +16,6 @@ fc-cache -fv
 - Try mattn/emmet-vim
 - Try nvim-treesitter extensions
 - Create own colorscheme
-- Reduces startuptime, readmore: https://github.com/wbthomason/packer.nvim (nvim --startuptime out)
-- tjdevries/astronauta.nvim
 - andymass/vim-matchup - %
 - JoosepAlviste/nvim-ts-context-commentstring
 - https://github.com/windwp/nvim-spectre
@@ -27,5 +25,5 @@ fc-cache -fv
 - https://github.com/pwntester/octo.nvim -> git PRs
 - https://github.com/sbdchd/neoformat
 - https://github.com/junegunn/vim-easy-align
-- update statusline
 - https://github.com/vhyrro/neorg
+- stow & dotfiles

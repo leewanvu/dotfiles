@@ -1,7 +1,7 @@
 local nord_custom = require'lualine.themes.nord'
-nord_custom.normal.b = {fg = '#B48EAD', bg = 'NONE'}
-nord_custom.insert.b = {fg = '#88C0D0', bg = 'NONE'}
-nord_custom.visual.b = {fg = '#B48EAD', bg = 'NONE'}
+-- nord_custom.normal.b = {fg = '#B48EAD', bg = 'NONE'}
+-- nord_custom.insert.b = {fg = '#88C0D0', bg = 'NONE'}
+-- nord_custom.visual.b = {fg = '#B48EAD', bg = 'NONE'}
 
 require'lualine'.setup {
   options = {
@@ -17,18 +17,12 @@ require'lualine'.setup {
       {
         'filename',
         file_status = true, -- displays file status (readonly status, modified status)
-        path = 1, -- 0 = just filename, 1 = relative path, 2 = absolute path
+        path = 0, -- 0 = just filename, 1 = relative path, 2 = absolute path
         -- color = 'Number',
       },
+      -- 'branch',
     },
     lualine_c = {
-      'diff',
-      -- {
-      --   'branch',
-      --   -- color = 'Number',
-      -- },
-    },
-    lualine_x = {
       -- 'diff',
       {
         'diagnostics',
@@ -45,6 +39,8 @@ require'lualine'.setup {
         -- symbols = {error = ' ', warn = ' ', info = ' ', hint = ' '}
         symbols = {error = 'E:', warn = 'W:', info = 'I:', hint = 'H:'}
       },
+    },
+    lualine_x = {
       'encoding',
       -- 'fileformat',
       'filetype',

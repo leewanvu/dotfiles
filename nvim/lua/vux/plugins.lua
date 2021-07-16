@@ -101,17 +101,18 @@ return require('packer').startup(function()
   }
 
   -- Status line
-  -- use {
-  --   'glepnir/galaxyline.nvim',
-  --   branch = 'main',
-  --   config = [[require('vux.statusline')]],
-  --   requires = {'kyazdani42/nvim-web-devicons'}
-  -- }
   use {
-    'hoob3rt/lualine.nvim',
-    config = [[require('vux.lualine')]],
-    requires = {'kyazdani42/nvim-web-devicons', opt = true}
+    'glepnir/galaxyline.nvim',
+    branch = 'main',
+    config = function() require('vux.galaxyline') end,
+    -- config = [[require('vux.statusline')]],
+    requires = {'kyazdani42/nvim-web-devicons'}
   }
+  -- use {
+  --   'hoob3rt/lualine.nvim',
+  --   config = [[require('vux.lualine')]],
+  --   requires = {'kyazdani42/nvim-web-devicons', opt = true}
+  -- }
 
   -- Project manager
   use {
@@ -134,7 +135,10 @@ return require('packer').startup(function()
   use {
     'lewis6991/gitsigns.nvim',
     event = "BufRead",
-    config = [[require('vux.gitsigns')]]
+    config = [[require('vux.gitsigns')]],
+    requires = {
+      'nvim-lua/plenary.nvim'
+    }
   }
   use 'sindrets/diffview.nvim'
   use 'kdheepak/lazygit.nvim'
@@ -234,4 +238,27 @@ return require('packer').startup(function()
       }
     end
   }
+
+  -- Note taking
+  -- use { 
+  --   "vhyrro/neorg",
+  --   ft = "norg",
+  --   config = function()
+  --     require('neorg').setup {
+  --       -- Tell Neorg what modules to load
+  --       load = {
+  --         ["core.defaults"] = {}, -- Load all the default modules
+  --         ["core.norg.concealer"] = {}, -- Allows for use of icons
+  --         ["core.norg.dirman"] = { -- Manage your directories with Neorg
+  --           config = {
+  --             workspaces = {
+  --               my_workspace = "~/neorg"
+  --             }
+  --           }
+  --         }
+  --       },
+  --     }
+  --   end,
+  --   requires = "nvim-lua/plenary.nvim"
+  -- }
 end)
