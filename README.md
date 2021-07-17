@@ -27,3 +27,4 @@ fc-cache -fv
 - https://github.com/junegunn/vim-easy-align
 - https://github.com/vhyrro/neorg
 - stow & dotfiles
+- nord light theme
