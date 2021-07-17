@@ -6,7 +6,7 @@ end
 local condition = require('galaxyline.condition')
 local gls = gl.section
 
-gl.short_line_list = {'NvimTree', 'startify', 'packer', 'ctrlsf', 'dashboard', 'toggleterm'}
+gl.short_line_list = {'NvimTree', 'startify', 'packer', 'ctrlsf', 'dashboard'} -- toggleterm
 
 local nord_colors = {
   nord0 = "#2E3440",
@@ -93,11 +93,14 @@ table.insert(gls.left, {
 
       -- return mode_map[vim.fn.mode()]
       local mode = mode_map[vim.fn.mode()]
+      if mode == nil then
+        mode = 'V-BLOCK'
+      end
       return string.format("  %s ", mode)
     end,
-    separator = ' ',
+    -- separator = ' ',
     highlight = {colors.darker_bg, colors.normal_mode, 'bold'},
-    separator_highlight = {colors.none, colors.darker_bg}
+    -- separator_highlight = {colors.none, colors.darker_bg}
   },
 })
 
@@ -108,12 +111,12 @@ table.insert(gls.left, {
     provider = function()
       local file = vim.fn.expand('%:t')
       if vim.fn.empty(file) == 1 then return '' end
-      return string.format("%s", file)
+      return string.format("  %s ", file)
     end,
     condition = condition.buffer_not_empty,
     separator = ' ',
     highlight = {colors.file_name, colors.darker_bg},
-    separator_highlight = {colors.none, colors.darker_bg}
+    separator_highlight = {colors.none, colors.bg}
   }
 })
 
@@ -122,7 +125,7 @@ table.insert(gls.left, {
   DiffAdd = {
     provider = 'DiffAdd',
     condition = condition.check_git_workspace,
-    icon = ' +',
+    icon = '+',
     highlight = {colors.diff_add,colors.bg},
   }
 })
@@ -132,7 +135,7 @@ table.insert(gls.left, {
   DiffModified = {
     provider = 'DiffModified',
     condition = condition.check_git_workspace,
-    icon = ' ~',
+    icon = '~',
     highlight = {colors.diff_modified,colors.bg},
   }
 })
@@ -142,7 +145,7 @@ table.insert(gls.left, {
   DiffRemove = {
     provider = 'DiffRemove',
     condition = condition.check_git_workspace,
-    icon = ' -',
+    icon = '-',
     highlight = {colors.diff_remove,colors.bg},
   }
 })
