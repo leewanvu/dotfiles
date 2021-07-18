@@ -43,6 +43,9 @@ return require('packer').startup(function()
   use { 'rafamadriz/friendly-snippets', event = "InsertEnter" }
   use 'ray-x/lsp_signature.nvim'
 
+  -- Make themes
+  use 'rktjmp/lush.nvim'
+
   -- Themes
   use { 'leewanvu/nord-vim', branch = 'vux' }
   use 'sainnhe/everforest'
