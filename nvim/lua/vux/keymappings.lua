@@ -36,6 +36,23 @@ map('n', '<C-k>', '<C-w>k')
 map('n', '<C-l>', '<C-w>l')
 map('n', '<C-h>', '<C-w>h')
 
+-- Move current line / block with Alt-j/k a la vscode.
+--[[ map('n', '<M-j>', ':m .+1<CR>==')
+map('n', '<M-k>', ':m .-2<CR>==') ]]
+
+-- Window Resizing (M = Alt | Option)
+map('n', '<M-Up>', ':resize -2<CR>')
+map('n', '<M-Down>', ':resize +2<CR>')
+map('n', '<M-Left>', ':vertical resize -2<CR>')
+map('n', '<M-Right>', ':vertical resize +2<CR>')
+
+-- Y yank until the end of line
+map('n', 'Y', 'y$')
+
+-- Remap for dealing with word wrap
+map('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true })
+map('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true })
+
 map('i', '<C-j>', '<C-w>j')
 map('i', '<C-k>', '<C-w>k')
 map('i', '<C-l>', '<C-w>l')
@@ -57,16 +74,3 @@ map('t', '<C-j>', '<C-\\><C-N><C-w>j')
 map('t', '<C-k>', '<C-\\><C-N><C-w>k')
 map('t', '<C-l>', '<C-\\><C-N><C-w>l')
 map('t', '<Esc>', '<C-\\><C-n>')
-
--- Window Resizing (M = Alt | Option)
-map('n', '<M-Up>', ':resize -2<CR>')
-map('n', '<M-Down>', ':resize +2<CR>')
-map('n', '<M-Left>', ':vertical resize -2<CR>')
-map('n', '<M-Right>', ':vertical resize +2<CR>')
-
--- Y yank until the end of line
-map('n', 'Y', 'y$')
-
--- Remap for dealing with word wrap
-map('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true })
-map('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true })

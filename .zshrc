@@ -182,8 +182,10 @@ alias arrs="arwebrs && arboxrs && arreportrs"
 
 # sms
 alias sms="arm sms"
+alias smsc="cd ~/Work/sms-be"
 alias smsr="arm sms u=root"
 alias smsrs="arm sms-reset"
+alias smsngrok="arm -s sms-ngrok"
 
 alias vdot="cd ~/Work/dotfiles && v nvim/init.lua"
 alias r="ranger"

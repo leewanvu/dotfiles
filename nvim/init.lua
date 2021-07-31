@@ -20,7 +20,6 @@ vim.g.maplocalleader = " "
 require('vux.plugins')
 require('vux.options')
 require('vux.colorscheme')
-require('vux.treesitter')
 require('vux.lsp')
 require('vux.keymappings')
 

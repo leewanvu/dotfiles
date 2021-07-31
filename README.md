@@ -25,6 +25,5 @@ fc-cache -fv
 - https://github.com/pwntester/octo.nvim -> git PRs
 - https://github.com/sbdchd/neoformat
 - https://github.com/junegunn/vim-easy-align
-- https://github.com/vhyrro/neorg
 - stow & dotfiles
 - nord light theme

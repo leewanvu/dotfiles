@@ -16,16 +16,19 @@ return require('packer').startup(function()
   -- Treesitter
   use {
     'nvim-treesitter/nvim-treesitter',
-    run = ':TSUpdate'
+    -- run = ':TSUpdate',
+    config = function ()
+      require('vux.treesitter').setup()
+    end
   }
   use 'nvim-treesitter/playground'
 
   -- Telescope
   use {
     'nvim-telescope/telescope.nvim',
-    config = [[require('vux.telescope')]],
-    event = 'BufWinEnter',
-    requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}}
+    config = function()
+      require('vux.telescope').setup()
+    end
   }
 
   -- LSP config
@@ -35,12 +38,20 @@ return require('packer').startup(function()
   use {
     'hrsh7th/nvim-compe',
     event = 'InsertEnter',
-    config = [[require('vux.compe')]]
+    config = function()
+      require('vux.compe').setup()
+    end
   }
-  use { "hrsh7th/vim-vsnip", event = 'InsertEnter' }
+  use {
+    "hrsh7th/vim-vsnip", 
+    event = "InsertCharPre",
+  }
 
   -- Snippets
-  use { 'rafamadriz/friendly-snippets', event = "InsertEnter" }
+  use {
+    'rafamadriz/friendly-snippets',
+    event = "InsertCharPre",
+  }
   use 'ray-x/lsp_signature.nvim'
 
   -- Make themes
@@ -72,9 +83,11 @@ return require('packer').startup(function()
   -- Transparent
   use {
     'xiyaowong/nvim-transparent',
-    event = { 'VimEnter', 'ColorScheme' },
+    config = function()
+      require('vux.transparent').setup()
+    end,
+    -- event = { 'VimEnter', 'ColorScheme' },
     -- cmd = { 'TransparentEnable', 'TransparentDisable', 'TransparentToggle' },
-    config = [[require('vux.transparent')]]
   }
 
   -- Syntax
@@ -92,15 +105,17 @@ return require('packer').startup(function()
   -- Colors
   use {
     'norcalli/nvim-colorizer.lua',
-    config = [[require('vux.colorize')]],
+    config = function()
+      require('vux.colorize').setup()
+    end
   }
 
   -- Explore
   use {
     'kyazdani42/nvim-tree.lua',
-    -- cmd = { "NvimTreeToggle", "NvimTreeClose", "NvimTreeFindFile" },
-    config = [[require('vux.nvimtree')]],
-    requires = {'kyazdani42/nvim-web-devicons'}
+    config = function()
+      require('vux.nvimtree').setup()
+    end,
   }
 
   -- Status line
@@ -108,8 +123,7 @@ return require('packer').startup(function()
     'glepnir/galaxyline.nvim',
     branch = 'main',
     config = function() require('vux.galaxyline') end,
-    -- config = [[require('vux.statusline')]],
-    requires = {'kyazdani42/nvim-web-devicons'}
+    event = "BufWinEnter",
   }
   -- use {
   --   'hoob3rt/lualine.nvim',
@@ -117,11 +131,13 @@ return require('packer').startup(function()
   --   requires = {'kyazdani42/nvim-web-devicons', opt = true}
   -- }
 
-  -- Project manager
+  -- Dashboard
   use {
     'glepnir/dashboard-nvim',
     event = 'BufWinEnter',
-    config = [[require('vux.dashboard')]]
+    config = function()
+      require('vux.dashboard').setup()
+    end,
   }
 
   -- Git
@@ -139,12 +155,12 @@ return require('packer').startup(function()
     'lewis6991/gitsigns.nvim',
     event = "BufRead",
     config = [[require('vux.gitsigns')]],
-    requires = {
-      'nvim-lua/plenary.nvim'
-    }
+    config = function()
+      require('vux.gitsigns').setup()
+    end,
   }
   use 'sindrets/diffview.nvim'
-  use 'kdheepak/lazygit.nvim'
+  -- use 'kdheepak/lazygit.nvim'
 
   -- Documention generator
   use {
@@ -156,7 +172,9 @@ return require('packer').startup(function()
   use {
     'b3nj5m1n/kommentary',
     event = "BufWinEnter",
-    config = [[require('vux.kommentary')]]
+    config = function()
+      require('vux.kommentary')
+    end,
   }
 
   -- Motion
@@ -178,36 +196,46 @@ return require('packer').startup(function()
   use {
     "lukas-reineke/indent-blankline.nvim",
     event = "BufRead",
-    config = [[require('vux.indent-blankline')]]
+    config = function()
+      require('vux.indent-blankline').setup()
+    end,
   }
 
   -- Strip whitespace
   use {
     'ntpeters/vim-better-whitespace',
     event = 'BufWinEnter',
-    config = [[require('vux.whitespace')]]
+    config = function()
+      require('vux.whitespace').setup()
+    end,
   }
 
   -- Search string
   use {
     'dyng/ctrlsf.vim',
     event = 'BufWinEnter',
-    config = [[require('vux.ctrlsf')]]
+    config = function()
+      require('vux.ctrlsf').setup()
+    end,
   }
 
   -- Terminal
   use {
     'akinsho/nvim-toggleterm.lua',
     -- event = "BufWinEnter",
-    config = [[require('vux.nvim-toggleterm')]]
+    config = function()
+      require('vux.nvim-toggleterm').setup()
+    end,
   }
 
   -- Autopairs
   use {
     'windwp/nvim-autopairs',
-    event = "InsertEnter",
-    after = { "telescope.nvim" },
-    config = [[require('vux.nvim-autopairs')]]
+    -- event = "InsertEnter",
+    after = "nvim-compe",
+    config = function()
+      require('nvim-autopairs').setup()
+    end,
   }
 
   -- Smooth scroll
@@ -217,7 +245,7 @@ return require('packer').startup(function()
   use {
     "folke/which-key.nvim",
     config = function()
-      require('vux.whichkey')
+      require('vux.whichkey').setup()
     end,
     event = "BufWinEnter",
   }
@@ -226,9 +254,9 @@ return require('packer').startup(function()
   -- use 'Pocco81/TrueZen.nvim'
   use {
     "folke/zen-mode.nvim",
-    cmd = "ZenMode",
-    event = "BufRead",
-    config = [[require('vux.zenmode')]]
+    config = function()
+      require('vux.zenmode').setup()
+    end,
   }
 
   use {
@@ -242,26 +270,19 @@ return require('packer').startup(function()
     end
   }
 
-  -- Note taking
-  -- use { 
-  --   "vhyrro/neorg",
-  --   ft = "norg",
+  -- use {
+  --   'NFrid/due.nvim',
   --   config = function()
-  --     require('neorg').setup {
-  --       -- Tell Neorg what modules to load
-  --       load = {
-  --         ["core.defaults"] = {}, -- Load all the default modules
-  --         ["core.norg.concealer"] = {}, -- Allows for use of icons
-  --         ["core.norg.dirman"] = { -- Manage your directories with Neorg
-  --           config = {
-  --             workspaces = {
-  --               my_workspace = "~/neorg"
-  --             }
-  --           }
-  --         }
-  --       },
-  --     }
-  --   end,
-  --   requires = "nvim-lua/plenary.nvim"
+  --     require('due_nvim').setup {}
+  --   end
   -- }
+  use {
+    'kristijanhusak/orgmode.nvim',
+    config = function()
+      require('orgmode').setup({
+        org_agenda_files = {'~/Work/org/*'},
+        org_default_notes_file = '~/Work/org/refile.org',
+      })
+    end
+  }
 end)
