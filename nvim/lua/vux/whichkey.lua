@@ -115,6 +115,7 @@ M.setup = function()
       S = { "<cmd>lua require('telescope.builtin').lsp_dynamic_workspace_symbols()<cr>", "Dynamic workspace symbols" },
       d = { "<cmd>lua require('telescope.builtin').lsp_document_diagnostics()<cr>", "Document diagnostics" },
       D = { "<cmd>lua require('telescope.builtin').lsp_workspace_diagnostics()<cr>", "Workspace diagnostics" },
+      i = { "<cmd>LspInfo<CR>", "Info" },
     },
     -- f = {
       -- name = "+Telescope",

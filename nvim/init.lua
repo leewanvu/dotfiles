@@ -17,11 +17,11 @@ vim.api.nvim_set_keymap('', '<Space>', '<Nop>', { noremap = true, silent=true})
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
-require('vux.plugins')
-require('vux.options')
+require('plugins')
+require('options')
 require('vux.colorscheme')
 require('vux.lsp')
-require('vux.keymappings')
+require('keymappings')
 
 -- Sourcing statusline.lua when switch colorscheme
 -- vim.api.nvim_command('augroup switchcolorscheme')
