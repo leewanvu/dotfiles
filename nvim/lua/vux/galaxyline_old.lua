@@ -69,9 +69,9 @@ end
 local colors = get_colors()
 
 -- whether or not transparent
-if vim.g.vux.os == "linux" and vim.g.vux.is_bg_transparent then
+--[[ if vim.g.vux.os == "linux" and vim.g.vux.is_bg_transparent then
   colors.bg = colors.bg_transparent
-end
+end ]]
 
 -- {label, fg}
 local mode_map = {

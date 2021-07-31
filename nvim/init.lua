@@ -1,4 +1,4 @@
-local configs = {
+--[[ local configs = {
   is_bg_transparent = true
 }
 
@@ -10,7 +10,7 @@ elseif uname.sysname == "Linux" then
   configs["os"] = "linux"
 end
 
-vim.g.vux = configs
+vim.g.vux = configs ]]
 
 -- Remap space as leader key
 vim.api.nvim_set_keymap('', '<Space>', '<Nop>', { noremap = true, silent=true})

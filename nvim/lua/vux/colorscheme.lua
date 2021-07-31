@@ -7,9 +7,9 @@ vim.g.nord_italic_comments = 1
 vim.g.nord_underline = 1
 
 -- nord transparent
-if vim.g.vux.os == "linux" and vim.g.vux.is_bg_transparent then
+--[[ if vim.g.vux.os == "linux" and vim.g.vux.is_bg_transparent then
   vim.g.nord_transparent = 1
-end
+end ]]
 
 vim.o.background = "dark"
 -- vim.o.background = "light"
