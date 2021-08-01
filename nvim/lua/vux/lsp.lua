@@ -1,25 +1,4 @@
-vim.fn.sign_define("LspDiagnosticsSignError",
-                   {texthl = "LspDiagnosticsSignError", text = "", numhl = "LspDiagnosticsSignError"})
-vim.fn.sign_define("LspDiagnosticsSignWarning",
-                   {texthl = "LspDiagnosticsSignWarning", text = "", numhl = "LspDiagnosticsSignWarning"})
-vim.fn.sign_define("LspDiagnosticsSignHint",
-                   {texthl = "LspDiagnosticsSignHint", text = "", numhl = "LspDiagnosticsSignHint"})
-vim.fn.sign_define("LspDiagnosticsSignInformation",
-                   {texthl = "LspDiagnosticsSignInformation", text = "", numhl = "LspDiagnosticsSignInformation"})
-
--- Set Default Prefix.
-vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
-  vim.lsp.diagnostic.on_publish_diagnostics, {
-    virtual_text = {
-      prefix = "",
-      spacing = 0,
-    },
-    signs = true,
-    underline = true,
-  }
-)
-
--- symbols for autocomplete
+-- completion item kind
 vim.lsp.protocol.CompletionItemKind = {
     "   (Text) ",
     "   (Method)",
@@ -48,7 +27,36 @@ vim.lsp.protocol.CompletionItemKind = {
     "   (TypeParameter)"
 }
 
-local lsp_config = require'lspconfig'
+-- diagnostic signs
+vim.fn.sign_define("LspDiagnosticsSignError",
+                   {texthl = "LspDiagnosticsSignError", text = "", numhl = "LspDiagnosticsSignError"})
+vim.fn.sign_define("LspDiagnosticsSignWarning",
+                   {texthl = "LspDiagnosticsSignWarning", text = "", numhl = "LspDiagnosticsSignWarning"})
+vim.fn.sign_define("LspDiagnosticsSignHint",
+                   {texthl = "LspDiagnosticsSignHint", text = "", numhl = "LspDiagnosticsSignHint"})
+vim.fn.sign_define("LspDiagnosticsSignInformation",
+                   {texthl = "LspDiagnosticsSignInformation", text = "", numhl = "LspDiagnosticsSignInformation"})
+
+-- override handlers
+vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+  vim.lsp.diagnostic.on_publish_diagnostics, {
+    virtual_text = {
+      prefix = "",
+      spacing = 0,
+    },
+    signs = true,
+    underline = true,
+  }
+)
+
+--[[ vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+  border = 'single'
+})
+
+vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
+  border = 'single'
+}) ]]
+
 local on_attach = function(client, bufnr)
   -- Show function signature when you types
   require "lsp_signature".on_attach({
@@ -67,7 +75,7 @@ local on_attach = function(client, bufnr)
   })
 
   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
-  local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
+  -- local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
 
   -- buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
 
@@ -99,27 +107,21 @@ local on_attach = function(client, bufnr)
   buf_set_keymap("n", "ga", "<cmd>lua require('telescope.builtin').lsp_code_actions()<cr>", opts)
   buf_set_keymap("v", "ga", "<cmd>lua require('telescope.builtin').lsp_range_code_actions()<cr>", opts)
 
-  -- Lspsaga mappings
-  -- buf_set_keymap('n', 'gr', "<cmd>lua require'lspsaga.provider'.lsp_finder()<CR>", opts)
-  -- buf_set_keymap('n', 'K', "<cmd>lua require('lspsaga.hover').render_hover_doc()<CR>", opts)
-  -- buf_set_keymap('n', '<C-f>', "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(1)<CR>", opts)
-  -- buf_set_keymap('n', '<C-b>', "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<CR>", opts)
-  -- buf_set_keymap('n', 'gs', "<cmd>lua require('lspsaga.signaturehelp').signature_help()<CR>", opts)
-  -- buf_set_keymap('n', 'ga', "<cmd>lua require'lspsaga.codeaction'.code_action()<CR>", opts)
-  -- buf_set_keymap('v', 'ga', "<cmd>'<,'>lua require'lspsaga.codeaction'.range_code_action()", opts)
-  -- buf_set_keymap('n', 'gn', "<cmd>lua require'lspsaga.rename'.rename()<CR>", opts)
-  -- buf_set_keymap('n', 'gp', "<cmd>lua require'lspsaga.provider'.preview_definition()<CR>", opts)
-  -- buf_set_keymap('n', '<leader>ee', "<cmd>lua require'lspsaga.diagnostic'.show_line_diagnostics()<CR>", opts)
-  -- buf_set_keymap('n', '<leader>ep', "<cmd>lua require'lspsaga.diagnostic'.lsp_jump_diagnostic_prev()<CR>", opts)
-  -- buf_set_keymap('n', '<leader>en', "<cmd>lua require'lspsaga.diagnostic'.lsp_jump_diagnostic_next()<CR>", opts)
+  -- Set autocommands conditional on server_capabilities
+  if client.resolved_capabilities.document_highlight then
+    vim.api.nvim_exec(
+      [[
+      augroup lsp_document_highlight
+        autocmd! * <buffer>
+        autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
+        autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
+      augroup END
+    ]],
+      false
+    )
+  end
 end
 
--- Saga
--- local saga = require 'lspsaga'
--- saga.init_lsp_saga()
-
--- Snippet Support
--- require'snippets'.use_suggested_mappings()
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 capabilities.textDocument.completion.completionItem.resolveSupport = {
@@ -130,6 +132,9 @@ capabilities.textDocument.completion.completionItem.resolveSupport = {
   }
 }
 
+local lsp_config = require'lspconfig'
+local data_path = vim.fn.stdpath "data"
+
 local servers = { "tsserver", "vuels", "cssls", "html" }
 for _, lsp in ipairs(servers) do
   lsp_config[lsp].setup {
@@ -138,7 +143,43 @@ for _, lsp in ipairs(servers) do
   }
 end
 
--- PHP intelephense
+-- lua
+lsp_config.sumneko_lua.setup {
+  cmd = {
+    data_path .. "/lspinstall/lua/sumneko-lua-language-server",
+    "-E",
+    data_path .. "/lspinstall/lua/main.lua",
+  },
+  capabilities = capabilities,
+  on_attach = on_attach,
+  filetypes = { "lua" },
+  settings = {
+    Lua = {
+      runtime = {
+        -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+        version = "LuaJIT",
+        -- Setup your lua path
+        path = vim.split(package.path, ";"),
+      },
+      diagnostics = {
+        -- Get the language server to recognize the `vim` global
+        globals = { "vim" },
+      },
+      workspace = {
+        -- Make the server aware of Neovim runtime files
+        library = {
+          [vim.fn.expand "~/.config/nvim/lua"] = true,
+          [vim.fn.expand "$VIMRUNTIME/lua"] = true,
+          [vim.fn.expand "$VIMRUNTIME/lua/vim/lsp"] = true,
+        },
+        maxPreload = 100000,
+        preloadFileSize = 1000,
+      },
+    },
+  },
+}
+
+-- php intelephense
 lsp_config.intelephense.setup {
   on_attach = on_attach
 }

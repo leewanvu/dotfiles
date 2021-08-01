@@ -8,7 +8,7 @@ vim.cmd [[packadd packer.nvim]]
 return require('packer').startup(function()
   -- Packer can manage itself as an optional plugin
   use { 'wbthomason/packer.nvim', opt = true }
-  
+
   -- Must to have
   use 'nvim-lua/popup.nvim'
   use 'nvim-lua/plenary.nvim'
@@ -33,6 +33,13 @@ return require('packer').startup(function()
 
   -- LSP config
   use 'neovim/nvim-lspconfig'
+  use {
+    "kabouzeid/nvim-lspinstall",
+    event = "VimEnter",
+    config = function()
+      require'lspinstall'.setup()
+    end,
+  }
 
   -- Autocompletion
   use {
@@ -43,7 +50,7 @@ return require('packer').startup(function()
     end
   }
   use {
-    "hrsh7th/vim-vsnip", 
+    "hrsh7th/vim-vsnip",
     event = "InsertCharPre",
   }
 
@@ -154,7 +161,6 @@ return require('packer').startup(function()
   use {
     'lewis6991/gitsigns.nvim',
     event = "BufRead",
-    config = [[require('vux.gitsigns')]],
     config = function()
       require('vux.gitsigns').setup()
     end,
