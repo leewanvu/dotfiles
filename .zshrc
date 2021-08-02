@@ -138,15 +138,16 @@ alias kls='kubectl logs -f -n sms'
 alias kgps='kubectl get po -n sms'
 alias kes='kubectl exec -n sms -it'
 alias kprod='kubectl config use-context arn:aws:eks:ap-southeast-1:655894223594:cluster/fa-prod-eks'
-alias kstag='kubectl config use-context arn:aws:eks:ap-southeast-1:655894223594:cluster/fa-staging-eks'
+# alias kstag='kubectl config use-context arn:aws:eks:ap-southeast-1:655894223594:cluster/fa-staging-eks'
+alias kstag='kubectl config use-context firegroup-staging-new'
 
 alias klarp='kubectl logs -f -n ar6'
 alias kgparp='kubectl get po -n ar6'
 alias kearp='kubectl exec -n ar6 -it'
 
 alias kgpars='kubectl get po -n alireviews'
-alias klars='kubectl logs -f -n alireviews'
-alias kears='kubectl exec -n alireviews -it'
+alias klars='kubectl logs -f -n alireviews -c php'
+alias kears='kubectl exec -n alireviews -c php -it'
 
 # Alireviews
 alias ar="cd ~/Work/ar/"
