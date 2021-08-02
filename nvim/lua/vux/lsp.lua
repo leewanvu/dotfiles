@@ -179,6 +179,24 @@ lsp_config.sumneko_lua.setup {
   },
 }
 
+-- go
+lsp_config.gopls.setup {
+  cmd = {
+    data_path .. "/lspinstall/go/gopls",
+  },
+  filetypes = { "go", "gomod" },
+  on_attach = on_attach,
+  capabilities = capabilities,
+  --[[ settings = {
+    gopls = {
+      analyses = {
+        unusedparams = true,
+      },
+      staticcheck = true,
+    },
+  }, ]]
+}
+
 -- php intelephense
 lsp_config.intelephense.setup {
   on_attach = on_attach
