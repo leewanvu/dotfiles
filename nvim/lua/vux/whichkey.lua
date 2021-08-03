@@ -97,7 +97,7 @@ M.setup = function()
         f = { '<cmd>DiffviewFocusFiles<cr>', 'Focus files' },
       },
       h = { '<cmd>lua require"gitsigns".toggle_linehl()<CR>', "Highlight" },
-      -- z = { '<cmd>LazyGit<cr>', "LazyGit" },
+      z = { "<cmd>lua require('vux.nvim-toggleterm').lazygit()<CR>", "Lazy git" },
     },
     s = {
       name = "+Search",
