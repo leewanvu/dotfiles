@@ -199,5 +199,6 @@ lsp_config.gopls.setup {
 
 -- php intelephense
 lsp_config.intelephense.setup {
-  on_attach = on_attach
+  on_attach = on_attach,
+  capabilities = capabilities,
 }

@@ -171,7 +171,7 @@ return require('packer').startup(function()
   -- Documention generator
   use {
     'kkoomen/vim-doge',
-    run = ':call doge#install()'
+    -- run = ':call doge#install()'
   }
 
   -- Comment
