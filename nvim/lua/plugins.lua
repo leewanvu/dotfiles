@@ -5,7 +5,7 @@ vim.cmd [[packadd packer.nvim]]
 
 -- vim.cmd [[autocmd BufWritePost plugins.lua PackerCompile]]
 
-return require('packer').startup(function()
+return require('packer').startup(function(use)
   -- Packer can manage itself as an optional plugin
   use { 'wbthomason/packer.nvim', opt = true }
 
@@ -34,32 +34,52 @@ return require('packer').startup(function()
   -- LSP config
   use 'neovim/nvim-lspconfig'
   use {
-    "kabouzeid/nvim-lspinstall",
+    'kabouzeid/nvim-lspinstall',
     event = "VimEnter",
     config = function()
       require'lspinstall'.setup()
     end,
   }
 
+  -- Lsp signature
+  use 'ray-x/lsp_signature.nvim'
+
   -- Autocompletion
-  use {
+  --[[ use {
     'hrsh7th/nvim-compe',
     event = 'InsertEnter',
     config = function()
       require('vux.compe').setup()
     end
-  }
+  } ]]
+
+  -- Completion
   use {
-    "hrsh7th/vim-vsnip",
-    event = "InsertCharPre",
+    'hrsh7th/nvim-cmp',
+    config = function()
+      require('vux.nvim-cmp').setup()
+    end
   }
+  -- use { 'hrsh7th/cmp-vsnip', after = 'nvim-cmp' }
+  use { 'hrsh7th/cmp-buffer', after = 'nvim-cmp' }
+  use { 'hrsh7th/cmp-nvim-lsp', after = 'nvim-cmp' }
+  use { 'hrsh7th/cmp-path', after = 'nvim-cmp' }
+  use { 'saadparwaiz1/cmp_luasnip', after = 'nvim-cmp' }
 
   -- Snippets
+  --[[ use {
+    'hrsh7th/vim-vsnip',
+    event = 'InsertCharPre',
+  } ]]
   use {
-    'rafamadriz/friendly-snippets',
-    event = "InsertCharPre",
+    'L3MON4D3/LuaSnip',
+    -- wants = "friendly-snippets",
+    -- after = "nvim-cmp",
+    config = function()
+      require("vux.luasnip")
+    end,
   }
-  use 'ray-x/lsp_signature.nvim'
+  use { 'rafamadriz/friendly-snippets' }
 
   -- Make themes
   use 'rktjmp/lush.nvim'
@@ -201,7 +221,7 @@ return require('packer').startup(function()
   -- Indent line
   use {
     "lukas-reineke/indent-blankline.nvim",
-    event = "BufRead",
+    -- event = "BufRead",
     config = function()
       require('vux.indent-blankline').setup()
     end,
@@ -238,7 +258,7 @@ return require('packer').startup(function()
   use {
     'windwp/nvim-autopairs',
     -- event = "InsertEnter",
-    after = "nvim-compe",
+    -- after = "nvim-compe",
     config = function()
       require('nvim-autopairs').setup()
     end,
@@ -287,7 +307,7 @@ return require('packer').startup(function()
     config = function()
       require('orgmode').setup({
         org_agenda_files = {'~/Work/org/*'},
-        org_default_notes_file = '~/Work/org/refile.org',
+        org_default_notes_file = '~/Work/org/notes.org',
       })
     end
   }

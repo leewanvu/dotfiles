@@ -38,6 +38,9 @@ opt.signcolumn = 'yes'
 opt.termguicolors = true
 opt.syntax = 'on'
 -- opt.listchars = "eol:↲,tab:»\\ "
+--[[ opt.listchars = {
+  eol = "↴"
+} ]]
 -- opt.list = true
 opt.clipboard = 'unnamedplus'
 opt.history = 1000
