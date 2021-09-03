@@ -41,6 +41,13 @@ return require('packer').startup(function(use)
     end,
   }
 
+  use {
+    'simrat39/symbols-outline.nvim',
+    config = function()
+      require('vux.symbol-outline').setup()
+    end
+  }
+
   -- Lsp signature
   use 'ray-x/lsp_signature.nvim'
 
@@ -260,7 +267,11 @@ return require('packer').startup(function(use)
     -- event = "InsertEnter",
     -- after = "nvim-compe",
     config = function()
-      require('nvim-autopairs').setup()
+      require('nvim-autopairs').setup({
+        map_cr = true, --  map <CR> on insert mode
+        map_complete = true, -- it will auto insert `(` after select function or method item
+        auto_select = true -- automatically select the first item
+      })
     end,
   }
 
@@ -296,12 +307,7 @@ return require('packer').startup(function(use)
     end
   }
 
-  -- use {
-  --   'NFrid/due.nvim',
-  --   config = function()
-  --     require('due_nvim').setup {}
-  --   end
-  -- }
+  -- Note taking
   use {
     'kristijanhusak/orgmode.nvim',
     config = function()
