@@ -322,4 +322,12 @@ return require('packer').startup(function(use)
   use {
     'kazhala/close-buffers.nvim'
   }
+
+  -- Switch projects
+  use {
+    "ahmedkhalf/project.nvim",
+    config = function()
+      require('vux.project').setup()
+    end
+  }
 end)

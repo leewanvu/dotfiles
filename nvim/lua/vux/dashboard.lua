@@ -17,11 +17,9 @@ vim.g.dashboard_custom_header = {
    '                     ▀█▀                   ',
 }
 vim.g.dashboard_custom_section = {
-    -- a = {description = {'  Find File          '}, command = 'Telescope find_files find_command=rg,--ignore,--hidden,--files,--no-ignore-vcs,-g,!node_modules,-g,!.git,-g,!vendor'},
-    a = {description = {'  Find File          '}, command = "lua require('telescope.builtin').find_files({ find_command = { 'rg', '--files', '--hidden', '--no-ignore-vcs', '-g', '!{node_modules,.git,vendor}' } })"},
+    a = {description = {'  Find Files         '}, command = "lua require('telescope.builtin').find_files({ find_command = { 'rg', '--files', '--hidden', '--no-ignore-vcs', '-g', '!{node_modules,.git,vendor}' } })"},
     b = {description = {'  Recently Used Files'}, command = 'Telescope oldfiles'},
-    c = {description = {'  Diff File          '}, command = 'Telescope git_status'},
-    d = {description = {'  Find Word          '}, command = 'Telescope live_grep'},
+    c = {description = {'  Projects           '}, command = 'Telescope projects'},
     -- d = {description = {'  Settings           '}, command = ':e ~/.config/nvim/init.lua'}
 }
 -- vim.g.dashboard_custom_footer = {'leewanvu'}
