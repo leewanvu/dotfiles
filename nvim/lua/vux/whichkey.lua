@@ -65,7 +65,8 @@ M.setup = function()
 
   local nmappings = {
     ["w"] = "Write buffer",
-    ["q"] = "Delete buffer",
+    -- ["q"] = "Delete buffer",
+    ["q"] = { [[<cmd>lua require('close_buffers').delete({type = 'this', force = true})<cr>]], "Delete buffer"},
     ["e"] = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
     ["n"] = { "<cmd>nohlsearch<cr>", "No highlight" },
     ["d"] = "Doc generator",
@@ -74,7 +75,7 @@ M.setup = function()
     ["z"] = { "<cmd>ZenMode<cr>", "Zen Mode" },
     ["t"] = { "<cmd>TransparentToggle<cr>", "Transparent toggle" },
     ["f"] = { "<cmd>lua require('telescope.builtin').find_files({ find_command = { 'rg', '--files', '--hidden', '--no-ignore-vcs', '-g', '!{node_modules,.git,vendor}' } })<cr>", "Find files" },
-    ["r"] = { "<cmd>Telescope oldfiles<cr>", "Recent files" },
+    ["r"] = { "<cmd>Telescope oldfiles<cr>", "Find recent files" },
     g = {
       name = "+Git",
       g = { "<cmd>lua require('telescope.builtin').git_status()<cr>", "Git status" },
@@ -136,7 +137,8 @@ M.setup = function()
       n = { "<cmd>bnext<cr>", "Next buffer" },
       p = { "<cmd>bprevious<cr>", "Prev buffer" },
       w = { "<cmd>w<cr>", "Write buffer" },
-      d = { "Delete buffer" }, -- set mapping in /vux/keymappings.lua
+      d = { [[<cmd>lua require('close_buffers').delete({type = 'other', force = true})<cr>]], "Delete other buffers" }, -- set mapping in /vux/keymappings.lua
+      D = { [[<cmd>lua require('close_buffers').delete({type = 'all', force = true})<cr>]], "Delete all listed buffers" }, -- set mapping in /vux/keymappings.lua
       r = { "<cmd>set wrap!<cr>", "Toogle word wrap" },
       i = { "<cmd>IndentBlanklineToggle<cr>", "Toggle indent line" },
       f = { "<cmd>lua require('telescope.builtin').current_buffer_fuzzy_find()<cr>", "Fuzzy find text" },

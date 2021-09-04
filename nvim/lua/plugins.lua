@@ -317,4 +317,9 @@ return require('packer').startup(function(use)
       })
     end
   }
+
+  -- Close buffers
+  use {
+    'kazhala/close-buffers.nvim'
+  }
 end)
