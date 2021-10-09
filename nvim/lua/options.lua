@@ -6,7 +6,7 @@ opt.softtabstop    = 2
 opt.expandtab      = true
 opt.smartindent    = true
 opt.copyindent     = true
-opt.showtabline    = 1
+opt.showtabline    = 0
 opt.autoindent     = true
 opt.cindent        = true
 opt.wrap           = true
@@ -59,3 +59,6 @@ vim.o.shortmess = vim.o.shortmess .. 'c'
 
 -- set foldmethod=expr
 -- set foldexpr=nvim_treesitter#foldexpr()
+-- opt.guifont=[[JetBrainsMono Nerd Font:h15]]
+-- opt.guifont=[[Hack Nerd Font:h15]]
+opt.guifont=[[DroidSansMono Nerd Font:h15]]

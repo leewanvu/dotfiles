@@ -5,118 +5,83 @@ end
 
 local condition = require('galaxyline.condition')
 local gls = gl.section
+local get_color = require("galaxyline.themes.colors").get_color
 
 gl.short_line_list = {'NvimTree', 'startify', 'packer', 'ctrlsf', 'dashboard'} -- toggleterm
 
-local nord_colors = {
-  nord0 = "#2E3440",
-  nord1 = "#3B4252",
-  nord2 = "#434C5E",
-  nord3 = "#4C566A",
-  nord4 = "#D8DEE9",
-  nord5 = "#E5E9F0",
-  nord6 = "#ECEFF4",
-  nord7 = "#8FBCBB",
-  nord8 = "#88C0D0",
-  nord9 = "#81A1C1",
-  nord10 = "#5E81AC",
-  nord11 = "#BF616A",
-  nord12 = "#D08770",
-  nord13 = "#EBCB8B",
-  nord14 = "#A3BE8C",
-  nord15 = "#B48EAD",
-}
-
-local colors = {
-  fg = nord_colors.nord6,
-  bg = nord_colors.nord3,
-  darker_bg = nord_colors.nord1,
-  bg_transparent = nord_colors.nord2,
-  short_line_left = nord_colors.nord8,
-  branch_name = nord_colors.nord15,
-  diff_add = nord_colors.nord14,
-  diff_modified = nord_colors.nord13,
-  diff_remove = nord_colors.nord11,
-  diagnostic_error = nord_colors.nord11,
-  diagnostic_hint = nord_colors.nord10,
-  diagnostic_info = nord_colors.nord8,
-  diagnostic_warn = nord_colors.nord13,
-  file_name = nord_colors.nord5,
-  file_size = nord_colors.nord6,
-  position_info = nord_colors.nord8,
-  percent_info = nord_colors.nord13,
-  normal_mode = nord_colors.nord8,
-  insert_mode = nord_colors.nord6,
-  visual_mode = nord_colors.nord7,
-  termial_mode = nord_colors.nord11,
-  other_mode = nord_colors.nord8,
-  none = "NONE",
-}
+local function wide_enough(width)
+  local squeeze_width = vim.fn.winwidth(0)
+  if squeeze_width > width then return true end
+  return false
+end
 
 -- left section --
 
 -- mode
-table.insert(gls.left, {
-  ViMode = {
-    provider = function()
-      local mode_map = {
-        ['n']    = 'NORMAL',
-        ['no']   = 'O-PENDING',
-        ['nov']  = 'O-PENDING',
-        ['noV']  = 'O-PENDING',
-        ['no'] = 'O-PENDING',
-        ['niI']  = 'NORMAL',
-        ['niR']  = 'NORMAL',
-        ['niV']  = 'NORMAL',
-        ['v']    = 'VISUAL',
-        ['V']    = 'V-LINE',
-        ['']   = 'V-BLOCK',
-        ['s']    = 'SELECT',
-        ['S']    = 'S-LINE',
-        ['']   = 'S-BLOCK',
-        ['i']    = 'INSERT',
-        ['ic']   = 'INSERT',
-        ['ix']   = 'INSERT',
-        ['R']    = 'REPLACE',
-        ['Rc']   = 'REPLACE',
-        ['Rv']   = 'V-REPLACE',
-        ['Rx']   = 'REPLACE',
-        ['c']    = 'COMMAND',
-        ['cv']   = 'EX',
-        ['ce']   = 'EX',
-        ['r']    = 'REPLACE',
-        ['rm']   = 'MORE',
-        ['r?']   = 'CONFIRM',
-        ['!']    = 'SHELL',
-        ['t']    = 'TERMINAL',
-      }
+-- table.insert(gls.left, {
+--   ViMode = {
+--     provider = function()
+--       local mode_map = {
+--         ['n']    = 'NORMAL',
+--         ['no']   = 'O-PENDING',
+--         ['nov']  = 'O-PENDING',
+--         ['noV']  = 'O-PENDING',
+--         ['niI']  = 'NORMAL',
+--         ['niR']  = 'NORMAL',
+--         ['niV']  = 'NORMAL',
+--         ['v']    = 'VISUAL',
+--         ['V']    = 'V-LINE',
+--         ['']     = 'V-BLOCK',
+--         ['s']    = 'SELECT',
+--         ['S']    = 'S-LINE',
+--         ['i']    = 'INSERT',
+--         ['ic']   = 'INSERT',
+--         ['ix']   = 'INSERT',
+--         ['R']    = 'REPLACE',
+--         ['Rc']   = 'REPLACE',
+--         ['Rv']   = 'V-REPLACE',
+--         ['Rx']   = 'REPLACE',
+--         ['c']    = 'COMMAND',
+--         ['cv']   = 'EX',
+--         ['ce']   = 'EX',
+--         ['r']    = 'REPLACE',
+--         ['rm']   = 'MORE',
+--         ['r?']   = 'CONFIRM',
+--         ['!']    = 'SHELL',
+--         ['t']    = 'TERMINAL',
+--       }
 
-      -- return mode_map[vim.fn.mode()]
-      local mode = mode_map[vim.fn.mode()]
-      if mode == nil then
-        mode = 'V-BLOCK'
-      end
-      return string.format("  %s ", mode)
-    end,
-    -- separator = ' ',
-    highlight = {colors.darker_bg, colors.normal_mode, 'bold'},
-    -- separator_highlight = {colors.none, colors.darker_bg}
-  },
-})
+--       -- return mode_map[vim.fn.mode()]
+--       local mode = mode_map[vim.fn.mode()]
+--       if mode == nil then
+--         mode = 'V-BLOCK'
+--       end
+--       return string.format("  %s ", mode)
+--     end,
+--     -- separator = ' ',
+--     highlight = {get_color("bg"), get_color("cyan"), 'bold'},
+--     -- separator_highlight = {get_color("fg"), get_color("bg")}
+--   },
+-- })
 
 -- filename
 table.insert(gls.left, {
   FileName = {
     -- provider = 'FileName',
     provider = function()
-      local file = vim.fn.expand('%:t')
+      local file
+      if wide_enough(120) then
+        file = vim.fn.fnamemodify(vim.fn.expand('%'), ':~:.')
+      else
+        file = vim.fn.expand('%:t')
+      end
       if vim.fn.empty(file) == 1 then return '' end
       return string.format("  %s ", file)
     end,
     condition = condition.buffer_not_empty,
-    separator = ' ',
-    highlight = {colors.file_name, colors.darker_bg},
-    separator_highlight = {colors.none, colors.bg}
+    -- separator = ' ',
+    highlight = {get_color("cyan"), get_color("bg"), "bold"},
+    -- separator_highlight = {get_color("fg"), get_color("bg")}
   }
 })
 
@@ -126,7 +91,7 @@ table.insert(gls.left, {
     provider = 'DiffAdd',
     condition = condition.check_git_workspace,
     icon = '+',
-    highlight = {colors.diff_add,colors.bg},
+    highlight = {get_color("green"), get_color("bg")},
   }
 })
 
@@ -136,7 +101,7 @@ table.insert(gls.left, {
     provider = 'DiffModified',
     condition = condition.check_git_workspace,
     icon = '~',
-    highlight = {colors.diff_modified,colors.bg},
+    highlight = {get_color("yellow"), get_color("bg")},
   }
 })
 
@@ -146,7 +111,16 @@ table.insert(gls.left, {
     provider = 'DiffRemove',
     condition = condition.check_git_workspace,
     icon = '-',
-    highlight = {colors.diff_remove,colors.bg},
+    highlight = {get_color("red"),get_color("bg")},
+  }
+})
+
+-- whitespace
+table.insert(gls.left, {
+  WhiteSpace = {
+    provider = 'WhiteSpace',
+    condition = condition.buffer_not_empty,
+    highlight = {get_color("fg"), get_color("bg")},
   }
 })
 
@@ -155,7 +129,7 @@ table.insert(gls.left, {
     provider = function()
       return " "
     end,
-    highlight = {colors.none, colors.bg},
+    highlight = {get_color("fg"), get_color("bg")},
   },
 })
 
@@ -168,7 +142,7 @@ table.insert(gls.right, {
   DiagnosticError = {
     provider = 'DiagnosticError',
     icon = 'E:',
-    highlight = {colors.diagnostic_error,colors.bg},
+    highlight = {get_color("red"),get_color("bg")},
   }
 })
 
@@ -177,23 +151,25 @@ table.insert(gls.right, {
   DiagnosticWarn = {
     provider = 'DiagnosticWarn',
     icon = 'W:',
-    highlight = {colors.diagnostic_warn,colors.bg},
+    highlight = {get_color("yellow"),get_color("bg")},
   }
 })
+
 -- diagnostic hint
 table.insert(gls.right, {
   DiagnosticHint = {
     provider = 'DiagnosticHint',
     icon = 'H:',
-    highlight = {colors.diagnostic_hint,colors.bg},
+    highlight = {get_color("blue"),get_color("bg")},
   }
 })
--- diagnostic warn
+
+-- diagnostic info
 table.insert(gls.right, {
   DiagnosticInfo = {
     provider = 'DiagnosticInfo',
     icon = 'I:',
-    highlight = {colors.diagnostic_info,colors.bg},
+    highlight = {get_color("fg"),get_color("bg")},
   }
 })
 
@@ -205,8 +181,8 @@ table.insert(gls.right, {
     end,
     condition = condition.hide_in_width,
     separator = ' ',
-    highlight = {colors.fg, colors.bg},
-    separator_highlight = {colors.fg, colors.bg},
+    highlight = {get_color("fg"), get_color("bg")},
+    separator_highlight = {get_color("fg"), get_color("bg")},
   },
 })
 
@@ -220,8 +196,8 @@ table.insert(gls.right, {
     end,
     condition = condition.hide_in_width,
     separator = ' ',
-    highlight = {colors.fg, colors.bg},
-    separator_highlight = {colors.fg, colors.bg},
+    highlight = {get_color("fg"), get_color("bg")},
+    separator_highlight = {get_color("fg"), get_color("bg")},
   }
 })
 
@@ -234,8 +210,8 @@ table.insert(gls.right, {
     end,
     condition = condition.buffer_not_empty,
     separator = '  ',
-    highlight = {colors.fg, colors.bg},
-    separator_highlight = {colors.fg, colors.bg},
+    highlight = {get_color("fg"), get_color("bg")},
+    separator_highlight = {get_color("fg"), get_color("bg")},
   }
 })
 
@@ -245,8 +221,8 @@ table.insert(gls.right, {
     provider = 'LinePercent',
     condition = condition.buffer_not_empty,
     separator = '  ',
-    highlight = {colors.fg, colors.darker_bg},
-    separator_highlight = {colors.fg, colors.bg},
+    highlight = {get_color("fg"), get_color("bg")},
+    separator_highlight = {get_color("fg"), get_color("bg")},
   }
 })
 
@@ -262,8 +238,8 @@ table.insert(gls.right, {
     end,
     condition = condition.buffer_not_empty,
     separator = ' ',
-    highlight = {colors.fg, colors.darker_bg},
-    separator_highlight = {colors.fg, colors.darker_bg},
+    highlight = {get_color("fg"), get_color("bg")},
+    separator_highlight = {get_color("fg"), get_color("bg")},
   }
 })
 
@@ -276,14 +252,14 @@ table.insert(gls.short_line_left, {
       local short_list = gl.short_line_list
       for _,v in ipairs(short_list) do
         if v == vim.bo.filetype then
-          return string.format("  %s ", vim.bo.filetype:upper())
+          return string.format("  %s ", vim.bo.filetype:lower())
         end
       end
       return ''
     end,
     separator = ' ',
-    highlight = {colors.bg, colors.normal_mode, 'bold'},
-    separator_highlight = {colors.none, colors.darker_bg},
+    highlight = {get_color("cyan"), get_color("bg"), 'bold'},
+    separator_highlight = {get_color("fg"), get_color("bg")},
   },
 })
 
@@ -291,6 +267,6 @@ table.insert(gls.short_line_left, {
   SFileName = {
     provider = 'SFileName',
     condition = condition.buffer_not_empty,
-    highlight = {colors.fg, colors.darker_bg}
+    highlight = {get_color("fg"), get_color("bg")}
   },
 })

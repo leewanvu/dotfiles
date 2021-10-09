@@ -17,6 +17,10 @@ vim.api.nvim_set_keymap('', '<Space>', '<Nop>', { noremap = true, silent=true})
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
+-- neovide
+vim.g.neovide_cursor_vfx_mode = 'railgun'
+vim.g.neovide_input_use_logo= true
+
 require('plugins')
 require('options')
 require('vux.colorscheme')

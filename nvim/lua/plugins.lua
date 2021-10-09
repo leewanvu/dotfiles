@@ -21,7 +21,14 @@ return require('packer').startup(function(use)
       require('vux.treesitter').setup()
     end
   }
+  use 'nvim-treesitter/nvim-treesitter-textobjects'
   use 'nvim-treesitter/playground'
+  use {
+    'romgrk/nvim-treesitter-context',
+    config = function()
+      require('vux.ts-context').setup()
+    end
+  }
 
   -- Telescope
   use {
@@ -35,7 +42,7 @@ return require('packer').startup(function(use)
   use 'neovim/nvim-lspconfig'
   use {
     'kabouzeid/nvim-lspinstall',
-    event = "VimEnter",
+    -- event = "VimEnter",
     config = function()
       require'lspinstall'.setup()
     end,
@@ -51,15 +58,6 @@ return require('packer').startup(function(use)
   -- Lsp signature
   use 'ray-x/lsp_signature.nvim'
 
-  -- Autocompletion
-  --[[ use {
-    'hrsh7th/nvim-compe',
-    event = 'InsertEnter',
-    config = function()
-      require('vux.compe').setup()
-    end
-  } ]]
-
   -- Completion
   use {
     'hrsh7th/nvim-cmp',
@@ -73,11 +71,6 @@ return require('packer').startup(function(use)
   use { 'hrsh7th/cmp-path', after = 'nvim-cmp' }
   use { 'saadparwaiz1/cmp_luasnip', after = 'nvim-cmp' }
 
-  -- Snippets
-  --[[ use {
-    'hrsh7th/vim-vsnip',
-    event = 'InsertCharPre',
-  } ]]
   use {
     'L3MON4D3/LuaSnip',
     -- wants = "friendly-snippets",
@@ -89,27 +82,19 @@ return require('packer').startup(function(use)
   use { 'rafamadriz/friendly-snippets' }
 
   -- Make themes
-  use 'rktjmp/lush.nvim'
+  -- use 'rktjmp/lush.nvim'
 
   -- Themes
   use { 'leewanvu/nord-vim', branch = 'vux' }
   use 'sainnhe/everforest'
-  -- use 'rktjmp/lush.nvim'
   -- use 'kunzaatko/nord.nvim'
   -- use {
   --   'projekt0n/github-nvim-theme',
   --   config = function()
   --     require('github-theme').setup({
-  --       themeStyle = 'dark',
-  --       commentStyle = 'italic',
-  --       keywordStyle = 'NONE',
-  --       functionStyle = 'NONE',
-  --       variableStyle = 'NONE',
-  --       hideInactiveStatusline = false,
-  --       sidebars = {},
-  --       darkSidebar = true,
-  --       darkFloat = true,
-  --       colors = {}
+  --       theme_style = 'dark',
+  --       keyword_style = 'NONE',
+  --       dark_sidebar = false,
   --     })
   --   end
   -- }
@@ -120,8 +105,6 @@ return require('packer').startup(function(use)
     config = function()
       require('vux.transparent').setup()
     end,
-    -- event = { 'VimEnter', 'ColorScheme' },
-    -- cmd = { 'TransparentEnable', 'TransparentDisable', 'TransparentToggle' },
   }
 
   -- Syntax
@@ -154,10 +137,11 @@ return require('packer').startup(function(use)
 
   -- Status line
   use {
-    'glepnir/galaxyline.nvim',
-    branch = 'main',
-    config = function() require('vux.galaxyline') end,
-    event = "BufWinEnter",
+    "NTBBloodbath/galaxyline.nvim",
+    config = function()
+      require("vux.galaxyline")
+    end,
+    requires = { "kyazdani42/nvim-web-devicons", opt = true }
   }
   -- use {
   --   'hoob3rt/lualine.nvim',
@@ -168,7 +152,7 @@ return require('packer').startup(function(use)
   -- Dashboard
   use {
     'glepnir/dashboard-nvim',
-    event = 'BufWinEnter',
+    -- event = 'BufWinEnter',
     config = function()
       require('vux.dashboard').setup()
     end,
@@ -177,45 +161,40 @@ return require('packer').startup(function(use)
   -- Git
   use 'tpope/vim-fugitive'
   -- use 'airblade/vim-gitgutter'
-  -- use {
-  --   'f-person/git-blame.nvim',
-  --   config = function()
-  --     vim.g.gitblame_enabled = 0
-  --     vim.g.gitblame_message_template = ' <author> • <date> • <summary>'
-  --     vim.g.gitblame_date_format = '%c'
-  --   end
-  -- }
   use {
     'lewis6991/gitsigns.nvim',
-    event = "BufRead",
+    -- event = "BufRead",
     config = function()
       require('vux.gitsigns').setup()
     end,
   }
   use 'sindrets/diffview.nvim'
-  -- use 'kdheepak/lazygit.nvim'
 
   -- Documention generator
   use {
-    'kkoomen/vim-doge',
+    -- 'kkoomen/vim-doge',
+    '~/Work/vim-doge',
     -- run = ':call doge#install()'
   }
+  -- use {
+  --   '~/Work/neogen',
+  --   config = function()
+  --     require('neogen').setup {
+  --       enabled = true
+  --     }
+  --   end
+  -- }
 
   -- Comment
   use {
     'b3nj5m1n/kommentary',
-    event = "BufWinEnter",
+    -- event = "BufWinEnter",
     config = function()
-      require('vux.kommentary')
+      require('vux.kommentary').setup()
     end,
   }
 
   -- Motion
-  -- use {
-  --   'phaazon/hop.nvim',
-  --   as = 'hop',
-  --   config = [[require('vux.hop')]]
-  -- }
   use {
     'ggandor/lightspeed.nvim',
     config = function()
@@ -234,23 +213,19 @@ return require('packer').startup(function(use)
     end,
   }
 
-  -- Strip whitespace
-  use {
-    'ntpeters/vim-better-whitespace',
-    event = 'BufWinEnter',
-    config = function()
-      require('vux.whitespace').setup()
-    end,
-  }
-
   -- Search string
   use {
     'dyng/ctrlsf.vim',
-    event = 'BufWinEnter',
+    -- event = 'BufWinEnter',
     config = function()
       require('vux.ctrlsf').setup()
     end,
   }
+
+  -- Search and replace
+  -- use {
+  --   'windwp/nvim-spectre'
+  -- }
 
   -- Terminal
   use {
@@ -284,11 +259,16 @@ return require('packer').startup(function(use)
     config = function()
       require('vux.whichkey').setup()
     end,
-    event = "BufWinEnter",
+    -- event = "BufWinEnter",
   }
 
   -- Zen mode
-  -- use 'Pocco81/TrueZen.nvim'
+  -- use {
+  --   'Pocco81/TrueZen.nvim',
+  --   config = function()
+  --     require('vux.truezen').setup()
+  --   end
+  -- }
   use {
     "folke/zen-mode.nvim",
     config = function()
@@ -298,7 +278,7 @@ return require('packer').startup(function(use)
 
   use {
     'nacro90/numb.nvim',
-    event = "BufRead",
+    -- event = "BufRead",
     config = function()
       require('numb').setup{
         show_numbers = true, -- Enable 'number' for the window while peeking

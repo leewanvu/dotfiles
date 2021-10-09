@@ -5,7 +5,15 @@ M.setup = function ()
 
   require('telescope').setup {
     defaults = {
-      vimgrep_arguments = {'rg', '--no-heading', '--with-filename', '--line-number', '--column', '--smart-case'},
+      vimgrep_arguments = {
+        "rg",
+        "--color=never",
+        "--no-heading",
+        "--with-filename",
+        "--line-number",
+        "--column",
+        "--smart-case"
+      },
       prompt_prefix = "   ",
       selection_caret = " ",
       entry_prefix = "  ",
@@ -28,21 +36,26 @@ M.setup = function ()
           preview_height = 0.6,
         }
       },
-      file_sorter = require'telescope.sorters'.get_fuzzy_file,
+      -- file_sorter = require'telescope.sorters'.get_fuzzy_file,
+      file_sorter = require("telescope.sorters").get_fzy_sorter,
+      -- generic_sorter = require'telescope.sorters'.get_generic_fuzzy_sorter,
+      generic_sorter = require("telescope.sorters").get_fzy_sorter,
       file_ignore_patterns = {
-        "node_modules/*",
-        -- "vendor/*",
-        ".idea/*",
-        ".git/*",
+        "^node_modules/*",
+        -- "^vendor/*",
+        "^.idea/*",
+        "^.git/*",
         "%.png",
         "%.jpg",
         "%.svg",
         "%.ico"
       },
-      generic_sorter = require'telescope.sorters'.get_generic_fuzzy_sorter,
-      path_display = { 'absolute' }, -- tail | shorten
+      path_display = function(opts, path)
+        local tail = require("telescope.utils").path_tail(path)
+        return string.format("%s (%s)", tail, path)
+      end,
       winblend = 0,
-      border = {},
+      border = true,
       borderchars = {'─', '│', '─', '│', '╭', '╮', '╯', '╰'},
       color_devicons = true,
       use_less = true,

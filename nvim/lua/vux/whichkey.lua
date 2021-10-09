@@ -65,17 +65,19 @@ M.setup = function()
 
   local nmappings = {
     ["w"] = "Write buffer",
-    -- ["q"] = "Delete buffer",
-    ["q"] = { [[<cmd>lua require('close_buffers').delete({type = 'this', force = true})<cr>]], "Delete buffer"},
+    ["q"] = "Delete buffer",
+    -- ["q"] = { [[<cmd>lua require('close_buffers').delete({type = 'this', force = true})<cr>]], "Delete buffer"},
     ["e"] = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
     ["n"] = { "<cmd>nohlsearch<cr>", "No highlight" },
     ["d"] = "Doc generator",
     ["h"] = { "<cmd>TSHighlightCapturesUnderCursor<cr>", "Show TS highlight" },
     ["="] = "LSP - Format",
     ["z"] = { "<cmd>ZenMode<cr>", "Zen Mode" },
+    -- ["z"] = { "<cmd>TZFocus<cr>", "Zen Mode" },
     ["t"] = { "<cmd>TransparentToggle<cr>", "Transparent toggle" },
     ["f"] = { "<cmd>lua require('telescope.builtin').find_files({ find_command = { 'rg', '--files', '--hidden', '--no-ignore-vcs', '-g', '!{node_modules,.git,vendor}' } })<cr>", "Find files" },
     ["r"] = { "<cmd>Telescope oldfiles<cr>", "Find recent files" },
+    ["p"] = { "<cmd>Telescope projects<cr>", "Projects" },
     g = {
       name = "+Git",
       g = { "<cmd>lua require('telescope.builtin').git_status()<cr>", "Git status" },
@@ -117,6 +119,7 @@ M.setup = function()
       d = { "<cmd>lua require('telescope.builtin').lsp_document_diagnostics()<cr>", "Document diagnostics" },
       D = { "<cmd>lua require('telescope.builtin').lsp_workspace_diagnostics()<cr>", "Workspace diagnostics" },
       i = { "<cmd>LspInfo<CR>", "Info" },
+      o = { "<cmd>SymbolsOutline<CR>", "Symbols outline" },
     },
     -- f = {
       -- name = "+Telescope",
@@ -137,20 +140,22 @@ M.setup = function()
       n = { "<cmd>bnext<cr>", "Next buffer" },
       p = { "<cmd>bprevious<cr>", "Prev buffer" },
       w = { "<cmd>w<cr>", "Write buffer" },
-      d = { [[<cmd>lua require('close_buffers').delete({type = 'other', force = true})<cr>]], "Delete other buffers" }, -- set mapping in /vux/keymappings.lua
-      D = { [[<cmd>lua require('close_buffers').delete({type = 'all', force = true})<cr>]], "Delete all listed buffers" }, -- set mapping in /vux/keymappings.lua
+      d = { [[<cmd>lua require('close_buffers').delete({type = 'this', force = true})<cr>]], "Delete this buffer" }, -- set mapping in /vux/keymappings.lua
+      D = { [[<cmd>lua require('close_buffers').delete({type = 'other', force = true})<cr>]], "Delete other buffers" }, -- set mapping in /vux/keymappings.lua
       r = { "<cmd>set wrap!<cr>", "Toogle word wrap" },
       i = { "<cmd>IndentBlanklineToggle<cr>", "Toggle indent line" },
       f = { "<cmd>lua require('telescope.builtin').current_buffer_fuzzy_find()<cr>", "Fuzzy find text" },
+      s = { "Next swap" },
+      S = { "Previous swap"},
     },
-    p = {
+    --[[ p = {
       name = "+Packer",
       c = { "<cmd>PackerCompile<cr>", "Compile" },
       i = { "<cmd>PackerInstall<cr>", "Install" },
       s = { "<cmd>PackerSync<cr>", "Sync" },
       S = { "<cmd>PackerStatus<cr>", "Status" },
       u = { "<cmd>PackerUpdate<cr>", "Update" },
-    },
+    }, ]]
     o = {
       name = "+Org",
       a = "Agenda",

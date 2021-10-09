@@ -1,5 +1,7 @@
 local status, cmp = pcall(require, "cmp")
 local l_status, luasnip = pcall(require, "luasnip")
+-- local n_status, neogen = pcall(require, "neogen")
+-- if not (status or l_status or n_status) then
 if not (status or l_status) then
   return
 end
@@ -48,17 +50,16 @@ M.setup = function()
     snippet = {
       expand = function(args)
         require("luasnip").lsp_expand(args.body)
-        -- vim.fn["vsnip#anonymous"](args.body)
       end,
     },
     mapping = {
-      ["<C-n>"] = cmp.mapping.select_next_item(),
-      ["<C-p>"] = cmp.mapping.select_prev_item(),
       ["<Tab>"] = cmp.mapping(function(fallback)
-        if vim.fn.pumvisible() == 1 then
-          vim.fn.feedkeys(t("<C-n>"), "n")
+        if cmp.visible() then
+          cmp.select_next_item()
         elseif luasnip.expand_or_jumpable() then
           vim.fn.feedkeys(t("<Plug>luasnip-expand-or-jump"), "")
+        -- elseif neogen.jumpable() then
+        --   vim.fn.feedkeys(t("<cmd>lua require('neogen').jump_next()<CR>"), "")
         elseif check_back_space() then
           vim.fn.feedkeys(t("<Tab>"), "n")
         else
@@ -69,8 +70,8 @@ M.setup = function()
         "s",
       }),
       ["<S-Tab>"] = cmp.mapping(function(fallback)
-        if vim.fn.pumvisible() == 1 then
-          vim.fn.feedkeys(t("<C-p>"), "n")
+        if cmp.visible() then
+          cmp.select_prev_item()
         elseif luasnip.jumpable(-1) then
           vim.fn.feedkeys(t("<Plug>luasnip-jump-prev"), "")
         else
@@ -80,28 +81,6 @@ M.setup = function()
         "i",
         "s",
       }),
-      --[[ ['<Tab>'] = function(fallback)
-        if vim.fn.pumvisible() == 1 then
-          vim.fn.feedkeys(t('<C-n>'), 'n')
-        elseif vim.fn['vsnip#available']() == 1 then
-          vim.fn.feedkeys(t('<Plug>(vsnip-expand-or-jump)'), '')
-        elseif check_back_space() then
-          vim.fn.feedkeys(t('<Tab>'), 'n')
-        else
-          fallback()
-        end
-      end, ]]
-      --[[ ['<S-Tab>'] = function(fallback)
-        if vim.fn.pumvisible() == 1 then
-          vim.fn.feedkeys(t('<C-p>'), 'n')
-        elseif vim.fn['vsnip#available']() == 1 then
-          vim.fn.feedkeys(t('<Plug>(vsnip-jump-prev)'), '')
-        elseif check_back_space() then
-          vim.fn.feedkeys(t('<S-Tab>'), 'n')
-        else
-          fallback()
-        end
-      end, ]]
       ['<C-d>'] = cmp.mapping.scroll_docs(-4),
       ['<C-f>'] = cmp.mapping.scroll_docs(4),
       ['<C-Space>'] = cmp.mapping.complete(),
