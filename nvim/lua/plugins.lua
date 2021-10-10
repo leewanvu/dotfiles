@@ -81,6 +81,17 @@ return require('packer').startup(function(use)
   }
   use { 'rafamadriz/friendly-snippets' }
 
+  -- Autopairs
+  use {
+    'windwp/nvim-autopairs',
+    -- event = "InsertEnter",
+    -- after = "nvim-cmp",
+    config = function()
+      require('vux.autopairs').setup()
+    end,
+  }
+
+
   -- Make themes
   -- use 'rktjmp/lush.nvim'
 
@@ -233,20 +244,6 @@ return require('packer').startup(function(use)
     -- event = "BufWinEnter",
     config = function()
       require('vux.nvim-toggleterm').setup()
-    end,
-  }
-
-  -- Autopairs
-  use {
-    'windwp/nvim-autopairs',
-    -- event = "InsertEnter",
-    -- after = "nvim-compe",
-    config = function()
-      require('nvim-autopairs').setup({
-        map_cr = true, --  map <CR> on insert mode
-        map_complete = true, -- it will auto insert `(` after select function or method item
-        auto_select = true -- automatically select the first item
-      })
     end,
   }
 
