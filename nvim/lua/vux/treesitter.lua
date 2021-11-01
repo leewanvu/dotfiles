@@ -14,7 +14,7 @@ M.setup = function ()
     },
     indent = {
       enable = true,
-      disable = { 'php' }
+      -- disable = { 'php' }
     },
     playground = {
       enable = true,

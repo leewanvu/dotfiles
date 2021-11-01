@@ -93,7 +93,7 @@ return require('packer').startup(function(use)
 
 
   -- Make themes
-  -- use 'rktjmp/lush.nvim'
+  use 'rktjmp/lush.nvim'
 
   -- Themes
   use { 'leewanvu/nord-vim', branch = 'vux' }
@@ -109,6 +109,8 @@ return require('packer').startup(function(use)
   --     })
   --   end
   -- }
+  use 'folke/tokyonight.nvim'
+  use 'mcchrish/zenbones.nvim'
 
   -- Transparent
   use {
@@ -179,7 +181,7 @@ return require('packer').startup(function(use)
       require('vux.gitsigns').setup()
     end,
   }
-  use 'sindrets/diffview.nvim'
+  -- use 'sindrets/diffview.nvim'
 
   -- Documention generator
   use {
@@ -285,15 +287,15 @@ return require('packer').startup(function(use)
   }
 
   -- Note taking
-  use {
-    'kristijanhusak/orgmode.nvim',
-    config = function()
-      require('orgmode').setup({
-        org_agenda_files = {'~/Work/org/*'},
-        org_default_notes_file = '~/Work/org/notes.org',
-      })
-    end
-  }
+  -- use {
+  --   'kristijanhusak/orgmode.nvim',
+  --   config = function()
+  --     require('orgmode').setup({
+  --       org_agenda_files = {'~/Work/org/*'},
+  --       org_default_notes_file = '~/Work/org/notes.org',
+  --     })
+  --   end
+  -- }
 
   -- Close buffers
   use {

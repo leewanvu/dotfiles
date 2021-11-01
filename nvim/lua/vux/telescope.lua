@@ -96,10 +96,10 @@ M.setup = function ()
       }
     },
     pickers = {
-      find_files = {
-        theme = "dropdown", -- ivy
-        previewer = false,
-      },
+      -- find_files = {
+      --   theme = "dropdown", -- ivy
+      --   previewer = false,
+      -- },
       oldfiles = {
         theme = "dropdown", -- ivy
         previewer = false,
@@ -127,6 +127,22 @@ M.setup = function ()
       -- your extension config goes in here
     }
   }
+end
+
+M.find_files = function()
+  local opts = require'telescope.themes'.get_dropdown()
+
+  opts.find_command = {
+    'rg', '--files', '--hidden', '--no-ignore-vcs', '-g', '!{node_modules,.git,vendor}'
+  }
+  opts.previewer = false
+
+  opts.path_display = function(opts, path)
+    local tail = require("telescope.utils").path_tail(path)
+    return string.format("%s (%s)", tail, path)
+  end
+
+  require('telescope.builtin').find_files(opts)
 end
 
 return M

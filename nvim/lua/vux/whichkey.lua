@@ -75,7 +75,7 @@ M.setup = function()
     ["z"] = { "<cmd>ZenMode<cr>", "Zen Mode" },
     -- ["z"] = { "<cmd>TZFocus<cr>", "Zen Mode" },
     ["t"] = { "<cmd>TransparentToggle<cr>", "Transparent toggle" },
-    ["f"] = { "<cmd>lua require('telescope.builtin').find_files({ find_command = { 'rg', '--files', '--hidden', '--no-ignore-vcs', '-g', '!{node_modules,.git,vendor}' } })<cr>", "Find files" },
+    ["f"] = { "<cmd>lua require('vux.telescope').find_files()<cr>", "Find files" },
     ["r"] = { "<cmd>Telescope oldfiles<cr>", "Find recent files" },
     ["p"] = { "<cmd>Telescope projects<cr>", "Projects" },
     g = {
@@ -91,14 +91,14 @@ M.setup = function()
       S = { '<cmd>lua require"gitsigns".stage_buffer()<CR>', "Stage buffer" },
       u = { '<cmd>lua require"gitsigns".undo_stage_hunk()<CR>', "Undo stage hunk" },
       -- d = { '<cmd>lua require"gitsigns".diffthis()<CR>', "Diff this" },
-      ["d"] = {
-        name = "+Diff view",
-        o = { '<cmd>DiffviewOpen<cr>', 'Open' },
-        c = { '<cmd>DiffviewClose<cr>', 'Close' },
-        r = { '<cmd>DiffviewRefresh<cr>', 'Refresh' },
-        t = { '<cmd>DiffviewToggleFiles<cr>', 'Toggle files' },
-        f = { '<cmd>DiffviewFocusFiles<cr>', 'Focus files' },
-      },
+      -- ["d"] = {
+      --   name = "+Diff view",
+      --   o = { '<cmd>DiffviewOpen<cr>', 'Open' },
+      --   c = { '<cmd>DiffviewClose<cr>', 'Close' },
+      --   r = { '<cmd>DiffviewRefresh<cr>', 'Refresh' },
+      --   t = { '<cmd>DiffviewToggleFiles<cr>', 'Toggle files' },
+      --   f = { '<cmd>DiffviewFocusFiles<cr>', 'Focus files' },
+      -- },
       h = { '<cmd>lua require"gitsigns".toggle_linehl()<CR>', "Highlight" },
       z = { "<cmd>lua require('vux.nvim-toggleterm').lazygit()<CR>", "Lazy git" },
     },
@@ -123,7 +123,7 @@ M.setup = function()
     },
     -- f = {
       -- name = "+Telescope",
-      -- f = { "<cmd>lua require('telescope.builtin').find_files({ find_command = { 'rg', '--files', '--hidden', '--no-ignore-vcs', '-g', '!{node_modules,.git,vendor}' } })<cr>", "Find files" },
+      -- f = { "<cmd>lua require('vux.telescope').find_files()<cr>", "Find files" },
       -- z = { "<cmd>lua require('telescope.builtin').current_buffer_fuzzy_find()<cr>", "Find text in open buffer" },
       -- o = { "<cmd>Telescope oldfiles<cr>", "Find oldfiles" },
       -- t = { "<cmd>Telescope treesitter<cr>", "Treesitter" },
@@ -156,11 +156,11 @@ M.setup = function()
       S = { "<cmd>PackerStatus<cr>", "Status" },
       u = { "<cmd>PackerUpdate<cr>", "Update" },
     }, ]]
-    o = {
-      name = "+Org",
-      a = "Agenda",
-      c = "Capture",
-    },
+    -- o = {
+    --   name = "+Org",
+    --   a = "Agenda",
+    --   c = "Capture",
+    -- },
     -- t = {
     --   name = "+TrueZen",
     --   t = { "<cmd>TZFocus<cr>", "Focus mode" },
@@ -185,6 +185,8 @@ M.setup = function()
       n = "LSP - Rename",
       s = "LSP - Signature help",
       a = "LSP - Code action",
+      t = "LSP - Type definition",
+      i = "LSP - Implementation",
     },
     ["["] = {
       b = "Prev buffer",
