@@ -1,8 +1,7 @@
 local M = {}
 
 M.setup = function()
-  vim.g.nvim_tree_width = 40
-  vim.g.nvim_tree_ignore = { '.git', '.idea', 'node_modules', 'vendor' }
+  -- vim.g.nvim_tree_width = 40
   vim.g.nvim_tree_quit_on_open = 1
   vim.g.nvim_tree_indent_markers = 1
   vim.g.nvim_tree_width_allow_resize = 1
@@ -58,6 +57,21 @@ M.setup = function()
       cmd  = nil,
       args = {}
     },
+    filters = {
+      dotfiles = false,
+      custom = { '.git', '.idea', 'node_modules', 'vendor' }
+    },
+    view = {
+      width = 30,
+      height = 30,
+      hide_root_folder = false,
+      side = 'left',
+      auto_resize = true,
+      mappings = {
+        custom_only = false,
+        list = {}
+      }
+    }
   }
 
 end
