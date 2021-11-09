@@ -5,7 +5,7 @@ end
 
 local condition = require('galaxyline.condition')
 local gls = gl.section
-local get_color = require("galaxyline.themes.colors").get_color
+local get_color = require("vux.colors").get_color
 
 gl.short_line_list = {'NvimTree', 'startify', 'packer', 'ctrlsf', 'dashboard'} -- toggleterm
 
