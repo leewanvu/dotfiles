@@ -187,19 +187,19 @@ table.insert(gls.right, {
 })
 
 -- file encode
-table.insert(gls.right, {
-  FileEncode = {
-    -- provider = 'FileEncode',
-    provider = function()
-      local encode = vim.bo.fenc ~= '' and vim.bo.fenc or vim.o.enc
-      return ' ' .. encode
-    end,
-    condition = condition.hide_in_width,
-    separator = ' ',
-    highlight = {get_color("fg"), get_color("bg")},
-    separator_highlight = {get_color("fg"), get_color("bg")},
-  }
-})
+-- table.insert(gls.right, {
+--   FileEncode = {
+--     -- provider = 'FileEncode',
+--     provider = function()
+--       local encode = vim.bo.fenc ~= '' and vim.bo.fenc or vim.o.enc
+--       return ' ' .. encode
+--     end,
+--     condition = condition.hide_in_width,
+--     separator = ' ',
+--     highlight = {get_color("fg"), get_color("bg")},
+--     separator_highlight = {get_color("fg"), get_color("bg")},
+--   }
+-- })
 
 -- file type name
 table.insert(gls.right, {

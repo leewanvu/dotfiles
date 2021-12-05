@@ -26,6 +26,7 @@ opt.pumheight = 10
 opt.splitbelow = true
 opt.splitright = true
 opt.timeoutlen = 500
+opt.cursorline = true
 -- opt.colorcolumn = 80
 -- opt.cursorcolumn = true
 opt.hlsearch = true
@@ -59,6 +60,6 @@ vim.o.shortmess = vim.o.shortmess .. 'c'
 
 -- set foldmethod=expr
 -- set foldexpr=nvim_treesitter#foldexpr()
--- opt.guifont=[[JetBrainsMono Nerd Font:h15]]
+opt.guifont=[[JetBrainsMono Nerd Font:h15]]
 -- opt.guifont=[[Hack Nerd Font:h15]]
-opt.guifont=[[DroidSansMono Nerd Font:h15]]
+-- opt.guifont=[[DroidSansMono Nerd Font:h15]]

@@ -213,6 +213,9 @@ alias ta="tmux attach"
 alias td="tmux detach"
 alias tk="tmux kill-session"
 
+# luniq
+alias luniq="make -f ~/Work/luniq/luniq-docker/Makefile -s"
+
 # Android
 export ANDROID_HOME=$HOME/Library/Android/sdk
 export PATH=$PATH:$ANDROID_HOME/emulator

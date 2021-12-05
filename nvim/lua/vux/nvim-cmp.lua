@@ -108,7 +108,7 @@ M.setup = function()
     sources = {
       {
         name = 'buffer',
-        opts = {
+        option = {
           get_bufnrs = function()
             -- all buffers
             return vim.api.nvim_list_bufs()

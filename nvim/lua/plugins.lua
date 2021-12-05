@@ -37,16 +37,11 @@ return require('packer').startup(function(use)
       require('vux.telescope').setup()
     end
   }
+  use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
 
   -- LSP config
   use 'neovim/nvim-lspconfig'
-  use {
-    'kabouzeid/nvim-lspinstall',
-    -- event = "VimEnter",
-    config = function()
-      require'lspinstall'.setup()
-    end,
-  }
+  use 'williamboman/nvim-lsp-installer'
 
   use {
     'simrat39/symbols-outline.nvim',
@@ -91,26 +86,16 @@ return require('packer').startup(function(use)
     end,
   }
 
-
   -- Make themes
   use 'rktjmp/lush.nvim'
 
   -- Themes
   use { 'leewanvu/nord-vim', branch = 'vux' }
-  use 'sainnhe/everforest'
-  -- use 'kunzaatko/nord.nvim'
-  -- use {
-  --   'projekt0n/github-nvim-theme',
-  --   config = function()
-  --     require('github-theme').setup({
-  --       theme_style = 'dark',
-  --       keyword_style = 'NONE',
-  --       dark_sidebar = false,
-  --     })
-  --   end
-  -- }
-  use 'folke/tokyonight.nvim'
-  use 'mcchrish/zenbones.nvim'
+  -- use { 'leewanvu/everforest', branch = 'vux' }
+  use { '~/Work/everforest' }
+  -- use { 'leewanvu/tokyonight.nvim', branch = 'vux' }
+  use { '~/Work/tokyonight.nvim' }
+  use { 'rose-pine/neovim', as = 'rose-pine' }
 
   -- Transparent
   use {

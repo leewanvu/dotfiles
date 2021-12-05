@@ -1,17 +1,16 @@
 local colors = {}
 
 colors.default = {
-  bg = "#202328",
-  fg = "#bbc2cf",
-  yellow = "#ECBE7B",
-  cyan = "#008080",
-  darkblue = "#081633",
-  green = "#98be65",
-  orange = "#FF8800",
-  violet = "#a9a1e1",
-  magenta = "#c678dd",
-  blue = "#51afef",
-  red = "#ec5f67",
+  bg = "#292e42",
+  fg = "#c0caf5",
+  fg_alt = "#a9b1d6",
+  yellow = "#e0af68",
+  cyan = "#7dcfff",
+  green = "#9ece6a",
+  orange = "#ff9e64",
+  magenta = "#bb9af7",
+  blue = "#7aa2f7",
+  red = "#f7768e",
 }
 
 colors.nord = {
@@ -28,7 +27,6 @@ colors.nord = {
 }
 
 colors.tokyonight = {
-  -- bg = "#1f2335",
   bg = "#292e42",
   fg = "#c0caf5",
   fg_alt = "#a9b1d6",
@@ -39,6 +37,19 @@ colors.tokyonight = {
   magenta = "#bb9af7",
   blue = "#7aa2f7",
   red = "#f7768e",
+}
+
+colors.everforest = {
+  bg = "#3a454a",
+  fg = "#d3c6aa",
+  fg_alt = "#a9b1d6",
+  yellow = "#dbbc7f",
+  cyan = "#83c092",
+  green = "#a7c080",
+  orange = "#e69875",
+  magenta = "#d699b6",
+  blue = "#7fbbb3",
+  red = "#e67e80",
 }
 
 colors.get_color = function(color)
