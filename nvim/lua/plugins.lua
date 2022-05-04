@@ -92,10 +92,10 @@ return require('packer').startup(function(use)
   -- Themes
   use { 'leewanvu/nord-vim', branch = 'vux' }
   -- use { 'leewanvu/everforest', branch = 'vux' }
-  use { '~/Work/everforest' }
+  -- use { '~/Work/everforest' }
   -- use { 'leewanvu/tokyonight.nvim', branch = 'vux' }
   use { '~/Work/tokyonight.nvim' }
-  use { 'rose-pine/neovim', as = 'rose-pine' }
+  -- use { 'rose-pine/neovim', as = 'rose-pine' }
 
   -- Transparent
   use {
@@ -134,18 +134,20 @@ return require('packer').startup(function(use)
   }
 
   -- Status line
-  use {
-    "NTBBloodbath/galaxyline.nvim",
-    config = function()
-      require("vux.galaxyline")
-    end,
-    requires = { "kyazdani42/nvim-web-devicons", opt = true }
-  }
   -- use {
-  --   'hoob3rt/lualine.nvim',
-  --   config = [[require('vux.lualine')]],
-  --   requires = {'kyazdani42/nvim-web-devicons', opt = true}
+  --   "NTBBloodbath/galaxyline.nvim",
+  --   config = function()
+  --     require("vux.galaxyline")
+  --   end,
+  --   requires = { "kyazdani42/nvim-web-devicons", opt = true }
   -- }
+  use {
+    'nvim-lualine/lualine.nvim',
+    config = function()
+      require'vux.lualine'.setup()
+    end,
+    requires = {'kyazdani42/nvim-web-devicons', opt = true}
+  }
 
   -- Dashboard
   use {
@@ -184,12 +186,18 @@ return require('packer').startup(function(use)
   -- }
 
   -- Comment
+  -- use {
+  --   'b3nj5m1n/kommentary',
+  --   -- event = "BufWinEnter",
+  --   config = function()
+  --     require('vux.kommentary').setup()
+  --   end,
+  -- }
   use {
-    'b3nj5m1n/kommentary',
-    -- event = "BufWinEnter",
+    'numToStr/Comment.nvim',
     config = function()
-      require('vux.kommentary').setup()
-    end,
+      require('vux.comment').setup()
+    end
   }
 
   -- Motion
@@ -258,6 +266,13 @@ return require('packer').startup(function(use)
     config = function()
       require('vux.zenmode').setup()
     end,
+  }
+  use {
+    "folke/twilight.nvim",
+    config = function()
+      require("twilight").setup {
+      }
+    end
   }
 
   use {

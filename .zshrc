@@ -108,14 +108,10 @@ alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
 
-# docker
-alias dkpsa='docker ps -a'
-alias dcp='docker-compose'
-
-alias s5y='~/Work/s5y'
-alias gsms='~/Work/s5y gsms'
-alias gun='~/Work/s5y gun'
-alias gngrok='~/Work/s5y ngrok'
+# alias s5y='~/Work/s5y'
+# alias gsms='~/Work/s5y gsms'
+# alias gun='~/Work/s5y gun'
+# alias gngrok='~/Work/s5y ngrok'
 
 # git
 alias g='git'
@@ -136,7 +132,7 @@ alias kgp='kubectl get po'
 alias kl='kubectl logs -f'
 alias kls='kubectl logs -f -n sms'
 alias kgps='kubectl get po -n sms'
-alias kes='kubectl exec -n sms -it'
+alias kes='kubectl exec -n sms -c php -it'
 alias ksms='kubectl config use-context arn:aws:eks:ap-southeast-1:655894223594:cluster/fa-prod-eks'
 alias kprod='kubectl config use-context fa-prod-asia'
 # alias kstag='kubectl config use-context arn:aws:eks:ap-southeast-1:655894223594:cluster/fa-staging-eks'
@@ -145,57 +141,23 @@ alias kstag='kubectl config use-context firegroup-staging-new'
 # alias klarp='kubectl logs -f -n ar6'
 # alias kgparp='kubectl get po -n ar6'
 # alias kearp='kubectl exec -n ar6 -it'
+# prod
 alias klarp='kubectl logs -f -n alireviews'
 alias kgparp='kubectl get po -n alireviews'
 alias kearp='kubectl exec -n alireviews -c php -it'
-
+# stag
 alias kgpars='kubectl get po -n alireviews'
 alias klars='kubectl logs -f -n alireviews -c php'
 alias kears='kubectl exec -n alireviews -c php -it'
 
-# Alireviews
-alias ar="cd ~/Work/ar/"
-alias arm="make -f ~/Work/ar/bin/Makefile"
-alias ard="arm docker"
-alias arup="arm up"
-alias ardown="arm down"
-alias arngrok="arm -s ar-ngrok"
-alias arredis="arm redis"
-alias arreset="arm reset"
-
-alias arreport="arm report"
-alias arreportr="arm report u=root"
-alias arreportl="arm report-log"
-
-alias arwebc="cd ~/Work/ar/alireviews"
-alias arweb="arm web"
-alias arwebr="arm web u=root"
-alias arwebl="arm web-log"
-alias arwebrs="arm web-reset"
-
-alias arboxc="cd ~/Work/ar/alireviews-box"
-alias arbox="arm box"
-alias arboxr="arm box u=root"
-alias arboxl="arm box-log"
-alias arboxrs="arm box-reset"
-
-alias aremail="arm email"
-
-alias arreportrs="arm report-reset"
-
-alias arrs="arwebrs && arboxrs && arreportrs"
-
-# sms
-alias sms="arm sms"
-alias smsc="cd ~/Work/sms-be"
-alias smsr="arm sms u=root"
-alias smsrs="arm sms-reset"
-alias smsngrok="arm -s sms-ngrok"
+# ar
+alias ar="make -f ~/Work/ar/bin/Makefile"
 
 alias vdot="cd ~/Work/dotfiles && v nvim/init.lua"
 alias r="ranger"
 
 alias chrome="open -a Google\ Chrome"
+alias brave="open -a Brave\ Browser"
 
 alias ovpn="sudo openvpn --config ~/.ssh/vulq.ovpn"
 
@@ -237,4 +199,5 @@ export FZF_DEFAULT_COMMAND='rg --files --hidden --no-ignore-vcs -g "!{node_modul
 
 export VISUAL=nvim
 export PATH=$PATH:$HOME/bin
+export PATH=$PATH:$HOME/.local/bin
 export PATH=$PATH:$HOME/bin/neovim/bin

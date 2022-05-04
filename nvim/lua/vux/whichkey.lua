@@ -131,7 +131,7 @@ M.setup = function()
       p = { "<cmd>Telescope projects<cr>", "Projects" },
     },
     b = {
-      name = "+Buffers",
+      name = "+Buffer",
       b = { "<cmd>lua require('telescope.builtin').buffers()<cr>", "Find buffers" },
       n = { "<cmd>bnext<cr>", "Next buffer" },
       p = { "<cmd>bprevious<cr>", "Prev buffer" },
@@ -171,8 +171,15 @@ M.setup = function()
   -- normal mode, no <leader>
   wk.register({
     ["gc"] = {
-      name = "+Komentary",
-      c = "Comments"
+      name = "+Comments - Line",
+      c = "Toggle",
+      A = "Add comment at the end of line",
+      o = "Add comment on the line below",
+      O = "Add comment on the line above",
+    },
+    ["gb"] = {
+      name = "+Comments - Block",
+      c = "Toggle"
     },
     g = {
       d = "LSP - Definition",
@@ -211,7 +218,8 @@ M.setup = function()
 
   -- visual mode, no <leader>
   wk.register({
-    ["gc"] = "Comments",
+    ["gc"] = "Comments - Line",
+    ["gb"] = "Comments - Block",
     ["ga"] = "LSP - Range code action"
   },
   {

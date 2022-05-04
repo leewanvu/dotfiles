@@ -1,8 +1,9 @@
-local status, cmp = pcall(require, "cmp")
-local l_status, luasnip = pcall(require, "luasnip")
--- local n_status, neogen = pcall(require, "neogen")
--- if not (status or l_status or n_status) then
-if not (status or l_status) then
+local status_cmp_ok, cmp = pcall(require, "cmp")
+if not status_cmp_ok then
+  return
+end
+local status_luasnip_ok, luasnip = pcall(require, "luasnip")
+if not status_luasnip_ok then
   return
 end
 
