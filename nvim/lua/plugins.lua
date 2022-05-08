@@ -24,7 +24,7 @@ return require('packer').startup(function(use)
   use 'nvim-treesitter/nvim-treesitter-textobjects'
   use 'nvim-treesitter/playground'
   use {
-    'romgrk/nvim-treesitter-context',
+    'lewis6991/nvim-treesitter-context',
     config = function()
       require('vux.ts-context').setup()
     end
@@ -87,7 +87,7 @@ return require('packer').startup(function(use)
   }
 
   -- Make themes
-  use 'rktjmp/lush.nvim'
+  -- use 'rktjmp/lush.nvim'
 
   -- Themes
   use { 'leewanvu/nord-vim', branch = 'vux' }
@@ -98,12 +98,12 @@ return require('packer').startup(function(use)
   -- use { 'rose-pine/neovim', as = 'rose-pine' }
 
   -- Transparent
-  use {
-    'xiyaowong/nvim-transparent',
-    config = function()
-      require('vux.transparent').setup()
-    end,
-  }
+  -- use {
+  --   'xiyaowong/nvim-transparent',
+  --   config = function()
+  --     require('vux.transparent').setup()
+  --   end,
+  -- }
 
   -- Syntax
   use 'jwalton512/vim-blade'
@@ -118,12 +118,12 @@ return require('packer').startup(function(use)
   }
 
   -- Colors
-  use {
-    'norcalli/nvim-colorizer.lua',
-    config = function()
-      require('vux.colorize').setup()
-    end
-  }
+  -- use {
+  --   'norcalli/nvim-colorizer.lua',
+  --   config = function()
+  --     require('vux.colorize').setup()
+  --   end
+  -- }
 
   -- Explore
   use {
@@ -165,7 +165,7 @@ return require('packer').startup(function(use)
     'lewis6991/gitsigns.nvim',
     -- event = "BufRead",
     config = function()
-      require('vux.gitsigns').setup()
+      require('vux.gitsign').setup()
     end,
   }
   -- use 'sindrets/diffview.nvim'
@@ -212,7 +212,7 @@ return require('packer').startup(function(use)
 
   -- Indent line
   use {
-    "lukas-reineke/indent-blankline.nvim",
+    'lukas-reineke/indent-blankline.nvim',
     -- event = "BufRead",
     config = function()
       require('vux.indent-blankline').setup()
@@ -247,7 +247,7 @@ return require('packer').startup(function(use)
 
   -- Which keys
   use {
-    "folke/which-key.nvim",
+    'folke/which-key.nvim',
     config = function()
       require('vux.whichkey').setup()
     end,
@@ -262,13 +262,13 @@ return require('packer').startup(function(use)
   --   end
   -- }
   use {
-    "folke/zen-mode.nvim",
+    'folke/zen-mode.nvim',
     config = function()
       require('vux.zenmode').setup()
     end,
   }
   use {
-    "folke/twilight.nvim",
+    'folke/twilight.nvim',
     config = function()
       require("twilight").setup {
       }

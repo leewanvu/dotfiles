@@ -154,12 +154,11 @@ alias kears='kubectl exec -n alireviews -c php -it'
 alias ar="make -f ~/Work/ar/bin/Makefile"
 
 alias vdot="cd ~/Work/dotfiles && v nvim/init.lua"
-alias r="ranger"
 
 alias chrome="open -a Google\ Chrome"
 alias brave="open -a Brave\ Browser"
 
-alias ovpn="sudo openvpn --config ~/.ssh/vulq.ovpn"
+# alias ovpn="sudo openvpn --config ~/.ssh/vulq.ovpn"
 
 # Check the weather
 alias weather="curl wttr.in"

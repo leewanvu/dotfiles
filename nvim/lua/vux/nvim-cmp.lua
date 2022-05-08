@@ -18,32 +18,60 @@ local check_back_space = function()
   return col == 0 or vim.fn.getline('.'):sub(col, col):match '%s' ~= nil
 end
 
-local kinds = {
-  Text = "   (Text) ",
-  Method = "   (Method)",
-  Function = "   (Function)",
-  Constructor = "   (Constructor)",
-  Field = " ﴲ  (Field)",
-  Variable = "[] (Variable)",
-  Class = "   (Class)",
-  Interface ="   (Interface)",
-  Module = "   (Module)",
-  Property = " 襁 (Property)",
-  Unit = "   (Unit)",
-  Value = "   (Value)",
-  Enum = " 練 (Enum)",
-  Keyword = "   (Keyword)",
-  Snippet = "   (Snippet)",
-  Color = "   (Color)",
-  File = "   (File)",
-  Reference = "   (Reference)",
-  Folder = "   (Folder)",
-  EnumMember = "   (EnumMember)",
-  Constant = " ﲀ  (Constant)",
-  Struct = " פּ  (Struct)",
-  Event = "   (Event)",
-  Operator = "   (Operator)",
-  TypeParameter = "   (TypeParameter)"
+-- local kind_icons = {
+--   Text = "   (Text) ",
+--   Method = "   (Method)",
+--   Function = "   (Function)",
+--   Constructor = "   (Constructor)",
+--   Field = " ﴲ  (Field)",
+--   Variable = "[] (Variable)",
+--   Class = "   (Class)",
+--   Interface ="   (Interface)",
+--   Module = "   (Module)",
+--   Property = " 襁 (Property)",
+--   Unit = "   (Unit)",
+--   Value = "   (Value)",
+--   Enum = " 練 (Enum)",
+--   Keyword = "   (Keyword)",
+--   Snippet = "   (Snippet)",
+--   Color = "   (Color)",
+--   File = "   (File)",
+--   Reference = "   (Reference)",
+--   Folder = "   (Folder)",
+--   EnumMember = "   (EnumMember)",
+--   Constant = " ﲀ  (Constant)",
+--   Struct = " פּ  (Struct)",
+--   Event = "   (Event)",
+--   Operator = "   (Operator)",
+--   TypeParameter = "   (TypeParameter)"
+-- }
+
+local kind_icons = {
+  Class = " ",
+  Color = " ",
+  Constant = "ﲀ ",
+  Constructor = " ",
+  Enum = "練",
+  EnumMember = " ",
+  Event = " ",
+  Field = " ",
+  File = "",
+  Folder = " ",
+  Function = " ",
+  Interface = "ﰮ ",
+  Keyword = " ",
+  Method = " ",
+  Module = " ",
+  Operator = "",
+  Property = " ",
+  Reference = " ",
+  Snippet = " ",
+  Struct = " ",
+  Text = " ",
+  TypeParameter = " ",
+  Unit = "塞",
+  Value = " ",
+  Variable = " ",
 }
 
 M.setup = function()
@@ -53,7 +81,11 @@ M.setup = function()
         require("luasnip").lsp_expand(args.body)
       end,
     },
-    mapping = {
+    window = {
+      -- completion = cmp.config.window.bordered(),
+      -- documentation = cmp.config.window.bordered(),
+    },
+    mapping = cmp.mapping.preset.insert({
       ["<Tab>"] = cmp.mapping(function(fallback)
         if cmp.visible() then
           cmp.select_next_item()
@@ -82,26 +114,24 @@ M.setup = function()
         "i",
         "s",
       }),
-      ['<C-d>'] = cmp.mapping.scroll_docs(-4),
+      ['<C-b>'] = cmp.mapping.scroll_docs(-4),
       ['<C-f>'] = cmp.mapping.scroll_docs(4),
       ['<C-Space>'] = cmp.mapping.complete(),
-      ['<C-e>'] = cmp.mapping.close(),
+      ['<C-e>'] = cmp.mapping.abort(),
       ['<CR>'] = cmp.mapping.confirm({
         behavior = cmp.ConfirmBehavior.Replace,
         select = true,
       })
-    },
+    }),
     formatting = {
-      deprecated = true,
+      fields = { "kind", "abbr", "menu" },
       format = function(entry, vim_item)
-        vim_item.kind = kinds[vim_item.kind]
+        vim_item.kind = kind_icons[vim_item.kind]
         vim_item.menu = ({
-          buffer = "[Buffer]",
-          nvim_lsp = "[LSP]",
-          path = "[Path]",
-          orgmode = "[Org]",
-          luasnip = "[LuaSnip]",
-          -- vsnip = "[Snippet]",
+          buffer = "(Buffer)",
+          nvim_lsp = "(LSP)",
+          path = "(Path)",
+          luasnip = "(LuaSnip)",
         })[entry.source.name]
         return vim_item
       end
@@ -125,10 +155,12 @@ M.setup = function()
       },
       { name = 'nvim_lsp' },
       { name = 'path' },
-      { name = 'orgmode' },
       { name = 'luasnip' },
-      -- { name = 'vsnip' },
-    }
+    },
+    experimental = {
+      ghost_text = true,
+      native_menu = false,
+    },
   })
 
   -- If you want insert `(` after select function or method item
