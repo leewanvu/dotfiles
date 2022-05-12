@@ -1,61 +1,57 @@
--- completion item kind
-vim.lsp.protocol.CompletionItemKind = {
-    "   (Text) ",
-    "   (Method)",
-    "   (Function)",
-    "   (Constructor)",
-    " ﴲ  (Field)",
-    "[] (Variable)",
-    "   (Class)",
-    "   (Interface)",
-    "   (Module)",
-    " 襁 (Property)",
-    "   (Unit)",
-    "   (Value)",
-    " 練 (Enum)",
-    "   (Keyword)",
-    "   (Snippet)",
-    "   (Color)",
-    "   (File)",
-    "   (Reference)",
-    "   (Folder)",
-    "   (EnumMember)",
-    " ﲀ  (Constant)",
-    " פּ  (Struct)",
-    "   (Event)",
-    "   (Operator)",
-    "   (TypeParameter)"
+local signs = {
+  { name = "DiagnosticSignError", text = "" },
+  { name = "DiagnosticSignWarn", text = "" },
+  { name = "DiagnosticSignHint", text = "" },
+  { name = "DiagnosticSignInfo", text = "" },
 }
 
--- diagnostic signs
-vim.fn.sign_define("LspDiagnosticsSignError",
-                   {texthl = "LspDiagnosticsSignError", text = "", numhl = "LspDiagnosticsSignError"})
-vim.fn.sign_define("LspDiagnosticsSignWarning",
-                   {texthl = "LspDiagnosticsSignWarning", text = "", numhl = "LspDiagnosticsSignWarning"})
-vim.fn.sign_define("LspDiagnosticsSignHint",
-                   {texthl = "LspDiagnosticsSignHint", text = "", numhl = "LspDiagnosticsSignHint"})
-vim.fn.sign_define("LspDiagnosticsSignInformation",
-                   {texthl = "LspDiagnosticsSignInformation", text = "", numhl = "LspDiagnosticsSignInformation"})
+for _, sign in ipairs(signs) do
+  vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = sign.name })
+end
 
--- override handlers
-vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
-  vim.lsp.diagnostic.on_publish_diagnostics, {
-    virtual_text = {
-      prefix = "",
-      spacing = 0,
+vim.diagnostic.config({
+  virtual_text = true,
+  signs = {
+    active = true,
+    values = {
+      { name = "DiagnosticSignError", text = "" },
+      { name = "DiagnosticSignWarn", text = "" },
+      { name = "DiagnosticSignHint", text = "" },
+      { name = "DiagnosticSignInfo", text = "" },
     },
-    signs = true,
-    underline = true,
-  }
-)
+  },
+  underline = true,
+  update_in_insert = false,
+  severity_sort = true,
+  float = {
+    focusable = false,
+    style = "minimal",
+    border = "rounded",
+    source = "always",
+    header = "",
+    prefix = "",
+    format = function(d)
+      local t = vim.deepcopy(d)
+      local code = d.code or (d.user_data and d.user_data.lsp.code)
+      if code then
+        t.message = string.format("%s [%s]", t.message, code):gsub("1. ", "")
+      end
+      return t.message
+    end,
+  },
+})
 
---[[ vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-  border = 'single'
+vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+  focusable = true,
+  style = "minimal",
+  border = "rounded",
 })
 
 vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
-  border = 'single'
-}) ]]
+  focusable = true,
+  style = "minimal",
+  border = "rounded",
+})
 
 local on_attach = function(client, bufnr)
   -- Show function signature when you types
@@ -124,47 +120,29 @@ local on_attach = function(client, bufnr)
   end
 end
 
--- Add additional capabilities supported by nvim-cmp
 local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities.textDocument.completion.completionItem.documentationFormat = { 'markdown', 'plaintext' }
 capabilities.textDocument.completion.completionItem.snippetSupport = true
-capabilities.textDocument.completion.completionItem.preselectSupport = true
-capabilities.textDocument.completion.completionItem.insertReplaceSupport = true
-capabilities.textDocument.completion.completionItem.labelDetailsSupport = true
-capabilities.textDocument.completion.completionItem.deprecatedSupport = true
-capabilities.textDocument.completion.completionItem.commitCharactersSupport = true
-capabilities.textDocument.completion.completionItem.tagSupport = { valueSet = { 1 } }
 capabilities.textDocument.completion.completionItem.resolveSupport = {
   properties = {
-    'documentation',
-    'detail',
-    'additionalTextEdits',
+    "documentation",
+    "detail",
+    "additionalTextEdits",
   },
 }
+capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 
--- local lsp_config = require'lspconfig'
--- local data_path = vim.fn.stdpath "data"
-local lsp_installer = require('nvim-lsp-installer')
+require("nvim-lsp-installer").setup {}
 
--- Register a handler that will be called for all installed servers.
--- Alternatively, you may also register handlers on specific server instances instead (see example below).
-lsp_installer.on_server_ready(function(server)
-  local opts = {
-    on_attach = on_attach,
-    capabilities = capabilities,
-  }
+local lspconfig = require("lspconfig")
 
-  -- (optional) Customize the options passed to the server
-  if server.name == "intelephense" then
-    opts.on_init = function()
-      print("LSP: intelephense started!")
-    end
-  end
-
-  -- This setup() function is exactly the same as lspconfig's setup function.
-  -- Refer to https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
-  server:setup(opts)
-end)
+-- php intelephense
+lspconfig.intelephense.setup {
+  on_init = function()
+    print("LSP: intelephense started!")
+  end,
+  on_attach = on_attach,
+  capabilities = capabilities,
+}
 
 -- local servers = { "tsserver", "vuels", "cssls", "html" }
 -- for _, lsp in ipairs(servers) do
@@ -232,13 +210,4 @@ end)
 --       staticcheck = true,
 --     },
 --   }, ]]
--- }
-
--- php intelephense
--- lsp_config.intelephense.setup {
---   on_init = function()
---     print("LSP: intelephense started!")
---   end,
---   on_attach = on_attach,
---   capabilities = capabilities,
 -- }
