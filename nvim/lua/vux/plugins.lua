@@ -24,7 +24,7 @@ return require('packer').startup(function(use)
   use 'nvim-treesitter/nvim-treesitter-textobjects'
   use 'nvim-treesitter/playground'
   use {
-    'lewis6991/nvim-treesitter-context',
+    'nvim-treesitter/nvim-treesitter-context',
     config = function()
       require('vux.ts-context').setup()
     end
