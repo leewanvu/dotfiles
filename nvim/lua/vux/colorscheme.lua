@@ -30,11 +30,10 @@ vim.g.tokyonight_colors = {}
 vim.g.tokyonight_day_brightness = 0.3
 vim.g.tokyonight_lualine_bold = false
 
--- rose-pine
-vim.g.rose_pine_variant = 'base' -- 'base' | 'moon' | 'dawn' | 'rose-pine[-moon][-dawn]'
-vim.g.rose_pine_disable_italics = true
-vim.g.rose_pine_disable_background = false
-vim.g.rose_pine_bold_vertical_split_line = false
+-- vscode
+vim.g.vscode_style = "dark"
+vim.g.vscode_italic_comment = 1
+vim.g.vscode_disable_nvimtree_bg = true
 
 -- background
 vim.o.background = "dark"
@@ -44,4 +43,4 @@ vim.o.background = "dark"
 -- vim.cmd[[colorscheme everforest]]
 -- vim.cmd[[colorscheme nord]]
 vim.cmd[[colorscheme tokyonight]]
--- vim.cmd[[colorscheme rose-pine]]
+-- vim.cmd[[colorscheme vscode]]

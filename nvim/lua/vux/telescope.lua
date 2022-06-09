@@ -120,7 +120,10 @@ M.setup = function ()
         layout_strategy = "horizontal",
       },
       git_status = {
-        layout_strategy = "horizontal",
+        layout_strategy = "vertical",
+      },
+      lsp_references = {
+        layout_strategy = "vertical"
       }
     },
     extensions = {

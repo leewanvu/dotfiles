@@ -95,7 +95,7 @@ return require('packer').startup(function(use)
   -- use { '~/Work/everforest' }
   -- use { 'leewanvu/tokyonight.nvim', branch = 'vux' }
   use { '~/Work/tokyonight.nvim' }
-  -- use { 'rose-pine/neovim', as = 'rose-pine' }
+  use { 'Mofiqul/vscode.nvim' }
 
   -- Transparent
   -- use {
@@ -235,10 +235,10 @@ return require('packer').startup(function(use)
 
   -- Terminal
   use {
-    'akinsho/nvim-toggleterm.lua',
+    'akinsho/toggleterm.nvim',
     -- event = "BufWinEnter",
     config = function()
-      require('vux.nvim-toggleterm').setup()
+      require('vux.toggleterm').setup()
     end,
   }
 
