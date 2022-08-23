@@ -150,12 +150,21 @@ return require('packer').startup(function(use)
   }
 
   -- Dashboard
+  -- use {
+  --   'glepnir/dashboard-nvim',
+  --   -- event = 'BufWinEnter',
+  --   config = function()
+  --     require('vux.dashboard').setup()
+  --   end,
+  -- }
   use {
-    'glepnir/dashboard-nvim',
-    -- event = 'BufWinEnter',
-    config = function()
-      require('vux.dashboard').setup()
-    end,
+    'goolord/alpha-nvim',
+    requires = { 'kyazdani42/nvim-web-devicons' },
+    config = function ()
+      require('vux.alpha').setup()
+      -- require'alpha'.setup(require'alpha.themes.startify'.config)
+      -- require'alpha'.setup(require'alpha.themes.dashboard'.config)
+    end
   }
 
   -- Git
