@@ -10,7 +10,7 @@ M.setup = function ()
     },
     highlight = {
       enable = true,
-      disable = { 'html', 'css', 'vue', }
+      -- disable = { 'html', 'css', 'vue', }
     },
     indent = {
       enable = true,
