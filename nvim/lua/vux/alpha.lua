@@ -13,11 +13,11 @@ M.setup = function()
 
   local function footer()
     local total_plugins = #vim.tbl_keys(packer_plugins)
-    local datetime = os.date(" %d-%m-%Y   %H:%M:%S")
+    -- local datetime = os.date(" %d-%m-%Y   %H:%M:%S")
     local version = vim.version()
     local nvim_version_info = "   v" .. version.major .. "." .. version.minor .. "." .. version.patch
 
-    return datetime .. "   " .. total_plugins .. " plugins" .. nvim_version_info
+    return " " .. total_plugins .. " plugins" .. nvim_version_info
   end
 
   local logo = {
@@ -45,16 +45,14 @@ M.setup = function()
 
   -- set header
   dashboard.section.header.val = logo
-  dashboard.section.header.opts.hl = pick_color()
+  dashboard.section.header.opts.hl = "String"
 
   -- set menu
   dashboard.section.buttons.val = {
-    dashboard.button( "r", "  Recently used files"   , ":Telescope oldfiles<CR>"),
-    dashboard.button( "f", "  Find file", ":lua require('vux.telescope').find_files()<CR>"),
-    dashboard.button( "e", "  New file" , ":ene <BAR> startinsert <CR>"),
-    -- dashboard.button( "t", "  Find text", ":Telescope live_grep <CR>"),
-    -- dashboard.button( "s", "  Settings" , ":e $HOME/.config/nvim/init.lua | :cd %:p:h | split . | wincmd k | pwd<CR>"),
-    dashboard.button( "q", "  Quit", ":qa<CR>"),
+    dashboard.button( "SPC ff", "  Find file", "<CMD>lua require('vux.telescope').find_files()<CR>"),
+    dashboard.button( "SPC fo", "  Recently used files"   , "<CMD>Telescope oldfiles<CR>"),
+    dashboard.button( "SPC fp", "  Recently projects", "<CMD>Telescope projects<CR>"),
+    dashboard.button( "SPC n", "  New file" , "<CMD>ene!<CR>"),
   }
 
   -- Set footer

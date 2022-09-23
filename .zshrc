@@ -151,7 +151,7 @@ alias klars='kubectl logs -f -n alireviews -c php'
 alias kears='kubectl exec -n alireviews -c php -it'
 
 # ar
-alias ar="make -f ~/Work/ar/bin/Makefile"
+alias ar="make -f ~/Work/ar/alireviews-docker/bin/Makefile"
 
 alias vdot="cd ~/Work/dotfiles && v nvim/init.lua"
 
@@ -173,9 +173,6 @@ alias tl="tmux ls"
 alias ta="tmux attach"
 alias td="tmux detach"
 alias tk="tmux kill-session"
-
-# luniq
-alias luniq="make -f ~/Work/luniq/luniq-docker/Makefile -s"
 
 # Android
 export ANDROID_HOME=$HOME/Library/Android/sdk
