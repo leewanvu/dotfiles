@@ -30,7 +30,7 @@ M.setup = function()
         -- showcmd = false, -- disables the command in the last line of the screen
       },
       gitsigns = { enabled = false }, -- disables git signs
-      tmux = { enabled = true }, -- disables the tmux statusline
+      tmux = { enabled = false }, -- disables the tmux statusline
       -- this will change the font size on kitty when in zen mode
       -- to make this work, you need to set the following kitty options:
       -- - allow_remote_control socket-only

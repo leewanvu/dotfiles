@@ -269,13 +269,13 @@ return require('packer').startup(function(use)
       require('vux.zenmode').setup()
     end,
   }
-  use {
-    'folke/twilight.nvim',
-    config = function()
-      require("twilight").setup {
-      }
-    end
-  }
+  -- use {
+  --   'folke/twilight.nvim',
+  --   config = function()
+  --     require("twilight").setup {
+  --     }
+  --   end
+  -- }
 
   use {
     'nacro90/numb.nvim',
