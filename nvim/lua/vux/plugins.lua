@@ -40,8 +40,14 @@ return require('packer').startup(function(use)
   use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
 
   -- LSP config
-  use 'neovim/nvim-lspconfig'
-  use 'williamboman/nvim-lsp-installer'
+  use {
+    "williamboman/mason.nvim",
+    config = function()
+      require("mason").setup()
+    end
+  }
+  use { "williamboman/mason-lspconfig.nvim" }
+  use "neovim/nvim-lspconfig"
 
   use {
     'simrat39/symbols-outline.nvim',
@@ -90,11 +96,12 @@ return require('packer').startup(function(use)
   -- use 'rktjmp/lush.nvim'
 
   -- Themes
-  use { 'leewanvu/nord-vim', branch = 'vux' }
+  -- use { 'leewanvu/nord-vim', branch = 'vux' }
   -- use { 'leewanvu/everforest', branch = 'vux' }
   -- use { '~/Work/everforest' }
   -- use { 'leewanvu/tokyonight.nvim', branch = 'vux' }
-  use { '~/Work/tokyonight.nvim' }
+  -- use { '~/Work/tokyonight.nvim' }
+  use { "folke/tokyonight.nvim", branch = "main" }
   use { 'Mofiqul/vscode.nvim' }
 
   -- Transparent

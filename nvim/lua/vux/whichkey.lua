@@ -92,7 +92,7 @@ M.setup = function()
       u = { '<cmd>Gitsigns undo_stage_hunk<CR>', "Undo stage hunk" },
       h = { '<cmd>Gitsigns toggle_linehl<CR>', "Highlight" },
       d = { '<cmd>Gitsigns diffthis<CR>', "Diff this" },
-      z = { "<cmd>lua require('vux.nvim-toggleterm').lazygit()<CR>", "Lazy git" },
+      z = { "<cmd>lua require('vux.toggleterm').lazygit()<CR>", "Lazy git" },
     },
     s = {
       name = "+Search",
@@ -135,26 +135,7 @@ M.setup = function()
       f = { "<cmd>lua require('telescope.builtin').current_buffer_fuzzy_find()<cr>", "Fuzzy find text" },
       s = { "Next swap" },
       S = { "Previous swap"},
-    },
-    --[[ p = {
-      name = "+Packer",
-      c = { "<cmd>PackerCompile<cr>", "Compile" },
-      i = { "<cmd>PackerInstall<cr>", "Install" },
-      s = { "<cmd>PackerSync<cr>", "Sync" },
-      S = { "<cmd>PackerStatus<cr>", "Status" },
-      u = { "<cmd>PackerUpdate<cr>", "Update" },
-    }, ]]
-    -- o = {
-    --   name = "+Org",
-    --   a = "Agenda",
-    --   c = "Capture",
-    -- },
-    -- t = {
-    --   name = "+TrueZen",
-    --   t = { "<cmd>TZFocus<cr>", "Focus mode" },
-    --   a = { "<cmd>TZAtaraxis<cr>", "Ataraxis mode" },
-    --   m = { "<cmd>TZMinimalist<cr>", "Minimalist mode" },
-    -- }
+    }
   }
 
   -- normal mode, has leader
