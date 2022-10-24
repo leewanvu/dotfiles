@@ -102,15 +102,7 @@ return require('packer').startup(function(use)
   -- use { 'leewanvu/tokyonight.nvim', branch = 'vux' }
   -- use { '~/Work/tokyonight.nvim' }
   use { "folke/tokyonight.nvim", branch = "main" }
-  use { 'Mofiqul/vscode.nvim' }
-
-  -- Transparent
-  -- use {
-  --   'xiyaowong/nvim-transparent',
-  --   config = function()
-  --     require('vux.transparent').setup()
-  --   end,
-  -- }
+  -- use { 'Mofiqul/vscode.nvim' }
 
   -- Syntax
   use 'jwalton512/vim-blade'
@@ -141,13 +133,6 @@ return require('packer').startup(function(use)
   }
 
   -- Status line
-  -- use {
-  --   "NTBBloodbath/galaxyline.nvim",
-  --   config = function()
-  --     require("vux.galaxyline")
-  --   end,
-  --   requires = { "kyazdani42/nvim-web-devicons", opt = true }
-  -- }
   use {
     'nvim-lualine/lualine.nvim',
     config = function()
@@ -162,8 +147,6 @@ return require('packer').startup(function(use)
     requires = { 'kyazdani42/nvim-web-devicons' },
     config = function ()
       require('vux.alpha').setup()
-      -- require'alpha'.setup(require'alpha.themes.startify'.config)
-      -- require'alpha'.setup(require'alpha.themes.dashboard'.config)
     end
   }
 
@@ -180,28 +163,22 @@ return require('packer').startup(function(use)
   -- use 'sindrets/diffview.nvim'
 
   -- Documention generator
-  use {
-    -- 'kkoomen/vim-doge',
-    '~/Work/vim-doge',
-    -- run = ':call doge#install()'
-  }
   -- use {
-  --   '~/Work/neogen',
-  --   config = function()
-  --     require('neogen').setup {
-  --       enabled = true
-  --     }
-  --   end
+  --   'kkoomen/vim-doge',
+  --   run = ':call doge#install()'
   -- }
+  use {
+    "danymat/neogen",
+    config = function()
+      require('neogen').setup({
+        enable = true,
+        snippet_engine = "luasnip",
+      })
+    end,
+    requires = "nvim-treesitter/nvim-treesitter",
+  }
 
   -- Comment
-  -- use {
-  --   'b3nj5m1n/kommentary',
-  --   -- event = "BufWinEnter",
-  --   config = function()
-  --     require('vux.kommentary').setup()
-  --   end,
-  -- }
   use {
     'numToStr/Comment.nvim',
     config = function()
@@ -264,12 +241,6 @@ return require('packer').startup(function(use)
   }
 
   -- Zen mode
-  -- use {
-  --   'Pocco81/TrueZen.nvim',
-  --   config = function()
-  --     require('vux.truezen').setup()
-  --   end
-  -- }
   use {
     'folke/zen-mode.nvim',
     config = function()

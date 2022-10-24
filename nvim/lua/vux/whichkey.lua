@@ -69,7 +69,7 @@ M.setup = function()
     -- ["q"] = { [[<cmd>lua require('close_buffers').delete({type = 'this', force = true})<cr>]], "Delete buffer"},
     ["e"] = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
     ["n"] = { "<cmd>nohlsearch<cr>", "No highlight" },
-    ["d"] = "Doc generator",
+    ["d"] = { "<cmd>Neogen<cr>", "Doc generator" },
     ["h"] = { "<cmd>TSHighlightCapturesUnderCursor<cr>", "Show TS highlight" },
     ["="] = "LSP - Format",
     ["z"] = { "<cmd>ZenMode<cr>", "Zen Mode" },

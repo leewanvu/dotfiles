@@ -1,13 +1,9 @@
 local toggleterm_ui = require("toggleterm.ui")
-
-local function map(mode, lhs, rhs, opts)
-  local options = {noremap = true, silent = true}
-  if opts then options = vim.tbl_extend('force', options, opts) end
-  vim.api.nvim_set_keymap(mode, lhs, rhs, options)
-end
+local keymap = vim.keymap
+local options = {noremap = true, silent = true}
 
 -- Editor
-map('n', '<leader>w', ':w<CR>')
+keymap.set('n', '<leader>w', ':w<CR>', options)
 
 -- Close buffer
 local t = function(str)
@@ -22,55 +18,48 @@ _G.vux_close_buffer = function()
   return t ":bd!<CR>"
 end
 
-map("n", "<leader>q", "v:lua.vux_close_buffer()", {expr = true})
--- map("n", "<leader>bd", "v:lua.vux_close_buffer()", {expr = true})
+keymap.set("n", "<leader>q", "v:lua.vux_close_buffer()", {expr = true})
+-- keymap.set("n", "<leader>bd", "v:lua.vux_close_buffer()", {expr = true})
 
-map('n', ']b', ':bnext<CR>')
-map('n', '[b', ':bprevious<CR>')
+keymap.set('n', ']b', ':bnext<CR>', options)
+keymap.set('n', '[b', ':bprevious<CR>', options)
 
--- map('n', '<leader>n', ':nohlsearch<CR>')
-map('n', '<C-c>', '<Esc>')
+-- keymap.set('n', '<leader>n', ':nohlsearch<CR>')
+keymap.set('n', '<C-c>', '<Esc>', options)
 
-map('n', '<C-j>', '<C-w>j')
-map('n', '<C-k>', '<C-w>k')
-map('n', '<C-l>', '<C-w>l')
-map('n', '<C-h>', '<C-w>h')
-
--- Move current line / block with Alt-j/k a la vscode.
---[[ map('n', '<M-j>', ':m .+1<CR>==')
-map('n', '<M-k>', ':m .-2<CR>==') ]]
+keymap.set('n', '<C-j>', '<C-w>j', options)
+keymap.set('n', '<C-k>', '<C-w>k', options)
+keymap.set('n', '<C-l>', '<C-w>l', options)
+keymap.set('n', '<C-h>', '<C-w>h', options)
 
 -- Window Resizing (M = Alt | Option)
-map('n', '<M-Up>', ':resize -2<CR>')
-map('n', '<M-Down>', ':resize +2<CR>')
-map('n', '<M-Left>', ':vertical resize -2<CR>')
-map('n', '<M-Right>', ':vertical resize +2<CR>')
-
--- Y yank until the end of line
--- map('n', 'Y', 'y$')
+keymap.set('n', '<M-Up>', ':resize -2<CR>', options)
+keymap.set('n', '<M-Down>', ':resize +2<CR>', options)
+keymap.set('n', '<M-Left>', ':vertical resize -2<CR>', options)
+keymap.set('n', '<M-Right>', ':vertical resize +2<CR>', options)
 
 -- Remap for dealing with word wrap
-map('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true })
-map('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true })
+keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true })
+keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true })
 
-map('i', '<C-j>', '<C-w>j')
-map('i', '<C-k>', '<C-w>k')
-map('i', '<C-l>', '<C-w>l')
-map('i', '<C-h>', '<C-w>h')
+keymap.set('i', '<C-j>', '<C-w>j', options)
+keymap.set('i', '<C-k>', '<C-w>k', options)
+keymap.set('i', '<C-l>', '<C-w>l', options)
+keymap.set('i', '<C-h>', '<C-w>h', options)
 
 -- Better nav for omnicomplete
-map('i', '<c-j>', '("\\<C-n>")', {expr = true})
-map('i', '<c-k>', '("\\<C-p>")', {expr = true})
+keymap.set('i', '<c-j>', '("\\<C-n>")', {expr = true})
+keymap.set('i', '<c-k>', '("\\<C-p>")', {expr = true})
 
-map('v', '<', '<gv')
-map('v', '>', '>gv')
+keymap.set('v', '<', '<gv', options)
+keymap.set('v', '>', '>gv', options)
 
-map('x', 'K', ':move \'<-2<CR>gv-gv')
-map('x', 'J', ':move \'>+1<CR>gv-gv')
+keymap.set('x', 'K', ':move \'<-2<CR>gv-gv', options)
+keymap.set('x', 'J', ':move \'>+1<CR>gv-gv', options)
 
 -- Terminal window navigation
-map('t', '<C-h>', '<C-\\><C-N><C-w>h')
-map('t', '<C-j>', '<C-\\><C-N><C-w>j')
-map('t', '<C-k>', '<C-\\><C-N><C-w>k')
-map('t', '<C-l>', '<C-\\><C-N><C-w>l')
-map('t', '<Esc>', '<C-\\><C-n>')
+keymap.set('t', '<C-h>', '<C-\\><C-N><C-w>h', options)
+keymap.set('t', '<C-j>', '<C-\\><C-N><C-w>j', options)
+keymap.set('t', '<C-k>', '<C-\\><C-N><C-w>k', options)
+keymap.set('t', '<C-l>', '<C-\\><C-N><C-w>l', options)
+keymap.set('t', '<Esc>', '<C-\\><C-n>', options)

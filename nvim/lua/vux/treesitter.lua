@@ -4,9 +4,10 @@ M.setup = function ()
   require'nvim-treesitter.configs'.setup {
     -- ensure_installed = "all", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
     ensure_installed = {
-      'php', 'vue', 'lua', 'html',
+      'php', 'phpdoc', 'vue', 'lua', 'html',
       'javascript', 'typescript', 'bash',
-      'json', 'comment', 'css', 'go', 'query',
+      'json', 'comment', 'css', 'scss', 'go',
+      'query', 'dockerfile', 
     },
     highlight = {
       enable = true,

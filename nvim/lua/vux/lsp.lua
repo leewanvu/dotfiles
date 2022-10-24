@@ -127,7 +127,7 @@ capabilities.textDocument.completion.completionItem.resolveSupport = {
     "additionalTextEdits",
   },
 }
-capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
+capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 require("mason-lspconfig").setup()
 

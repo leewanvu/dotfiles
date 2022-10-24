@@ -22,19 +22,18 @@ M.setup = function ()
       sorting_strategy = "descending",
       layout_strategy = "horizontal",
       layout_config = {
-        horizontal = {
-          mirror = false,
-          preview_width = 0.6,
-        },
-        vertical = {
-          mirror = false,
-          width = 0.85,
-          preview_height = 0.7,
-        },
-        center = {
-          mirror = true,
-          preview_height = 0.6,
-        }
+        -- horizontal = {
+        --   height = 0.9,
+        --   preview_cutoff = 40,
+        --   prompt_position = "top",
+        --   width = 0.5
+        -- },
+        -- vertical = {
+        --   height = 0.9,
+        --   preview_cutoff = 40,
+        --   prompt_position = "bottom",
+        --   width = 0.8
+        -- },
       },
       -- file_sorter = require'telescope.sorters'.get_fuzzy_file,
       file_sorter = require("telescope.sorters").get_fzy_sorter,
@@ -96,35 +95,21 @@ M.setup = function ()
       }
     },
     pickers = {
-      -- find_files = {
-      --   theme = "dropdown", -- ivy
-      --   previewer = false,
-      -- },
       oldfiles = {
-        theme = "dropdown", -- ivy
+        theme = "dropdown",
         previewer = false,
       },
       buffers = {
-        theme = "dropdown", -- ivy
+        theme = "dropdown",
         previewer = false,
       },
       current_buffer_fuzzy_find = {
-        -- theme = "dropdown", -- ivy
         previewer = false,
       },
       colorscheme = {
         theme = "dropdown",
         previewer = false,
       },
-      file_browser = {
-        layout_strategy = "horizontal",
-      },
-      git_status = {
-        layout_strategy = "vertical",
-      },
-      lsp_references = {
-        layout_strategy = "vertical"
-      }
     },
     extensions = {
       fzf = {
@@ -147,6 +132,7 @@ M.find_files = function()
     'rg', '--files', '--hidden', '--no-ignore-vcs', '-g', '!{node_modules,.git,vendor}'
   }
   opts.previewer = false
+  opts.prompt_title = false
 
   opts.path_display = function(opts, path)
     local tail = require("telescope.utils").path_tail(path)
