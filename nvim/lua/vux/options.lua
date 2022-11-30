@@ -58,6 +58,6 @@ opt.spelllang = 'en'
 -- opt.shortmess = opt.shortmess + 'c'
 vim.o.shortmess = vim.o.shortmess .. 'c'
 
--- set foldmethod=expr
--- set foldexpr=nvim_treesitter#foldexpr()
 -- opt.guifont=[[JetBrainsMono Nerd Font:h15]]
+
+-- vim.o.winbar = "%{%v:lua.require'nvim-navic'.get_location()%}"

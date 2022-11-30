@@ -125,6 +125,7 @@ alias gcm='git commit -m'
 alias gd='git diff'
 alias gpl='git pull origin "$(git_current_branch)"'
 alias gp='git push origin "$(git_current_branch)"'
+alias gl='git log --oneline'
 
 # k8s
 alias k='kubectl'

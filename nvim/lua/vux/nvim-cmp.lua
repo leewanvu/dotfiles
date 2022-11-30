@@ -7,10 +7,10 @@ if not status_luasnip_ok then
   return
 end
 
-local status_neogen_ok, neogen = pcall(require, "neogen")
-if not status_neogen_ok then
-  return
-end
+-- local status_neogen_ok, neogen = pcall(require, "neogen")
+-- if not status_neogen_ok then
+--   return
+-- end
 
 local M = {}
 

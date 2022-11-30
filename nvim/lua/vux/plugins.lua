@@ -3,8 +3,6 @@ vim.cmd [[packadd packer.nvim]]
 -- Only if your version of Neovim doesn't have https://github.com/neovim/neovim/pull/12632 merged
 -- vim._update_package_paths()
 
--- vim.cmd [[autocmd BufWritePost plugins.lua PackerCompile]]
-
 return require('packer').startup(function(use)
   -- Packer can manage itself as an optional plugin
   use { 'wbthomason/packer.nvim', opt = true }
@@ -23,12 +21,12 @@ return require('packer').startup(function(use)
   }
   use 'nvim-treesitter/nvim-treesitter-textobjects'
   use 'nvim-treesitter/playground'
-  use {
-    'nvim-treesitter/nvim-treesitter-context',
-    config = function()
-      require('vux.ts-context').setup()
-    end
-  }
+  -- use {
+  --   'nvim-treesitter/nvim-treesitter-context',
+  --   config = function()
+  --     require('vux.ts-context').setup()
+  --   end
+  -- }
 
   -- Telescope
   use {
@@ -49,12 +47,12 @@ return require('packer').startup(function(use)
   use { "williamboman/mason-lspconfig.nvim" }
   use "neovim/nvim-lspconfig"
 
-  use {
-    'simrat39/symbols-outline.nvim',
-    config = function()
-      require('vux.symbol-outline').setup()
-    end
-  }
+  -- use {
+  --   'simrat39/symbols-outline.nvim',
+  --   config = function()
+  --     require('vux.symbol-outline').setup()
+  --   end
+  -- }
 
   -- Lsp signature
   use 'ray-x/lsp_signature.nvim'
@@ -66,7 +64,6 @@ return require('packer').startup(function(use)
       require('vux.nvim-cmp').setup()
     end
   }
-  -- use { 'hrsh7th/cmp-vsnip', after = 'nvim-cmp' }
   use { 'hrsh7th/cmp-buffer' }
   use { 'hrsh7th/cmp-nvim-lsp'}
   use { 'hrsh7th/cmp-path' }
@@ -74,8 +71,6 @@ return require('packer').startup(function(use)
 
   use {
     'L3MON4D3/LuaSnip',
-    -- wants = "friendly-snippets",
-    -- after = "nvim-cmp",
     config = function()
       require("vux.luasnip")
     end,
@@ -85,22 +80,14 @@ return require('packer').startup(function(use)
   -- Autopairs
   use {
     'windwp/nvim-autopairs',
-    -- event = "InsertEnter",
-    -- after = "nvim-cmp",
     config = function()
       require('vux.autopairs').setup()
     end,
   }
 
-  -- Make themes
-  -- use 'rktjmp/lush.nvim'
+  use {'kevinhwang91/nvim-bqf', ft = 'qf'}
 
   -- Themes
-  -- use { 'leewanvu/nord-vim', branch = 'vux' }
-  -- use { 'leewanvu/everforest', branch = 'vux' }
-  -- use { '~/Work/everforest' }
-  -- use { 'leewanvu/tokyonight.nvim', branch = 'vux' }
-  -- use { '~/Work/tokyonight.nvim' }
   use { "folke/tokyonight.nvim", branch = "main" }
   -- use { 'Mofiqul/vscode.nvim' }
 
@@ -141,6 +128,23 @@ return require('packer').startup(function(use)
     requires = {'kyazdani42/nvim-web-devicons', opt = true}
   }
 
+  use {
+    "SmiteshP/nvim-navic",
+    requires = "neovim/nvim-lspconfig"
+  }
+
+  use {
+    'utilyre/barbecue.nvim',
+    requires = {
+      'neovim/nvim-lspconfig',
+      'SmiteshP/nvim-navic',
+      'kyazdani42/nvim-web-devicons',
+    },
+    config = function()
+      require('vux.barbecue').setup()
+    end,
+  }
+
   -- Dashboard
   use {
     'goolord/alpha-nvim',
@@ -167,16 +171,16 @@ return require('packer').startup(function(use)
   --   'kkoomen/vim-doge',
   --   run = ':call doge#install()'
   -- }
-  use {
-    "danymat/neogen",
-    config = function()
-      require('neogen').setup({
-        enable = true,
-        snippet_engine = "luasnip",
-      })
-    end,
-    requires = "nvim-treesitter/nvim-treesitter",
-  }
+  -- use {
+  --   "danymat/neogen",
+  --   config = function()
+  --     require('neogen').setup({
+  --       enable = true,
+  --       snippet_engine = "luasnip",
+  --     })
+  --   end,
+  --   requires = "nvim-treesitter/nvim-treesitter",
+  -- }
 
   -- Comment
   use {
@@ -199,7 +203,6 @@ return require('packer').startup(function(use)
   -- Indent line
   use {
     'lukas-reineke/indent-blankline.nvim',
-    -- event = "BufRead",
     config = function()
       require('vux.indent-blankline').setup()
     end,
@@ -208,7 +211,6 @@ return require('packer').startup(function(use)
   -- Search string
   use {
     'dyng/ctrlsf.vim',
-    -- event = 'BufWinEnter',
     config = function()
       require('vux.ctrlsf').setup()
     end,
@@ -222,7 +224,6 @@ return require('packer').startup(function(use)
   -- Terminal
   use {
     'akinsho/toggleterm.nvim',
-    -- event = "BufWinEnter",
     config = function()
       require('vux.toggleterm').setup()
     end,
@@ -237,7 +238,6 @@ return require('packer').startup(function(use)
     config = function()
       require('vux.whichkey').setup()
     end,
-    -- event = "BufWinEnter",
   }
 
   -- Zen mode
@@ -247,17 +247,9 @@ return require('packer').startup(function(use)
       require('vux.zenmode').setup()
     end,
   }
-  -- use {
-  --   'folke/twilight.nvim',
-  --   config = function()
-  --     require("twilight").setup {
-  --     }
-  --   end
-  -- }
 
   use {
     'nacro90/numb.nvim',
-    -- event = "BufRead",
     config = function()
       require('numb').setup{
         show_numbers = true, -- Enable 'number' for the window while peeking
@@ -265,17 +257,6 @@ return require('packer').startup(function(use)
       }
     end
   }
-
-  -- Note taking
-  -- use {
-  --   'kristijanhusak/orgmode.nvim',
-  --   config = function()
-  --     require('orgmode').setup({
-  --       org_agenda_files = {'~/Work/org/*'},
-  --       org_default_notes_file = '~/Work/org/notes.org',
-  --     })
-  --   end
-  -- }
 
   -- Close buffers
   use {
@@ -287,6 +268,13 @@ return require('packer').startup(function(use)
     "ahmedkhalf/project.nvim",
     config = function()
       require('vux.project').setup()
+    end
+  }
+
+  use {
+    'nvim-zh/colorful-winsep.nvim',
+    config = function()
+      require('vux.colorful-winsep').setup()
     end
   }
 end)
