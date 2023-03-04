@@ -1,11 +1,15 @@
+-- local status, colorful_winsep = pcall(require, "colorful-winsep")
+-- if not status then
+--   return
+-- end
 local M = {}
 
 M.setup = function()
-  require('colorful-winsep').setup({
+  require("colorful-winsep").setup({
     -- Window divider color definition
     highlight = {
       guibg = "None",
-      guifg = "#29a4bd"
+      guifg = "#29a4bd",
     },
     -- timer refresh rate
     interval = 30,
@@ -18,7 +22,7 @@ M.setup = function()
     end,
     create_event = function()
       -- Executed after creating the window divider
-    end
+    end,
   })
 end
 

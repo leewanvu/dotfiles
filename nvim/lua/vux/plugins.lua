@@ -274,7 +274,10 @@ return require('packer').startup(function(use)
   use {
     'nvim-zh/colorful-winsep.nvim',
     config = function()
-      require('vux.colorful-winsep').setup()
+      require('colorful-winsep').setup({
+        no_exec_files = { "packer", "TelescopePrompt", "mason", "CompetiTest", "NvimTree" },
+      })
+      -- require('vux.colorful-winsep').setup()
     end
   }
 end)

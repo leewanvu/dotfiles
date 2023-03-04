@@ -152,7 +152,7 @@ alias klars='kubectl logs -f -n alireviews -c php'
 alias kears='kubectl exec -n alireviews -c php -it'
 
 # ar
-alias ar="make -f ~/Work/ar/alireviews-docker/bin/Makefile"
+alias ar="make -f ~/Work/ar/docker/bin/Makefile"
 
 alias vdot="cd ~/Work/dotfiles && v nvim/init.lua"
 
