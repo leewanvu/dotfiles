@@ -20,7 +20,7 @@ print_bold() {
 print_bold "Linking...";
 
 if [ "$is_mac" == "y" ]; then
-    folders=(alacritty nvim ranger zsh tmux bat)
+    folders=(alacritty nvim ranger zsh tmux bat fish)
 else
     folders=(alacritty nvim ranger kitty zsh tmux bat)
 fi
@@ -56,9 +56,12 @@ done
 
 print_bold "Linked.";
 
-print_bold "Install packer"
+read -p "Install packer? y/n: " install_packer
+if [ "$install_packer" == "y" ]; then
+  print_bold "Install packer"
 
-packer="$HOME/.local/share/nvim/site/pack/packer/opt/packer.nvim"
-[ ! -d "$packer" ] && git clone https://github.com/wbthomason/packer.nvim "$packer"
+  packer="$HOME/.local/share/nvim/site/pack/packer/opt/packer.nvim"
+  [ ! -d "$packer" ] && git clone https://github.com/wbthomason/packer.nvim "$packer"
+fi
 
 print_bold "Done!"
