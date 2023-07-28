@@ -30,9 +30,9 @@ return   {
           {
             "diagnostics",
             symbols = {
-              error = " ",
-              warn = " ",
-              info = " ",
+              error = " ",
+              warn = " ",
+              info = "󰌶 ",
               hint = " ",
             },
           },

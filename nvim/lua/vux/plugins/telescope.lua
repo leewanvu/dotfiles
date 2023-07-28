@@ -1,9 +1,8 @@
--- local actions = require("telescope.actions")
 local Util = require("vux.util")
 
 return {
   "nvim-telescope/telescope.nvim",
-  tag = "0.1.1",
+  tag = "0.1.2",
   cmd = "Telescope",
   lazy = false,
   dependencies = {
@@ -19,11 +18,11 @@ return {
   keys = {
     -- find
     { "<leader>ff", Util.find_files(), desc = "Find Files" },
-    { "<leader>fb", "<cmd>Telescope buffers<cr>", desc = "Buffers" },
+    { "<leader>fb", Util.find_buffers(), desc = "Buffers" },
     { "<leader>fr", "<cmd>Telescope oldfiles<cr>", desc = "Recent" },
 
     -- buffers
-    { "<leader>bb", "<cmd>Telescope buffers<cr>", desc = "Buffers" },
+    { "<leader>bb", Util.find_buffers(), desc = "Buffers" },
 
     -- git
     { "<leader>gc", "<cmd>Telescope git_commits<CR>", desc = "Commits" },
@@ -71,4 +70,21 @@ return {
       -- },
     },
   },
+  config = function(_, opts)
+    local actions = require("telescope.actions")
+    opts.defaults.mappings = {
+        i = {
+          ["<C-j>"] = actions.move_selection_next,
+          ["<C-k>"] = actions.move_selection_previous,
+          ["<C-n>"] = actions.cycle_history_next,
+          ["<C-p>"] = actions.cycle_history_prev,
+        },
+        n = {
+          ["<C-j>"] = actions.move_selection_next,
+          ["<C-k>"] = actions.move_selection_previous,
+        },
+    }
+
+    require('telescope').setup(opts)
+  end,
 }

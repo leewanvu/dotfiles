@@ -21,6 +21,11 @@ map("n", "<C-j>", "<C-w>j", { desc = "Go to lower window" })
 map("n", "<C-k>", "<C-w>k", { desc = "Go to upper window" })
 map("n", "<C-l>", "<C-w>l", { desc = "Go to right window" })
 
+-- map("i", "<C-h>", "<Left>", { desc = "Move left" })
+-- map("i", "<C-j>", "<Down>", { desc = "Move down" })
+-- map("i", "<C-k>", "<Up>", { desc = "Move up" })
+-- map("i", "<C-l>", "<Right>", { desc = "Move right" })
+
 -- Resize window using <Alt> | <Option> arrow keys
 map("n", "<M-Up>", "<cmd>resize +2<cr>", { desc = "Increase window height" })
 map("n", "<M-Down>", "<cmd>resize -2<cr>", { desc = "Decrease window height" })
