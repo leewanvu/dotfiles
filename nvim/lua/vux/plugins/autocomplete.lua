@@ -43,6 +43,7 @@ return {
     opts = function()
       local cmp = require("cmp")
       local luasnip = require("luasnip")
+      -- local neogen = require('neogen')
       local has_words_before = function()
         unpack = unpack or table.unpack
         local line, col = unpack(vim.api.nvim_win_get_cursor(0))

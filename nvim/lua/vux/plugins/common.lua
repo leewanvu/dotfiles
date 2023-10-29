@@ -5,35 +5,21 @@ return {
   -- indent
   {
     "lukas-reineke/indent-blankline.nvim",
+    main = "ibl",
     event = { "BufReadPost", "BufNewFile" },
     opts = {
-      -- char = "▏",
-      char = "│",
-      filetype_exclude = { "help", "alpha", "dashboard", "neo-tree", "Trouble", "lazy" },
-      -- show_trailing_blankline_indent = false,
-      -- show_current_context = false,
-      -- space_char_blankline = " ",
-      show_current_context = true,
-      -- show_current_context_start = true,
-      show_end_of_line = true,
-    },
-  },
-
-  -- comment
-  { "JoosepAlviste/nvim-ts-context-commentstring", lazy = true },
-  {
-    "echasnovski/mini.comment",
-    event = "VeryLazy",
-    opts = {
-      hooks = {
-        pre = function()
-          require("ts_context_commentstring.internal").update_commentstring({})
-        end,
+      indent = {
+        char = "│",
+      },
+      exclude = {
+        filetypes = { "help", "alpha", "dashboard", "neo-tree", "Trouble", "lazy" },
+      },
+      scope = {
+        enabled = true,
+        show_start = false,
+        show_end = true,
       },
     },
-    config = function(_, opts)
-      require("mini.comment").setup(opts)
-    end,
   },
 
   -- auto pairs

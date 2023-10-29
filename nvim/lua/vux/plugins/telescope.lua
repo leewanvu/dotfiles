@@ -51,7 +51,7 @@ return {
   opts = {
     defaults = {
       prompt_prefix = "   ",
-      selection_caret = " ",
+      selection_caret = "  ", -- " ",
       layout_strategy = "horizontal",
       layout_config = { prompt_position = "top" },
       sorting_strategy = "ascending",

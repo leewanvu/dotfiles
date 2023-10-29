@@ -18,6 +18,7 @@ return   {
         section_separators = "",
         disabled_filetypes = { statusline = { "dashboard", "lazy", "alpha" } },
       },
+      -- sections = require("visual_studio_code").get_lualine_sections(),
       sections = {
         lualine_a = { "mode" },
         lualine_b = { "branch" },
