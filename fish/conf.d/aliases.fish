@@ -32,3 +32,5 @@ alias gpl="git pull origin (current_branch)"
 alias gp="git push origin (current_branch)"
 
 alias ar="make -f ~/Work/ar/docker/bin/Makefile"
+
+alias blt="blueutil -p"
