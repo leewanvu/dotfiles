@@ -4,7 +4,7 @@ return {
     lazy = false,
     priority = 1000,
     config = function()
-      require('tokyonight').setup({
+      require("tokyonight").setup({
         style = "storm",
         transparent = true,
         styles = {
@@ -28,19 +28,8 @@ return {
     end,
   },
   {
-    "askfiy/visual_studio_code",
-    enabled  = false,
-    priority = 1000,
-    config = function()
-      -- require("visual_studio_code").setup({
-      --   mode = "dark",
-      -- })
-    end,
-  },
-  {
     "mcchrish/zenbones.nvim",
     lazy = false,
-    enabled = false,
     priority = 1000,
     dependencies = {
       "rktjmp/lush.nvim"
@@ -51,12 +40,24 @@ return {
     end,
   },
   {
-    "roobert/palette",
+    "leewanvu/palette",
     lazy = false,
-    priority = 1001,
-    enabled = false,
+    priority = 1000,
     config = function()
-      vim.cmd([[colorscheme palette]])
+      require("palette").setup({
+        palettes = {
+          -- dark or light
+          main = "dark",
+
+          -- pastel, bright or dark
+          accent = "pastel",
+          state = "pastel",
+        },
+
+        italics = fasle,
+        transparent_background = false,
+      })
+      -- vim.cmd([[colorscheme palette]])
     end
   }
 }
