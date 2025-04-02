@@ -3,7 +3,7 @@ if status is-interactive
 end
 
 # mac pro 2019
-#set PATH ~/bin ~/bin/neovim/bin ~/go/bin $PATH
+# set PATH ~/bin ~/bin/neovim/bin ~/go/bin $PATH
 set -Ux fish_user_paths ~/bin ~/bin/neovim/bin ~/go/bin $fish_user_paths
 
 # mac air m2
@@ -34,7 +34,7 @@ set -Ux GOPRIVATE "go.kudosi.dev/*,go.alireviews.dev/*"
 # theme
 fish_config theme choose "Rosé Pine Dawn"
 
-# test -e /Users/vule/.iterm2_shell_integration.fish ; and source /Users/vule/.iterm2_shell_integration.fish ; or true
+test -e /Users/vule/.iterm2_shell_integration.fish; and source /Users/vule/.iterm2_shell_integration.fish; or true
 
 # Added by OrbStack: command-line tools and integration
 # This won't be added again if you remove it.
