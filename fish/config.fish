@@ -2,7 +2,8 @@ if status is-interactive
     # Commands to run in interactive sessions can go here
 end
 
-set PATH ~/bin ~/bin/neovim/bin ~/go/bin $PATH
+#set PATH ~/bin ~/bin/neovim/bin ~/go/bin $PATH
+set PATH ~/bin ~/go/bin $PATH
 
 set --universal nvm_default_version v18.16.0
 
@@ -26,7 +27,7 @@ set --export PATH "$GOPATH/bin" $PATH
 # theme
 fish_config theme choose "Rosé Pine Dawn"
 
-test -e /Users/vule/.iterm2_shell_integration.fish ; and source /Users/vule/.iterm2_shell_integration.fish ; or true
+test -e /Users/vule/.iterm2_shell_integration.fish; and source /Users/vule/.iterm2_shell_integration.fish; or true
 
 # Added by OrbStack: command-line tools and integration
 # This won't be added again if you remove it.
