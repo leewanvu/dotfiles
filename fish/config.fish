@@ -2,14 +2,10 @@ if status is-interactive
     # Commands to run in interactive sessions can go here
 end
 
-# mac pro 2019
-#set PATH ~/bin ~/bin/neovim/bin ~/go/bin $PATH
-set -Ux fish_user_paths ~/bin ~/bin/neovim/bin ~/go/bin $fish_user_paths
-
-# mac air m2
-# set PATH /opt/homebrew/bin /opt/homebrew/bin/nvim $PATH
+# neovim
 set -Ux fish_user_paths /opt/homebrew/bin /opt/homebrew/bin/nvim $fish_user_paths
 
+# default node version
 set --universal nvm_default_version v23.11.0
 
 starship init fish | source
