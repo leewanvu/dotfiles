@@ -3,7 +3,7 @@ if status is-interactive
 end
 
 # mac pro 2019
-# set PATH ~/bin ~/bin/neovim/bin ~/go/bin $PATH
+#set PATH ~/bin ~/bin/neovim/bin ~/go/bin $PATH
 set -Ux fish_user_paths ~/bin ~/bin/neovim/bin ~/go/bin $fish_user_paths
 
 # mac air m2
