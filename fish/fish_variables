@@ -3,9 +3,9 @@
 SETUVAR --export GOPRIVATE:go\x2ekudosi\x2edev/\x2a\x2cgo\x2ealireviews\x2edev/\x2a
 SETUVAR ZO_CMD:zo
 SETUVAR Z_CMD:z
-SETUVAR Z_DATA:/Users/vulq/\x2elocal/share/z/data
-SETUVAR Z_DATA_DIR:/Users/vulq/\x2elocal/share/z
-SETUVAR Z_EXCLUDE:\x5e/Users/vulq\x24
+SETUVAR Z_DATA:/Users/vule/\x2elocal/share/z/data
+SETUVAR Z_DATA_DIR:/Users/vule/\x2elocal/share/z
+SETUVAR Z_EXCLUDE:\x5e/Users/vule\x24
 SETUVAR __fish_initialized:3800
 SETUVAR _fisher_jethrokuan_2F_z_files:\x7e/\x2econfig/fish/functions/__z\x2efish\x1e\x7e/\x2econfig/fish/functions/__z_add\x2efish\x1e\x7e/\x2econfig/fish/functions/__z_clean\x2efish\x1e\x7e/\x2econfig/fish/functions/__z_complete\x2efish\x1e\x7e/\x2econfig/fish/conf\x2ed/z\x2efish
 SETUVAR _fisher_jorgebucaran_2F_fisher_files:\x7e/\x2econfig/fish/functions/fisher\x2efish\x1e\x7e/\x2econfig/fish/completions/fisher\x2efish
@@ -51,5 +51,5 @@ SETUVAR fish_pager_color_selected_background:\x2d\x2dreverse
 SETUVAR fish_pager_color_selected_completion:\x1d
 SETUVAR fish_pager_color_selected_description:\x1d
 SETUVAR fish_pager_color_selected_prefix:\x1d
-SETUVAR --export fish_user_paths:/opt/homebrew/bin\x1e/opt/homebrew/bin/nvim\x1e/Users/vulq/bin\x1e/Users/vulq/bin/neovim/bin\x1e/Users/vulq/go/bin
+SETUVAR --export fish_user_paths:/opt/homebrew/bin\x1e/opt/homebrew/bin/nvim\x1e/Users/vule/bin\x1e/Users/vule/bin/neovim/bin\x1e/Users/vule/go/bin\x1e/Users/vulq/bin\x1e/Users/vulq/bin/neovim/bin\x1e/Users/vulq/go/bin
 SETUVAR nvm_default_version:v23\x2e11\x2e0
