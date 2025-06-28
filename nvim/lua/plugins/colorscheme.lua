@@ -1,6 +1,6 @@
-local THEME_DEFAULT = "rose-pine"
-local THEME_LIGHT = "rose-pine-dawn"
-local THEME_DARK = "rose-pine-moon"
+local THEME_DEFAULT = "github_dark"
+local THEME_LIGHT = "github_dark"
+local THEME_DARK = "github_light"
 
 --- Check if it is morning
 --- @return boolean
@@ -149,18 +149,6 @@ return {
           TelescopePromptNormal = { fg = "text", bg = "surface" },
           TelescopePromptBorder = { fg = "surface", bg = "surface" },
 
-          -- boardless fzf-lua
-          -- FloatBorder = { fg = "overlay", bg = "overlay" },
-          --
-          -- FzfLuaBorder = { fg = "overlay", bg = "overlay" },
-          -- FzfLuaNormal = { fg = "subtle", bg = "overlay" },
-          -- FzfLuaCursorLine = { fg = "text", bg = "highlight_med" },
-          --
-          -- FzfLuaTitle = { fg = "base", bg = "pine" },
-          -- FzfLuaPreviewTitle = { fg = "base", bg = "iris" },
-          --
-          -- FzfLuaFzfPrompt = { fg = "text", bg = "surface" },
-
           -- lovely statusline
           StatusLine = { fg = "pine", bg = "pine", blend = 10 },
           -- StatusLine = { fg = "love", bg = "love", blend = 10 },
@@ -175,6 +163,15 @@ return {
       -- vim.cmd("colorscheme rose-pine")
     end,
   },
+  {
+    "projekt0n/github-nvim-theme",
+    name = "github-theme",
+    lazy = true,
+    priority = 1000,
+    config = function()
+      require("github-theme").setup({})
+    end,
+  },
   --- auto dark mode
   {
     "f-person/auto-dark-mode.nvim",
@@ -183,12 +180,14 @@ return {
       set_dark_mode = function()
         print("dark mode")
         -- vim.opt.background = "dark"
-        vim.cmd("colorscheme rose-pine-moon")
+        -- vim.cmd("colorscheme rose-pine-moon")
+        vim.cmd("colorscheme github_dark")
       end,
       set_light_mode = function()
         print("light mode")
         -- vim.opt.background = "light"
-        vim.cmd("colorscheme rose-pine-dawn")
+        -- vim.cmd("colorscheme rose-pine-dawn")
+        vim.cmd("colorscheme github_light")
       end,
     },
   },

@@ -34,3 +34,6 @@ alias gp="git push origin (current_branch)"
 alias ar="make -f ~/Work/ar/docker/bin/Makefile"
 
 alias blt="blueutil -p"
+
+alias pip=pip3
+alias python=python3
