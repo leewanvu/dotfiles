@@ -5,20 +5,20 @@ style = "Block"
 size = 15.0
 
 [font.bold]
-family = "JetbrainsMono Nerd Font"
+family = "JetBrainsMono Nerd Font"
 style = "Bold"
 
 [font.bold_italic]
-family = "JetbrainsMono Nerd Font"
+family = "JetBrainsMono Nerd Font"
 style = "Bold Italic"
 
 [font.italic]
-family = "JetbrainsMono Nerd Font"
+family = "JetBrainsMono Nerd Font"
 style = "Italic"
 
 [font.normal]
 # family = "Comic Code Ligatures"
-family = "JetbrainsMono Nerd Font"
+family = "JetBrainsMono Nerd Font"
 style = "Regular"
 
 [font.offset]
@@ -36,6 +36,7 @@ startup_mode = "Windowed"
 title = "Alacritty"
 opacity = 1.0
 blur = false
+option_as_alt = "Both"
 
 [window.padding]
 x = 10
