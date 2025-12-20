@@ -15,7 +15,7 @@ kubectl completion fish | source
 direnv hook fish | source
 
 # Generated for envman. Do not edit.
-# test -s ~/.config/envman/load.fish; and source ~/.config/envman/load.fish
+test -s ~/.config/envman/load.fish; and source ~/.config/envman/load.fish
 
 # bun
 set --export BUN_INSTALL "$HOME/.bun"
@@ -38,3 +38,6 @@ source ~/.orbstack/shell/init2.fish 2>/dev/null || :
 
 # Added by Windsurf
 fish_add_path /Users/vulq/.codeium/windsurf/bin
+
+# Added by Antigravity
+fish_add_path /Users/vule/.antigravity/antigravity/bin
