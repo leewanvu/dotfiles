@@ -36,8 +36,5 @@ test -e /Users/vule/.iterm2_shell_integration.fish; and source /Users/vule/.iter
 # This won't be added again if you remove it.
 source ~/.orbstack/shell/init2.fish 2>/dev/null || :
 
-# Added by Windsurf
-fish_add_path /Users/vulq/.codeium/windsurf/bin
-
 # Added by Antigravity
 fish_add_path /Users/vule/.antigravity/antigravity/bin
