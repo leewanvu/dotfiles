@@ -30,7 +30,7 @@ history = 10000
 multiplier = 3
 
 [window]
-decorations = "buttonless"
+decorations = "full"
 dynamic_padding = true
 startup_mode = "Windowed"
 title = "Alacritty"
@@ -45,4 +45,4 @@ y = 6
 [general]
 live_config_reload = true
 working_directory = "None"
-import = ["~/.config/alacritty/themes/themes/rose_pine_moon.toml"]
+import = ["~/.config/alacritty/themes/themes/github_light.toml"]
