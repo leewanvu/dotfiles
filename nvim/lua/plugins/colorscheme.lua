@@ -1,6 +1,6 @@
 local THEME_DEFAULT = "github_dark"
-local THEME_LIGHT = "github_dark"
-local THEME_DARK = "github_light"
+local THEME_LIGHT = "github_light"
+local THEME_DARK = "github_dark"
 
 --- Check if it is morning
 --- @return boolean
@@ -178,13 +178,13 @@ return {
     opts = {
       update_interval = 3000,
       set_dark_mode = function()
-        print("dark mode")
+        print("[auto-dark-mode] dark mode")
         -- vim.opt.background = "dark"
         -- vim.cmd("colorscheme rose-pine-moon")
         vim.cmd("colorscheme github_dark")
       end,
       set_light_mode = function()
-        print("light mode")
+        print("[auto-dark-mode] light mode")
         -- vim.opt.background = "light"
         -- vim.cmd("colorscheme rose-pine-dawn")
         vim.cmd("colorscheme github_light")
