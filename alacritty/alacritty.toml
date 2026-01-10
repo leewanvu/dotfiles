@@ -2,7 +2,7 @@
 style = "Block"
 
 [font]
-size = 15.0
+size = 14.0
 
 [font.bold]
 family = "JetBrainsMono Nerd Font"
@@ -25,12 +25,16 @@ style = "Regular"
 x = 0
 y = 0
 
+[font.glyph_offset]
+x = 0
+y = 0
+
 [scrolling]
 history = 10000
 multiplier = 3
 
 [window]
-decorations = "full"
+decorations = "buttonless"
 dynamic_padding = true
 startup_mode = "Windowed"
 title = "Alacritty"
@@ -45,4 +49,4 @@ y = 6
 [general]
 live_config_reload = true
 working_directory = "None"
-import = ["~/.config/alacritty/themes/themes/github_light.toml"]
+import = ["~/.config/alacritty/themes/themes/github_dark.toml"]
