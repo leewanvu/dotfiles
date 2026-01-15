@@ -38,3 +38,6 @@ source ~/.orbstack/shell/init2.fish 2>/dev/null || :
 
 # Added by Antigravity
 fish_add_path /Users/vule/.antigravity/antigravity/bin
+
+# opencode
+fish_add_path /Users/vule/.opencode/bin
