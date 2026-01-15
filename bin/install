@@ -2,12 +2,16 @@
 
 read -p "Do you want to install ? y/n: " is_install
 
+# Convert to lowercase for case-insensitive comparison
+is_install=$(echo "$is_install" | tr '[:upper:]' '[:lower:]')
+
 if [ "$is_install" == "n" ]; then
     echo "See you again!"
     exit 1
 fi
 
 read -p "For mac? y/n: " is_mac
+is_mac=$(echo "$is_mac" | tr '[:upper:]' '[:lower:]')
 
 print_bold() {
     printf "\x1b[1m$1\x1b[0m\n"
@@ -16,7 +20,7 @@ print_bold() {
 print_bold "Linking..."
 
 if [ "$is_mac" == "y" ]; then
-    folders=(alacritty nvim ranger tmux bat fish yabai skhd)
+    folders=(alacritty nvim ranger tmux bat fish)
 else
     folders=(alacritty nvim ranger kitty zsh tmux bat)
 fi
@@ -34,11 +38,23 @@ for folder in "${folders[@]}"; do
         linkto="$HOME/.tmux.conf"
     fi
 
+    # Check if source exists
+    if [ ! -e "$linkfrom" ]; then
+        echo "Warning: Source $linkfrom does not exist, skipping..."
+        continue
+    fi
+
     echo "Remove $linkto"
-    rm -rf $linkto
+    if ! rm -rf "$linkto"; then
+        echo "Error: Failed to remove $linkto"
+        continue
+    fi
 
     echo "Link from $linkfrom to $linkto"
-    ln -s $linkfrom $linkto
+    if ! ln -s "$linkfrom" "$linkto"; then
+        echo "Error: Failed to create symlink from $linkfrom to $linkto"
+        continue
+    fi
 done
 
 print_bold "Linked."
