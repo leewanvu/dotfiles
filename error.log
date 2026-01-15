@@ -1,0 +1,11 @@
+Error executing vim.schedule lua callback: ...lar/neovim/0.11.5/share/nvim/runtime/lua/vim/_system.lua:256: EMFILE: too many open files
+stack traceback:
+        [thread: 0x010c87f068] [C]: in function 'asystem'
+        [thread: 0x010c87f068] ...l/share/nvim/lazy/gitsigns.nvim/lua/gitsigns/git/cmd.lua:36: in function 'git_command'
+        [thread: 0x010c87f068] .../share/nvim/lazy/gitsigns.nvim/lua/gitsigns/git/repo.lua:263: in function 'get_info'
+        [thread: 0x010c87f068] ...lq/.local/share/nvim/lazy/gitsigns.nvim/lua/gitsigns.lua:79: in function <...lq/.local/share/nvim/lazy/gitsigns.nvim/lua/gitsigns.lua:77>
+stack traceback:
+        [C]: in function 'error'
+        ...cal/share/nvim/lazy/gitsigns.nvim/lua/gitsigns/async.lua:233: in function '_finish'
+        ...cal/share/nvim/lazy/gitsigns.nvim/lua/gitsigns/async.lua:327: in function '_resume'
+        ...cal/share/nvim/lazy/gitsigns.nvim/lua/gitsigns/async.lua:322: in function <...cal/share/nvim/lazy/gitsigns.nvim/lua/gitsigns/async.lua:312>
