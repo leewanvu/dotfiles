@@ -42,3 +42,9 @@ fish_add_path $HOME/.local/bin
 
 # Added by Antigravity
 fish_add_path /Users/vulq/.antigravity/antigravity/bin
+
+# Amp CLI
+export PATH="/Users/vulq/.amp/bin:$PATH"
+
+# opencode
+fish_add_path /Users/vulq/.opencode/bin
