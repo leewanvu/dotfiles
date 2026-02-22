@@ -2,10 +2,13 @@ font-size = 15
 font-thicken = true
 font-thicken-strength = 0
 
-#theme = dark:Github Dark Default,light:Github Light Default
-theme = dark:Catppuccin Macchiato,light:Catppuccin Latte
+theme = dark:Github Dark Default,light:Github Light Default
+# theme = dark:Catppuccin Mocha,light:Catppuccin Latte
 
-#background = 22272e
+# background = #031219
+# background = #22262B
+background-opacity = 0.9
+background-blur-radius = 20
 
 unfocused-split-opacity = 1
 

@@ -28,7 +28,7 @@ set --export PATH "$GOPATH/bin" $PATH
 set -Ux GOPRIVATE "go.kudosi.dev/*,go.alireviews.dev/*,github.com/kdsmini/*"
 
 # theme
-fish_config theme choose "Rosé Pine Dawn"
+# fish_config theme choose "Rosé Pine Dawn"
 
 test -e /Users/vule/.iterm2_shell_integration.fish; and source /Users/vule/.iterm2_shell_integration.fish; or true
 

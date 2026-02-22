@@ -1,10 +1,10 @@
--- local THEME_DEFAULT = "github_dark"
--- local THEME_LIGHT = "github_light"
--- local THEME_DARK = "github_dark"
+local THEME_DEFAULT = "github_dark"
+local THEME_LIGHT = "github_light"
+local THEME_DARK = "github_dark"
 
-local THEME_DEFAULT = "catppuccin"
-local THEME_LIGHT = "catppuccin-latte"
-local THEME_DARK = "catppuccin-macchiato"
+-- local THEME_DEFAULT = "catppuccin"
+-- local THEME_LIGHT = "catppuccin-latte"
+-- local THEME_DARK = "catppuccin-mocha"
 
 --- Check if it is morning
 --- @return boolean
@@ -13,31 +13,13 @@ local function is_morning()
   return hour >= 6 and hour < 12
 end
 
---- Check if it is afternoon
---- @return boolean
-local function is_afternoon()
-  local hour = tonumber(os.date("%H"))
-  return hour >= 12 and hour < 18
-end
-
---- Check if it is evening
---- @return boolean
-local function is_evening()
-  local hour = tonumber(os.date("%H"))
-  return hour >= 18 and hour < 24
-end
-
 --- Set colorscheme by time
 --- @return string
 local function set_colorscheme_by_time()
   if is_morning() then
     return THEME_LIGHT
-  elseif is_afternoon() then
-    return THEME_DARK
-  elseif is_evening() then
-    return THEME_DARK
   else
-    return THEME_DEFAULT
+    return THEME_DARK
   end
 end
 
@@ -173,7 +155,11 @@ return {
     lazy = true,
     priority = 1000,
     config = function()
-      require("github-theme").setup({})
+      require("github-theme").setup({
+        options = {
+          transparent = true,
+        },
+      })
     end,
   },
   --- auto dark mode
@@ -189,6 +175,14 @@ return {
         print("[auto-dark-mode] light mode: " .. THEME_LIGHT)
         vim.cmd("colorscheme " .. THEME_LIGHT)
       end,
+    },
+  },
+  {
+    "catppuccin/nvim",
+    name = "catppuccin",
+    priority = 1000,
+    opts = {
+      transparent_background = true,
     },
   },
 }
