@@ -13,13 +13,14 @@ print_bold() {
     printf "\x1b[1m$1\x1b[0m\n"
 }
 
-print_bold "Linking..."
-
 if [ "$is_mac" == "y" ]; then
-    folders=(alacritty nvim ranger tmux bat fish yabai skhd)
+    folders=(alacritty nvim ranger tmux bat fish ghostty)
 else
-    folders=(alacritty nvim ranger kitty zsh tmux bat)
+    print_bold "No supported."
+    exit 1
 fi
+
+print_bold "Linking..."
 
 for folder in "${folders[@]}"; do
     linkfrom="$PWD/$folder"

@@ -25,7 +25,7 @@ set --export PATH "$HOME/.local/opt/go/bin" $PATH
 # go
 set --export GOPATH "$HOME/go"
 set --export PATH "$GOPATH/bin" $PATH
-set -Ux GOPRIVATE "go.kudosi.dev/*,go.alireviews.dev/*"
+set -Ux GOPRIVATE "go.kudosi.dev/*,go.alireviews.dev/*,github.com/kdsmini/*"
 
 # theme
 fish_config theme choose "Rosé Pine Dawn"

@@ -1,0 +1,9 @@
+font-size = 15
+font-thicken = true
+font-thicken-strength = 0
+
+theme = dark:Github Dark Default,light:Github Light Default
+
+#background = 22272e
+
+unfocused-split-opacity = 1
