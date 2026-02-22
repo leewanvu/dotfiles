@@ -3,7 +3,7 @@ font-thicken = true
 font-thicken-strength = 0
 
 #theme = dark:Github Dark Default,light:Github Light Default
-theme = dark:Catppuccin Frappe,light:Catppuccin Latte
+theme = dark:Catppuccin Macchiato,light:Catppuccin Latte
 
 #background = 22272e
 

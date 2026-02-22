@@ -4,7 +4,7 @@
 
 local THEME_DEFAULT = "catppuccin"
 local THEME_LIGHT = "catppuccin-latte"
-local THEME_DARK = "catppuccin-frappe"
+local THEME_DARK = "catppuccin-macchiato"
 
 --- Check if it is morning
 --- @return boolean
