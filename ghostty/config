@@ -8,3 +8,5 @@ theme = dark:Catppuccin Macchiato,light:Catppuccin Latte
 #background = 22272e
 
 unfocused-split-opacity = 1
+
+window-padding-x = 12
