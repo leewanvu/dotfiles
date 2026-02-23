@@ -9,10 +9,11 @@ dotfiles/
 ├── .zshrc              # Zsh shell configuration
 ├── .tmux.conf          # Tmux configuration
 ├── bin/
-│   ├── install         # Main installation script
+│   └── install         # Installation script
+├── bat/                # Bat (cat clone) config
 ├── fish/               # Fish shell configuration
-├── nvim/               # Neovim (LazyVim-based)
 ├── ghostty/            # Ghostty terminal config
+├── nvim/               # Neovim (LazyVim-based)
 ├── alacritty/          # Alacritty terminal config
 ├── kitty/              # Kitty terminal config
 ├── skhd/               # Simple hotkey daemon
@@ -27,7 +28,12 @@ cd /path/to/dotfiles
 ./bin/install
 ```
 
-This links config folders to `~/.config/` and `~/.tmux.conf`.
+This script links the following folders to `~/.config/`:
+- `nvim` → `~/.config/nvim`
+- `tmux` → `~/.tmux.conf`
+- `bat` → `~/.config/bat`
+- `fish` → `~/.config/fish`
+- `ghostty` → `~/.config/ghostty`
 
 ## Requirements
 
