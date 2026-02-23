@@ -1,45 +1,96 @@
 #!/usr/bin/env bash
 
-read -p "Do you want to install ? y/n: " is_install
-
-if [ "$is_install" == "n" ]; then
-    echo "See you again!"
-    exit 1
-fi
-
-read -p "For mac? y/n: " is_mac
+set -e
 
 print_bold() {
-    printf "\x1b[1m$1\x1b[0m\n"
+    printf "\x1b[1m%s\x1b[0m\n" "$1"
 }
 
-if [ "$is_mac" == "y" ]; then
-    folders=(alacritty nvim ranger tmux bat fish ghostty)
-else
-    print_bold "No supported."
-    exit 1
-fi
+print_dim() {
+    printf "\x1b[2m%s\x1b[0m\n" "$1"
+}
 
-print_bold "Linking..."
+detect_os() {
+    case "$(uname -s)" in
+    Darwin*) echo "mac" ;;
+    Linux*) echo "linux" ;;
+    *) echo "unsupported" ;;
+    esac
+}
 
-for folder in "${folders[@]}"; do
-    linkfrom="$PWD/$folder"
-    linkto="$HOME/.config/$folder"
+get_folders() {
+    local os="$1"
+    case "$os" in
+    mac)
+        echo "alacritty nvim ranger tmux bat fish ghostty"
+        ;;
+    *)
+        echo ""
+        ;;
+    esac
+}
 
-    if [ "$folder" == "alacritty" ] && [ "$is_mac" == "y" ]; then
-        linkfrom="$PWD/alacritty-mac"
-    fi
+link_config() {
+    local folder="$1"
+    local linkfrom="$PWD/$folder"
+    local linkto
 
-    if [ "$folder" == "tmux" ]; then
+    case "$folder" in
+    tmux)
         linkfrom="$PWD/.tmux.conf"
         linkto="$HOME/.tmux.conf"
+        ;;
+    *)
+        linkto="$HOME/.config/$folder"
+        ;;
+    esac
+
+    if [ ! -e "$linkfrom" ]; then
+        print_dim "Skipping $folder (not found)"
+        return 1
     fi
 
-    echo "Remove $linkto"
-    rm -rf $linkto
+    if [ -L "$linkto" ]; then
+        print_dim "Skipping $linkto (already linked)"
+        return 0
+    elif [ -e "$linkto" ]; then
+        print_dim "Removing existing file: $linkto"
+        rm -rf "$linkto"
+    fi
 
-    echo "Link from $linkfrom to $linkto"
-    ln -s $linkfrom $linkto
-done
+    print_dim "Linking $linkfrom -> $linkto"
+    ln -s "$linkfrom" "$linkto"
+}
 
-print_bold "Linked."
+main() {
+    local os
+    os=$(detect_os)
+    print_bold "Detected OS: $os"
+
+    if [ "$os" != "mac" ]; then
+        print_bold "Not support"
+        exit 1
+    fi
+
+    print_bold "Ready to link:"
+    for folder in $(get_folders "$os"); do
+        echo "  - $folder"
+    done
+    echo
+
+    read -p "Continue? [y/n]: " confirm
+    if [ "$confirm" != "y" ]; then
+        echo "Cancelled."
+        exit 0
+    fi
+
+    print_bold "Linking..."
+
+    for folder in $(get_folders "$os"); do
+        link_config "$folder"
+    done
+
+    print_bold "Linked."
+}
+
+main "$@"
