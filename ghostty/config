@@ -7,9 +7,9 @@ theme = dark:Github Dark Default,light:Github Light Default
 
 # background = #031219
 # background = #22262B
-background-opacity = 0.9
+background-opacity = 0.8
 background-blur-radius = 20
 
-unfocused-split-opacity = 1
+unfocused-split-opacity = 2
 
 window-padding-x = 12
