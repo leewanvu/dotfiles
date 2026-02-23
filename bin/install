@@ -22,7 +22,7 @@ get_folders() {
     local os="$1"
     case "$os" in
     mac)
-        echo "alacritty nvim ranger tmux bat fish ghostty"
+        echo "nvim tmux bat fish ghostty"
         ;;
     *)
         echo ""
