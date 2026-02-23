@@ -40,36 +40,65 @@ cd /path/to/dotfiles
 
 This links config folders to `~/.config/` and `~/.tmux.conf`.
 
-## Editor Configuration
+---
 
-### Neovim
+## Build/Lint/Test Commands
 
-This repository uses **LazyVim** as the base Neovim distribution.
+This is a **configuration repository** - no traditional build system exists. Use these commands to verify configs:
 
-- **Config location**: `nvim/lua/`
-- **Main entry**: `nvim/init.lua` → `nvim/lua/config/lazy.lua`
-- **Formatting**: Uses Stylua (see `nvim/stylua.toml`)
-- **Indent**: 4 spaces (see `nvim/lua/config/options.lua`)
-- **Shell**: Fish shell
+### Neovim (Lua)
 
-### Running Neovim Tests
-
-LazyVim/Lazy.nvim doesn't have traditional unit tests. To verify the config works:
 ```bash
+# Check Lua syntax and load config (headless test)
 nvim --headless -c "lua vim.cmd('quitall')" 2>&1
-# Or test specific config:
+
+# Verify Neovim version loads correctly
 nvim --version
+
+# Format Lua with Stylua (must be installed: brew install stylua)
+stylua --check nvim/lua/  # Check formatting only
+stylua nvim/lua/          # Auto-fix formatting
 ```
 
-### Code Style (Neovim/Lua)
+### Shell Scripts (Bash)
 
-- **Indentation**: 4 spaces (not tabs)
-- **Quote style**: Double quotes for strings
-- **Naming**: `snake_case` for variables/functions, `PascalCase` for modules
-- **Modules**: Use `require("module.name")` pattern
-- **Keymaps**: Use `vim.keymap.set()` with descriptive `desc` field
+```bash
+# Lint bash scripts (requires shellcheck: brew install shellcheck)
+shellcheck bin/*
 
-Example from `nvim/lua/config/options.lua`:
+# Syntax check bash scripts
+bash -n bin/install
+```
+
+### All Configs
+
+```bash
+# Verify all configs load without errors
+# For Neovim:
+nvim --headless +qa 2>&1
+
+# For Fish:
+fish -c "source ~/.config/fish/config.fish" 2>&1
+
+# For Zsh:
+zsh -n ~/.zshrc 2>&1
+```
+
+---
+
+## Code Style Guidelines
+
+### Neovim/Lua
+
+| Rule | Convention |
+|------|------------|
+| **Indentation** | 2 spaces (see `nvim/stylua.toml`) |
+| **Quote style** | Double quotes for strings |
+| **Naming** | `snake_case` for variables/functions, `PascalCase` for modules |
+| **Modules** | Use `require("module.name")` pattern |
+| **Keymaps** | Always use `vim.keymap.set()` with descriptive `desc` field |
+
+**Example** (`nvim/lua/config/options.lua`):
 ```lua
 vim.scriptencoding = "utf-8"
 vim.g.snacks_animate = false
@@ -85,82 +114,97 @@ opt.showcmd = true
 opt.cmdheight = 1
 opt.shell = "fish"
 opt.smarttab = true
-opt.shiftwidth = 4
-opt.tabstop = 4
-opt.softtabstop = 4
+opt.shiftwidth = 2
+opt.tabstop = 2
+opt.softtabstop = 2
 ```
 
-Example from `nvim/lua/config/lazy.lua`:
+**Keymap example**:
 ```lua
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not (vim.uv or vim.loop).fs_stat(lazypath) then
-  local lazyrepo = "https://github.com/folke/lazy.nvim.git"
-  local out = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
-  if vim.v.shell_error ~= 0 then
-    vim.api.nvim_echo({
-      { "Failed to clone lazy.nvim:\n", "ErrorMsg" },
-      { out, "WarningMsg" },
-      { "\nPress any key to exit..." },
-    }, true, {})
-    vim.fn.getchar()
-    os.exit(1)
-  end
-end
-vim.opt.rtp:prepend(lazypath)
-require("lazy").setup({...})
+vim.keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<cr>", { desc = "Find files" })
+```
+
+**Require pattern**:
+```lua
+local util = require("util")
+local plugins = require("plugins")
 ```
 
 ### Shell Scripts (Bash)
 
-- **Shebang**: `#!/usr/bin/env bash`
-- **Variables**: Use `$VAR` or `${VAR}` syntax
-- **Conditionals**: Use `[ ]` for test, double brackets `[[ ]]` for advanced
-- **Functions**: Define with `function_name() { ... }` or `function function_name { ... }`
+| Rule | Convention |
+|------|------------|
+| **Shebang** | `#!/usr/bin/env bash` |
+| **Indentation** | 4 spaces |
+| **Variables** | Use `$VAR` or `${VAR}` syntax |
+| **Conditionals** | Use `[ ]` for test, `[[ ]]` for advanced |
+| **Error handling** | Use `set -e` to exit on errors |
+| **Functions** | Define with `function_name() { ... }` |
 
-Example from `bin/install`:
+**Example** (`bin/install`):
 ```bash
 #!/usr/bin/env bash
+
+set -e
+
 print_bold() {
-    printf "\x1b[1m$1\x1b[0m\n"
+    printf "\x1b[1m%s\x1b[0m\n" "$1"
 }
+
 if [ "$is_mac" == "y" ]; then
     folders=(alacritty nvim ranger tmux bat fish ghostty)
 fi
 ```
 
+**Error handling pattern**:
+```bash
+if vim.v.shell_error ~= 0 then
+    vim.api.nvim_echo({
+        { "Failed to clone lazy.nvim:\n", "ErrorMsg" },
+        { out, "WarningMsg" },
+    }, true, {})
+    os.exit(1)
+end
+```
+
 ### Fish Shell
 
-- **No brackets needed**: Use `if test` or `if status is-interactive`
-- **Variables**: Use `set VAR value` (not `$VAR`)
-- **Export**: Use `set -x VAR value` or `set -Ux` for universal
-- **Paths**: Use `fish_add_path` to add to PATH
+| Rule | Convention |
+|------|------------|
+| **Conditionals** | Use `if test` or `if status is-interactive` (no brackets) |
+| **Variables** | Use `set VAR value` (not `$VAR`) |
+| **Export** | Use `set -x VAR value` or `set -Ux` for universal |
+| **Paths** | Use `fish_add_path` to add to PATH |
 
-Example from `fish/config.fish`:
+**Example** (`fish/config.fish`):
 ```fish
 if status is-interactive
-    # Commands to run in interactive sessions can go here
 end
+
 set -Ux fish_user_paths /opt/homebrew/bin $fish_user_paths
 starship init fish | source
 ```
 
-### Terminal Configs (Ghostty, Alacritty, Kitty)
+### Terminal Configs
 
-- **Format**: Key-value pairs with `=` or YAML/TOML
-- **Comments**: Use `#` for comments
-- **Ghostty**: Uses `.ini`-like format (see `ghostty/config`)
-- **Alacritty**: TOML format in `alacritty/*.toml`
-- **Kitty**: Similar TOML format in `kitty/*.conf`
+| Tool | Format | Location |
+|------|--------|----------|
+| **Ghostty** | `.ini`-like | `ghostty/config` |
+| **Alacritty** | TOML | `alacritty/*.toml` |
+| **Kitty** | TOML | `kitty/*.conf` |
 
-## Code Style Guidelines
+- Use `#` for comments
+- Key-value pairs with `=`
 
-### General Conventions
+---
 
-1. **Comments**: Use descriptive comments explaining "why", not "what"
+## General Conventions
+
+1. **Comments**: Explain "why", not "what"
 2. **Whitespace**: Clean, consistent indentation
 3. **Naming**: Descriptive names for aliases, functions, variables
-4. **Error Handling**: Exit with appropriate codes (`exit 1` for errors)
-5. **Paths**: Use `$HOME` instead of `~` in scripts; use `~` in configs
+4. **Paths**: Use `$HOME` in scripts; use `~` in configs
+5. **Exit codes**: Use `exit 1` for errors, `exit 0` for success
 
 ### Aliases (Shell)
 
@@ -171,29 +215,11 @@ alias v="nvim"
 alias vi="nvim"
 
 # git
-alias g='git'
-alias gs='git status'
+alias g="git"
+alias gs="git status"
 ```
 
-### Keymaps (Neovim)
-
-Always include `desc` for clarity:
-```lua
-vim.keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<cr>", { desc = "Find files" })
-```
-
-## No Traditional Build/Test Commands
-
-This is a **configuration repository**, not a software project. There are no:
-- Package managers (npm, cargo, etc.)
-- Test frameworks
-- Linting pipelines
-- Build systems
-
-To verify configurations work:
-1. **Source the config**: `source ~/.zshrc` or `source ~/.config/fish/config.fish`
-2. **Restart the application**: Exit and reopen terminal/Neovim
-3. **Check for errors**: Run the app and watch for errors
+---
 
 ## Environment
 
@@ -204,16 +230,20 @@ To verify configurations work:
 - **Window Manager**: yabai
 - **Hotkey Daemon**: skhd
 
+---
+
 ## Adding New Configurations
 
 1. Create config file in appropriate subdirectory
 2. Update `bin/install` if new folders need linking
 3. Test by sourcing config or restarting application
 
+---
+
 ## Notes for Agents
 
 - This is a personal dotfiles repository - not a shared codebase
-- Changes here affect local development environment only
+- Changes affect local development environment only
 - No CI/CD or automated testing exists
 - Manual verification by user required after changes
 - Backup existing configs before major modifications
