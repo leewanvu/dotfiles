@@ -10,7 +10,6 @@ dotfiles/
 ├── .tmux.conf          # Tmux configuration
 ├── bin/
 │   ├── install         # Main installation script
-│   └── install-latest-nvim
 ├── fish/               # Fish shell configuration
 ├── nvim/               # Neovim (LazyVim-based)
 ├── ghostty/            # Ghostty terminal config
