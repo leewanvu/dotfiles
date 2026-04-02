@@ -1,10 +1,14 @@
-local THEME_DEFAULT = "github_dark"
-local THEME_LIGHT = "github_light"
-local THEME_DARK = "github_dark"
+-- local THEME_DEFAULT = "github_dark"
+-- local THEME_LIGHT = "github_light"
+-- local THEME_DARK = "github_dark_dimmed"
 
--- local THEME_DEFAULT = "catppuccin"
--- local THEME_LIGHT = "catppuccin-latte"
--- local THEME_DARK = "catppuccin-mocha"
+local THEME_DEFAULT = "catppuccin-nvim"
+local THEME_LIGHT = "github_light"
+local THEME_DARK = "catppuccin-mocha"
+
+-- local THEME_DEFAULT = "tokyonight"
+-- local THEME_LIGHT = "tokyonight"
+-- local THEME_DARK = "tokyonight-storm"
 
 --- Check if it is morning
 --- @return boolean
@@ -38,11 +42,11 @@ return {
     opts = function()
       return {
         style = "day",
-        -- transparent = true,
-        -- styles = {
-        --   sidebars = "transparent",
-        --   floats = "transparent",
-        -- },
+        transparent = true,
+        styles = {
+          sidebars = "transparent",
+          floats = "transparent",
+        },
         sidebars = {
           "qf",
           "vista_kind",
@@ -83,16 +87,6 @@ return {
           -- hl.LineNr = { fg = c.orange, bold = true }
           -- hl.LineNrAbove = { fg = c.fg_gutter }
           -- hl.LineNrBelow = { fg = c.fg_gutter }
-
-          -- borderless telescope
-          local prompt = "#2d3149"
-          hl.TelescopeNormal = { bg = c.bg_dark, fg = c.fg_dark }
-          hl.TelescopeBorder = { bg = c.bg_dark, fg = c.bg_dark }
-          hl.TelescopePromptNormal = { bg = prompt }
-          hl.TelescopePromptBorder = { bg = prompt, fg = prompt }
-          hl.TelescopePromptTitle = { bg = c.fg_gutter, fg = c.orange }
-          hl.TelescopePreviewTitle = { bg = c.bg_dark, fg = c.bg_dark }
-          hl.TelescopeResultsTitle = { bg = c.bg_dark, fg = c.bg_dark }
         end,
       }
     end,
@@ -182,7 +176,12 @@ return {
     name = "catppuccin",
     priority = 1000,
     opts = {
-      transparent_background = true,
+      transparent_background = false,
+      float = {
+        transparent = true,
+        solid = false, -- use solid styling for floating windows, see |winborder|
+      },
+      no_italic = true, -- Force no italic
     },
   },
 }

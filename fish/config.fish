@@ -2,9 +2,6 @@ if status is-interactive
     # Commands to run in interactive sessions can go here
 end
 
-# neovim
-set -Ux fish_user_paths /opt/homebrew/bin /opt/homebrew/bin/nvim $fish_user_paths
-
 # default node version
 set --universal nvm_default_version v23.11.0
 
@@ -18,14 +15,14 @@ direnv hook fish | source
 test -s ~/.config/envman/load.fish; and source ~/.config/envman/load.fish
 
 # bun
-set --export BUN_INSTALL "$HOME/.bun"
-set --export PATH $BUN_INSTALL/bin $PATH
-set --export PATH "$HOME/.local/opt/go/bin" $PATH
+set -gx BUN_INSTALL "$HOME/.bun"
+fish_add_path "$BUN_INSTALL/bin"
 
 # go
-set --export GOPATH "$HOME/go"
-set --export PATH "$GOPATH/bin" $PATH
-set -Ux GOPRIVATE "go.kudosi.dev/*,go.alireviews.dev/*,github.com/kdsmini/*"
+set -gx GOPATH "$HOME/go"
+set -gx GOPRIVATE "go.kudosi.dev/*,go.alireviews.dev/*,github.com/kdsmini/*"
+fish_add_path "$GOPATH/bin"
+fish_add_path "$HOME/.local/opt/go/bin"
 
 # theme
 # fish_config theme choose "Rosé Pine Dawn"
