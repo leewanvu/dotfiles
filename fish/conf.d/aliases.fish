@@ -20,7 +20,7 @@ alias gcb='git checkout -b'
 alias gc='git commit'
 alias gcm='git commit -m'
 alias gd='git diff'
-alias gl='git log --oneline'
+alias gl='git log --oneline | head -n 10'
 
 function current_branch
     set ref (git symbolic-ref HEAD 2> /dev/null); or set ref (git rev-parse --short HEAD 2> /dev/null); or return

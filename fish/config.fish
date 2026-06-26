@@ -38,3 +38,13 @@ fish_add_path /Users/vule/.antigravity/antigravity/bin
 
 # opencode
 fish_add_path /Users/vule/.opencode/bin
+
+# Added by Antigravity
+fish_add_path /Users/vule/.antigravity/antigravity/bin
+
+# Added by Antigravity
+fish_add_path /Users/vule/.antigravity/antigravity/bin
+
+
+# Added by Antigravity CLI installer
+set -gx PATH "/Users/vule/.local/bin" $PATH

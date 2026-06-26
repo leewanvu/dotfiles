@@ -1,14 +1,14 @@
--- local THEME_DEFAULT = "github_dark"
 -- local THEME_LIGHT = "github_light"
 -- local THEME_DARK = "github_dark_dimmed"
 
-local THEME_DEFAULT = "catppuccin-nvim"
-local THEME_LIGHT = "github_light"
-local THEME_DARK = "catppuccin-mocha"
+-- local THEME_LIGHT = "catppuccin-mocha"
+-- local THEME_DARK = "catppuccin-mocha"
 
--- local THEME_DEFAULT = "tokyonight"
 -- local THEME_LIGHT = "tokyonight"
 -- local THEME_DARK = "tokyonight-storm"
+--
+local THEME_LIGHT = "nord"
+local THEME_DARK = "nord"
 
 --- Check if it is morning
 --- @return boolean
@@ -176,12 +176,23 @@ return {
     name = "catppuccin",
     priority = 1000,
     opts = {
-      transparent_background = false,
+      transparent_background = true,
       float = {
         transparent = true,
         solid = false, -- use solid styling for floating windows, see |winborder|
       },
       no_italic = true, -- Force no italic
     },
+  },
+  {
+    "gbprod/nord.nvim",
+    -- lazy = false,
+    priority = 1000,
+    config = function()
+      require("nord").setup({
+        -- transparent = true,
+      })
+      vim.cmd.colorscheme("nord")
+    end,
   },
 }

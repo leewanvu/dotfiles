@@ -201,3 +201,7 @@ export PATH=$PATH:$HOME/bin/neovim/bin
 
 # Generated for envman. Do not edit.
 [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
+
+
+# Added by Antigravity CLI installer
+export PATH="/Users/vule/.local/bin:$PATH"
